@@ -7,7 +7,9 @@
  */
 export function NxWelcome({ title }: { title: string }) {
   return (
-    
+    <>
+      <h1 className="text-3xl font-bold underline">Tail wind css test {title}</h1>
+    </>
   );
 }
 
