@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Path</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ICON-SHEET-JAPAN" transform="translate(-573.000000, -1023.000000)" fill="#262626">
+            <g id="chevron-up-blue" transform="translate(578.000000, 1026.000000) scale(1, -1) translate(-578.000000, -1026.000000) translate(573.000000, 1023.000000)">
+                <path d="M9.564,4.907 L5.453,0.796 C5.20307552,0.5461289 4.79792448,0.5461289 4.548,0.796 L0.436,4.907 C0.252708666,5.08992565 0.197712524,5.36527792 0.296672726,5.6045777 C0.395632927,5.84387748 0.629045362,6.00000064 0.888,6.00000064 L9.112,6.00000064 C9.37113669,6.0003662 9.60491983,5.84443101 9.7041367,5.60504019 C9.80335358,5.36564936 9.74842063,5.09005417 9.565,4.907 L9.564,4.907 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>

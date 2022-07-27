@@ -45,8 +45,7 @@ export function OurPromise() {
         {params.heading && (
           <h2 className="text-center mb-10 sm:text-xxl sm:leading-8 sm:mb-4 sm:font-black">{params.heading} </h2>
         )}
-      </div>
-      <section className="container flex justify-center sm:block">
+        <section className="container flex justify-center sm:block">
         {params?.image && (
           <div className="flex items-center sm:block">
             <div
@@ -57,7 +56,7 @@ export function OurPromise() {
             ></div>
           </div>
         )}
-        <div className="border-opal-gamma border-pearl-gamma border-amber-gamma hidden"></div>
+        
         <div className="flex justify-end sm:grid sm:px-0 sm:justify-center">
           {params.cards.map((card) => (
             <PromiseCard card={card}></PromiseCard>
@@ -65,6 +64,8 @@ export function OurPromise() {
         </div>
         <div className="clearfix"></div>
       </section>
+      </div>
+      
     </>
   );
 }

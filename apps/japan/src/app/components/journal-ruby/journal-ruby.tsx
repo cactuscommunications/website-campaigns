@@ -55,9 +55,9 @@ export function JournalRuby() {
   return (
     <>
       <div className="clearfix"></div>
-      <section className={'pb-10 pt-7.5 sm:my-6 ' + params?.backgroundColor}>
+      <section className={'pb-10 pt-7.5 ' + params?.backgroundColor}>
         <div className="container px-5">
-          <h2 className="text-black text-center font-pb text-5xl text-ruby-alpha leading-30 sm:text-20">
+          <h2 className="text-center font-pb text-5xl text-ruby-alpha leading-30 sm:text-20">
             <span className="sm:hidden">{params.heading}</span>
             <span className="hidden sm:block">{params.mobileHeading}</span>
           </h2>
@@ -65,7 +65,7 @@ export function JournalRuby() {
             <span className="sm:hidden">{params.subHeading}</span>
             <span className="hidden sm:block">{params.mobileSubHeading}</span>
           </p>
-          <div className="w-full flex justify-center mt-5 flex-wrap gap-5">
+          <div className="w-full flex justify-center mt-5 flex-wrap">
             {params.journals
               .sort((first, second) => {
                 return first.impact < second.impact ? 1 : -1;
@@ -73,7 +73,7 @@ export function JournalRuby() {
               .map((journal) => (
                 <div className="rounded-lg border border-pearl-beta pb-3 w-56 mx-2.5">
                   <div
-                    className="h-74 bg-no-repeat bg-contain w-full rounded-t-lg"
+                    className="h-75 bg-no-repeat bg-contain w-full rounded-t-lg"
                     style={{
                       backgroundImage: `url(${journal.image})`,
                     }}

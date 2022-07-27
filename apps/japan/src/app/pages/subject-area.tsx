@@ -1,3 +1,4 @@
+import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
 import OurPromise from '../components/our-promise/our-promise';
 import FeaturedBlockLapis from '../components/featured-block-lapis/featured-block-lapis';
@@ -11,10 +12,12 @@ import FeaturedBlockPearl from '../components/featured-block-pearl/featured-bloc
 import SampleRuby from '../components/sample-ruby/sample-ruby';
 import JournalRuby from '../components/journal-ruby/journal-ruby';
 import ServiceBlockRuby from '../components/service-block-ruby/service-block-ruby';
+import ListingPearl from '../components/listing-pearl/listing-pearl';
 
 export function SubjectArea() {
     return (
       <>
+        <Header />
         <SubjectAreaBannerRuby />
         <ServiFeatureRuby />
         <CarouselRuby />
@@ -26,6 +29,7 @@ export function SubjectArea() {
         <FeaturedBlockLapis />
         <FeaturedBlockTopaz />
         <ServiceBlockRuby />
+        <ListingPearl />
         <Footer />
       </>
     );

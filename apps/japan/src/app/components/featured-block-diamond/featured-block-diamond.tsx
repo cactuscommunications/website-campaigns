@@ -30,16 +30,16 @@ export function FeaturedBlockDiamond() {
     heading: '無料でお見積りいたします！',
     subHeading:
       '料金と納期は、お客様のご依頼内容に合わせてカスタマイズさせていただきます。お気軽にお問い合わせください。',
-    backgroundColor: 'bg-jade-gamma',
+    backgroundColor: 'bg-pearl-zeta',
   };
 
   return (
     <>
       <div className="clearfix"></div>
-      <section className={' w-full float-left sm:pt-6 mb-2 mt-4 ' + params?.backgroundColor}>
+      <section className={' w-full float-left ' + params?.backgroundColor}>
         <div className="wrapper">
-          <div className="w-full relative flex sm:block">
-            <div className={'float-left sm:block w-1/5 self-center text-right pr-2 sm:pr-0 ' + params?.backgroundColor}>
+          <div className="w-full relative flex py-7.5 sm:block md:px-5">
+            <div className={'flex w-1/5 self-center text-right pr-2 sm:pr-0 sm:block sm:w-full ' + params?.backgroundColor}>
               <span
                 className={
                   ' w-50 h-32 inline-block bg-no-repeat bg-center bg-contain sm:block sm:m-auto sm:my-1 sm:bg-center '
@@ -49,8 +49,8 @@ export function FeaturedBlockDiamond() {
                 }}
               ></span>
             </div>
-            <div className="float-right py-8.75 sm: pt-2 flex sm:block sm:w-full sm:px-5 w-full px-8 sm:pt-4">
-              <div className="sm:w-full w-1/2 float-left sm:float-none md:w-3/5">
+            <div className="float-right flex px-8 sm:block sm:w-full sm:px-5 sm:pt-4 md:pr-0">
+              <div className="w-1/2 float-left self-center sm:w-full sm:float-none md:w-3/5">
                 {params.heading && (
                   <h3 className="text-pearl-alpha mb-3 font-sb sm:text-xxl-base sm:leading-8 sm:text-center">
                     {params.heading}{' '}
