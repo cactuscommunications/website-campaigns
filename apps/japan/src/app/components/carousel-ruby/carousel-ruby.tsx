@@ -107,19 +107,22 @@ const CarouselRuby: React.FC = () => {
               ))}
             </div>
           )}
+
+        <div className="text-center w-full float-left mt-7">
+          {testimonialsChunk.map((card, index) => (
+            <span
+              onClick={(e) => goToIndicator(index)}
+              className={
+                (index !== position ? 'bg-lapis-delta' : '') +
+                ' w-2.5 h-2.5 inline-block rounded-full mx-2 cursor-pointer sm:mt-0 sm:mb-2 '
+              }
+            ></span>
+          ))}
         </div>
+        </div>
+        <div className='clearfix'></div>
       </section>
-      <div className="text-center w-full float-left sm:top-0">
-        {testimonialsChunk.map((card, index) => (
-          <span
-            onClick={(e) => goToIndicator(index)}
-            className={
-              (index !== position ? 'bg-lapis-delta' : '') +
-              ' w-2.5 h-2.5 inline-block rounded-full mx-2 cursor-pointer sm:mt-0 sm:mb-2 '
-            }
-          ></span>
-        ))}
-      </div>
+      
     </>
   );
 };

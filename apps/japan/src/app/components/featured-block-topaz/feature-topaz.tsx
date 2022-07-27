@@ -30,7 +30,7 @@ export function FeatureTopaz({
     <div
       className={
         card.logo
-          ? 'w-1.8/6 first:w-0.7/2 last:w-0.7/2 border-r border-r-ruby-gamma last:border-r-0 sm:border-none'
+          ? 'w-1.8/6 first:w-0.7/2 last:w-0.7/2 border-r border-r-ruby-gamma last:border-r-0 sm:border-none sm:first:w-full sm:last:w-full sm:w-full'
           : 'w-67.5 mr-12 last:mr-0 border-r border-r-ruby-gamma last:border-r-0 sm:border-none'
       }
     >

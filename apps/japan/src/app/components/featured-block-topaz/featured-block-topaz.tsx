@@ -165,7 +165,7 @@ export function FeaturedBlockTopaz() {
                                 [params]="params?.link" class="text-underline-hover">
                                     <span class="text-pearl-beta font-ssb ">{{ params?.link?.content}}</span>
                                 </app-lynk> */}
-                <a className="text-pearl-beta font-ssb " href={params?.link.route}>
+                <a className="text-pearl-beta font-ssb text-underline-hover" href={params?.link.route}>
                   {params?.link?.content}
                 </a>
               </div>
