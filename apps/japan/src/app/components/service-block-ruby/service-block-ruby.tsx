@@ -11,7 +11,7 @@ export function ServiceBlockRuby() {
         name: string,
         machineName: string
     }
-    let [activeTab, setActiveTab] = useState(0);
+    let [activeTab, setActiveTab] = useState(5);
     let [searchText, setSearchText] = useState('')
     const params: IserviceBlockRubyParams = {
         desktopOnly: true,
@@ -19,7 +19,7 @@ export function ServiceBlockRuby() {
         "menuItem": [
             {
                 "name": "all",
-                "machineName": "default"
+                "machineName": ""
             },
             {
                 "name": "MEDICINE",
@@ -45,10 +45,7 @@ export function ServiceBlockRuby() {
         ]
     };
     useEffect(() => {
-        // const getSubData = async () => {
-
-        // };
-        // getSubData();
+        setSearchText(params.menuItem[activeTab].machineName);
     }, [activeTab]);
     const tabChanged = (index: number) => {
         const selectedMachineName: string = params.menuItem[index].machineName;
@@ -62,10 +59,13 @@ export function ServiceBlockRuby() {
                     <div className="clearfix"></div>
                     {params?.heading &&
                         <h2 className="pt-8 pb-8 text-center sm:text-xxl sm:leading-8 sm:font-black">{params?.heading}</h2>}
-                    <div className="w-full flex float-left overflow-hidden relative sm:overflow-x-auto sm:max-w-80vh sm;custom-scroll">
-                        <ul className="flex w-full">
+
+                    <div className="container">
+                        <ul className="flex items-end sm:flex-nowrap sm:overflow-auto">
+                            {/* <div className="w-full flex float-left overflow-hidden relative sm:overflow-x-auto sm:max-w-80vh sm;custom-scroll"> */}
+                            {/* <ul className="flex w-full">                                                                                                                                                                                                                                                                                                                                                 */}
                             {params.menuItem.map((menu: ImenuItem, tabIndex: number) => (
-                                <li className="flex-auto relative text-center">
+                                <li className="flex-auto relative text-center text-sm font-semibold items-center">
                                     <span
                                         onClick={(e) => tabChanged(tabIndex)}
                                         className={(activeTab == tabIndex ? 'bg-primary  rounded-t-lg text-base  cursor-text md:text-x-base ' : 'rounded-t text-sm  md:text-13') + ' uppercase text-ruby-alpha leading-5 px-4 py-4 block text-center sm:px-3 sm:text-10 sm:leading-15 cursor-pointer'}
@@ -73,7 +73,7 @@ export function ServiceBlockRuby() {
 
                                         {menu?.name}
                                     </span>
-                                    {activeTab !== tabIndex && tabIndex + 1 !== activeTab && <span className="w-px h-5 inline-block top-0 absolute right-0 bottom-0 bg-ruby-beta/50 my-auto"></span>}
+                                    {tabIndex != params.menuItem.length - 1 && activeTab !== tabIndex && tabIndex + 1 !== activeTab && <span className="w-px h-5 inline-block top-0 absolute right-0 bottom-0 bg-ruby-beta/50 my-auto"></span>}
                                 </li>
                             ))}
                         </ul>

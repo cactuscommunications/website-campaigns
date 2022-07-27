@@ -54,7 +54,7 @@ const ListingRuby = ({ searchText, hideHeading }: { searchText: string, hideHead
   let [pageSize, setpageSize] = useState(1);
   let [total, setPageTotal] = useState(1);
   let [currentPage, setCurrentPage] = useState(1);
-  useEffect(() => {
+  useEffect(() => {  
     const getSubData = async () => {
       let subData = await getSubjectData(searchText, currentPage);
       setSubjects(subData.subjects);
@@ -76,8 +76,12 @@ const ListingRuby = ({ searchText, hideHeading }: { searchText: string, hideHead
     <>
       <section className="bg-primary pt-8 pb-10">
         <div className="container">
-          {!hideHeading && <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">{params?.heading}</h2>}
-          {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
+          {!hideHeading &&
+            <React.Fragment>
+              <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">{params?.heading}</h2>
+              {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
+            </React.Fragment>
+          }
           <div className="bg-white px-16 rounded-lg  wrapper py-15 ">
             <div className="flex justify-center">
               {chunkedArray?.map((row: ISubjects[]) => (
