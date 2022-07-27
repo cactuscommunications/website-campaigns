@@ -11,7 +11,7 @@ export function ServiceBlockRuby() {
         name: string,
         machineName: string
     }
-    let [activeTab, setActiveTab] = useState(5);
+    let [activeTab, setActiveTab] = useState(0);
     let [searchText, setSearchText] = useState('')
     const params: IserviceBlockRubyParams = {
         desktopOnly: true,
@@ -45,12 +45,12 @@ export function ServiceBlockRuby() {
         ]
     };
     useEffect(() => {
-        setSearchText(params.menuItem[activeTab].machineName);
-    }, [activeTab]);
+        setSearchText( params.menuItem[activeTab].machineName)
+    }, [searchText]);
     const tabChanged = (index: number) => {
+        setActiveTab(index)
         const selectedMachineName: string = params.menuItem[index].machineName;
         setSearchText(selectedMachineName);
-        setActiveTab(index)
     }
     return (
         <>

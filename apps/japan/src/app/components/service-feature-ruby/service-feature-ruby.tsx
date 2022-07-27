@@ -107,7 +107,7 @@ const ServiFeatureRuby: React.FC = () => {
 };
 
 function getData() {
-  return subjectAPIService.getServiceFeatures().then(function (response: any) {
+  return subjectAPIService.getServiceFeatures('chemistry').then(function (response: any) {
     return {
       editors: response.data.data[0].attributes.sa_one_five.data[0].attributes.social_attributes.editors,
       jobs: response.data.data[0].attributes.sa_one_five.data[0].attributes.social_attributes.jobs,

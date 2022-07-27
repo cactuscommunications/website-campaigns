@@ -138,7 +138,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
           </div>
         </div>
       </section>
-      <ListingRuby hideHeading={false} searchText={listInput} />
+      {searchTerm && listInput &&  <ListingRuby hideHeading={false} searchText={listInput} />}
     </>
   );
 };

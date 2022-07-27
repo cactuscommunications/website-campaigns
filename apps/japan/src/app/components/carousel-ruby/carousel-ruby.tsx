@@ -128,7 +128,7 @@ const CarouselRuby: React.FC = () => {
 };
 
 function getData() {
-  return subjectAPIService.getServiceFeatures().then(function (response: any) {
+  return subjectAPIService.getServiceFeatures('chemistry').then(function (response: any) {
     return response.data.data[0].attributes.sa_one.data[0].attributes.sa_testimonials.data;
   });
 }
