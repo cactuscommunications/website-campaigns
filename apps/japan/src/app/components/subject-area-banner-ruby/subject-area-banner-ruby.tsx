@@ -15,6 +15,10 @@ interface ISubjectAreaBannerRubyParams {
   backgroundImg?: string;
   footer?: string;
 }
+interface IserachList {
+  name: string;
+  machineName: string
+}
 
 const SubjectAreaBannerRuby: React.FC = () => {
   let [active, setActive] = useState(1);
@@ -27,24 +31,26 @@ const SubjectAreaBannerRuby: React.FC = () => {
     backgroundImg: '/assets/images/subject-area-banner.jpg',
   };
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchList, setSearchList] = useState<string[]>([]);
+  const [machineName, setmachineName] = useState('');
+  const [searchList, setSearchList] = useState<IserachList[]>([]);
   const [listInput, setListInput] = useState('');
   useEffect(() => {
     const delayDebounceFn = setTimeout(async (event) => {
       if (searchTerm.length >= 3) {
+        setSearchList([]);
         let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'));
         setSearchList(resp);
       }
     }, 30);
-
     return () => clearTimeout(delayDebounceFn);
-  }, [searchTerm, listInput]);
+  }, [searchTerm]);
   const handleChange = (text: any) => {
     setSearchList([]);
-    setSearchTerm(text);
+    setmachineName(text.machineName)
+    setSearchTerm(text.name);
   };
   const searchResults = () => {
-    setListInput(searchTerm.toLowerCase().replace(/ /g, '-'));
+    setListInput(machineName);
   };
   return (
     <>
@@ -102,14 +108,14 @@ const SubjectAreaBannerRuby: React.FC = () => {
             {searchList.length > 1 && (
               <div className="mt-0.5 relative">
                 <div className="absolute top-0 left-0 w-94 max-h-61.2 bg-white overflow-auto custom-scroll rounded-lg shadow z-1">
-                  {searchList.map((item: string) => (
+                  {searchList.map((item) => (
                     <div className="w-full text-left">
                       <a
                         className="cursor-pointer hover:bg-ruby-delta transition ease-in duration-300 block px-7.5 py-2.5 text-black/70"
                         onClick={(e) => handleChange(item)}
                         href="javascript:;"
                       >
-                        {item}
+                        {item.name}
                       </a>
                     </div>
                   ))}
@@ -132,16 +138,16 @@ const SubjectAreaBannerRuby: React.FC = () => {
           </div>
         </div>
       </section>
-      <ListingRuby searchText={listInput} />
+      <ListingRuby hideHeading={false} searchText={listInput} />
     </>
   );
 };
 
 function getSearchList(serachText: string) {
   return subjectAPIService.getSearchList(serachText).then(function (response: any) {
-    let returnData: string[] = [];
+    let returnData: { name: string, machineName: string }[] = [];
     response.data.data.map((key: any) => {
-      returnData.push(key.attributes.name);
+      returnData.push({ name: key.attributes.name, machineName: key.attributes.machine_name });
     });
     return returnData;
   });

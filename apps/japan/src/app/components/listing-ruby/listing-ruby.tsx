@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Pagination from '../pagination/pagination';
 import subjectAPIService from '../../services/api/subject-api';
+// import { useNavigate } from "react-router-dom";
 
 /**
  * interface for listing ruby parameters
@@ -21,6 +22,7 @@ interface IListingRubyParams {
 }
 interface ISubjects {
   content: String;
+  machineName: string;
 }
 interface ISubjectList {
   subjects: ISubjects[];
@@ -43,7 +45,8 @@ let chunkedArray: ISubjects[][];
 let singlePageItemCount = params.pageSize;
 let mobileRows = 1;
 let pages = 1;
-const ListingRuby = ({ searchText }: { searchText: string }) => {
+const ListingRuby = ({ searchText, hideHeading }: { searchText: string, hideHeading: boolean }) => {
+  // const navigator = useNavigate();
   const [subjects, setSubjects] = useState([{}]);
   let [active, setActive] = useState(1);
   let [page, setPage] = useState(1);
@@ -66,11 +69,14 @@ const ListingRuby = ({ searchText }: { searchText: string }) => {
   const pageChanged = (num: number) => {
     setCurrentPage(num);
   };
+  const selectSubject = (subject: ISubjects) => {
+    window.location.replace(location.origin + '?sa=' + subject.machineName)
+  }
   return (
     <>
       <section className="bg-primary pt-8 pb-10">
         <div className="container">
-          <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">{params?.heading}</h2>
+          {!hideHeading && <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">{params?.heading}</h2>}
           {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
           <div className="bg-white px-16 rounded-lg  wrapper py-15 ">
             <div className="flex justify-center">
@@ -78,7 +84,9 @@ const ListingRuby = ({ searchText }: { searchText: string }) => {
                 <div className="w-1/4 sm:w-full float-left">
                   <ul className="mt-2">
                     {row.map((item: ISubjects) => (
-                      <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
+                      <a onClick={(e) => selectSubject(item)}>
+                        <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
+                      </a>
                     ))}
                   </ul>
                 </div>
@@ -117,7 +125,7 @@ function getSubjectData(input: string, page: number) {
     let returnData: ISubjects[] = [];
     let responseData = response.data.data;
     responseData.map((key: any) => {
-      returnData.push({ content: key.attributes.name });
+      returnData.push({ content: key.attributes.name, machineName: key.attributes.machine_name });
     });
     return {
       subjects: returnData,
