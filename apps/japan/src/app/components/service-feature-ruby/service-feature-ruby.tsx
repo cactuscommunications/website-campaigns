@@ -18,7 +18,7 @@ interface Idata {
   clients: number;
 }
 
-const ServiFeatureRuby: React.FC = () => {
+const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
   const [data, setData] = useState({ editors: 0, jobs: 0, clients: 0 });
   let [active, setActive] = useState(1);
   const params: IServiceFeatureRubyParams = {
@@ -28,11 +28,11 @@ const ServiFeatureRuby: React.FC = () => {
   };
   useEffect(() => {
     const getSubData = async () => {
-      let resp = await getData();
+      let resp = await getData(searchText);
       setData(resp);
     };
     getSubData();
-  }, []);
+  }, [searchText]);
 
   return (
     <>
@@ -106,8 +106,9 @@ const ServiFeatureRuby: React.FC = () => {
   );
 };
 
-function getData() {
-  return subjectAPIService.getServiceFeatures('chemistry').then(function (response: any) {
+function getData(input:string) {
+  return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
+    debugger;
     return {
       editors: response.data.data[0].attributes.sa_one_five.data[0].attributes.social_attributes.editors,
       jobs: response.data.data[0].attributes.sa_one_five.data[0].attributes.social_attributes.jobs,

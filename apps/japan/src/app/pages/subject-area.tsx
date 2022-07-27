@@ -19,8 +19,6 @@ export function SubjectArea() {
       <>
         <Header />
         <SubjectAreaBannerRuby />
-        <ServiFeatureRuby />
-        <CarouselRuby />
         <SampleRuby />
         <JournalRuby />
         <FeaturedBlockPearl />

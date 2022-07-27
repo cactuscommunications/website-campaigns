@@ -15,7 +15,7 @@ interface IServiceFeatureRubyParams {
   medicallBg?: string;
 }
 
-const CarouselRuby: React.FC = () => {
+const CarouselRuby = ({ searchText }: { searchText: string }) => {
   const chunkSize = 3;
   let [position, setPosition] = useState(0);
   let [testimonials, setTestimonials] = useState([{}]);
@@ -27,12 +27,12 @@ const CarouselRuby: React.FC = () => {
   };
   useEffect(() => {
     const getTestimonialsData = async () => {
-      let resp = await getData();
+      let resp = await getData(searchText);
       setTestimonials(resp);
       setIndicator(resp);
     };
     getTestimonialsData();
-  }, []);
+  }, [searchText]);
   /**
    * carousal indicators (dots) modifier
    * @author Goutham Reddy
@@ -127,8 +127,8 @@ const CarouselRuby: React.FC = () => {
   );
 };
 
-function getData() {
-  return subjectAPIService.getServiceFeatures('chemistry').then(function (response: any) {
+function getData(input : string) {
+  return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
     return response.data.data[0].attributes.sa_one.data[0].attributes.sa_testimonials.data;
   });
 }

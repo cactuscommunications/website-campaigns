@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import ListingRuby from '../listing-ruby/listing-ruby';
 import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
+import ServiFeatureRuby from '../service-feature-ruby/service-feature-ruby';
+import CarouselRuby from '../carousel-ruby/carousel-ruby';
 
 /**
  * interface for listing ruby parameters
@@ -51,6 +53,8 @@ const SubjectAreaBannerRuby: React.FC = () => {
   };
   const searchResults = () => {
     setListInput(machineName);
+    window.location.replace(location.origin + '?sa=' + machineName)
+
   };
   return (
     <>
@@ -139,6 +143,8 @@ const SubjectAreaBannerRuby: React.FC = () => {
         </div>
       </section>
       {searchTerm && listInput &&  <ListingRuby hideHeading={false} searchText={listInput} />}
+      {<ServiFeatureRuby searchText={listInput} />}
+      <CarouselRuby  searchText={listInput}/>
     </>
   );
 };
