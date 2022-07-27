@@ -1,3 +1,4 @@
+import Header from '../components/header/header';
 import Footer from '../components/footer/footer';
 import OurPromise from '../components/our-promise/our-promise';
 import FeaturedBlockLapis from '../components/featured-block-lapis/featured-block-lapis';
@@ -15,6 +16,7 @@ import ListingPearl from '../components/listing-pearl/listing-pearl';
 export function SubjectArea() {
     return (
       <>
+        <Header />
         <SubjectAreaBannerRuby />
         <ServiFeatureRuby />
         <CarouselRuby />

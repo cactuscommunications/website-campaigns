@@ -326,8 +326,8 @@ return (
                       style={{ backgroundImage: `url('assets/images/r-logos/r-concept.svg')` }}></span>
                   </a>
                 </span>
-                </div>
               </div>
+            </div>
           </div>
         </div>
     </section>
