@@ -10,6 +10,7 @@ import FeaturedBlockDiamond from '../components/featured-block-diamond/featured-
 import FeaturedBlockPearl from '../components/featured-block-pearl/featured-block-pearl';
 import SampleRuby from '../components/sample-ruby/sample-ruby';
 import JournalRuby from '../components/journal-ruby/journal-ruby';
+import ListingPearl from '../components/listing-pearl/listing-pearl';
 
 export function SubjectArea() {
     return (
@@ -24,6 +25,7 @@ export function SubjectArea() {
         <OurPromise />
         <FeaturedBlockLapis />
         <FeaturedBlockTopaz />
+        <ListingPearl />
         <Footer />
       </>
     );
