@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="13px" viewBox="0 0 16 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ccheck</title>
+    <g id="Explorations" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="PES-service-component" transform="translate(-265.000000, -403.000000)" fill="#009169" fill-rule="nonzero">
+            <g id="Group-9" transform="translate(234.000000, 153.000000)">
+                <g id="Group-5" transform="translate(30.000000, 89.000000)">
+                    <path d="M6.37342841,173.315656 L16.9136865,162.775364 C17.0784467,162.610638 17.0784467,162.343499 16.9136865,162.178739 L15.9193575,161.184376 C15.7545973,161.01965 15.4874928,161.01965 15.3227326,161.184376 L6.07511598,170.431992 L2.67722445,167.034101 C2.51246426,166.869341 2.24535979,166.869341 2.08056526,167.034101 L1.08623627,168.02843 C0.921476075,168.19319 0.921476075,168.460295 1.08623627,168.625089 L5.77680355,173.315656 C5.94152941,173.480382 6.20863388,173.480382 6.37342841,173.315656 Z" id="ccheck"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

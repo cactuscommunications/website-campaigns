@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="25px" viewBox="0 0 29 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy" transform="translate(-305.000000, -625.000000)">
+            <g id="Group" transform="translate(305.000000, 620.000000)">
+                <circle id="Oval-Copy-18" fill="#D8CEF3" cx="11.5" cy="18.5" r="11.5"></circle>
+                <g id="Resubmission-support-icon" transform="translate(8.000000, 0.000000)">
+                    <rect id="Rectangle-Copy-11" x="0.96" y="0.96" width="23.04" height="23.04"></rect>
+                    <g id="Group-10">
+                        <rect id="Rectangle-Copy-33" x="0" y="0" width="23.04" height="24"></rect>
+                        <path d="M11.1716067,7.67976974 L15.808,7.67976974 C18.5296591,7.67976974 20.736,9.94526063 20.736,12.7398849 C20.736,15.5345091 18.5296591,17.8 15.808,17.8 L3.84,17.8 L3.84,16.3542528 L15.808,16.3542528 C17.7520425,16.3542528 19.328,14.7360454 19.328,12.7398849 C19.328,10.7437244 17.7520425,9.12551692 15.808,9.12551692 L11.1716067,9.12551692 L12.7858033,10.7829887 L11.7901967,11.8052867 L8.47639334,8.40264333 L11.7901967,5 L12.7858033,6.02229795 L11.1716067,7.67976974 Z" id="Path" fill="#000000" fill-rule="nonzero"></path>
+                        <polygon id="Path" fill="#262626" fill-rule="nonzero" points="6.94760666 8.40264333 9.26580333 10.7829887 8.27019667 11.8052867 4.95639334 8.40264333 8.27019667 5 9.26580333 6.02229795"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

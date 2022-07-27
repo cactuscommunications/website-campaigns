@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>8D241E1A-3182-4693-B4E2-C4CD5A9D05280</title>
+    <defs>
+        <circle id="path-1" cx="12" cy="12" r="12"></circle>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="24" height="24" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="r+editage-lp-desktop" transform="translate(-633.000000, -820.000000)">
+            <g id="Play" transform="translate(633.000000, 820.000000)">
+                <use id="Ellipse-20" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="3" stroke-dasharray="0,0" xlink:href="#path-1"></use>
+                <g id="triangle-right-1" transform="translate(6.000000, 6.000000)">
+                    <path d="M0,0 L12,0 L12,12 L0,12 L0,0 Z" id="triangle-right-1-(Background)"></path>
+                    <g id="Group" transform="translate(3.499723, 0.749873)" fill="#FFFFFF" fill-rule="nonzero">
+                        <path d="M0.388750079,0.0420374373 C0.351099933,0.0169177389 0.307336493,0.00249036197 0.26212907,0.00029446216 C0.216921648,-0.00190143765 0.1719661,0.0082164993 0.132058621,0.029568922 C0.0921511433,0.0509213446 0.0587889352,0.0827071717 0.0355312864,0.121535182 C0.0122736377,0.160363193 0,0.204776717 0,0.250037432 L0,10.250036 C0,10.2952967 0.0122736377,10.3397098 0.0355312864,10.3785378 C0.0587889352,10.4173659 0.0921511433,10.449152 0.132058621,10.4705045 C0.1719661,10.4918569 0.216921648,10.5019753 0.26212907,10.4997794 C0.307336493,10.4975835 0.351099933,10.4831558 0.388750079,10.4580361 L7.88875013,5.4580372 C7.92298956,5.43520644 7.95106322,5.40427585 7.97048002,5.36799128 C7.98989682,5.33170671 8.00005633,5.2911902 8.00005633,5.25003704 C8.00005633,5.20888389 7.98989682,5.16836737 7.97048002,5.1320828 C7.95106322,5.09579823 7.92298956,5.06486765 7.88875013,5.04203689 L0.388750079,0.0420374373 Z" id="Vector"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

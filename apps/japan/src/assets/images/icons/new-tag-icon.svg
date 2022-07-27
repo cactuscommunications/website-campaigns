@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="20px" viewBox="0 0 40 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <defs>
+        <path d="M10.208,14 L10.208,10.128 L12.925,14 L14.443,14 L14.443,6.3 L12.485,6.3 L12.485,10.172 L9.768,6.3 L8.239,6.3 L8.239,14 L10.208,14 Z M21.014,14 L21.014,12.152 L18.033,12.152 L18.033,11.019 L20.684,11.019 L20.684,9.204 L18.033,9.204 L18.033,8.137 L20.959,8.137 L20.959,6.3 L16.064,6.3 L16.064,14 L21.014,14 Z M26.034,14 L27.266,9.655 L28.498,14 L30.577,14 L32.722,6.3 L30.61,6.3 L29.411,11.151 L28.036,6.3 L26.485,6.3 L25.11,11.151 L23.922,6.3 L21.799,6.3 L23.955,14 L26.034,14 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" fill-rule="nonzero">
+            <rect id="Rectangle" fill="#FF0066" x="0" y="0" width="40" height="20" rx="10"></rect>
+            <g id="NEW">
+                <use fill="#000000" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>
