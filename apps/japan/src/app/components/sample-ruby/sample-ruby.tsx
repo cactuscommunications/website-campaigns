@@ -78,16 +78,17 @@ export function SampleRuby() {
   return (
     <>
       <div className="clearfix"></div>
-      <section className={'my-12 sm:my-6 bg-primary py-10 ' + params?.backgroundColor}>
+      <section className={' bg-primary py-10 ' + params?.backgroundColor}>
         <div className="wrapper">
+          <div className="text-center mb-6 sm:px-5">
           {params.heading && (
-            <h2 className="text-center font-pb text-3xl leading-44 text-ruby-alpha mb-6 sm:leading-30 sm:mb-5 sm:text-20 sm:px-5">
+            <h2 className="font-pb text-3xl leading-44 text-ruby-alpha mb-5 sm:leading-30 sm:text-20">
               {params.heading}
             </h2>
           )}
-          <span className="block mb-6 sm:px-5">
-            <span className="text-base text-ruby-alpha font-pr text-center">{params.subHeading}</span>
-          </span>
+            <span className="text-base text-ruby-alpha font-pr">{params.subHeading}</span>
+          </div>
+          
           <div className="max-w-1060 flex-wrap flex justify-center mx-auto md:max-w-240">
             {params.samples.map((sample) => (
               <div className="w-80 px-5 box-border sm:mb-7.5 sm:px-2 md:w-1/3 xxl:px-3">

@@ -40,16 +40,15 @@ export function FeaturedBlockPearl() {
   return (
     <>
       <div className="clearfix"></div>
-      <section className="w-full float-left bg-white">
-        <div className="wrapper py-20 sm:py-10 md:py-10 sm:px-4">
-          <div className="text-center px-5">
+      <section className="w-full float-left bg-primary">
+        <div className="wrapper py-20 sm:py-10 md:py-10 sm:px-5">
+          <div className="text-center">
             {params.heading && (
               <h2 className="text-4.5xl sm:text-xxl md:text-3.6xl text-ruby-alpha">{params.heading}</h2>
             )}
           </div>
-          <div className="pt-16 float-left w-full flex justify-center sm:pt-8 sm:pl-8">
+          <div className="pt-16 float-left w-full flex justify-center sm:pt-8">
             <div className="w-1/2 sm:w-full float-right order-2 pl-16 sm:pl-0">
-              <div className="pt-4">
                 <ul className="pl-4">
                   {params.features!.map((feature) => (
                     <li className="list-decimal text-pearl-beta mb-4 font-ssb pl-2">
@@ -57,7 +56,6 @@ export function FeaturedBlockPearl() {
                     </li>
                   ))}
                 </ul>
-              </div>
             </div>
             <div
               style={{
