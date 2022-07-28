@@ -13,12 +13,14 @@ import SampleRuby from '../components/sample-ruby/sample-ruby';
 import JournalRuby from '../components/journal-ruby/journal-ruby';
 import ServiceBlockRuby from '../components/service-block-ruby/service-block-ruby';
 import ListingPearl from '../components/listing-pearl/listing-pearl';
+import ServiceInformationDiamond from '../components/service-information-diamond/service-information-diamond';
 
 export function SubjectArea() {
     return (
       <>
         <Header />
         <SubjectAreaBannerRuby />
+        <ServiceInformationDiamond />
         <SampleRuby />
         <JournalRuby />
         <FeaturedBlockPearl />
