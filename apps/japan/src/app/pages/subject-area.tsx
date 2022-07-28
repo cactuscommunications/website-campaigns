@@ -13,30 +13,31 @@ import SampleRuby from '../components/sample-ruby/sample-ruby';
 import JournalRuby from '../components/journal-ruby/journal-ruby';
 import ServiceBlockRuby from '../components/service-block-ruby/service-block-ruby';
 import ListingPearl from '../components/listing-pearl/listing-pearl';
-import ReadMoreRuby from '../components/read-more-ruby/read-more-ruby';
 import CarouselPearl from '../components/carousel-pearl/carousel-pearl';
+import ServiceInformationDiamond from '../components/service-information-diamond/service-information-diamond';
 
 export function SubjectArea() {
-    return (
-      <>
-        <Header />
-        <SubjectAreaBannerRuby />
-      {  <ListingRuby hideHeading={false} searchText={'default'} />}
-        {<ServiFeatureRuby searchText={'default'} />}
-      <CarouselRuby  searchText={'default'}/>
-        <SampleRuby />
-        <JournalRuby />
-        <FeaturedBlockPearl />
-        <CarouselPearl searchText={'default'}/>
-        <FeaturedBlockDiamond />
-        <OurPromise />
-        <FeaturedBlockLapis />
-        <FeaturedBlockTopaz />
-        <ServiceBlockRuby />
-        <ListingPearl />
-        <Footer />
-      </>
-    );
-  }
-  
-  export default SubjectArea;
+  return (
+    <>
+      <Header />
+      <SubjectAreaBannerRuby />
+      <ListingRuby hideHeading={false} searchText={'default'} />
+      <ServiFeatureRuby searchText={'default'} />
+      <CarouselRuby searchText={'default'} />
+      <ServiceInformationDiamond />
+      <SampleRuby />
+      <JournalRuby />
+      <FeaturedBlockPearl />
+      <CarouselPearl searchText={'default'} />
+      <FeaturedBlockDiamond />
+      <OurPromise />
+      <FeaturedBlockLapis />
+      <FeaturedBlockTopaz />
+      <ServiceBlockRuby />
+      <ListingPearl />
+      <Footer />
+    </>
+  );
+}
+
+export default SubjectArea;
