@@ -53,7 +53,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
   };
   const searchResults = () => {
     setListInput(machineName);
-    window.location.replace(location.origin + '?sa=' + machineName)
+    // window.location.replace(location.origin + '?sa=' + machineName)
 
   };
   return (

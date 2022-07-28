@@ -108,7 +108,6 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
 
 function getData(input:string) {
   return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
-    debugger;
     return {
       editors: response.data.data[0].attributes.sa_one_five.data[0].attributes.social_attributes.editors,
       jobs: response.data.data[0].attributes.sa_one_five.data[0].attributes.social_attributes.jobs,
