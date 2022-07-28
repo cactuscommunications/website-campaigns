@@ -11,8 +11,6 @@ import subjectAPIService from '../../services/api/subject-api';
  */
 interface IServiceFeatureRubyParams {
   heading: string;
-  mobileMedicallBg?: string;
-  medicallBg?: string;
 }
 
 const CarouselRuby = ({ searchText }: { searchText: string }) => {
@@ -21,11 +19,14 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
   let [testimonials, setTestimonials] = useState([{}]);
   let [testimonialsChunk, setTestimonialsChunk] = useState([[]]);
   const params: IServiceFeatureRubyParams = {
-    heading: 'Medicine and Clinical Researcher !!break!! 分野の英文校正サービスと実績',
-    mobileMedicallBg: '/assets/images/mobile-medicall-bg.jpg',
-    medicallBg: '/assets/images/medicine-bg.jpg',
+    heading: 'Medicine and Clinical Researcher'
   };
+  const url = new URL(location.href);
+  var saParam = url.searchParams.get("sa");
   useEffect(() => {
+    if(saParam) { 
+      searchText = saParam;
+  }
     const getTestimonialsData = async () => {
       let resp = await getData(searchText);
       setTestimonials(resp);
@@ -55,13 +56,13 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
       <section className="bg-white py-10">
         <div className="container sm:px-5">
           <h2 className="text-center text-4.5xl font-pb text-ruby-alpha leading-45 sm:text-20 sm:leading-7">
-            お客さまからの声 <span className="sm:hidden">：Medicine and Clinical Researcher 分野</span>
+            お客さまからの声 <span className="sm:hidden">{params.heading}</span>
           </h2>
-          {testimonialsChunk && (
+          {testimonialsChunk && testimonialsChunk[position] && (
             <div className="flex justify-center mt-10 sm:flex-wrap">
               {testimonialsChunk[position].map((trow: any, ti) => (
                 <div className="w-360px shadow rounded-lg bg-white h-full mx-5">
-                  <div className="px-5 pb-5 pt-3 relative bg-pearl-epsilon/50 rounded-t-lg	min-h-57.5 md:min-h-[16rem] sm:min-h-fit">
+                  <div className="px-5 pb-5 pt-3 relative bg-pearl-epsilon/50 rounded-t-lg	min-h-57.5 max-h-57.5 md:min-h-[16rem] sm:min-h-fit">
                     <span
                       className="w-17 h-17 bg-no-repeat bg-contain absolute top-2.5 left-3"
                       style={{
@@ -70,8 +71,9 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                     ></span>
                     {/* <app-markdown> */}
                     <p className="text-lg font-ssb text-ruby-alpha md:text-base sm:text-base sm:leading-6">
-                      {trow.attributes.comment}
+                      {trow.attributes.comment.substring(0,100)}.. <a>Read More</a>
                     </p>
+                   
                     {/* </app-markdown> */}
                   </div>
                   <div className="border-t border-dashed border-ruby-beta px-5 py-4 min-h-[160px] sm:min-h-max flex flex-col">

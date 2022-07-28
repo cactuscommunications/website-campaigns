@@ -33,9 +33,11 @@ const SubjectAreaBannerRuby: React.FC = () => {
     backgroundImg: '/assets/images/subject-area-banner.jpg',
   };
   const [searchTerm, setSearchTerm] = useState('');
-  const [machineName, setmachineName] = useState('');
+  const [machineName, setMachineName] = useState('');
   const [searchList, setSearchList] = useState<IserachList[]>([]);
-  const [listInput, setListInput] = useState('');
+  const [searchObj, setSearchObj] = useState({name:'',machineName : ''});
+  var url = new URL(location.href);
+var saParam = url.searchParams.get('sa');
   useEffect(() => {
     const delayDebounceFn = setTimeout(async (event) => {
       if (searchTerm.length >= 3) {
@@ -48,12 +50,12 @@ const SubjectAreaBannerRuby: React.FC = () => {
   }, [searchTerm]);
   const handleChange = (text: any) => {
     setSearchList([]);
-    setmachineName(text.machineName)
+    setSearchObj(text)
     setSearchTerm(text.name);
   };
   const searchResults = () => {
-    setListInput(machineName);
-    // window.location.replace(location.origin + '?sa=' + machineName)
+    // setMachineName();
+    window.location.replace(location.origin + '?sa=' + searchObj.machineName)
 
   };
   return (
@@ -142,9 +144,9 @@ const SubjectAreaBannerRuby: React.FC = () => {
           </div>
         </div>
       </section>
-      {searchTerm && listInput &&  <ListingRuby hideHeading={false} searchText={listInput} />}
-      {<ServiFeatureRuby searchText={listInput} />}
-      <CarouselRuby  searchText={listInput}/>
+      {/* {  <ListingRuby hideHeading={false} searchText={machineName} />} */}
+      {/* {<ServiFeatureRuby searchText={machineName} />}
+      <CarouselRuby  searchText={machineName}/> */}
     </>
   );
 };

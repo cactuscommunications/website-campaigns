@@ -54,7 +54,12 @@ const ListingRuby = ({ searchText, hideHeading }: { searchText: string, hideHead
   let [pageSize, setpageSize] = useState(1);
   let [total, setPageTotal] = useState(1);
   let [currentPage, setCurrentPage] = useState(1);
+  const url = new URL(location.href);
+  var saParam = url.searchParams.get("sa");
   useEffect(() => {  
+    if(saParam) { 
+      searchText = saParam;
+  }
     const getSubData = async () => {
       let subData = await getSubjectData(searchText, currentPage);
       setSubjects(subData.subjects);

@@ -26,7 +26,12 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
     mobileMedicallBg: '/assets/images/mobile-medicall-bg.jpg',
     medicallBg: '/assets/images/medicine-bg.jpg',
   };
+  const url = new URL(location.href);
+  var saParam = url.searchParams.get("sa");
   useEffect(() => {
+    if(saParam) { 
+      searchText = saParam;
+  }
     const getSubData = async () => {
       let resp = await getData(searchText);
       setData(resp);
