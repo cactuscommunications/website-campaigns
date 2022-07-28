@@ -45,7 +45,7 @@ let chunkedArray: ISubjects[][];
 let singlePageItemCount = params.pageSize;
 let mobileRows = 1;
 let pages = 1;
-const ListingRuby = ({ searchText, hideHeading }: { searchText: string, hideHeading: boolean }) => {
+const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText: string, hideHeading: boolean, ignoreUrlParams : boolean }) => {
   // const navigator = useNavigate();
   const [subjects, setSubjects] = useState([{}]);
   let [active, setActive] = useState(1);
@@ -57,7 +57,7 @@ const ListingRuby = ({ searchText, hideHeading }: { searchText: string, hideHead
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   useEffect(() => {  
-    if(saParam) { 
+    if(saParam && !ignoreUrlParams) { 
       searchText = saParam;
   }
     const getSubData = async () => {
@@ -89,13 +89,14 @@ const ListingRuby = ({ searchText, hideHeading }: { searchText: string, hideHead
           }
           <div className="bg-white px-16 rounded-lg  wrapper py-15 ">
             <div className="flex justify-center">
-              {chunkedArray?.map((row: ISubjects[]) => (
+              {subjects.length  > 0 && chunkedArray?.map((row: ISubjects[]) => (
                 <div className="w-1/4 sm:w-full float-left">
                   <ul className="mt-2">
                     {row.map((item: ISubjects) => (
-                      <a onClick={(e) => selectSubject(item)}>
+                    <> <a onClick={(e) => selectSubject(item)}>
                         <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
-                      </a>
+                      </a> <br />
+                      </> 
                     ))}
                   </ul>
                 </div>

@@ -50,7 +50,7 @@ var saParam = url.searchParams.get("sa");
 
     return (
         <>
-            <section className="mt-10 bg-white py-10">
+            <section className="bg-white py-10">
                 <div className="container sm:px-5">
                     <h2 className="text-center text-4.5xl font-pb text-ruby-alpha leading-45 sm:text-20 sm:leading-7">
                         お客さまからの声 <span className="sm:hidden">{params.heading}</span>
@@ -127,6 +127,8 @@ var saParam = url.searchParams.get("sa");
                             ></span>
                         ))}
                     </div>
+                {testimonialsChunk && testimonialsChunk.length  ==0 && <div className="text-center w-full float-left mt-7">No Data Available</div>}
+
                 </div>
                 <div className='clearfix'></div>
             </section>

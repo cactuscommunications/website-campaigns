@@ -144,7 +144,7 @@ var saParam = url.searchParams.get('sa');
           </div>
         </div>
       </section>
-      {/* {  <ListingRuby hideHeading={false} searchText={machineName} />} */}
+      {  <ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false}/>}
       {/* {<ServiFeatureRuby searchText={machineName} />}
       <CarouselRuby  searchText={machineName}/> */}
     </>

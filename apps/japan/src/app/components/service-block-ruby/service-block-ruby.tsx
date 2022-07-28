@@ -83,7 +83,7 @@ export function ServiceBlockRuby() {
                     <div className="sm:px-6 md:px-6">
                         <div className="clearfix"></div>
                         <div className="mx-auto  sm:w-300px md:w-200">
-                            <ListingRuby hideHeading={true} searchText={searchText} />
+                            <ListingRuby hideHeading={true} searchText={searchText} ignoreUrlParams={true}/>
                         </div>
                     </div>
 

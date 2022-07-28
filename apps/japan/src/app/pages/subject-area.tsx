@@ -21,7 +21,6 @@ export function SubjectArea() {
     <>
       <Header />
       <SubjectAreaBannerRuby />
-      <ListingRuby hideHeading={false} searchText={'default'} />
       <ServiFeatureRuby searchText={'default'} />
       <CarouselRuby searchText={'default'} />
       <ServiceInformationDiamond />
@@ -34,7 +33,7 @@ export function SubjectArea() {
       <FeaturedBlockLapis />
       <FeaturedBlockTopaz />
       <ServiceBlockRuby />
-      <ListingPearl />
+      {/* <ListingPearl /> */}
       <Footer />
     </>
   );
