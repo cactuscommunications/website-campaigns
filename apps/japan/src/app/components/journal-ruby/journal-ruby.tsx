@@ -86,6 +86,8 @@ export function JournalRuby({ searchText }: { searchText: string }) {
                 </div>
               ))}
           </div>
+          {journals && journals.length  ==0 && <div className="text-center w-full mt-7">No Data Available</div>}
+
         </div>
       </section>
       <div className="clearfix"></div>

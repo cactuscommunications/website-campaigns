@@ -40,7 +40,7 @@ export function FeaturedBlockPearl() {
   return (
     <>
       <div className="clearfix"></div>
-      <section className="w-full float-left bg-primary">
+      <section className="w-full bg-primary">
         <div className="wrapper py-20 sm:py-10 md:py-10 sm:px-5">
           <div className="text-center">
             {params.heading && (

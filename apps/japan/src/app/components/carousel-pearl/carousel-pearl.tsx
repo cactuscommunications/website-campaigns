@@ -36,12 +36,17 @@ var saParam = url.searchParams.get("sa");
      * @author Goutham Reddy
      */
     function setIndicator(input: any) {
-        let chunks = [];
-        for (let i = 0; i < input.length; i += chunkSize) {
-          let ch = input.slice(i, i + chunkSize);
-          chunks.push(ch);
+        if(input && input.length > 0){
+            let chunks = [];
+            for (let i = 0; i < input.length; i += chunkSize) {
+              let ch = input.slice(i, i + chunkSize);
+              chunks.push(ch);
+            }
+            setTestimonialsChunk(chunks);
+        } else {
+            setTestimonialsChunk([]);
         }
-        setTestimonialsChunk(chunks);
+        
     }
     function goToIndicator(index: number) {
         setPosition(index);
@@ -139,7 +144,7 @@ var saParam = url.searchParams.get("sa");
 
 function getData(input: string) {
     return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
-        return response.data.data[0].attributes.sa_one_five.data[0]?.attributes.editors?.data;
+        return response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.editors?.data;
     });
 }
 

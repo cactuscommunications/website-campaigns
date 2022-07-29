@@ -131,6 +131,8 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
             ></span>
           ))}
         </div>
+        {testimonialsChunk && testimonialsChunk.length  ==0 && <div className="text-center w-full float-left mt-7">No Data Available</div>}
+
         </div>
         <div className='clearfix'></div>
       </section>

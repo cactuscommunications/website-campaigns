@@ -105,14 +105,14 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
             </div>
             {subjects.length == 0 && <div className="flex justify-center">No Data Available</div>}
             <div className="clearfix"></div>
-            <Pagination
+            {subjects.length  > 0 &&<Pagination
           triggerPageClick={pageChanged}
           pageSize={pageSize}
           currentPage={page}
           itemsCount={total}
           pageUrl={''}
           icon={params?.pageIcon}
-        />
+        /> }
           </div>
         </div>
 
