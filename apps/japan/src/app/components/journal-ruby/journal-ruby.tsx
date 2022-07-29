@@ -42,11 +42,11 @@ export function JournalRuby({ searchText }: { searchText: string }) {
     if(saParam) { 
       searchText = saParam;
   }
-    const getTestimonialsData = async () => {
+    const getJournalsData = async () => {
       let resp: IJournals[] = await getData(searchText);
       setJournals(resp);
     };
-    getTestimonialsData();
+    getJournalsData();
   }, [searchText]);
   return (
     <>
@@ -97,7 +97,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
     return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
       
       let returnData : IJournals[] = [];
-      response.data.data[0]?.attributes.sa_one.data[0]?.attributes.journals.data.map((journal:any) => {
+      response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.journals?.data.map((journal:any) => {
         returnData.push(journal.attributes)  
   
       })

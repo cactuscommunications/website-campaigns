@@ -36,9 +36,9 @@ const SubjectAreaBannerRuby: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [machineName, setMachineName] = useState('');
   const [searchList, setSearchList] = useState<IserachList[]>([]);
-  const [searchObj, setSearchObj] = useState({name:'',machineName : ''});
+  const [searchObj, setSearchObj] = useState({ name: '', machineName: '' });
   var url = new URL(location.href);
-var saParam = url.searchParams.get('sa');
+  var saParam = url.searchParams.get('sa');
   useEffect(() => {
     const delayDebounceFn = setTimeout(async (event) => {
       if (searchTerm.length >= 3) {
@@ -145,7 +145,7 @@ var saParam = url.searchParams.get('sa');
           </div>
         </div>
       </section>
-      {  <ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false}/>}
+      {<ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} />}
       {/* {<ServiFeatureRuby searchText={machineName} />}
       <CarouselRuby  searchText={machineName}/> */}
     </>
@@ -153,10 +153,30 @@ var saParam = url.searchParams.get('sa');
 };
 
 function getSearchList(serachText: string) {
-  return subjectAPIService.getSearchList(serachText).then(function (response: any) {
+  const query = '[$containsi]=' + serachText
+  return subjectAPIService.getSearchList(query).then(function (response: any) {
     let returnData: { name: string, searchTitle: string, machineName: string }[] = [];
     response.data.data.map((key: any) => {
-      returnData.push({ name: key.attributes.name, searchTitle: key.attributes.search_title, machineName: key.attributes.machine_name });
+      let machineName = '';
+      switch (response.data.data[0]?.attributes.type) {
+        case 'SA1': {
+          machineName = response.data.data[0].attributes.sa_one.data[0].attributes.machine_name;
+          break;
+        }
+        case 'SA1.5': {
+          machineName = response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name;
+          break;
+        }
+        case 'SA2.0': {
+          machineName = response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name;
+          break;
+        }
+        default: {
+          machineName = response.data.data[0].attributes.sa_one.data[0].attributes.machine_name;
+          break;
+        }
+      }
+      returnData.push({ name: key.attributes.name, searchTitle: key.attributes.search_title, machineName: machineName });
     });
 
     return returnData;

@@ -25,13 +25,15 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
         if (saParam) {
             searchText = saParam;
         }
-        const getTestimonialsData = async () => {
+        const getEditorsData = async () => {
+            let machineName = '';
+              machineName = await getMachineName(searchText);
             let resp = await getData(searchText);
             setTestimonials(resp.data);
             setIndicator(resp.data);
             setTitle (resp.title)
         };
-        getTestimonialsData();
+        getEditorsData();
     }, [searchText]);
     /**
      * carousal indicators (dots) modifier
@@ -60,7 +62,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
             <section className="bg-white py-10">
                 <div className="container sm:px-5">
                     <h2 className="text-center text-4.5xl font-pb text-ruby-alpha leading-45 sm:text-20 sm:leading-7">
-                        お客さまからの声 <span className="sm:hidden">{title}</span>
+                        お客さまからの声<span className="sm:hidden">{title}</span>
                     </h2>
 
                     {testimonialsChunk && testimonialsChunk.length > 0 &&
@@ -143,7 +145,12 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
         </>
     );
 };
-
+function getMachineName(input: string) {
+    const query = '[$eq]=' + input;
+    return subjectAPIService.getSearchList(query).then(function (response: any) {
+      return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
+    })
+  }
 function getData(input: string) {
     let returnData = { data: [], title: '' }
     

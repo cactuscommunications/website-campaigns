@@ -16,10 +16,11 @@ interface Idata {
   editors: number;
   jobs: number;
   clients: number;
+  image : string
 }
 
 const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
-  const [data, setData] = useState({ editors: 0, jobs: 0, clients: 0 });
+  const [data, setData] = useState({ editors: 0, jobs: 0, clients: 0, image : '' });
   let [active, setActive] = useState(1);
   const params: IServiceFeatureRubyParams = {
     heading: 'Medicine and Clinical Researcher !!break!! 分野の英文校正サービスと実績',
@@ -44,7 +45,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
       <section
         className="w-full pt-20 pb-26 bg-no-repeat bg-cover md:pt-5 md:pb-10 sm:pt-7 sm:px-4 sm:pb-0 sm:mb-16"
         style={{
-          backgroundImage: `url(${params.medicallBg})`,
+          backgroundImage: `url(${data.image})`,
         }}
       >
         <div className="container sm:px-0">
@@ -56,7 +57,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
           <div
             className="hidden sm:block bg-contain bg-no-repeat w-90 h-56.75 mx-auto -mt-8 max-w-full"
             style={{
-              backgroundImage: `url(${params.mobileMedicallBg})`,
+              backgroundImage: `url(${data.image})`,
             }}
           ></div>
 
@@ -118,12 +119,14 @@ function getData(input:string) {
         editors: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors,
         jobs: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.jobs,
         clients: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.clients,
+        image : response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image
       };
     } else {
       return {
         editors: 0,
         jobs: 0,
-        clients: 0
+        clients: 0,
+        image : ''
       };
     }
    

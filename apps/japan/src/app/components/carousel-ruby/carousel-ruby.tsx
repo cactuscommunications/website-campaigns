@@ -33,8 +33,11 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
     if (saParam) {
       searchText = saParam;
     }
+
     const getTestimonialsData = async () => {
-      let resp = await getData(searchText);
+      let machineName = '';
+        machineName = await getMachineName(searchText);
+      let resp = await getData(machineName);
       setTestimonials(resp);
       setIndicator(resp);
     };
@@ -142,10 +145,15 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
     </>
   );
 };
-
+function getMachineName(input: string) {
+  const query = '[$eq]=' + input;
+  return subjectAPIService.getSearchList(query).then(function (response: any) {
+    return response.data.data[0].attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one.data[0].attributes.machine_name : '';
+  })
+}
 function getData(input: string) {
   return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
-    return response.data.data[0]?.attributes.sa_one.data[0]?.attributes.sa_testimonials.data;
+    return response.data.data[0]?.attributes.sa_one?.data[0]?.attributes.sa_testimonials.data ? response.data.data[0]?.attributes.sa_one?.data[0]?.attributes.sa_testimonials.data : [];
   });
 }
 

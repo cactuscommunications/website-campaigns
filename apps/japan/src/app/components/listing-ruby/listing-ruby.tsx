@@ -62,7 +62,10 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
       searchText = saParam;
     }
     const getSubData = async () => {
-      let subData = await getSubjectData(searchText, currentPage);
+      let machineName = '';
+      if (searchText)
+        machineName = await getMachineName(searchText);
+      let subData = await getSubjectData(machineName, currentPage);
       setSubjects(subData.subjects);
       setPage(subData.pageObj.page);
       setPageCount(subData.pageObj.pageCount);
@@ -76,7 +79,8 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
     setCurrentPage(num);
   };
   const selectSubject = (subject: ISubjects) => {
-    window.location.replace(location.href + '?sa=' + subject.machineName)
+    window.location.replace(location.origin + location.pathname + '?sa=' + subject.machineName)
+    
   }
   return (
     <>
@@ -133,12 +137,19 @@ function getPageDetails(subjects: ISubjects[], currentPage: number) {
   let items = subjects.slice(startIndex, endIndex + 1);
   chunkedArray = createChunks(items);
 }
+function getMachineName(input: string) {
+  const query = '[$eq]=' + input;
+  return subjectAPIService.getSearchList(query).then(function (response: any) {
+    return response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '';
+  })
+
+}
 function getSubjectData(input: string, page: number) {
   return subjectAPIService.getSubjectsList(input, page).then(function (response: any) {
     let returnData: ISubjects[] = [];
     let responseData = response.data.data;
     responseData.map((key: any) => {
-      if (key.attributes)
+      if (key?.attributes)
         returnData.push({ content: key.attributes.name, machineName: key.attributes.machine_name });
     });
     return {
