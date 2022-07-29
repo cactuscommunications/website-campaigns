@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { setFlagsFromString } from 'v8';
 import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
+import ModalRuby from '../modal-ruby/modal-ruby'
 
 interface IServiceFeaturePearlParams {
     heading: string;
@@ -16,6 +17,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     let [testimonials, setTestimonials] = useState([{}]);
     let [testimonialsChunk, setTestimonialsChunk] = useState([[]]);
     let [title, setTitle] = useState('');
+    const [openModal, setOpenModal] = useState(false);
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
     const params: IServiceFeaturePearlParams = {
@@ -100,19 +102,28 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                     </div>
                                     <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">Subjectarea</div>
                                     <ul className="bg-white dyna-height-4 mb-3 mt-1 px-6 overflow-hidden" style={{ height: "287px" }} >
-                                        {trow.attributes.expertise_area.split(',').map((area: string, index: number) => {
-                                          return (
-                                            <li
-                                              key={index}
-                                              className="text-xs flex my-2">
-                                              <span
-                                                  className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
-                                                  <div className="text-xs font-ssb">
-                                                      {area}
-                                                  </div>
-                                              </li>
-                                          )
+                                        {trow.attributes.expertise_area.split(',').slice(0,10).map((area: string) => {
+                                            return (
+                                                <li className="text-xs flex my-2"><span
+                                                    className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
+
+                                                    <div className="text-xs font-ssb">
+                                                        {area}
+
+                                                    </div>
+
+                                                </li>
+                                            )
                                         })}
+                        {<span
+                        onClick={() => {
+                          setOpenModal(true);
+                        }}
+                        className="text-xs text-pearl-beta font-ssb text-underline-hover">
+                        {trow.attributes.expertise_area.length > 10? "read more" : ''}
+                      </span>}
+                                        {openModal && <ModalRuby closeModal={setOpenModal} />}
+
                                     </ul>
                                     <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">Dgrees</div>
                                     <ul className="bg-white dyna-height-5 mb-3 mt-1 px-6" style={{ height: "39.5px" }}>
