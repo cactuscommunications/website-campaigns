@@ -16,7 +16,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
       <div className="flex justify-between w-full">
         <h3 className="text-5xl text-white leading-9 font-pb mt-7 mx-6 sm:text-2xl sm:ml-3">{card?.heading.heading + ">"}</h3>  
         <span className="bg-diamond-kappa py-2 pl-3 pr-10 rounded-l-3xl font-sb text-ruby-alpha text-base -mr-px flex self-center sm:absolute sm:top-full sm:right-px sm:mt-2">
-          <span className="w-7 h-7 bg-no-repeat inline-block bg-contain mr-2" style={{backgroundImage: `url(${card.heading.path})`,}}>{card.heading.comment}</span>
+          <span className="w-7 h-7 bg-no-repeat inline-block bg-contain mr-2" style={{backgroundImage: `url(${card.heading.path})`,}}></span>{card.heading.comment}
         </span>
       </div>
     </div>
