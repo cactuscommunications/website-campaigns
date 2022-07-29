@@ -70,7 +70,8 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                             {testimonialsChunk[position].map((trow: any, ti) => (
 
                                 <div
-                                    className="flex-grow float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-70">
+                                  key={ti}
+                                  className="flex-grow float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-70">
                                     <div className="dyna-height-1 flex px-6 pt-7.5 pb-6.25 bg-opal-gamma1" style={{ height: "129.531px" }}>
                                         <div className="w-15 h-15 bg-no-repeat bg-contain relative rounded-full flex-shrink-0"
                                             style={{
@@ -99,18 +100,18 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                     </div>
                                     <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">Subjectarea</div>
                                     <ul className="bg-white dyna-height-4 mb-3 mt-1 px-6 overflow-hidden" style={{ height: "287px" }} >
-                                        {trow.attributes.expertise_area.split(',').map((area: string) => {
-                                            return (
-                                                <li className="text-xs flex my-2"><span
-                                                    className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
-
-                                                    <div className="text-xs font-ssb">
-                                                        {area}
-
-                                                    </div>
-
-                                                </li>
-                                            )
+                                        {trow.attributes.expertise_area.split(',').map((area: string, index: number) => {
+                                          return (
+                                            <li
+                                              key={index}
+                                              className="text-xs flex my-2">
+                                              <span
+                                                  className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
+                                                  <div className="text-xs font-ssb">
+                                                      {area}
+                                                  </div>
+                                              </li>
+                                          )
                                         })}
                                     </ul>
                                     <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">Dgrees</div>
@@ -127,7 +128,8 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                     }
                     <div className="text-center w-full float-left mt-7">
                         {testimonialsChunk.map((card, index) => (
-                            <span
+                          <span
+                            key={index}
                                 onClick={(e) => goToIndicator(index)}
                                 className={
                                     (index !== position ? 'bg-lapis-delta' : '') +

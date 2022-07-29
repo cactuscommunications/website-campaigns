@@ -185,20 +185,19 @@ export function ServiceInformationRuby(){
   <div className="container">
     <h2 className="font-pb text-center text-ruby-alpha text-5xl mb-8 sm:text-20 sm:leading-7 sm:mb-3">{params.heading}</h2> 
       <p className="text-base text-center font-pr text-ruby-alpha mx-auto max-w-240 mb-10 leading-6 sm:text-13 sm:mb-6">{params.subHeading}</p>
+      {params.card.map((card, index) => (
+        <ServiceInfoCard
+          key={index}
+          card={card}
+          ></ServiceInfoCard>
+      ))}
 
-    {params.card.map((card) => (
-                            <ServiceInfoCard
-                            card={card}
-                            ></ServiceInfoCard>
-                        ))}
-
-  <div className="text-center mt-10">
-    <a href = "#" className="btn btn-primary">
-      <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
-    </a>
-  </div>
-   
-  </div>
+      <div className="text-center mt-10">
+        <a href = "#" className="btn btn-primary">
+          <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
+        </a>
+      </div>
+    </div>
   </section>
 );
         

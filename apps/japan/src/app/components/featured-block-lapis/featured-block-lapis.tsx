@@ -92,8 +92,8 @@ export function FeaturedBlockLapis() {
             </p>
             <div className="w-full">
               <div className="flex justify-center sm:block">
-                {params.features.map((feature) => (
-                  <FeatureLapis feature={feature} position={params.position}></FeatureLapis>
+                {params.features.map((feature, index) => (
+                  <FeatureLapis key={index} feature={feature} position={params.position}></FeatureLapis>
                 ))}
               </div>
             </div>

@@ -67,7 +67,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
                 return first.impact_factor < second.impact_factor ? 1 : -1;
               })
               .map((journal) => (
-                <div className="rounded-lg border border-pearl-beta pb-3 w-56 mx-2.5">
+                <div key={journal.name} className="rounded-lg border border-pearl-beta pb-3 w-56 mx-2.5">
                   <div
                     className="h-75 bg-no-repeat bg-contain w-full rounded-t-lg"
                     style={{
