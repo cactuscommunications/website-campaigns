@@ -152,6 +152,7 @@ export function FeaturedBlockTopaz() {
             <div className="w-250 mt-8 mx-auto bg-white rounded shadow p-8 flex justify-center sm:w-full sm:inline-block sm:px-0 sm:mt-2 md:p-4 md:w-full">
               {params.cards.map((card, index) => (
                 <FeatureTopaz
+                  key={index}
                   card={card}
                   lastElement={index === params.cards.length - 1}
                   cardCount={params.cards.length}

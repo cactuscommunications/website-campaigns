@@ -90,8 +90,10 @@ export function SampleRuby() {
           </div>
           
           <div className="max-w-1060 flex-wrap flex justify-center mx-auto md:max-w-240">
-            {params.samples.map((sample) => (
-              <div className="w-80 px-5 box-border sm:mb-7.5 sm:px-2 md:w-1/3 xxl:px-3">
+            {params.samples.map((sample, index) => (
+              <div
+                key={index}
+                className="w-80 px-5 box-border sm:mb-7.5 sm:px-2 md:w-1/3 xxl:px-3">
                 <div className="border border-ruby-upsilon rounded pt-6 px-3 pb-4 bg-white w-full xxl:px-2.5">
                   {sample.title && (
                     <h3 className="font-sb text-lg leading-21 text-ruby-alpha text-center mb-4">{sample.title}</h3>

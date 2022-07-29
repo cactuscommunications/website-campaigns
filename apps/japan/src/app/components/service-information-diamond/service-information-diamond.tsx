@@ -71,7 +71,7 @@ export function ServiceInformationDiamond() {
               </p>
               <div>
                 {params.info.list.map((list, index, array) => (
-                  <span className="text-base text-white leading-42 font-pr inline-block md:text-sm">{list.text}
+                  <span key={index} className="text-base text-white leading-42 font-pr inline-block md:text-sm">{list.text}
                     {index + 1 !== array.length && (
                       <span className="text-base text-white leading-42 font-pr inline-block mx-2 md:text-sm">|</span>
                     )}
@@ -88,8 +88,9 @@ export function ServiceInformationDiamond() {
             </div>
             <div className="inline-flex flex-col mx-5 sm:hidden order-4">
               <div className="flex justify-center mb-1.5">
-                {params.coins.details.map((detail) => (
+                {params.coins.details.map((detail, index) => (
                   <div
+                    key={index}
                     className="w-20 h-20 bg-contain bg-no-repeat relative mx-1"
                     style={{ backgroundImage: `url(${params?.coins.image})` }}>
                       <span className="block text-center w-full font-pb text-10 text-pearl-alpha mt-3.5 -ml-px px-1.5">{ detail?.text }</span>

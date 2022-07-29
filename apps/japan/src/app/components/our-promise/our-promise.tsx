@@ -58,8 +58,8 @@ export function OurPromise() {
         )}
         
         <div className="flex justify-end sm:grid sm:px-0 sm:justify-center">
-          {params.cards.map((card) => (
-            <PromiseCard card={card}></PromiseCard>
+          {params.cards.map((card, index) => (
+            <PromiseCard key={index} card={card}></PromiseCard>
           ))}
         </div>
         <div className="clearfix"></div>
