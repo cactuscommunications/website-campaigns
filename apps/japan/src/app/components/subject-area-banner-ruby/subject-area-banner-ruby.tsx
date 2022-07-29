@@ -19,6 +19,7 @@ interface ISubjectAreaBannerRubyParams {
 }
 interface IserachList {
   name: string;
+  searchTitle: string;
   machineName: string
 }
 
@@ -121,7 +122,7 @@ var saParam = url.searchParams.get('sa');
                         onClick={(e) => handleChange(item)}
                         href="javascript:;"
                       >
-                        {item.name}
+                        {item.searchTitle}
                       </a>
                     </div>
                   ))}
@@ -153,10 +154,11 @@ var saParam = url.searchParams.get('sa');
 
 function getSearchList(serachText: string) {
   return subjectAPIService.getSearchList(serachText).then(function (response: any) {
-    let returnData: { name: string, machineName: string }[] = [];
+    let returnData: { name: string, searchTitle: string, machineName: string }[] = [];
     response.data.data.map((key: any) => {
-      returnData.push({ name: key.attributes.name, machineName: key.attributes.machine_name });
+      returnData.push({ name: key.attributes.name, searchTitle: key.attributes.search_title, machineName: key.attributes.machine_name });
     });
+
     return returnData;
   });
 }
