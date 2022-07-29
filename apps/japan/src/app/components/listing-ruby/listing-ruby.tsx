@@ -79,7 +79,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
   }
   return (
     <>
-      <section className="bg-primary pt-8 pb-10">
+      <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 ' }  >
         <div className="container">
           {!hideHeading &&
             <React.Fragment>
@@ -87,7 +87,8 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
               {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
             </React.Fragment>
           }
-          <div className="bg-white px-16 rounded-lg  wrapper py-15 ">
+          <div 
+           className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-15 ' }>
             <div className="flex justify-center">
               {subjects.length  > 0 && chunkedArray?.map((row: ISubjects[]) => (
                 <div className="w-1/4 sm:w-full float-left">
@@ -104,10 +105,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
             </div>
             {subjects.length == 0 && <div className="flex justify-center">No Data Available</div>}
             <div className="clearfix"></div>
-          </div>
-        </div>
-
-        <Pagination
+            <Pagination
           triggerPageClick={pageChanged}
           pageSize={pageSize}
           currentPage={page}
@@ -115,6 +113,10 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
           pageUrl={''}
           icon={params?.pageIcon}
         />
+          </div>
+        </div>
+
+     
       </section>
     </>
   );

@@ -1,4 +1,3 @@
-import { Http2ServerResponse } from 'http2';
 import React from 'react';
 var axios = require('axios');
 import { useEffect, useState } from 'react';
@@ -76,7 +75,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                    
                     {/* </app-markdown> */}
                   </div>
-                  <div className="border-t border-dashed border-ruby-beta px-5 py-4 min-h-[160px] sm:min-h-max flex flex-col">
+                  <div className="border-t border-dashed border-ruby-beta px-5 py-4 min-h-[160px] sm:min-h-max flex flex-col" style={{height:"200px"}}>
                     <div className="flex justify-between">
                       <div className="w-[calc(100%-70px)] mb-4 md:w-[calc(100%-80px)]">
                         <h3 className="text-20 font-sb text-ruby-alpha leading-6 md:text-base sm:text-lg	sm:leading-21">

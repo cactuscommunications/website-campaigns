@@ -62,13 +62,11 @@ export function ServiceBlockRuby() {
 
                     <div className="container">
                         <ul className="flex items-end sm:flex-nowrap sm:overflow-auto">
-                            {/* <div className="w-full flex float-left overflow-hidden relative sm:overflow-x-auto sm:max-w-80vh sm;custom-scroll"> */}
-                            {/* <ul className="flex w-full">                                                                                                                                                                                                                                                                                                                                                 */}
                             {params.menuItem.map((menu: ImenuItem, tabIndex: number) => (
                                 <li className="flex-auto relative text-center text-sm font-semibold items-center">
                                     <span
                                         onClick={(e) => tabChanged(tabIndex)}
-                                        className={(activeTab == tabIndex ? 'bg-primary  rounded-t-lg text-base  cursor-text md:text-x-base ' : 'rounded-t text-sm  md:text-13') + ' uppercase text-ruby-alpha leading-5 px-4 py-4 block text-center sm:px-3 sm:text-10 sm:leading-15 cursor-pointer'}
+                                        className={(activeTab == tabIndex ? 'bg-pearl-zeta rounded-t-lg text-base  cursor-text md:text-x-base ' : 'rounded-t text-sm  md:text-13') + ' uppercase text-ruby-alpha leading-5 px-4 py-4 block text-center sm:px-3 sm:text-10 sm:leading-15 cursor-pointer'}
                                     >
 
                                         {menu?.name}

@@ -25,7 +25,7 @@ export function SubjectArea() {
       <CarouselRuby searchText={'default'} />
       <ServiceInformationDiamond />
       <SampleRuby />
-      <JournalRuby />
+      <JournalRuby searchText={'default'} />
       <FeaturedBlockPearl />
       <CarouselPearl searchText={'default'} />
       <FeaturedBlockDiamond />

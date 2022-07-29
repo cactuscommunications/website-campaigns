@@ -89,7 +89,7 @@ var saParam = url.searchParams.get("sa");
                                             <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> Papers Edited </div>
                                     </div>
                                     <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">Subjectarea</div>
-                                    <ul className="bg-white dyna-height-4 mb-3 mt-1 px-6" style={{ height: "287px" }}>
+                                    <ul className="bg-white dyna-height-4 mb-3 mt-1 px-6 overflow-hidden"  style={{height:"287px"}} >
                                         {trow.attributes.expertise_area.split(',').map((area: string) => {
                                            return (
                                            <li className="text-xs flex my-2"><span

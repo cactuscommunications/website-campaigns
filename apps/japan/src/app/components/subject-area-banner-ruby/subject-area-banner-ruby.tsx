@@ -96,7 +96,7 @@ var saParam = url.searchParams.get('sa');
                 <span
                   className="absolute left-4.5 top-1/2 -translate-y-1/2 inline-block w-4.5 h-4.5 bg-contain bg-no-repeat"
                   style={{
-                    backgroundImage: `url('/assets/images/icons/search-gray-icon.svg)`,
+                    backgroundImage: `url(/assets/images/icons/search-gray-icon.svg)`,
                   }}
                 ></span>
               </div>

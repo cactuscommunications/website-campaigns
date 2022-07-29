@@ -140,7 +140,7 @@ export function Pagination({
   }
 
   return (
-    <div className="wrapper mt-10">
+    <div className="container mt-10">
       <div className="pagination relative h-7.5 mx-auto w-62.5 text-center">
         {pagesArray.length > 1 && currentPage !== lastPage && (
           <a
