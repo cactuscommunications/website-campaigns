@@ -55,7 +55,7 @@ var saParam = url.searchParams.get('sa');
   };
   const searchResults = () => {
     // setMachineName();
-    window.location.replace(location.origin + '?sa=' + searchObj.machineName)
+    window.location.replace(location.origin + location.pathname + '?sa=' + searchObj.machineName)
 
   };
   return (

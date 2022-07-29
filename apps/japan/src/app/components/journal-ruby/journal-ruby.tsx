@@ -71,7 +71,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
                   <div
                     className="h-75 bg-no-repeat bg-contain w-full rounded-t-lg"
                     style={{
-                      backgroundImage: `url(${'/assets'+journal.image})`,
+                      backgroundImage: `url(${journal.image})`,
                     }}
                   >
                     &nbsp;
@@ -97,7 +97,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
     return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
       
       let returnData : IJournals[] = [];
-      response.data.data[0].attributes.sa_one.data[0].attributes.journals.data.map((journal:any) => {
+      response.data.data[0]?.attributes.sa_one.data[0]?.attributes.journals.data.map((journal:any) => {
         returnData.push(journal.attributes)  
   
       })

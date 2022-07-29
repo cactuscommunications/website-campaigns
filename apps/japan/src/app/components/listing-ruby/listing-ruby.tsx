@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Pagination from '../pagination/pagination';
 import subjectAPIService from '../../services/api/subject-api';
+import MarkDown from '../markdown/markdown';
 // import { useNavigate } from "react-router-dom";
 
 /**
@@ -31,7 +32,7 @@ interface ISubjectList {
 const params: IListingRubyParams = {
   row: 5,
   column: 5,
-  heading: 'Explore Social Science subjects',
+  heading: 'Nutrition and dietetics を含む Medicine and Clinical Researcher !!break!! 分野では以下の専門分野に対応しています。',
   pageIcon: ['assets/images/icons/circle-arrow-left.svg', 'assets/images/icons/circle-arrow-right.svg'],
   pageSize: 25,
   subjects: [],
@@ -45,7 +46,7 @@ let chunkedArray: ISubjects[][];
 let singlePageItemCount = params.pageSize;
 let mobileRows = 1;
 let pages = 1;
-const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText: string, hideHeading: boolean, ignoreUrlParams : boolean }) => {
+const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText: string, hideHeading: boolean, ignoreUrlParams: boolean }) => {
   // const navigator = useNavigate();
   const [subjects, setSubjects] = useState([{}]);
   let [active, setActive] = useState(1);
@@ -56,10 +57,10 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
   let [currentPage, setCurrentPage] = useState(1);
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
-  useEffect(() => {  
-    if(saParam && !ignoreUrlParams) { 
+  useEffect(() => {
+    if (saParam && !ignoreUrlParams) {
       searchText = saParam;
-  }
+    }
     const getSubData = async () => {
       let subData = await getSubjectData(searchText, currentPage);
       setSubjects(subData.subjects);
@@ -75,29 +76,29 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
     setCurrentPage(num);
   };
   const selectSubject = (subject: ISubjects) => {
-    window.location.replace(location.origin + '?sa=' + subject.machineName)
+    window.location.replace(location.href + '?sa=' + subject.machineName)
   }
   return (
     <>
-      <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 ' }  >
+      <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
           {!hideHeading &&
             <React.Fragment>
-              <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">{params?.heading}</h2>
+              <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center"><MarkDown data={params?.heading}></MarkDown></h2>
               {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
             </React.Fragment>
           }
-          <div 
-           className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-15 ' }>
+          <div
+            className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-15 '}>
             <div className="flex justify-center">
-              {subjects.length  > 0 && chunkedArray?.map((row: ISubjects[]) => (
+              {subjects.length > 0 && chunkedArray?.map((row: ISubjects[]) => (
                 <div className="w-1/4 sm:w-full float-left">
                   <ul className="mt-2">
                     {row.map((item: ISubjects) => (
-                    <> <a onClick={(e) => selectSubject(item)}>
+                      <> <a onClick={(e) => selectSubject(item)}>
                         <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
                       </a> <br />
-                      </> 
+                      </>
                     ))}
                   </ul>
                 </div>
@@ -105,18 +106,18 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
             </div>
             {subjects.length == 0 && <div className="flex justify-center">No Data Available</div>}
             <div className="clearfix"></div>
-            {subjects.length  > 0 &&<Pagination
-          triggerPageClick={pageChanged}
-          pageSize={pageSize}
-          currentPage={page}
-          itemsCount={total}
-          pageUrl={''}
-          icon={params?.pageIcon}
-        /> }
+            {subjects.length > 0 && <Pagination
+              triggerPageClick={pageChanged}
+              pageSize={pageSize}
+              currentPage={page}
+              itemsCount={total}
+              pageUrl={''}
+              icon={params?.pageIcon}
+            />}
           </div>
         </div>
 
-     
+
       </section>
     </>
   );
@@ -137,7 +138,8 @@ function getSubjectData(input: string, page: number) {
     let returnData: ISubjects[] = [];
     let responseData = response.data.data;
     responseData.map((key: any) => {
-      returnData.push({ content: key.attributes.name, machineName: key.attributes.machine_name });
+      if (key.attributes)
+        returnData.push({ content: key.attributes.name, machineName: key.attributes.machine_name });
     });
     return {
       subjects: returnData,

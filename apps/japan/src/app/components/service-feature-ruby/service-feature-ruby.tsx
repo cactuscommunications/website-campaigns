@@ -113,11 +113,20 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
 
 function getData(input:string) {
   return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
-    return {
-      editors: response.data.data[0].attributes.sa_one_five.data[0].attributes.social_attributes.editors,
-      jobs: response.data.data[0].attributes.sa_one_five.data[0].attributes.social_attributes.jobs,
-      clients: response.data.data[0].attributes.sa_one_five.data[0].attributes.social_attributes.clients,
-    };
+    if(response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors) { 
+      return {
+        editors: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors,
+        jobs: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.jobs,
+        clients: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.clients,
+      };
+    } else {
+      return {
+        editors: 0,
+        jobs: 0,
+        clients: 0
+      };
+    }
+   
   });
 }
 

@@ -23,14 +23,14 @@ export function SubjectArea() {
       <Header />
       <SubjectAreaBannerRuby />
       <ServiFeatureRuby searchText={'default'} />
-      <CarouselRuby searchText={'default'} />
       <ServiceInformationDiamond />
-      <ServiceInformationRuby />
-      <SampleRuby />
-      <JournalRuby searchText={'default'} />
+      <CarouselRuby searchText={'default'} />
       <FeaturedBlockPearl />
       <CarouselPearl searchText={'default'} />
       <FeaturedBlockDiamond />
+      <ServiceInformationRuby />
+      <SampleRuby />
+      <JournalRuby searchText={'default'} />     
       <OurPromise />
       <FeaturedBlockLapis />
       <FeaturedBlockTopaz />

@@ -22,17 +22,17 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
   const [openModal, setOpenModal] = useState(false);
   const [readMoreComment, setReadMoreComment] = useState('');
   const [readMoreSubject, setReadMoreSubject] = useState('');
-  
+
   const params: IServiceFeatureRubyParams = {
-    heading: 'Medicine and Clinical Researcher',
+    heading: 'お客さまからの声',
     textLength: 100
   };
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   useEffect(() => {
-    if(saParam) { 
+    if (saParam) {
       searchText = saParam;
-  }
+    }
     const getTestimonialsData = async () => {
       let resp = await getData(searchText);
       setTestimonials(resp);
@@ -46,9 +46,11 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
    */
   function setIndicator(input: any) {
     let chunks = [];
-    for (let i = 0; i < input.length; i += chunkSize) {
-      let ch = input.slice(i, i + chunkSize);
-      chunks.push(ch);
+    if (input && input.length > 0) {
+      for (let i = 0; i < input.length; i += chunkSize) {
+        let ch = input.slice(i, i + chunkSize);
+        chunks.push(ch);
+      }
     }
     setTestimonialsChunk(chunks);
   }
@@ -62,7 +64,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
       <section className="bg-white py-10">
         <div className="container sm:px-5">
           <h2 className="text-center text-4.5xl font-pb text-ruby-alpha leading-45 sm:text-20 sm:leading-7">
-            お客さまからの声 <span className="sm:hidden">{params.heading}</span>
+            <span className="sm:hidden">{params.heading}</span>
           </h2>
           {testimonialsChunk && testimonialsChunk[position] && (
             <div className="flex justify-center mt-10 sm:flex-wrap">
@@ -89,7 +91,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                       </span>}
                     </p>
                   </div>
-                  <div className="border-t border-dashed border-ruby-beta px-5 py-4 min-h-[160px] sm:min-h-max flex flex-col" style={{height:"200px"}}>
+                  <div className="border-t border-dashed border-ruby-beta px-5 py-4 min-h-[160px] sm:min-h-max flex flex-col" style={{ height: "200px" }}>
                     <div className="flex justify-between">
                       <div className="w-[calc(100%-70px)] mb-4 md:w-[calc(100%-80px)]">
                         <h3 className="text-20 font-sb text-ruby-alpha leading-6 md:text-base sm:text-lg	sm:leading-21">
@@ -120,30 +122,30 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
             </div>
           )}
 
-        <div className="text-center w-full float-left mt-7">
-          {testimonialsChunk.map((card, index) => (
-            <span
-              onClick={(e) => goToIndicator(index)}
-              className={
-                (index !== position ? 'bg-lapis-delta' : '') +
-                ' w-2.5 h-2.5 inline-block rounded-full mx-2 cursor-pointer sm:mt-0 sm:mb-2 '
-              }
-            ></span>
-          ))}
-        </div>
-        {testimonialsChunk && testimonialsChunk.length  ==0 && <div className="text-center w-full float-left mt-7">No Data Available</div>}
+          <div className="text-center w-full float-left mt-7">
+            {testimonialsChunk.map((card, index) => (
+              <span
+                onClick={(e) => goToIndicator(index)}
+                className={
+                  (index !== position ? 'bg-lapis-delta' : '') +
+                  ' w-2.5 h-2.5 inline-block rounded-full mx-2 cursor-pointer sm:mt-0 sm:mb-2 '
+                }
+              ></span>
+            ))}
+          </div>
+          {testimonialsChunk && testimonialsChunk.length == 0 && <div className="text-center w-full float-left mt-7">No Data Available</div>}
 
         </div>
         <div className='clearfix'></div>
       </section>
-      {openModal && <ModalPearl closeModal={setOpenModal} comment={readMoreComment} subject={readMoreSubject}/>}
+      {openModal && <ModalPearl closeModal={setOpenModal} comment={readMoreComment} subject={readMoreSubject} />}
     </>
   );
 };
 
-function getData(input : string) {
+function getData(input: string) {
   return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
-    return response.data.data[0].attributes.sa_one.data[0].attributes.sa_testimonials.data;
+    return response.data.data[0]?.attributes.sa_one.data[0]?.attributes.sa_testimonials.data;
   });
 }
 
