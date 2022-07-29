@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react';
 import { setFlagsFromString } from 'v8';
 import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
-
+import ModalPearl from '../modal-pearl/modal-pearl';
 /**
  * interface for listing ruby parameters
  */
 interface IServiceFeatureRubyParams {
   heading: string;
+  textLength: number;
 }
 
 const CarouselRuby = ({ searchText }: { searchText: string }) => {
@@ -17,8 +18,14 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
   let [position, setPosition] = useState(0);
   let [testimonials, setTestimonials] = useState([{}]);
   let [testimonialsChunk, setTestimonialsChunk] = useState([[]]);
+
+  const [openModal, setOpenModal] = useState(false);
+  const [readMoreComment, setReadMoreComment] = useState('');
+  const [readMoreSubject, setReadMoreSubject] = useState('');
+  
   const params: IServiceFeatureRubyParams = {
-    heading: 'Medicine and Clinical Researcher'
+    heading: 'Medicine and Clinical Researcher',
+    textLength: 100
   };
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
@@ -68,12 +75,19 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                         backgroundImage: `url(${'/assets/images/Shapequote.svg'})`,
                       }}
                     ></span>
-                    {/* <app-markdown> */}
                     <p className="text-lg font-ssb text-ruby-alpha md:text-base sm:text-base sm:leading-6">
-                      {trow.attributes.comment.substring(0,100)}.. <a>Read More</a>
+                      {/* {trow.attributes.comment} */}
+                      {trow.attributes.comment.length > params.textLength ? trow.attributes.comment.slice(0, params.textLength) : trow.attributes.comment}
+                      {<span
+                        onClick={() => {
+                          setOpenModal(true);
+                          setReadMoreComment(trow.attributes.comment);
+                          setReadMoreSubject(trow.attributes.subject);
+                        }}
+                        className="text-pearl-beta font-ssb text-underline-hover">
+                        {trow.attributes.comment.length > params.textLength ? "...read more" : ''}
+                      </span>}
                     </p>
-                   
-                    {/* </app-markdown> */}
                   </div>
                   <div className="border-t border-dashed border-ruby-beta px-5 py-4 min-h-[160px] sm:min-h-max flex flex-col" style={{height:"200px"}}>
                     <div className="flex justify-between">
@@ -81,12 +95,9 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                         <h3 className="text-20 font-sb text-ruby-alpha leading-6 md:text-base sm:text-lg	sm:leading-21">
                           <span className="inline-block mr-2 w-1 h-3.5 bg-emerald-600	"></span> {trow.attributes.user}
                         </h3>
-                        {/* <app-markdown> */}
-
                         <p className="text-sm leading-4 text-ruby-beta font-ssb mt-1 sm:text-13 sm:leading-15">
                           {trow.attributes.designation}
                         </p>
-                        {/* </app-markdown> */}
                       </div>
                       <div
                         className="h-12.5 w-12.5 bg-no-repeat bg-contain inline-flex"
@@ -123,7 +134,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
         </div>
         <div className='clearfix'></div>
       </section>
-      
+      {openModal && <ModalPearl closeModal={setOpenModal} comment={readMoreComment} subject={readMoreSubject}/>}
     </>
   );
 };

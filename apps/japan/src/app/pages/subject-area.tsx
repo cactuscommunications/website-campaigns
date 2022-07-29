@@ -15,6 +15,7 @@ import ServiceBlockRuby from '../components/service-block-ruby/service-block-rub
 import ListingPearl from '../components/listing-pearl/listing-pearl';
 import CarouselPearl from '../components/carousel-pearl/carousel-pearl';
 import ServiceInformationDiamond from '../components/service-information-diamond/service-information-diamond';
+import ServiceInformationRuby from "../components/service-information-ruby/service-information-ruby"
 
 export function SubjectArea() {
   return (
@@ -24,6 +25,7 @@ export function SubjectArea() {
       <ServiFeatureRuby searchText={'default'} />
       <CarouselRuby searchText={'default'} />
       <ServiceInformationDiamond />
+      <ServiceInformationRuby />
       <SampleRuby />
       <JournalRuby searchText={'default'} />
       <FeaturedBlockPearl />

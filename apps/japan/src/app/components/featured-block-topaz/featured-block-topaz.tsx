@@ -39,7 +39,7 @@ export function FeaturedBlockTopaz() {
   }
   const params: IFeaturedBlockTopazParams = {
     link: {
-      route: '/partner-with-us',
+      route: 'https://www.editage.jp/partner-with-us',
       content: 'Explore Corporate Partnership >',
       tracking: {
         event: 'click',
