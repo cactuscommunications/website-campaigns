@@ -15,7 +15,8 @@ import {
 
 const App = () => {
   let routes = useRoutes([
-    { path: "/subject-area-editing", element: <SubjectArea /> },
+    { path: "/", element: <SubjectArea /> },
+    { path: "/subject-area-editing", element: <SubjectArea /> }
   ]);
   return routes;
 };
