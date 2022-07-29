@@ -91,11 +91,13 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
           <div
             className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-15 '}>
             <div className="flex justify-center">
-              {subjects.length > 0 && chunkedArray?.map((row: ISubjects[]) => (
-                <div className="w-1/4 sm:w-full float-left">
+              {subjects.length > 0 && chunkedArray?.map((row: ISubjects[], i) => (
+                <div key={i} className="w-1/4 sm:w-full float-left">
                   <ul className="mt-2">
-                    {row.map((item: ISubjects) => (
-                      <> <a onClick={(e) => selectSubject(item)}>
+                    {row.map((item: ISubjects, index) => (
+                      <> <a
+                        key={index}
+                        onClick={(e) => selectSubject(item)}>
                         <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
                       </a> <br />
                       </>

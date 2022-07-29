@@ -35,19 +35,21 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
         <h3 className="font-pr text-ruby-alpha text-xl	leading-5 sm:text-base">{card.listHeading}</h3>
        <div className="flex justify-between flex-wrap">
         <ul className="p-0 mt-6 w-1/2 sm:mt-3.5 sm:w-full">
-        {card.list.slice(start,mid).map((card, ) => (
-                    <ServiceInfoList
-                    list={card}
-                    ></ServiceInfoList>
-                ))}
+          {card.list.slice(start,mid).map((card, index) => (
+            <ServiceInfoList
+              key={index}
+              list={card}
+            ></ServiceInfoList>
+          ))}
         </ul>
 
         <ul className="p-0 mt-6 w-1/2 sm:mt-0 sm:w-full">
-        {card.list.slice(mid+1,end).map((card, ) => (
-                    <ServiceInfoList
-                    list={card}
-                    ></ServiceInfoList>
-                ))}
+        {card.list.slice(mid+1,end).map((card, index) => (
+          <ServiceInfoList
+            key={index}
+            list={card}
+            ></ServiceInfoList>
+        ))}
         </ul>
        </div>
       </div>

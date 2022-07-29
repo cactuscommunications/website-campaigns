@@ -38,8 +38,9 @@ export function FeatureTopaz({
         <div className="text-center float-left sm:px-6 sm:mb-4 sm:w-full">
           <h4 className="text-pearl-beta font-sb mb-4 text-base">{card?.heading}</h4>
           <div className={!lastElement ? 'relative sm:border-b' : 'relative'}>
-            {card.logo.map((logo) => (
+            {card.logo.map((logo, index) => (
               <span
+                key={index}
                 className="inline-block w-20.75 h-6.5 m-3 bg-no-repeat bg-contain bg-center"
                 style={{
                   backgroundImage: `url(${logo.logoPath})`,

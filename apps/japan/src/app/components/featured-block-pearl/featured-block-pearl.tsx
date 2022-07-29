@@ -50,8 +50,8 @@ export function FeaturedBlockPearl() {
           <div className="pt-16 float-left w-full flex justify-center sm:pt-8">
             <div className="w-1/2 sm:w-full float-right order-2 pl-16 sm:pl-0">
                 <ul className="pl-4">
-                  {params.features!.map((feature) => (
-                    <li className="list-decimal text-pearl-beta mb-4 font-ssb pl-2">
+                  {params.features!.map((feature, index) => (
+                    <li key={index} className="list-decimal text-pearl-beta mb-4 font-ssb pl-2">
                       <p className="text-ruby-alpha font-pr">{feature.content}</p>
                     </li>
                   ))}

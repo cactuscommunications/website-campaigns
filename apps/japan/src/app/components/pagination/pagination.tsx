@@ -164,6 +164,7 @@ export function Pagination({
           <ul className="border border-lapis-gamma rounded-full h-full bg-white">
             {pagesArray.map((page, index) => (
               <li
+                key={index}
                 className={
                   (currentPage === page ? 'bg-lapis-gamma text-white ' : ' ') +
                   ' inline-block h-full text-center leading-30 w-6'
