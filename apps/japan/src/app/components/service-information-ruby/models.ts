@@ -3,6 +3,7 @@ export interface IServiceInformationRuby {
     subHeading?: string;
     card: ICardInfo[]
     path: string
+    CTAtext: string 
   }
 
   export interface IServiceInfo {

@@ -1,5 +1,6 @@
 import ServiceInfoCard from './service-info-card'
 import {IServiceInformationRuby} from "./models"
+import MarkDown from '../markdown/markdown';
   
 export function ServiceInformationRuby(){
     const params : IServiceInformationRuby = {
@@ -18,7 +19,7 @@ export function ServiceInformationRuby(){
                   path: "/assets/images/icons/yellow-star.svg",
                   subHeadingClass: "bg-pearl-beta"
               },
-              desc: "",
+              desc: "圧倒的な発注数を誇る定番の英文校正。徹底的な言語チェックで文法、語彙、専門用語エラーなどを校正するスタンダード英文校正は、品質に妥協せずにリーズナブルな価格 で英文校正を受けたい方に最適です。専門分野のネイティブ校正者２名によるダブルチェックで、365日有効の再校正（１回分） も初回注文時+2円/単語、もしくは60%割引でご利用可能。その他の論文投稿に必要な様々なサポートも無料もしくはオプションで追加可能です。急ぎのアブストラクト校正や、論文以外の用途でも頼れるサービスとして支持を得ています。",
               benefit: {
                         text: "【5月の特典】iThenticateを利用した剽窃チェックレポートが今だけ無料。",
                   className: "bg-lapis-delta",
@@ -74,7 +75,7 @@ export function ServiceInformationRuby(){
                     path: "/assets/images/icons/yellow-star.svg",
                     subHeadingClass: "bg-garnet-lambda"
                 },
-                desc: "",
+                desc: "平均20年以上の経験を持つシニア校正者２名が、英文法・語彙などのチェックにとどまらず論理の流れも校閲し、論旨を際立たせ、 受理率を高めます。再校正も1年間、投稿の前後に関わらず回数も修正量も上限無しでご利用いただけます。更に有料オプションの「査読返答レター英文校正＆再フォーマット調整」 を追加すると、査読者への返信文校正、フォーマット調整（2誌まで）も1年間何度でも無料 に。もしもの際の再投稿時にも安心です。",
                 benefit: {
                           text: "【5月の特典】iThenticateを利用した剽窃チェックレポートが今だけ無料。",
                           className: "bg-garnet-beta",
@@ -130,7 +131,7 @@ export function ServiceInformationRuby(){
                 path: "/assets/images/icons/yellow-star.svg",
                 subHeadingClass: "bg-opal-delta1"
             },
-            desc: "",
+            desc: "一流ジャーナルでの査読者経験を持つ査読者が、編集で指摘を受けそうな点を洗い出す論文完成度評価レポート、平均20年以上の経験を持つシニア校正者が投稿ジャーナルに合わせ、文体を柔軟に最適化する英文校正。エディテージの「最高品質」サービスです。再校正は1年間、投稿の前後に関わらず回数も修正量も上限無し。査読者への返信文も校正。1年以内なら投稿先を何度変更してもフォーマット調整の追加料金もかかりません。ジャーナルのインパクトファクターの高低にかかわらずご利用いただけます。",
             benefit: {
                         text: "【5月の特典】トップジャーナル英文校正サービスが今だけ10%割引（1単語 30円 27円～）",
                         className: "bg-opal-delta",
@@ -176,15 +177,14 @@ export function ServiceInformationRuby(){
                 CTAdetails: "サービスの詳細はこちら>>"
             }
             }
-          ]
+          ],
+          CTAtext: 'サービスを比較する'
     }
     return (
 <section className="py-10">
   <div className="container">
     <h2 className="font-pb text-center text-ruby-alpha text-5xl mb-8 sm:text-20 sm:leading-7 sm:mb-3">{params.heading}</h2> 
-    {/* <app-markdown>
-      <p className="text-base text-center font-pr text-ruby-alpha mx-auto max-w-240 mb-10 leading-6 sm:text-13 sm:mb-6">語彙と文法に特化した校正、論理構造まで踏み込む校正、研究内容まで踏み込む校正。研究者のニーズに合わせて3レベルからご希望の英文校正を選択いただけます。もちろんすべての校正サービスで専門分野のネイティブ2名がお客様の原稿をチェックします。</p>
-    </app-markdown> */}
+      <p className="text-base text-center font-pr text-ruby-alpha mx-auto max-w-240 mb-10 leading-6 sm:text-13 sm:mb-6">{params.subHeading}</p>
 
     {params.card.map((card) => (
                             <ServiceInfoCard
@@ -192,11 +192,11 @@ export function ServiceInformationRuby(){
                             ></ServiceInfoCard>
                         ))}
 
-  {/* <div className="text-center mt-10">
-    <app-lynk className="btn btn-primary">
-      <span className="w-full font-pb mt-2 px-6">サービスを比較する</span>
-    </app-lynk>
-  </div> */}
+  <div className="text-center mt-10">
+    <a href = "#" className="btn btn-primary">
+      <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
+    </a>
+  </div>
    
   </div>
   </section>
