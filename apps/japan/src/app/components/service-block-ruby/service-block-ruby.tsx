@@ -70,7 +70,6 @@ export function ServiceBlockRuby() {
                                         onClick={(e) => tabChanged(tabIndex)}
                                         className={(activeTab == tabIndex ? 'bg-pearl-zeta rounded-t-lg text-base  cursor-text md:text-x-base ' : 'rounded-t text-sm  md:text-13') + ' uppercase text-ruby-alpha leading-5 px-4 py-4 block text-center sm:px-3 sm:text-10 sm:leading-15 cursor-pointer'}
                                     >
-
                                         {menu?.name}
                                     </span>
                                     {tabIndex != params.menuItem.length - 1 && activeTab !== tabIndex && tabIndex + 1 !== activeTab && <span className="w-px h-5 inline-block top-0 absolute right-0 bottom-0 bg-ruby-beta/50 my-auto"></span>}
@@ -83,7 +82,7 @@ export function ServiceBlockRuby() {
                     <div className="sm:px-6 md:px-6">
                         <div className="clearfix"></div>
                         <div className="mx-auto  sm:w-300px md:w-200">
-                            <ListingRuby hideHeading={true} searchText={searchText} ignoreUrlParams={true}/>
+                            <ListingRuby hideHeading={true} searchText={searchText} ignoreUrlParams={true} pageRows={5} limit={25}/>
                         </div>
                     </div>
 

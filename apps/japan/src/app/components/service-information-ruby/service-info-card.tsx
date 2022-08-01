@@ -75,30 +75,32 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
       </div>
       <div className="w-1/2 text-right sm:w-full sm:text-center">  
       <div className="text-right sm:text-center">
-       
-                <a className= "block" href="/order/ncf">
-                    <div
-                        className="w-auto mx-auto bg-pearl-beta flex rounded-md justify-between md:w-full sm:w-full ng-star-inserted">
-                        <div className="flex px-6 py-4 md:pl-7.5 md:pr-7.5 md:py-3.75 sm:px-5 sm:py-3">
-                            <div className="w-9 h-9 bg-contain bg-no-repeat self-center sm:hidden  ng-lazyloaded"
-                              style={{backgroundImage: `url(${card.pricing.path2})`,}}></div>
-                            <div className="ml-3 text-left sm:ml-0">
-                                <h3 className="text-white text-base font-sb sm:text-sm sm:leading-5">自動お見積り・ご注文はこちら</h3>
-                                <p className="text-xs font-ssb text-white/80 sm:text-xs sm:leading-17">
-                                    単語数の入力で料金・納期をその場でご確認いただけます</p>
-                            </div>
-                        </div>
-                        <div className="w-16 bg-pearl-delta1 flex-shrink-0 flex rounded-r-md sm:w-14 md:w-17.5"><span
-                                className="inline-block w-6 h-5.5 bg-contain bg-no-repeat mx-auto self-center sm:w-6.5 sm:h-6  ng-lazyloaded"
-                                style={{backgroundImage: `url(${card.pricing.path2})`,}}></span>
-                        </div>
-                    </div>
-                </a>
-       
+        <a className= "block" href={card.pricing.ctaLink}>
+          <div
+            className="w-auto mx-auto bg-pearl-beta flex rounded-md justify-between md:w-full sm:w-full ng-star-inserted">
+            <div className="flex px-6 py-4 md:pl-7.5 md:pr-7.5 md:py-3.75 sm:px-5 sm:py-3">
+                <div className="w-9 h-9 bg-contain bg-no-repeat self-center sm:hidden  ng-lazyloaded"
+                  style={{backgroundImage: `url(${card.pricing.path2})`,}}></div>
+                <div className="ml-3 text-left sm:ml-0">
+                    <h3 className="text-white text-base font-sb sm:text-sm sm:leading-5">自動お見積り・ご注文はこちら</h3>
+                    <p className="text-xs font-ssb text-white/80 sm:text-xs sm:leading-17">
+                        単語数の入力で料金・納期をその場でご確認いただけます</p>
+                </div>
+            </div>
+            <div className="w-16 bg-pearl-delta1 flex-shrink-0 flex rounded-r-md sm:w-14 md:w-17.5"><span
+              className="inline-block w-6 h-5.5 bg-contain bg-no-repeat mx-auto self-center sm:w-6.5 sm:h-6  ng-lazyloaded"
+              style={{backgroundImage: `url(${card.pricing.path2})`,}}></span>
+            </div>
+          </div>
+        </a>
       </div>
-        <div className="w-full max-w-[500px] float-right sm:float-none sm:max-w-[100%] mt-4 font-pb text-base leading-5 text-pearl-beta text-center sm:text-sm">{card.pricing.CTAdetails}</div>
+      <div>
+        <a href={card.pricing.link}
+          className="w-full max-w-[500px] float-right sm:float-none sm:max-w-[100%] mt-4 font-pb text-base leading-5 text-pearl-beta text-center sm:text-sm">
+          {card.pricing.CTAdetails}
+        </a>
       </div>
-      
+      </div>
     </div>
   </div>
   );

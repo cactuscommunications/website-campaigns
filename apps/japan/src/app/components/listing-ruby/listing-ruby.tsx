@@ -46,7 +46,8 @@ let chunkedArray: ISubjects[][];
 let singlePageItemCount = params.pageSize;
 let mobileRows = 1;
 let pages = 1;
-const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText: string, hideHeading: boolean, ignoreUrlParams: boolean }) => {
+const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, limit }:
+  { searchText: string, hideHeading: boolean, ignoreUrlParams: boolean, pageRows?: number, limit?: number }) => {
   // const navigator = useNavigate();
   const [subjects, setSubjects] = useState([{}]);
   let [active, setActive] = useState(1);
@@ -57,6 +58,9 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams }: { searchText:
   let [currentPage, setCurrentPage] = useState(1);
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
+  params.row = pageRows ?? params.row;
+  params.pageSize = limit ?? params.pageSize;
+  singlePageItemCount = limit ?? params.pageSize;
   useEffect(() => {
     if (saParam && !ignoreUrlParams) {
       searchText = saParam;
