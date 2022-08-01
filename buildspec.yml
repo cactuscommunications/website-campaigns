@@ -14,12 +14,12 @@ phases:
   post_build:
     commands:
         # copy the contents of /build to S3
-      - aws s3 cp --recursive --acl public-read ./dist s3://${s3}/
+      - aws s3 cp --recursive --acl public-read ./dist s3://editage-dev.campaigns.stage/
       - aws cloudfront create-invalidation --distribution-id ${env} --paths /*
-    artifacts:
-      files:
-        - '**/*'
-      base-directory: dist
+artifacts:
+  files:
+    - '**/*'
+    base-directory: dist
 
 # version: 0.2
 # phases:
