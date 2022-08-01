@@ -15,7 +15,7 @@ interface ISubjectAreaBannerRubyParams {
   heading3?: string;
   mobileBackgroundImg?: string;
   backgroundImg?: string;
-  footer?: string;
+  searchMessage: string;
 }
 interface IserachList {
   name: string;
@@ -29,9 +29,9 @@ const SubjectAreaBannerRuby: React.FC = () => {
     heading: '英文校正は',
     heading2: '専門分野が命です。',
     heading3: 'どちらの専門分野をご検討ですか？',
-    footer: '1300以上の専門分野に対応：すべて表示 !!link!! 「すべて表示」 : https://test.com!!/link!!',
     mobileBackgroundImg: '/assets/images/subject-area-banner-m.jpg',
     backgroundImg: '/assets/images/subject-area-banner.jpg',
+    searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。'
   };
   const [searchTerm, setSearchTerm] = useState('');
   const [machineName, setMachineName] = useState('');
@@ -129,13 +129,13 @@ const SubjectAreaBannerRuby: React.FC = () => {
                 </div>
               </div>
             )}
-            <div className="flex  mt-3  sm:flex-col sm:items-center">
-              {params?.footer && (
+            {searchList.length == 0 && searchTerm.length > 3 && (
+              <div className="flex  mt-3  sm:flex-col sm:items-center">
                 <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3">
-                  <MarkDown data={params?.footer}></MarkDown>
+                  <MarkDown data={params.searchMessage}></MarkDown>
                 </p>
-              )}
-            </div>
+              </div>
+            )}
             <span
               className="hidden w-full h-60 bg-center bg-contain sm:block"
               style={{
