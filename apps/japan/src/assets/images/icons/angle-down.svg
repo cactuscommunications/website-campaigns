@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="11px" height="10px" viewBox="0 0 15 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>angle-right</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.7">
+        <g id="angle-right" transform="translate(7.500000, 5.000000) rotate(90.000000) translate(-7.500000, -5.000000) translate(3.000000, -2.000000)" fill="#262626" fill-rule="nonzero">
+            <path d="M8.6,8 L3.267,13.6 C3.007,13.873 2.667,14 2.324,14 C1.981,14 1.642,13.863 1.381,13.6 C0.860245081,13.0427219 0.860245081,12.1772781 1.381,11.62 L5.78,7 L1.4,2.4 C0.879245081,1.84272185 0.879245081,0.97727815 1.4,0.42 C1.64394396,0.158965267 1.98522169,0.0107915474 2.3425,0.0107915474 C2.69977831,0.0107915474 3.04105604,0.158965267 3.285,0.42 L8.6,6 C9.12075492,6.55727815 9.12075492,7.42272185 8.6,7.98 L8.6,8 Z" id="Path"></path>
+        </g>
+    </g>
+</svg>
