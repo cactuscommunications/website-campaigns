@@ -71,7 +71,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
 
                                 <div
                                     className="flex-grow float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-70">
-                                    <div className="dyna-height-1 flex px-6 pt-7.5 pb-6.25 bg-opal-gamma1" style={{ height: "129.531px" }}>
+                                    <div className="dyna-height-1 flex px-6 pt-7.5 pb-6.25" style={{ height: "129.531px" }}>
                                         <div className="w-15 h-15 bg-no-repeat bg-contain relative rounded-full flex-shrink-0"
                                             style={{
                                                 backgroundImage: `url(${trow.attributes.image})`
@@ -116,8 +116,8 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                         onClick={() => {
                           setOpenModal(true);
                         }}
-                        className="text-pearl-beta font-ssb text-underline-hover">
-                        {trow.attributes.expertise_area.length > 10? "...read more" : ''}
+                        className="text-xs text-pearl-beta font-ssb text-underline-hover">
+                        {trow.attributes.expertise_area.length > 10? "read more" : ''}
                       </span>}
                                         {openModal && <ModalRuby closeModal={setOpenModal} />}
 

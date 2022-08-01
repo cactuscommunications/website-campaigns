@@ -4,7 +4,7 @@ const ModalRuby = ({closeModal,}: { closeModal: any}) => {
   return (
 
     <div className="overlay flex flex-col fixed top-0 bottom-0 left-0 right-0 items-center justify-center z-10 bg-black/70">
-    <div  className="relative">
+    <div  className="relative sm:px-5">
       <button
         className="button float-right relative top-8 right-10 z-10 focus:outline-none sm:right-4.75"
         onClick={(e) => closeModal(false)}
