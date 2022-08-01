@@ -29,7 +29,7 @@ export function SubjectArea() {
       <CarouselPearl searchText={'default'} />
       <FeaturedBlockDiamond />
       <ServiceInformationRuby />
-      <SampleRuby />
+      <SampleRuby searchText={'default'} />
       <JournalRuby searchText={'default'} />     
       <OurPromise />
       <FeaturedBlockLapis />
