@@ -62,7 +62,9 @@ export function ServiceInformationRuby(){
                 price: "5円",
                 word: "1単語",
                 tax: "～(税抜) ",
-                CTAdetails: "サービスの詳細はこちら>>"
+                CTAdetails: "サービスの詳細はこちら>>",
+                ctaLink: "https://app.editage.jp/order/ncf/english-editing/standard-editing/document",
+                link: "https://www.editage.jp/services/english-editing/standard-editing-plan"
               }
             },
             {
@@ -109,7 +111,7 @@ export function ServiceInformationRuby(){
                 
                 ],
                 pricing: {
-                          path1: "/assets/images/icons/watch.svg",
+                    path1: "/assets/images/icons/watch.svg",
                     path2: "/assets/images/icons/wallet.png",
                     wordCount: "3,000単語",
                     days: "単語/1日～",
@@ -118,7 +120,9 @@ export function ServiceInformationRuby(){
                     price: "11円",
                     word: "1単語",
                     tax: "～(税抜) ",
-                    CTAdetails: "サービスの詳細はこちら>>"
+                  CTAdetails: "サービスの詳細はこちら>>",
+                  ctaLink: "https://app.editage.jp/order/ncf/english-editing/premium-editing/document",
+                  link: "https://www.editage.jp/services/english-editing/premium-editing-plan"
                 }
             },
             {
@@ -165,20 +169,23 @@ export function ServiceInformationRuby(){
             
             ],
             pricing: {
-                        path1: "/assets/images/icons/watch.svg",
-                path2: "/assets/images/icons/wallet.png",
-                wordCount: "4,000単語",
-                days: "単語まで4営業日～",
-                text: "最短で ",
-                disclaimer: "*納期の短いハイスピードプラン登場！",
-                price: "30円",
-                word: "1単語",
-                tax: "～(税抜) ",
-                CTAdetails: "サービスの詳細はこちら>>"
+              path1: "/assets/images/icons/watch.svg",
+              path2: "/assets/images/icons/wallet.png",
+              wordCount: "4,000単語",
+              days: "単語まで4営業日～",
+              text: "最短で ",
+              disclaimer: "*納期の短いハイスピードプラン登場！",
+              price: "30円",
+              word: "1単語",
+              tax: "～(税抜) ",
+              CTAdetails: "サービスの詳細はこちら>>",
+              ctaLink: "https://app.editage.jp/order/ncf/english-editing/scientific-editing/document",
+              link: "https://www.editage.jp/services/english-editing/top-journal-editing-plan"
+                
             }
-            }
-          ],
-          CTAtext: 'サービスを比較する'
+          }
+        ],
+        CTAtext: 'サービスを比較する'
     }
     return (
 <section className="py-10">

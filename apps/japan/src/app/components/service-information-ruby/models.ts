@@ -42,17 +42,18 @@ export interface IServiceInformationRuby {
         path:string
     }
     export interface IPricing {
-        path1: string;
-        path2: string;
-        wordCount: string;
-        days: string;
-        text: string;
-        disclaimer: string;
-        price: string;
-        word: string;
-        tax: string;
-        CTAdetails: string;
-
+      path1: string;
+      path2: string;
+      wordCount: string;
+      days: string;
+      text: string;
+      disclaimer: string;
+      price: string;
+      word: string;
+      tax: string;
+      CTAdetails: string;
+      ctaLink?: string;
+      link?: string;
     }
 
 export interface IServiceInfoList {

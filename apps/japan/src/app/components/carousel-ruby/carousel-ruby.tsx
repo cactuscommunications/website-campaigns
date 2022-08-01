@@ -5,6 +5,8 @@ import { setFlagsFromString } from 'v8';
 import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
 import ModalPearl from '../modal-pearl/modal-pearl';
+import { isMobile } from 'react-device-detect';
+
 /**
  * interface for listing ruby parameters
  */
@@ -14,7 +16,7 @@ interface IServiceFeatureRubyParams {
 }
 
 const CarouselRuby = ({ searchText }: { searchText: string }) => {
-  const chunkSize = 3;
+  const chunkSize = isMobile ? 1 : 3;
   let [position, setPosition] = useState(0);
   let [testimonials, setTestimonials] = useState([{}]);
   let [testimonialsChunk, setTestimonialsChunk] = useState([[]]);
@@ -131,7 +133,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                 key={index}
                 onClick={(e) => goToIndicator(index)}
                 className={
-                  (index !== position ? 'bg-lapis-delta' : '') +
+                  (index !== position ? 'bg-lapis-delta/20' : 'bg-lapis-delta') +
                   ' w-2.5 h-2.5 inline-block rounded-full mx-2 cursor-pointer sm:mt-0 sm:mb-2 '
                 }
               ></span>

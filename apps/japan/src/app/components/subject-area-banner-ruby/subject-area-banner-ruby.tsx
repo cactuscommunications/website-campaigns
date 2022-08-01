@@ -145,7 +145,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
           </div>
         </div>
       </section>
-      {<ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} />}
+      {<ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} pageRows={4} limit={16} />}
       {/* {<ServiFeatureRuby searchText={machineName} />}
       <CarouselRuby  searchText={machineName}/> */}
     </>
