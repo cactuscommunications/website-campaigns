@@ -1,4 +1,4 @@
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import { BrowserView, MobileView } from 'react-device-detect';
 import MobileNav from './mobile-nav';
 import { useState } from 'react';
 
