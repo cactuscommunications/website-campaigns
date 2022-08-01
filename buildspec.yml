@@ -15,7 +15,7 @@ phases:
     commands:
         # copy the contents of /build to S3
       - aws s3 rm --recursive s3://editage-dev.campaigns.stage/  
-      - aws s3 cp --recursive ./dist s3://editage-dev.campaigns.stage/
+      - aws s3 cp --recursive ./dist/apps/japan/ s3://editage-dev.campaigns.stage/
       - aws cloudfront create-invalidation --distribution-id ${env} --paths /*
 artifacts:
   files:
