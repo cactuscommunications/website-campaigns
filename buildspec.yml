@@ -1,0 +1,33 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - yarn install
+  build:
+    commands:
+      - echo Build started on `date`
+      - yarn build japan
+  post_build:
+    commands:
+        # copy the contents of /build to S3
+      - aws s3 rm --recursive s3://editage-dev.campaigns.stage/  
+      - aws s3 cp --recursive ./dist s3://editage-dev.campaigns.stage/
+      - aws cloudfront create-invalidation --distribution-id E144ASA0PI92L0 --paths /*
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist
+
+# version: 0.2
+# phases:
+#   build:
+#     commands:
+#       - echo Build started on `date`
+#   post_build:
+#     commands:
+#       - aws cloudfront create-invalidation --distribution-id ${env} --paths "/*"
+#       - echo "Cleared Cloudfront Cache successfully."
