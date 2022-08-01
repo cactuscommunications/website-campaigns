@@ -10,7 +10,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
   let end = card.list.length
   let mid = Math.ceil((card.list.length)/2)
   return (
-    <div   className={`border rounded-lg ${card.heading?.headingClassName ? card.heading?.headingClassName : ''}`}>
+    <div   className={`border rounded-lg mb-10 ${card.heading?.headingClassName ? card.heading?.headingClassName : ''}`}>
     <div  className={`rounded-t-lg  relative flex justify-between flex-wrap items-center py-4 sm:pb-5 ${card.heading?.subHeadingClass ? card.heading?.subHeadingClass : ''}`}>
       <span className="absolute bg-diamond-delta -top-px -left-px text-base leading-9 text-white font-pr px-3 rounded-br-lg	rounded-tl-lg sm:text-13">{card?.heading.specialHeadingText}</span>
       <div className="flex justify-between w-full">

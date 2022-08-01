@@ -78,7 +78,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
 
                                 <div
                                   key={ti}
-                                  className="flex-grow float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-70">
+                                  className="float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-87">
                                     <div className="dyna-height-1 flex px-6 pt-7.5 pb-6.25 bg-opal-gamma1" style={{ height: "129.531px" }}>
                                         <div className="w-15 h-15 bg-no-repeat bg-contain relative rounded-full flex-shrink-0"
                                             style={{
@@ -95,7 +95,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                             <p className="text-xs text-ruby-alpha font-ssb pt-0 -mt-0.5">{trow.attributes.nationality}</p>
                                         </div>
                                     </div>
-                                    <div className="dyna-height-3 flex bg-white px-6 pt-4 inline-block w-full pb-4" style={{ height: "72.25px" }}>
+                                    <div className="dyna-height-3 flex bg-white px-6 pt-4 w-full pb-4" style={{ height: "72.25px" }}>
                                         <div className="w-1/3 text-xs text-center font-ssb">
                                             <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} years</p>
                                             Experience </div>

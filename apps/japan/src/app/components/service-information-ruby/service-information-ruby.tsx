@@ -1,8 +1,13 @@
 import ServiceInfoCard from './service-info-card'
 import {IServiceInformationRuby} from "./models"
 import MarkDown from '../markdown/markdown';
+import ModalOpal from '../modal-opal/modal-opal';
+import {  useState } from 'react';
+
   
 export function ServiceInformationRuby(){
+  const [openModal, setOpenModal] = useState(false);
+
     const params : IServiceInformationRuby = {
 
         heading: 'エディテージの英文校正サービス',
@@ -199,12 +204,20 @@ export function ServiceInformationRuby(){
           ></ServiceInfoCard>
       ))}
 
-      <div className="text-center mt-10">
-        <a href = "#" className="btn btn-primary">
-          <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
-        </a>
-      </div>
-    </div>
+    {params.card.map((card) => (
+                            <ServiceInfoCard
+                            card={card}
+                            ></ServiceInfoCard>
+                        ))}
+
+  <div className="text-center mt-10">
+    <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
+      <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
+    </a>
+  </div>
+  {openModal && <ModalOpal closeModal={setOpenModal}/>}
+
+  </div>
   </section>
 );
         
