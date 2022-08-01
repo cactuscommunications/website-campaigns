@@ -6,13 +6,16 @@ import { setFlagsFromString } from 'v8';
 import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
 import ModalRuby from '../modal-ruby/modal-ruby'
+import { isMobile } from 'react-device-detect';
 
 interface IServiceFeaturePearlParams {
-    heading: string;
+  heading: string;
+  subjectLabel: string;
+  qualificationLabel: string;
 }
 
 const CarouselPearl = ({ searchText }: { searchText: string }) => {
-    const chunkSize = 3;
+    const chunkSize = isMobile ? 1 : 3;
     let [position, setPosition] = useState(0);
     let [testimonials, setTestimonials] = useState([{}]);
     let [testimonialsChunk, setTestimonialsChunk] = useState([[]]);
@@ -21,7 +24,9 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
     const params: IServiceFeaturePearlParams = {
-        heading: 'Medicine and Clinical Researcher',
+      heading: 'Medicine and Clinical Researcher',
+      subjectLabel: 'Subject Area',
+      qualificationLabel: 'Degree'
     };
     useEffect(() => {
         if (saParam) {
@@ -41,7 +46,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
      * carousal indicators (dots) modifier
      * @author Goutham Reddy
      */
-    function setIndicator(input: any) {
+  function setIndicator(input: any) {
         if (input && input.length > 0) {
             let chunks = [];
             for (let i = 0; i < input.length; i += chunkSize) {
@@ -54,7 +59,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
         }
 
     }
-    function goToIndicator(index: number) {
+  function goToIndicator(index: number) {
         setPosition(index);
         setIndicator(testimonials);
     }
@@ -95,12 +100,12 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                             <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} years</p>
                                             Experience </div>
                                         <div className="w-1/3  text-xs text-center font-ssb">
-                                            <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} % </p> Satisfaction Rate</div>
+                                            <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} </p> Satisfaction Rate</div>
 
                                         <div className="w-1/3 text-xs text-center font-ssb">
                                             <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> Papers Edited </div>
                                     </div>
-                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">Subjectarea</div>
+                                <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.subjectLabel }</div>
                                     <ul className="bg-white dyna-height-4 mb-3 mt-1 px-6 overflow-hidden" style={{ height: "287px" }} >
                                         {trow.attributes.expertise_area.split(',').slice(0,10).map((area: string) => {
                                             return (
@@ -125,7 +130,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                         {openModal && <ModalRuby closeModal={setOpenModal} />}
 
                                     </ul>
-                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">Dgrees</div>
+                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.qualificationLabel }</div>
                                     <ul className="bg-white dyna-height-5 mb-3 mt-1 px-6" style={{ height: "39.5px" }}>
                                         <li className="text-xs flex my-2"><span
                                             className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
@@ -143,7 +148,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                             key={index}
                                 onClick={(e) => goToIndicator(index)}
                                 className={
-                                    (index !== position ? 'bg-lapis-delta' : '') +
+                                    (index !== position ? 'bg-lapis-delta/20' : 'bg-lapis-delta') +
                                     ' w-2.5 h-2.5 inline-block rounded-full mx-2 cursor-pointer sm:mt-0 sm:mb-2 '
                                 }
                             ></span>
