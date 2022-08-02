@@ -16,14 +16,15 @@ interface Idata {
   editors: number;
   jobs: number;
   clients: number;
-  image : string
+  image: string;
+  title?: string;
 }
 
 const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
-  const [data, setData] = useState({ editors: 0, jobs: 0, clients: 0, image : '' });
+  const [data, setData] = useState({ editors: 0, jobs: 0, clients: 0, image : '', title : '' });
   let [active, setActive] = useState(1);
   const params: IServiceFeatureRubyParams = {
-    heading: 'Medicine and Clinical Researcher !!break!! 分野の英文校正サービスと実績',
+    heading: 'Medicine and Clinical Researcher ',
     mobileMedicallBg: '/assets/images/mobile-medicin-bg.png',
   };
   const url = new URL(location.href);
@@ -50,13 +51,13 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
         <div className="container sm:px-0">
           <h2 className="text-center leading-44 mb-5 sm:mb-0 sm:leading-29">
             <div className="font-pb text-3xl sm:text-20 sm:leading-29 sm:block md:text-2xl">
-              <MarkDown data={params?.heading}></MarkDown>
+              {data.title ? data.title : params?.heading} <br/> 分野の英文校正サービスと実績
             </div>
           </h2>
           <div
             className="hidden sm:block bg-contain bg-no-repeat w-90 h-56.75 mx-auto -mt-8 max-w-full"
             style={{
-              backgroundImage: `url(${isMobile ? params.mobileMedicallBg : data.image})`,
+              backgroundImage: `url(${'/assets/images/backgrounds/mobile' + data.image.replace('/assets/images/backgrounds','')})`,
             }}
           ></div>
 
@@ -113,19 +114,21 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
 
 function getData(input:string) {
   return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
-    if(response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors) { 
+    if (response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors) {
       return {
         editors: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors,
         jobs: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.jobs,
         clients: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.clients,
-        image : response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image
+        image: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image,
+        title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? '',
       };
     } else {
       return {
         editors: 0,
         jobs: 0,
         clients: 0,
-        image : ''
+        image: '',
+        title: '',
       };
     }
    
