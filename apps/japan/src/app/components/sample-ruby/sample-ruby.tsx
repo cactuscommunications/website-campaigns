@@ -27,7 +27,7 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
       machineName = await getMachineName(searchText);
       let resp = await getSampleData(searchText);
       setSamples(resp.data);
-      setTitle(resp.title)
+      setTitle(resp.title);
     };
     editorsData();
   }, [searchText]);
@@ -47,7 +47,7 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
           <div className="text-center mb-6 sm:px-5">
             {params.heading && (
               <h2 className="font-pb text-3xl leading-44 text-ruby-alpha mb-5 sm:leading-30 sm:text-20">
-                {params.heading}
+                {params.heading}<span className="sm:hidden"> : {title}</span>
               </h2>
             )}
             <span className="text-base text-ruby-alpha font-pr">{params.subHeading}</span>
