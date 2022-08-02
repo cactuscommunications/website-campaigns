@@ -24,7 +24,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
     const params: IServiceFeaturePearlParams = {
-      heading: 'Medicine and Clinical Researcher',
+      heading: 'お客さまからの声：',
       subjectLabel: 'Subject Area',
       qualificationLabel: 'Degree'
     };
@@ -69,7 +69,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
             <section className="bg-white py-10">
                 <div className="container sm:px-5">
                     <h2 className="text-center text-4.5xl font-pb text-ruby-alpha leading-45 sm:text-20 sm:leading-7">
-                        お客さまからの声<span className="sm:hidden">{title}</span>
+                        {params.heading}<span className="sm:hidden">{title}</span>
                     </h2>
 
                     {testimonialsChunk && testimonialsChunk.length > 0 &&

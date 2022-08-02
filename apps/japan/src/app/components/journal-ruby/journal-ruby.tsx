@@ -22,7 +22,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
 
   const params: IJournalRubyParams = {
     backgroundColor: 'bg-white',
-    heading: '校正サンプル：Medicine and Clinical Researcher 分野',
+    heading: '校正サンプル：',
     mobileHeading: '弊社で実績のあるTOP 5 ジャーナル',
     subHeading: 'ハイインパクトファクターの学術誌にも豊富な経験と実績がございます。',
     mobileSubHeading:
@@ -32,6 +32,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
   };
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
+  let [title, setTitle] = useState('');
   let [journals, setJournals] = useState([{
     "image": '',
     "impact_factor": 0,
@@ -43,8 +44,9 @@ export function JournalRuby({ searchText }: { searchText: string }) {
       searchText = saParam;
   }
     const getJournalsData = async () => {
-      let resp: IJournals[] = await getData(searchText);
-      setJournals(resp);
+      let resp  = await getData(searchText);
+      setJournals(resp.data);
+      setTitle (resp.title)
     };
     getJournalsData();
   }, [searchText]);
@@ -54,7 +56,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
       <section className={'pb-10 pt-7.5 ' + params?.backgroundColor}>
         <div className="container px-5">
           <h2 className="text-center font-pb text-5xl text-ruby-alpha leading-30 sm:text-20">
-            <span className="sm:hidden">{params.heading}</span>
+            {params.heading}<span className="sm:hidden">{title}</span>
             <span className="hidden sm:block">{params.mobileHeading}</span>
           </h2>
           <p className="text-center text-base leading-6 font-pr text-ruby-alpha mt-4 mb-7 sm:mt-5">
@@ -96,12 +98,15 @@ export function JournalRuby({ searchText }: { searchText: string }) {
   function getData(input : string) {
     return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
       
-      let returnData : IJournals[] = [];
+      let journalData :  IJournals[] = [];
       response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.journals?.data.map((journal:any) => {
-        returnData.push(journal.attributes)  
+        journalData.push(journal.attributes)  
   
       })
-      return returnData;
+
+      let title = response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title : ''
+
+      return {data : journalData , title : title};
     });
   }
 }
