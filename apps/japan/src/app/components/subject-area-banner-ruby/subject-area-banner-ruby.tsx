@@ -5,6 +5,7 @@ import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
 import ServiFeatureRuby from '../service-feature-ruby/service-feature-ruby';
 import CarouselRuby from '../carousel-ruby/carousel-ruby';
+import { isMobile } from 'react-device-detect';
 
 /**
  * interface for listing ruby parameters
@@ -64,7 +65,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
       <section
         className="pt-18 pb-21.25 bg-cover bg-center bg-no-repeat sm:bg-full sm:py-4"
         style={{
-          backgroundImage: `url(${params.backgroundImg})`,
+          backgroundImage: `url(${!isMobile ? params.backgroundImg : ''})`,
         }}
       >
         <div className="container">
@@ -137,7 +138,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
               </div>
             )}
             <span
-              className="hidden w-full h-60 bg-center bg-contain sm:block"
+              className="hidden w-full h-60 bg-center bg-contain bg-no-repeat sm:block"
               style={{
                 backgroundImage: `url(${params.mobileBackgroundImg})`,
               }}
