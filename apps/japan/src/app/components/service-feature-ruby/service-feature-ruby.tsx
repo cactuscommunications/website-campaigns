@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
+import { isMobile } from 'react-device-detect';
 
 /**
  * interface for listing ruby parameters
@@ -10,7 +11,6 @@ import subjectAPIService from '../../services/api/subject-api';
 interface IServiceFeatureRubyParams {
   heading: string;
   mobileMedicallBg?: string;
-  medicallBg?: string;
 }
 interface Idata {
   editors: number;
@@ -24,8 +24,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
   let [active, setActive] = useState(1);
   const params: IServiceFeatureRubyParams = {
     heading: 'Medicine and Clinical Researcher !!break!! 分野の英文校正サービスと実績',
-    mobileMedicallBg: '/assets/images/mobile-medicall-bg.jpg',
-    medicallBg: '/assets/images/medicine-bg.jpg',
+    mobileMedicallBg: '/assets/images/mobile-medicin-bg.png',
   };
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
@@ -57,7 +56,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
           <div
             className="hidden sm:block bg-contain bg-no-repeat w-90 h-56.75 mx-auto -mt-8 max-w-full"
             style={{
-              backgroundImage: `url(${data.image})`,
+              backgroundImage: `url(${isMobile ? params.mobileMedicallBg : data.image})`,
             }}
           ></div>
 
