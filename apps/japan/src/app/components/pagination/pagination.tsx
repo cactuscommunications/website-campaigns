@@ -4,6 +4,7 @@
  */
 
 import { useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 
 export function Pagination({
   currentPage,
@@ -28,7 +29,7 @@ export function Pagination({
    * So the iteration moves accordingly
    */
 
-  let pageClubPointer = 9;
+  let pageClubPointer = isMobile ? 5 : 9;
   /**
    * The number of pages a pagination list can show.
    * Default comes from Host config, but for items less than host config new number is set
@@ -45,7 +46,7 @@ export function Pagination({
   _setInitialProperties();
 
   function _setInitialProperties() {
-    listMaxLength = pageClubPointer = 9;
+    listMaxLength = pageClubPointer;
     pagesArray = [];
     currentPage = currentPage;
     const minValue = _getPageClubPointerStart();
@@ -141,7 +142,7 @@ export function Pagination({
 
   return (
     <div className="container mt-10">
-      <div className="pagination relative h-7.5 mx-auto w-62.5 text-center">
+      <div className="pagination relative h-7.5 mx-auto w-62.5 text-center sm:w-full">
         {pagesArray.length > 1 && currentPage !== lastPage && (
           <a
             className="-mr-14 mt-0.5 -translate-y-1/2 absolute cursor-pointer float-right h-14 w-14 right-0 top-1/2 transform bg-cover bg-no-repeat"
