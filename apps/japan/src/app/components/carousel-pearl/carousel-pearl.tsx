@@ -127,7 +127,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                         className="text-xs text-pearl-beta font-ssb text-underline-hover">
                         {trow.attributes.expertise_area.length > 10? "read more" : ''}
                       </span>}
-                                        {openModal && <ModalRuby closeModal={setOpenModal} />}
+                                        {openModal && <ModalRuby closeModal={setOpenModal} data = {trow} />}
 
                                     </ul>
                                     <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.qualificationLabel }</div>
