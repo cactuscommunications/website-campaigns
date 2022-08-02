@@ -29,7 +29,7 @@ interface ISubjectList {
   pageCount: number;
 }
 const params: IListingRubyParams = {
-  heading: 'Nutrition and dietetics を含む Medicine and Clinical Researcher !!break!! 分野では以下の専門分野に対応しています。',
+  heading: 'Nutrition and dietetics を含む Medicine and Clinical Researcher',
   pageIcon: ['assets/images/icons/circle-arrow-left.svg', 'assets/images/icons/circle-arrow-right.svg'],
   subjects: [],
   pageNumber: 1,
@@ -51,6 +51,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   let [pageSize, setpageSize] = useState(1);
   let [total, setPageTotal] = useState(1);
   let [currentPage, setCurrentPage] = useState(1);
+  let [searchTitle, setSearchTitle] = useState('');
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   useEffect(() => {
@@ -58,9 +59,9 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
       searchText = saParam;
     }
     const getSubData = async () => {
-      let machineName = '';
-      if (searchText)
-        machineName = await getMachineName(searchText);
+      const { machineName, searchTitle} = await getMachineName(searchText);
+      setSearchTitle(searchTitle);
+        
       let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns);
       setSubjects(subData.subjects);
       setPage(subData.pageObj.page);
@@ -84,7 +85,9 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
         <div className="container">
           {!hideHeading &&
             <React.Fragment>
-              <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center"><MarkDown data={params?.heading}></MarkDown></h2>
+              <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
+                <MarkDown data={(searchTitle ? searchTitle : params?.heading) + '!!break!! 分野では以下の専門分野に対応しています。'}></MarkDown>
+              </h2>
               {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
             </React.Fragment>
           }
@@ -136,10 +139,19 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     chunkedArray = createChunks(items);
   }
   function getMachineName(input: string) {
+    if (!input) {
+      return {
+        machineName: '',
+        searchTitle: ''
+      }
+    }
     const query = '[$eq]=' + input;
     return subjectAPIService.getSearchList(query).then(function (response: any) {
-      return response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '';
-    })
+      return {
+        machineName: response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '',
+        searchTitle: response.data.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.search_title : '',
+      }
+    });
 
   }
   function getSubjectData(input: string, page: number, pageSize: number) {
