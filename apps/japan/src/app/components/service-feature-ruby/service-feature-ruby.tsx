@@ -78,7 +78,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
             </div>
 
             <div className="inline-flex">
-              <span className="font-sb text-lapis-delta opacity-40	 text-5xl leading-45 -mt-4 sm:text-20px sm:leading-30 sm:-mt-1.5">
+              <span className="font-sb text-lapis-delta opacity-40	 text-5xl leading-45 -mt-4 sm:text-20 sm:leading-30 sm:-mt-1.5">
                 2
               </span>
               <span className="w-1 inline-block h-12 bg-jade-alpha mr-3.75 ml-1.5"></span>
