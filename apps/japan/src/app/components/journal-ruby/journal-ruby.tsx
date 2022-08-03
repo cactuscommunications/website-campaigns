@@ -57,7 +57,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
       <section className={'pb-10 pt-7.5 ' + params?.backgroundColor}>
         <div className="container px-5">
           <h2 className="text-center font-pb text-5xl text-ruby-alpha leading-30 sm:text-20">
-            {params.heading}<span className="sm:hidden">{title}</span>
+            <span className="sm:hidden">{params.heading}{title}</span>
             <span className="hidden sm:block">{params.mobileHeading}</span>
           </h2>
           <p className="text-center text-base leading-6 font-pr text-ruby-alpha mt-4 mb-7 sm:mt-5">

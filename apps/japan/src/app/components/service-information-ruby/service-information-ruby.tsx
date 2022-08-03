@@ -88,9 +88,9 @@ export function ServiceInformationRuby(){
             },
             desc: "平均20年以上の経験を持つシニア校正者２名が、英文法・語彙などのチェックにとどまらず論理の流れも校閲し、論旨を際立たせ、 受理率を高めます。再校正も1年間、投稿の前後に関わらず回数も修正量も上限無しでご利用いただけます。更に有料オプションの「査読返答レター英文校正＆再フォーマット調整」 を追加すると、査読者への返信文校正、フォーマット調整（2誌まで）も1年間何度でも無料 に。もしもの際の再投稿時にも安心です。",
             benefit: {
-                      text: "【5月の特典】iThenticateを利用した剽窃チェックレポートが今だけ無料。",
-                      className: "bg-garnet-beta",
-                path:"/assets/images/icons/discount-icon.svg"
+              text: "【5月の特典】iThenticateを利用した剽窃チェックレポートが今だけ無料。",
+              className: "bg-garnet-beta",
+              path:"/assets/images/icons/discount-icon.svg"
             },
             listHeading: "[充実の校正サポート]",
             list: [{
@@ -107,7 +107,7 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "業界最速！最短8.5時間納品"
+              text: "カバーレター作成無料"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
