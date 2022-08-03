@@ -68,7 +68,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
       setPageCount(subData.pageObj.pageCount);
       setpageSize(subData.pageObj.pageSize);
       setPageTotal(subData.pageObj.total);
-      getPageDetails(subData.subjects, params.pageNumber , isMobile ? pageColumns : pageRows * pageColumns);
+      getPageDetails(subData.subjects, params.pageNumber, isMobile ? pageColumns : pageRows * pageColumns);
     };
     getSubData();
   }, [searchText, currentPage]);
@@ -132,26 +132,17 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
    * Get details of records to displayed on the currentPage
    * @param currentPage currentPage
    */
-  function getPageDetails(subjects: ISubjects[], currentPage: number, pageSize:number) {
+  function getPageDetails(subjects: ISubjects[], currentPage: number, pageSize: number) {
     startIndex = (currentPage - 1) * pageSize;
     endIndex = Math.min(startIndex + pageSize - 1, subjects.length - 1);
     let items = subjects.slice(startIndex, endIndex + 1);
     chunkedArray = createChunks(items);
   }
   function getMachineName(input: string) {
-    if (!input) {
-      return {
-        machineName: '',
-        searchTitle: ''
-      }
-    }
-    const query = '[$eq]=' + input;
-    return subjectAPIService.getSearchList(query).then(function (response: any) {
-      return {
-        machineName: response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '',
-        searchTitle: response.data.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.search_title : '',
-      }
-    });
+
+    return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
+      return response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '';
+    })
 
   }
   function getSubjectData(input: string, page: number, pageSize: number) {

@@ -38,7 +38,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
 
     const getTestimonialsData = async () => {
       let machineName = '';
-        machineName = await getMachineName(searchText);
+      machineName = await getMachineName(searchText);
       let resp = await getData(machineName);
       setTestimonials(resp);
       setIndicator(resp);
@@ -149,13 +149,12 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
   );
 };
 function getMachineName(input: string) {
-  const query = '[$eq]=' + input;
-  return subjectAPIService.getSearchList(query).then(function (response: any) {
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
     return response.data.data[0].attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one.data[0].attributes.machine_name : '';
   })
 }
 function getData(input: string) {
-  return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
+  return subjectAPIService.getWholeData(input, 'sa_one.sa_testimonials').then(function (response: any) {
     return response.data.data[0]?.attributes.sa_one?.data[0]?.attributes.sa_testimonials.data ? response.data.data[0]?.attributes.sa_one?.data[0]?.attributes.sa_testimonials.data : [];
   });
 }

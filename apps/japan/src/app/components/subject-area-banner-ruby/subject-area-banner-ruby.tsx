@@ -40,19 +40,25 @@ const SubjectAreaBannerRuby: React.FC = () => {
   const [searchObj, setSearchObj] = useState({ name: '', machineName: '' });
   var url = new URL(location.href);
   var saParam = url.searchParams.get('sa');
+  const [noDataMessage, setNoDataMessage] = useState(false);
   useEffect(() => {
     const delayDebounceFn = setTimeout(async (event) => {
       if (searchTerm.length >= 3) {
         setSearchList([]);
+        setNoDataMessage(false);
         let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'));
+        if(resp.length == 0 ){
+          setNoDataMessage(true);
+        }
         setSearchList(resp);
       }
     }, 30);
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
   const handleChange = (text: any) => {
+    setNoDataMessage(false);
     setSearchList([]);
-    setSearchObj(text)
+    setSearchObj(text);
     setSearchTerm(text.name);
   };
   const searchResults = () => {
@@ -113,7 +119,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
               </div>
             </div>
 
-            {searchList.length > 1 && (
+            {searchList.length >= 1 && (
               <div className="mt-0.5 relative">
                 <div className="absolute top-0 left-0 w-94 max-h-61.2 bg-white overflow-auto custom-scroll rounded-lg shadow z-1">
                   {searchList.map((item) => (
@@ -130,7 +136,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
                 </div>
               </div>
             )}
-            {searchList.length == 0 && searchTerm.length > 3 && (
+            { noDataMessage && (
               <div className="flex  mt-3  sm:flex-col sm:items-center">
                 <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3">
                   <MarkDown data={params.searchMessage}></MarkDown>
@@ -153,9 +159,8 @@ const SubjectAreaBannerRuby: React.FC = () => {
   );
 };
 
-function getSearchList(serachText: string) {
-  const query = '[$containsi]=' + serachText
-  return subjectAPIService.getSearchList(query).then(function (response: any) {
+function getSearchList(input: string) {
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five', 'contains').then(function (response: any) {
     let returnData: { name: string, searchTitle: string, machineName: string }[] = [];
     response.data.data.map((key: any) => {
       let machineName = '';
@@ -169,7 +174,7 @@ function getSearchList(serachText: string) {
           break;
         }
         case 'SA2.0': {
-          machineName = response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name;
+          machineName = response.data.data[0].attributes.machine_name;
           break;
         }
         default: {

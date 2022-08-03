@@ -30,10 +30,12 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   useEffect(() => {
-    if(saParam) { 
+    if (saParam) {
       searchText = saParam;
-  }
+    }
     const getSubData = async () => {
+      let machineName = '';
+      machineName = await getMachineName(searchText);
       let resp = await getData(searchText);
       setData(resp);
     };
@@ -111,27 +113,30 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
     </>
   );
 };
-
-function getData(input:string) {
-  return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
+function getMachineName(input: string) {
+  const query = '[$eq]=' + input;
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
+    return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
+  })
+}
+function getData(input: string) {
+  return subjectAPIService.getWholeData(input, 'sa_one_five.social_attributes').then(function (response: any) {
     if (response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors) {
       return {
         editors: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors,
         jobs: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.jobs,
         clients: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.clients,
-        image: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image,
-        title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? '',
+        image: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image
       };
     } else {
       return {
         editors: 0,
         jobs: 0,
         clients: 0,
-        image: '',
-        title: '',
+        image: ''
       };
     }
-   
+
   });
 }
 

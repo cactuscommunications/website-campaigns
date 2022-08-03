@@ -88,14 +88,14 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
 }
 function getMachineName(input: string) {
   const query = '[$eq]=' + input;
-  return subjectAPIService.getSearchList(query).then(function (response: any) {
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
     return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
   })
 }
 function getSampleData(input: string) {
   let returnData: Isamples = { data: [], title: '' }
 
-  return subjectAPIService.getSamples(input).then(function (response: any) {
+  return subjectAPIService.getWholeData(input, 'sa_one_five.samples').then(function (response: any) {
     if (response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes?.samples) {
       returnData = {
         data: [
