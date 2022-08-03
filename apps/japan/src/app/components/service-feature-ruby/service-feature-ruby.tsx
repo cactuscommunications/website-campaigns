@@ -55,7 +55,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
             </div>
           </h2>
           <div
-            className="hidden sm:block bg-contain bg-no-repeat w-90 h-56.75 mx-auto -mt-8 max-w-full"
+            className="hidden sm:block bg-contain bg-no-repeat w-90 h-56.75 mx-auto max-w-full"
             style={{
               backgroundImage: `url(${'/assets/images/backgrounds/mobile' + data.image.replace('/assets/images/backgrounds','')})`,
             }}
@@ -66,7 +66,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
               <span className="font-sb text-lapis-delta opacity-40 text-5xl leading-45 -mt-4 sm:text-20 sm:leading-30 sm:-mt-1.5">
                 1
               </span>
-              <span className="w-1 inline-block h-14 bg-opal-alpha mr-3.75 ml-1.5"></span>
+              <span className="w-1 inline-block h-12 bg-opal-alpha mr-3.75 ml-1.5"></span>
               <div className="inline-flex flex-col">
                 <span className="font-pr text-ruby-alpha text-sm leading-4 mb-0.5 sm:text-xs sm:leading-14 sm:mb-1.5">
                   校正者数
@@ -81,7 +81,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
               <span className="font-sb text-lapis-delta opacity-40	 text-5xl leading-45 -mt-4 sm:text-20px sm:leading-30 sm:-mt-1.5">
                 2
               </span>
-              <span className="w-1 inline-block h-14 bg-jade-alpha mr-3.75 ml-1.5"></span>
+              <span className="w-1 inline-block h-12 bg-jade-alpha mr-3.75 ml-1.5"></span>
               <div className="inline-flex flex-col">
                 <span className="font-pr text-ruby-alpha text-sm leading-4 mb-0.5 sm:text-xs sm:leading-14 sm:mb-1.5">
                   校正実績
@@ -95,7 +95,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
               <span className="font-sb text-lapis-delta opacity-40	text-5xl leading-45 -mt-4 sm:text-20 sm:leading-30 sm:-mt-1.5">
                 3
               </span>
-              <span className="w-1 inline-block h-14 bg-amber-alpha mr-3.75 ml-1.5"></span>
+              <span className="w-1 inline-block h-12 bg-amber-alpha mr-3.75 ml-1.5"></span>
               <div className="inline-flex flex-col">
                 <span className="font-pr text-ruby-alpha text-sm leading-4 mb-0.5 sm:text-xs sm:leading-14 sm:mb-1.5">
                   お客様数
