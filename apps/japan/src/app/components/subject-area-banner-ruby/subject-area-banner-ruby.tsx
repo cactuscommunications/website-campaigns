@@ -51,6 +51,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
       setNoDataMessage(false);
       if (searchTerm.length > 0 && !searchTerm.match(/^[\w\-\s]+$/)) {
         setShowValidation(true);
+        setSearchList([]);
       }
       if (searchTerm.length >= 3 && !saSelected && searchTerm.match(/^[\w\-\s]+$/)) {
         setSearchList([]);
