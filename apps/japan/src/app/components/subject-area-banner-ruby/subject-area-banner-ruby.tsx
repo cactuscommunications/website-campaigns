@@ -32,7 +32,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
     heading3: 'どちらの専門分野をご検討ですか？',
     mobileBackgroundImg: '/assets/images/subject-area-banner-m.jpg',
     backgroundImg: '/assets/images/subject-area-banner.jpg',
-    searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。'
+    searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!break!!!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。!!break!!カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。'
   };
   const [searchTerm, setSearchTerm] = useState('');
   const [machineName, setMachineName] = useState('');
@@ -51,6 +51,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
   const handleChange = (text: any) => {
+    console.log(text)
     setSearchList([]);
     setSearchObj(text)
     setSearchTerm(text.name);
@@ -92,7 +93,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
                   type="text"
                   value={searchTerm}
                   className="text-ruby-alpha text-base font-ssb leading-5 py-3 pl-12.5 pr-2.5 w-94 h-12.5 rounded-l border border-lapis-delta focus-visible:outline-0 sm:w-full sm:rounded"
-                  placeholder="Enter text here"
+                  placeholder="専門分野名を英語でご入力ください"
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <span
@@ -108,7 +109,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
                   className="btn btn-primary min-w-fit rounded-l-none rounded-r w-full outline-none text-white text-base font-sb leading-5 sm:rounded"
                   onClick={searchResults}
                 >
-                  Show Results
+                  検索する
                 </button>
               </div>
             </div>

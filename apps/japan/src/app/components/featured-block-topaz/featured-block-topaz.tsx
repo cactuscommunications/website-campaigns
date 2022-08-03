@@ -82,30 +82,30 @@ export function FeaturedBlockTopaz() {
             logoPath: '/assets/images/partners/hindawi.svg',
           },
         ],
-        heading: '40+ Journals & Publishers',
+        heading: '40以上の雑誌',
       },
       {
         logo: [
           {
-            logoPath: '/assets/images/partners/korea-university.svg',
+            logoPath: '/assets/images/partners/japan/tokyo-university.svg',
           },
           {
-            logoPath: '/assets/images/partners/sungkyunkwan-university.svg',
+            logoPath: '/assets/images/partners/japan/osaka-university.svg',
           },
           {
-            logoPath: '/assets/images/partners/yonsel-university.svg',
+            logoPath: '/assets/images/partners/japan/nagoya-university-name.svg',
           },
           {
-            logoPath: '/assets/images/partners/iet.svg',
+            logoPath: '/assets/images/partners/japan/kyoto-university.svg',
           },
           {
-            logoPath: '/assets/images/partners/japan/nagoya-university-name-logo.svg',
+            logoPath: '/assets/images/partners/japan/tohoku-university.svg',
           },
           {
-            logoPath: '/assets/images/partners/japan/tokyo-university-name.svg',
+            logoPath: '/assets/images/partners/japan/hokkaido-university-name.svg',
           },
         ],
-        heading: '500+ Universities',
+        heading: '500以上の大学',
       },
       {
         logo: [
@@ -134,10 +134,10 @@ export function FeaturedBlockTopaz() {
             logoPath: '/assets/images/korea/partners/kamje.png',
           },
         ],
-        heading: '1,100+ Societies',
+        heading: '1,100以上の組織',
       },
     ],
-    heading: 'Trusted & endorsed by industry experts & partners',
+    heading: 'エディテージの研究機関・出版社パートナー',
   };
 
   return (
@@ -160,17 +160,13 @@ export function FeaturedBlockTopaz() {
               ))}
             </div>
             <div className="clearfix"></div>
-            {params?.link && (
+            {/* {params?.link && (
               <div className="text-center mt-8">
-                {/* <app-lynk       
-                                [params]="params?.link" class="text-underline-hover">
-                                    <span class="text-pearl-beta font-ssb ">{{ params?.link?.content}}</span>
-                                </app-lynk> */}
                 <a className="text-pearl-beta font-ssb text-underline-hover" href={params?.link.route}>
                   {params?.link?.content}
                 </a>
               </div>
-            )}
+            )} */}
           </div>
         </section>
       </div>
