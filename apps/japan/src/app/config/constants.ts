@@ -1,0 +1,4 @@
+export const API = {
+  baseUrl: 'https://test.cms.campaign.cactusops.com/api',
+  token: 'Bearer 4c8a2f6a81e58a10e600657dd6c84caefbf625f332d79e209d453439444eea03e6af68de73ac6efce2f36f72bae705451bbd26c9ce4f31555dace92976c1f50b0f799fd72d1db0151cfa2795b52da596418661930d583b375ee4f021274a0e9ebc0c2719c1323944104eb93a5e9ea09f0e1d282ebab115fdd98ea66177435e66'
+};

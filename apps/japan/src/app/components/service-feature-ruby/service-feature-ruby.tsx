@@ -30,9 +30,9 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   useEffect(() => {
-    if(saParam) { 
+    if (saParam) {
       searchText = saParam;
-  }
+    }
     const getSubData = async () => {
       let resp = await getData(searchText);
       setData(resp);
@@ -72,7 +72,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
                   校正者数
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {data.editors}人
+                  {commarize(data.editors)}人
                 </span>
               </div>
             </div>
@@ -87,7 +87,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
                   校正実績
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {data.jobs}稿
+                  {commarize(data.jobs)}稿
                 </span>
               </div>
             </div>
@@ -101,7 +101,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
                   お客様数
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {data.clients}人
+                  {commarize(data.clients)}人
                 </span>
               </div>
             </div>
@@ -111,16 +111,24 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
     </>
   );
 };
-
-function getData(input:string) {
-  return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
+function commarize(numStr : number ) {
+    return Number(numStr).toLocaleString()
+}
+function getMachineName(input: string) {
+  const query = '[$eq]=' + input;
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
+    return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
+  })
+}
+function getData(input: string) {
+  return subjectAPIService.getWholeData(input, 'sa_one_five.social_attributes').then(function (response: any) {
     if (response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors) {
       return {
         editors: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors,
         jobs: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.jobs,
         clients: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.clients,
         image: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image,
-        title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? '',
+        title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
       };
     } else {
       return {
@@ -128,10 +136,10 @@ function getData(input:string) {
         jobs: 0,
         clients: 0,
         image: '',
-        title: '',
+        title : ''
       };
     }
-   
+
   });
 }
 
