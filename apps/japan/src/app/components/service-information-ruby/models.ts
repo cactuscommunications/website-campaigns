@@ -44,7 +44,7 @@ export interface IServiceInformationRuby {
     export interface IPricing {
       path1: string;
       path2: string;
-      path3: string;
+      path3?: string;
       wordCount: string;
       days: string;
       text: string;

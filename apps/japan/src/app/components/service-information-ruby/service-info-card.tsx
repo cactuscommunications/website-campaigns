@@ -5,7 +5,7 @@ import MarkDown from '../markdown/markdown';
 
     
 
-export function ServiceInfoCard({ card }: { card: ICardInfo }) {
+export function ServiceInfoCard({ card,data }: { card: ICardInfo, data :any }) {
   let start = 0;
   let end = card.list.length;
   let mid = Math.ceil((card.list.length) / 2);
@@ -18,7 +18,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
             <h3 className="text-5xl text-white leading-9 font-pb mt-7 mx-6 sm:text-2xl sm:ml-3">{card?.heading.heading + ">"}</h3>
           </a>  
         <span className="bg-diamond-kappa py-2 pl-3 pr-10 rounded-l-3xl font-sb text-ruby-alpha text-base -mr-px flex self-center sm:absolute sm:top-full sm:right-px sm:mt-2">
-          <span className="w-7 h-7 bg-no-repeat inline-block bg-contain mr-2" style={{backgroundImage: `url(${card.heading.path})`,}}></span>{card.heading.comment}
+          <span className="w-7 h-7 bg-no-repeat inline-block bg-contain mr-2" style={{backgroundImage: `url(${card.heading.path})`,}}></span>{data.service_flag}
         </span>
       </div>
     </div>
