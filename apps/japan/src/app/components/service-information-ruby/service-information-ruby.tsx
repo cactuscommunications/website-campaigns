@@ -107,7 +107,7 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "担当校正者への質問何回でも無料"
+              text: "担当校正者への質問は何回でも無料"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
@@ -149,7 +149,7 @@ export function ServiceInformationRuby(){
             listHeading: "[充実の校正サポート]",
             list: [{
               path: "/assets/images/icons/check-round-small.svg",
-              text: "365日間何度でも無料フォーマット調整 !!break!!投稿先を何度変更しても追加料金無し！"
+              text: "365日間何度でも無料フォーマット調整 !!break!!＊投稿先を何度変更しても追加料金無し！"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
