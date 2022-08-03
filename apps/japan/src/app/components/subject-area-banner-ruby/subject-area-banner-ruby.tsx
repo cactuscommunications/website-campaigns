@@ -17,6 +17,7 @@ interface ISubjectAreaBannerRubyParams {
   mobileBackgroundImg?: string;
   backgroundImg?: string;
   searchMessage: string;
+  validationMessage : string;
 }
 interface IserachList {
   name: string;
@@ -32,27 +33,43 @@ const SubjectAreaBannerRuby: React.FC = () => {
     heading3: 'どちらの専門分野をご検討ですか？',
     mobileBackgroundImg: '/assets/images/subject-area-banner-m.jpg',
     backgroundImg: '/assets/images/subject-area-banner.jpg',
-    searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。'
+    searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!break!!!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。!!break!!カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。',
+    validationMessage : '英語で入力してくだ てください'
   };
   const [searchTerm, setSearchTerm] = useState('');
   const [machineName, setMachineName] = useState('');
+  const [saSelected, setSaSelected] = useState(false);
   const [searchList, setSearchList] = useState<IserachList[]>([]);
   const [searchObj, setSearchObj] = useState({ name: '', machineName: '' });
   var url = new URL(location.href);
   var saParam = url.searchParams.get('sa');
+  const [noDataMessage, setNoDataMessage] = useState(false);
+  const [showValidation, setShowValidation] = useState(false);
   useEffect(() => {
     const delayDebounceFn = setTimeout(async (event) => {
-      if (searchTerm.length >= 3) {
+      setShowValidation(false);
+      setNoDataMessage(false);
+      if (searchTerm.length > 0 && !searchTerm.match(/^[\w\-\s]+$/)) {
+        setShowValidation(true);
         setSearchList([]);
+      }
+      if (searchTerm.length >= 3 && !saSelected && searchTerm.match(/^[\w\-\s]+$/)) {
+        setSearchList([]);
+        setNoDataMessage(false);
         let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'));
+        if (resp.length == 0) {
+          setNoDataMessage(true);
+        }
         setSearchList(resp);
       }
     }, 30);
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
   const handleChange = (text: any) => {
+    setSaSelected(true)
+    setNoDataMessage(false);
     setSearchList([]);
-    setSearchObj(text)
+    setSearchObj(text);
     setSearchTerm(text.name);
   };
   const searchResults = () => {
@@ -92,7 +109,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
                   type="text"
                   value={searchTerm}
                   className="text-ruby-alpha text-base font-ssb leading-5 py-3 pl-12.5 pr-2.5 w-94 h-12.5 rounded-l border border-lapis-delta focus-visible:outline-0 sm:w-full sm:rounded"
-                  placeholder="Enter text here"
+                  placeholder="専門分野名を英語でご入力ください"
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <span
@@ -108,12 +125,12 @@ const SubjectAreaBannerRuby: React.FC = () => {
                   className="btn btn-primary min-w-fit rounded-l-none rounded-r w-full outline-none text-white text-base font-sb leading-5 sm:rounded"
                   onClick={searchResults}
                 >
-                  Show Results
+                  検索する
                 </button>
               </div>
             </div>
 
-            {searchList.length > 1 && (
+            {searchList && searchList.length >= 1 && (
               <div className="mt-0.5 relative">
                 <div className="absolute top-0 left-0 w-94 max-h-61.2 bg-white overflow-auto custom-scroll rounded-lg shadow z-1">
                   {searchList.map((item) => (
@@ -130,10 +147,17 @@ const SubjectAreaBannerRuby: React.FC = () => {
                 </div>
               </div>
             )}
-            {searchList.length == 0 && searchTerm.length > 3 && (
+            {noDataMessage && (
               <div className="flex  mt-3  sm:flex-col sm:items-center">
                 <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3">
                   <MarkDown data={params.searchMessage}></MarkDown>
+                </p>
+              </div>
+            )}
+            {showValidation && searchTerm.length > 0 && (
+              <div className="flex  mt-3  sm:flex-col sm:items-center">
+                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3">
+                  <MarkDown data={params.validationMessage}></MarkDown>
                 </p>
               </div>
             )}
@@ -153,33 +177,31 @@ const SubjectAreaBannerRuby: React.FC = () => {
   );
 };
 
-function getSearchList(serachText: string) {
-  const query = '[$containsi]=' + serachText
-  return subjectAPIService.getSearchList(query).then(function (response: any) {
+function getSearchList(input: string) {
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five', 'contains').then(function (response: any) {
     let returnData: { name: string, searchTitle: string, machineName: string }[] = [];
     response.data.data.map((key: any) => {
       let machineName = '';
       switch (response.data.data[0]?.attributes.type) {
         case 'SA1': {
-          machineName = response.data.data[0].attributes.sa_one.data[0].attributes.machine_name;
+          machineName = key.attributes.sa_one.data[0].attributes.machine_name;
           break;
         }
         case 'SA1.5': {
-          machineName = response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name;
+          machineName = key.attributes.sa_one_five.data[0].attributes.machine_name;
           break;
         }
         case 'SA2.0': {
-          machineName = response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name;
+          machineName = key.attributes.machine_name;
           break;
         }
         default: {
-          machineName = response.data.data[0].attributes.sa_one.data[0].attributes.machine_name;
+          machineName = key.attributes.sa_one.data[0].attributes.machine_name;
           break;
         }
       }
       returnData.push({ name: key.attributes.name, searchTitle: key.attributes.search_title, machineName: machineName });
     });
-
     return returnData;
   });
 }

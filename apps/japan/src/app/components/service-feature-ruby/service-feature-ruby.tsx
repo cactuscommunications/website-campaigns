@@ -16,22 +16,23 @@ interface Idata {
   editors: number;
   jobs: number;
   clients: number;
-  image : string
+  image: string;
+  title?: string;
 }
 
 const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
-  const [data, setData] = useState({ editors: 0, jobs: 0, clients: 0, image : '' });
+  const [data, setData] = useState({ editors: 0, jobs: 0, clients: 0, image : '', title : '' });
   let [active, setActive] = useState(1);
   const params: IServiceFeatureRubyParams = {
-    heading: 'Medicine and Clinical Researcher !!break!! 分野の英文校正サービスと実績',
+    heading: 'Medicine and Clinical Researcher ',
     mobileMedicallBg: '/assets/images/mobile-medicin-bg.png',
   };
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   useEffect(() => {
-    if(saParam) { 
+    if (saParam) {
       searchText = saParam;
-  }
+    }
     const getSubData = async () => {
       let resp = await getData(searchText);
       setData(resp);
@@ -50,13 +51,13 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
         <div className="container sm:px-0">
           <h2 className="text-center leading-44 mb-5 sm:mb-0 sm:leading-29">
             <div className="font-pb text-3xl sm:text-20 sm:leading-29 sm:block md:text-2xl">
-              <MarkDown data={params?.heading}></MarkDown>
+              {data.title ? data.title : params?.heading} <br/> の英文校正サービスと実績
             </div>
           </h2>
           <div
-            className="hidden sm:block bg-contain bg-no-repeat w-90 h-56.75 mx-auto -mt-8 max-w-full"
+            className="hidden sm:block bg-contain bg-no-repeat w-90 h-56.75 mx-auto max-w-full"
             style={{
-              backgroundImage: `url(${isMobile ? params.mobileMedicallBg : data.image})`,
+              backgroundImage: `url(${'/assets/images/backgrounds/mobile' + data.image.replace('/assets/images/backgrounds','')})`,
             }}
           ></div>
 
@@ -65,13 +66,13 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
               <span className="font-sb text-lapis-delta opacity-40 text-5xl leading-45 -mt-4 sm:text-20 sm:leading-30 sm:-mt-1.5">
                 1
               </span>
-              <span className="w-1 inline-block h-14 bg-opal-alpha mr-3.75 ml-1.5"></span>
+              <span className="w-1 inline-block h-12 bg-opal-alpha mr-3.75 ml-1.5"></span>
               <div className="inline-flex flex-col">
                 <span className="font-pr text-ruby-alpha text-sm leading-4 mb-0.5 sm:text-xs sm:leading-14 sm:mb-1.5">
                   校正者数
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {data.editors}人
+                  {commarize(data.editors)}以上
                 </span>
               </div>
             </div>
@@ -80,13 +81,13 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
               <span className="font-sb text-lapis-delta opacity-40	 text-5xl leading-45 -mt-4 sm:text-20px sm:leading-30 sm:-mt-1.5">
                 2
               </span>
-              <span className="w-1 inline-block h-14 bg-jade-alpha mr-3.75 ml-1.5"></span>
+              <span className="w-1 inline-block h-12 bg-jade-alpha mr-3.75 ml-1.5"></span>
               <div className="inline-flex flex-col">
                 <span className="font-pr text-ruby-alpha text-sm leading-4 mb-0.5 sm:text-xs sm:leading-14 sm:mb-1.5">
                   校正実績
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {data.jobs}稿
+                  {commarize(data.jobs)}以上
                 </span>
               </div>
             </div>
@@ -94,13 +95,13 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
               <span className="font-sb text-lapis-delta opacity-40	text-5xl leading-45 -mt-4 sm:text-20 sm:leading-30 sm:-mt-1.5">
                 3
               </span>
-              <span className="w-1 inline-block h-14 bg-amber-alpha mr-3.75 ml-1.5"></span>
+              <span className="w-1 inline-block h-12 bg-amber-alpha mr-3.75 ml-1.5"></span>
               <div className="inline-flex flex-col">
                 <span className="font-pr text-ruby-alpha text-sm leading-4 mb-0.5 sm:text-xs sm:leading-14 sm:mb-1.5">
                   お客様数
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {data.clients}人
+                  {commarize(data.clients)}以上
                 </span>
               </div>
             </div>
@@ -110,25 +111,35 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
     </>
   );
 };
-
-function getData(input:string) {
-  return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
-    if(response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors) { 
+function commarize(numStr : number ) {
+    return Number(numStr).toLocaleString()
+}
+function getMachineName(input: string) {
+  const query = '[$eq]=' + input;
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
+    return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
+  })
+}
+function getData(input: string) {
+  return subjectAPIService.getWholeData(input, 'sa_one_five.social_attributes').then(function (response: any) {
+    if (response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors) {
       return {
         editors: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors,
         jobs: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.jobs,
         clients: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.clients,
-        image : response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image
+        image: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image,
+        title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
       };
     } else {
       return {
         editors: 0,
         jobs: 0,
         clients: 0,
-        image : ''
+        image: '',
+        title : ''
       };
     }
-   
+
   });
 }
 

@@ -9,9 +9,9 @@ import ModalRuby from '../modal-ruby/modal-ruby'
 import { isMobile } from 'react-device-detect';
 
 interface IServiceFeaturePearlParams {
-  heading: string;
-  subjectLabel: string;
-  qualificationLabel: string;
+    heading: string;
+    subjectLabel: string;
+    qualificationLabel: string;
 }
 
 const CarouselPearl = ({ searchText }: { searchText: string }) => {
@@ -24,8 +24,8 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
     const params: IServiceFeaturePearlParams = {
-      heading: 'お客さまからの声：',
-      subjectLabel: 'Subject Area',
+      heading: '校正者の例：',
+      subjectLabel: '専門分野',
       qualificationLabel: 'Degree'
     };
     useEffect(() => {
@@ -34,11 +34,11 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
         }
         const getEditorsData = async () => {
             let machineName = '';
-              machineName = await getMachineName(searchText);
+            machineName = await getMachineName(searchText);
             let resp = await getData(searchText);
             setTestimonials(resp.data);
             setIndicator(resp.data);
-            setTitle (resp.title)
+            setTitle(resp.title)
         };
         getEditorsData();
     }, [searchText]);
@@ -46,7 +46,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
      * carousal indicators (dots) modifier
      * @author Goutham Reddy
      */
-  function setIndicator(input: any) {
+    function setIndicator(input: any) {
         if (input && input.length > 0) {
             let chunks = [];
             for (let i = 0; i < input.length; i += chunkSize) {
@@ -59,7 +59,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
         }
 
     }
-  function goToIndicator(index: number) {
+    function goToIndicator(index: number) {
         setPosition(index);
         setIndicator(testimonials);
     }
@@ -77,8 +77,8 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                             {testimonialsChunk[position].map((trow: any, ti) => (
 
                                 <div
-                                  key={ti}
-                                  className="float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-87">
+                                    key={ti}
+                                    className="float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-87">
                                     <div className="dyna-height-1 flex px-6 pt-7.5 pb-6.25 bg-opal-gamma1" style={{ height: "129.531px" }}>
                                         <div className="w-15 h-15 bg-no-repeat bg-contain relative rounded-full flex-shrink-0"
                                             style={{
@@ -97,17 +97,19 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                     </div>
                                     <div className="dyna-height-3 flex bg-white px-6 pt-4 w-full pb-4" style={{ height: "72.25px" }}>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} years</p>
-                                            Experience </div>
+                                            <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} 年以上</p>
+                                            校正者歴 </div>
                                         <div className="w-1/3  text-xs text-center font-ssb">
-                                            <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} </p> Satisfaction Rate</div>
+                                          <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} </p>
+                                          顧客満足度
+                                        </div>
 
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> Papers Edited </div>
+                                            <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> 校正稿数 </div>
                                     </div>
-                                <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.subjectLabel }</div>
+                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{params.subjectLabel}</div>
                                     <ul className="bg-white dyna-height-4 mb-3 mt-1 px-6 overflow-hidden" style={{ height: "287px" }} >
-                                        {trow.attributes.expertise_area.split(',').slice(0,10).map((area: string) => {
+                                        {trow.attributes.expertise_area.split(',').slice(0, 10).map((area: string) => {
                                             return (
                                                 <li className="text-xs flex my-2"><span
                                                     className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
@@ -120,17 +122,17 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                                 </li>
                                             )
                                         })}
-                        {<span
-                        onClick={() => {
-                          setOpenModal(true);
-                        }}
-                        className="text-xs text-pearl-beta font-ssb text-underline-hover">
-                        {trow.attributes.expertise_area.length > 10? "read more" : ''}
-                      </span>}
-                                        {openModal && <ModalRuby closeModal={setOpenModal} data = {trow} />}
+                                        {<span
+                                            onClick={() => {
+                                                setOpenModal(true);
+                                            }}
+                                            className="text-xs text-pearl-beta font-ssb text-underline-hover">
+                                            {trow.attributes.expertise_area.length > 10 ? "read more" : ''}
+                                        </span>}
+                                        {openModal && <ModalRuby closeModal={setOpenModal} data={trow} />}
 
                                     </ul>
-                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.qualificationLabel }</div>
+                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{params.qualificationLabel}</div>
                                     <ul className="bg-white dyna-height-5 mb-3 mt-1 px-6" style={{ height: "39.5px" }}>
                                         <li className="text-xs flex my-2"><span
                                             className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
@@ -144,8 +146,8 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                     }
                     <div className="text-center w-full float-left mt-7">
                         {testimonialsChunk.map((card, index) => (
-                          <span
-                            key={index}
+                            <span
+                                key={index}
                                 onClick={(e) => goToIndicator(index)}
                                 className={
                                     (index !== position ? 'bg-lapis-delta/20' : 'bg-lapis-delta') +
@@ -164,20 +166,19 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     );
 };
 function getMachineName(input: string) {
-    const query = '[$eq]=' + input;
-    return subjectAPIService.getSearchList(query).then(function (response: any) {
-      return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
+    return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
+        return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
     })
-  }
+}
 function getData(input: string) {
     let returnData = { data: [], title: '' }
-    
-    return subjectAPIService.getServiceFeatures(input).then(function (response: any) {
+
+    return subjectAPIService.getWholeData(input, 'sa_one_five.editors').then(function (response: any) {
         returnData = {
             data: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.editors?.data ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.editors?.data : [],
-            title : response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title : ''
+            title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title : ''
         }
-    return returnData
+        return returnData
 
     });
 }

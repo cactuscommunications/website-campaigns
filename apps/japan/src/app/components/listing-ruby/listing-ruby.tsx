@@ -29,7 +29,7 @@ interface ISubjectList {
   pageCount: number;
 }
 const params: IListingRubyParams = {
-  heading: 'Nutrition and dietetics を含む Medicine and Clinical Researcher !!break!! 分野では以下の専門分野に対応しています。',
+  heading: 'エディテージ',
   pageIcon: ['assets/images/icons/circle-arrow-left.svg', 'assets/images/icons/circle-arrow-right.svg'],
   subjects: [],
   pageNumber: 1,
@@ -51,6 +51,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   let [pageSize, setpageSize] = useState(1);
   let [total, setPageTotal] = useState(1);
   let [currentPage, setCurrentPage] = useState(1);
+  let [searchTitle, setSearchTitle] = useState('');
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   useEffect(() => {
@@ -58,16 +59,16 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
       searchText = saParam;
     }
     const getSubData = async () => {
-      let machineName = '';
-      if (searchText)
-        machineName = await getMachineName(searchText);
+      const { machineName, searchTitle} = await getMachineName(searchText);
+      setSearchTitle(searchTitle);
+        
       let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns);
       setSubjects(subData.subjects);
       setPage(subData.pageObj.page);
       setPageCount(subData.pageObj.pageCount);
       setpageSize(subData.pageObj.pageSize);
       setPageTotal(subData.pageObj.total);
-      getPageDetails(subData.subjects, params.pageNumber , isMobile ? pageColumns : pageRows * pageColumns);
+      getPageDetails(subData.subjects, params.pageNumber, isMobile ? pageColumns : pageRows * pageColumns);
     };
     getSubData();
   }, [searchText, currentPage]);
@@ -84,12 +85,14 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
         <div className="container">
           {!hideHeading &&
             <React.Fragment>
-              <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center"><MarkDown data={params?.heading}></MarkDown></h2>
+              <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
+                <MarkDown data={(searchTitle ? searchTitle : params?.heading) + '!!break!! では以下の専門分野に対応しています。'}></MarkDown>
+              </h2>
               {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
             </React.Fragment>
           }
           <div
-            className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-15 sm:text-center'}>
+            className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-7.5 sm:text-center'}>
             <div className="flex justify-center">
               {subjects.length > 0 && chunkedArray?.map((row: ISubjects[], i) => (
                 <div key={i} className="w-1/4 sm:w-full float-left">
@@ -129,17 +132,26 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
    * Get details of records to displayed on the currentPage
    * @param currentPage currentPage
    */
-  function getPageDetails(subjects: ISubjects[], currentPage: number, pageSize:number) {
+  function getPageDetails(subjects: ISubjects[], currentPage: number, pageSize: number) {
     startIndex = (currentPage - 1) * pageSize;
     endIndex = Math.min(startIndex + pageSize - 1, subjects.length - 1);
     let items = subjects.slice(startIndex, endIndex + 1);
     chunkedArray = createChunks(items);
   }
   function getMachineName(input: string) {
+    if (!input) {
+      return {
+        machineName: '',
+        searchTitle: ''
+      }
+    }
     const query = '[$eq]=' + input;
-    return subjectAPIService.getSearchList(query).then(function (response: any) {
-      return response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '';
-    })
+    return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
+      return {
+        machineName: response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '',
+        searchTitle: response.data.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.search_title : '',
+      }
+    });
 
   }
   function getSubjectData(input: string, page: number, pageSize: number) {

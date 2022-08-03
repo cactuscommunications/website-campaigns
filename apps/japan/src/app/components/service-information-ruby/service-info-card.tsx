@@ -26,9 +26,9 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
           <MarkDown data={card.desc}></MarkDown>
         </p>
 
-      <div  className={`mt-5 flex items-center  px-6 rounded-lg py-3 z-10 sm:px-4 content before:absolute before:border-t before:-z-10 before:border-ruby-beta/50 before:left-0 before:right-0 ${card.benefit?.className ? card.benefit?.className : ''}`}>
-        <span className="bg-no-repeat bg-contain inline-block w-7	h-7 mr-2 flex-shrink-0 sm:w-5 sm:h-5 sm:mr-1.5" style={{backgroundImage: `url(${card.benefit.path})`,}}></span>
-        <span className="text-sm font-pb text-ruby-alpha sm:text-13 sm:leading-19">{card?.benefit.text}</span>
+      <div  className={`mt-5 flex items-center  px-6 rounded-lg py-3 z-10 sm:px-4 content before:absolute before:border-t before:-z-10 before:border-ruby-beta/50 before:left-0 before:right-0`}>
+        {/* <span className="bg-no-repeat bg-contain inline-block w-7	h-7 mr-2 flex-shrink-0 sm:w-5 sm:h-5 sm:mr-1.5" style={{backgroundImage: `url(${card.benefit.path})`,}}></span>
+        <span className="text-sm font-pb text-ruby-alpha sm:text-13 sm:leading-19">{card?.benefit.text}</span> */}
       </div>
 
       <div className="mt-8 sm:mt-6">
@@ -87,9 +87,11 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
                         単語数の入力で料金・納期をその場でご確認いただけます</p>
                 </div>
             </div>
-            <div className="w-16 bg-pearl-delta1 flex-shrink-0 flex rounded-r-md sm:w-14 md:w-17.5"><span
-              className="inline-block w-6 h-5.5 bg-contain bg-no-repeat mx-auto self-center sm:w-6.5 sm:h-6  ng-lazyloaded"
-              style={{backgroundImage: `url(${card.pricing.path2})`,}}></span>
+            <div className="flex justify-center items-center w-16 bg-pearl-delta1 flex-shrink-0 flex rounded-r-md sm:w-14 md:w-17.5">
+              <div>
+              <span className='inline-block w-3 h-3 border-t-3 border-r-3 border-white rotate-45'></span>
+              <span className='inline-block w-3 h-3 border-t-3 border-r-3 border-white rotate-45 -ml-0.75'></span>
+              </div>
             </div>
           </div>
         </a>

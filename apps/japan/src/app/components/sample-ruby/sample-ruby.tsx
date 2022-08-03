@@ -36,7 +36,8 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
     backgroundColor: 'bg-primary',
     heading: '校正サンプル',
     subHeading: 'クリックすると各サービスの校正サンプルがダウンロードされます。',
-    title: 'スタンダード英文校正'
+    title: 'スタンダード英文校正',
+    
   };
 
   return (
@@ -60,7 +61,9 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
                   className="w-80 px-5 box-border sm:mb-7.5 sm:px-2 md:w-1/3 xxl:px-3">
                   <div className="border border-ruby-upsilon rounded pt-6 px-3 pb-4 bg-white w-full xxl:px-2.5">
                     {params.title && (
-                      <h3 className="font-sb text-lg leading-21 text-ruby-alpha text-center mb-4">{params.title}</h3>
+                      <h3 className="font-sb text-lg leading-21 text-ruby-alpha text-center mb-4">
+                        {index === 0 ? params.title : index === 1 ? 'プレミアム英文校正' : 'トップジャーナル英文校正'}
+                      </h3>
                     )}
                     <div
                       className="w-64 h-64 bg-no-repeat bg-contain mx-auto md:w-full sm:w-full sm:max-w-full sm:bg-center"
@@ -70,7 +73,7 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
                     ></div>
                     <div className="px-2 text-center mt-5">
                       <a className="btn btn-primary" href={sample}>
-                        <span className="w-full py-3 text-center font-pb">{params.title}</span>
+                        <span className="w-full py-3 text-center font-pb">サンプルをダウンロード</span>
                       </a>
                     </div>
                   </div>
@@ -88,14 +91,14 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
 }
 function getMachineName(input: string) {
   const query = '[$eq]=' + input;
-  return subjectAPIService.getSearchList(query).then(function (response: any) {
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
     return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
   })
 }
 function getSampleData(input: string) {
   let returnData: Isamples = { data: [], title: '' }
 
-  return subjectAPIService.getSamples(input).then(function (response: any) {
+  return subjectAPIService.getWholeData(input, 'sa_one_five.samples').then(function (response: any) {
     if (response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes?.samples) {
       returnData = {
         data: [
