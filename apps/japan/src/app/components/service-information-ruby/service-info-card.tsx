@@ -26,7 +26,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
           <MarkDown data={card.desc}></MarkDown>
         </p>
 
-      <div  className={`mt-5 flex items-center  px-6 rounded-lg py-3 z-10 sm:px-4 content before:absolute before:border-t before:-z-10 before:border-ruby-beta/50 before:left-0 before:right-0`}>
+      <div  className={`mt-5 px-6 py-3 z-10 sm:px-4 content before:absolute before:border-t before:-z-10 before:border-ruby-beta/50 before:left-0 before:right-0`}>
         {/* <span className="bg-no-repeat bg-contain inline-block w-7	h-7 mr-2 flex-shrink-0 sm:w-5 sm:h-5 sm:mr-1.5" style={{backgroundImage: `url(${card.benefit.path})`,}}></span>
         <span className="text-sm font-pb text-ruby-alpha sm:text-13 sm:leading-19">{card?.benefit.text}</span> */}
       </div>

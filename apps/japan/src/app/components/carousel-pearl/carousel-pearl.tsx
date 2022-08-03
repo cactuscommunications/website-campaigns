@@ -77,9 +77,9 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                             {testimonialsChunk[position].map((trow: any, ti) => (
 
                                 <div
-                                    key={ti}
-                                    className="float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-87">
-                                    <div className="dyna-height-1 flex px-6 pt-7.5 pb-6.25 bg-opal-gamma1" style={{ height: "129.531px" }}>
+                                  key={ti}
+                                  className="float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-87">
+                                    <div className="dyna-height-1 flex px-5 pt-5 pb-5 bg-opal-gamma1" style={{ height: "110px" }}>
                                         <div className="w-15 h-15 bg-no-repeat bg-contain relative rounded-full flex-shrink-0"
                                             style={{
                                                 backgroundImage: `url(${trow.attributes.image})`
@@ -95,7 +95,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                             <p className="text-xs text-ruby-alpha font-ssb pt-0 -mt-0.5">{trow.attributes.nationality}</p>
                                         </div>
                                     </div>
-                                    <div className="dyna-height-3 flex bg-white px-6 pt-4 w-full pb-4" style={{ height: "72.25px" }}>
+                                    <div className="dyna-height-3 flex bg-white px-5 pt-4 w-full pb-4" style={{ height: "72.25px" }}>
                                         <div className="w-1/3 text-xs text-center font-ssb">
                                             <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} 年以上</p>
                                             校正者歴 </div>
@@ -107,9 +107,9 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                         <div className="w-1/3 text-xs text-center font-ssb">
                                             <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> 校正稿数 </div>
                                     </div>
-                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{params.subjectLabel}</div>
-                                    <ul className="bg-white dyna-height-4 mb-3 mt-1 px-6 overflow-hidden" style={{ height: "287px" }} >
-                                        {trow.attributes.expertise_area.split(',').slice(0, 10).map((area: string) => {
+                                <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.subjectLabel }</div>
+                                    <ul className="bg-white dyna-height-4 mb-3 mt-1 px-5 overflow-hidden" style={{ height: "287px" }} >
+                                        {trow.attributes.expertise_area.split(',').slice(0,10).map((area: string) => {
                                             return (
                                                 <li className="text-xs flex my-2"><span
                                                     className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
@@ -132,8 +132,8 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                         {openModal && <ModalRuby closeModal={setOpenModal} data={trow} />}
 
                                     </ul>
-                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{params.qualificationLabel}</div>
-                                    <ul className="bg-white dyna-height-5 mb-3 mt-1 px-6" style={{ height: "39.5px" }}>
+                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.qualificationLabel }</div>
+                                    <ul className="bg-white dyna-height-5 mb-2 mt-1 px-5" style={{ height: "39.5px" }}>
                                         <li className="text-xs flex my-2"><span
                                             className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
                                             <div className="text-xs font-ssb">{trow.attributes.degree}
