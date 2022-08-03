@@ -26,7 +26,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     const params: IServiceFeaturePearlParams = {
       heading: '校正者の例：',
       subjectLabel: '専門分野',
-      qualificationLabel: 'Degree'
+      qualificationLabel: '最終学歴'
     };
     useEffect(() => {
         if (saParam) {
