@@ -86,13 +86,13 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
           {!hideHeading &&
             <React.Fragment>
               <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
-                <MarkDown data={(searchTitle ? searchTitle : params?.heading) + '!!break!! 分野では以下の専門分野に対応しています。'}></MarkDown>
+                <MarkDown data={(searchTitle ? searchTitle : params?.heading) + '!!break!! では以下の専門分野に対応しています。'}></MarkDown>
               </h2>
               {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
             </React.Fragment>
           }
           <div
-            className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-15 sm:text-center'}>
+            className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-7.5 sm:text-center'}>
             <div className="flex justify-center">
               {subjects.length > 0 && chunkedArray?.map((row: ISubjects[], i) => (
                 <div key={i} className="w-1/4 sm:w-full float-left">

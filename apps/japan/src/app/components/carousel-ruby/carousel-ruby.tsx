@@ -82,7 +82,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                         backgroundImage: `url(${'/assets/images/Shapequote.svg'})`,
                       }}
                     ></span>
-                    <p className="text-lg font-ssb text-ruby-alpha md:text-base sm:text-base sm:leading-6">
+                    <p className="text-lg font-ssb text-ruby-alpha relative md:text-base sm:text-base sm:leading-6">
                       {/* {trow.attributes.comment} */}
                       {trow.attributes.comment.length > params.textLength ? trow.attributes.comment.slice(0, params.textLength) : trow.attributes.comment}
                       {<span
@@ -92,7 +92,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                           setReadMoreSubject(trow.attributes.subject);
                         }}
                         className="text-pearl-beta font-ssb text-underline-hover">
-                        {trow.attributes.comment.length > params.textLength ? "...read more" : ''}
+                        {trow.attributes.comment.length > params.textLength ? "...続きを読む" : ''}
                       </span>}
                     </p>
                   </div>
@@ -100,7 +100,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                     <div className="flex justify-between">
                       <div className="w-[calc(100%-70px)] mb-4 md:w-[calc(100%-80px)]">
                         <h3 className="text-20 font-sb text-ruby-alpha leading-6 md:text-base sm:text-lg	sm:leading-21">
-                          <span className="inline-block mr-2 w-1 h-3.5 bg-emerald-600	"></span> {trow.attributes.user}
+                          <span className="inline-block mr-1 w-1 h-3.5 bg-emerald-600	"></span> {trow.attributes.user}
                         </h3>
                         <p className="text-sm leading-4 text-ruby-beta font-ssb mt-1 sm:text-13 sm:leading-15">
                           {trow.attributes.designation}
@@ -115,7 +115,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                     </div>
                     <div className="mt-auto sm:mt-3">
                       <span className="block uppercase font-sb text-xs text-ruby-beta leading-4 mb-1 tracking-wider sm:text-11">
-                        SUBJECT AREA
+                      専門分野
                       </span>
                       <span className="block text-sm font-ssb text-ruby-beta leading-4 sm:text-13">
                         {trow.attributes.subject}

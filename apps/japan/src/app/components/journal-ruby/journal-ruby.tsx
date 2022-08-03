@@ -22,13 +22,12 @@ export function JournalRuby({ searchText }: { searchText: string }) {
 
   const params: IJournalRubyParams = {
     backgroundColor: 'bg-white',
-    heading: '校正サンプル：',
+    heading: '弊社で実績のあるTOP 5 ジャーナル：',
     mobileHeading: '弊社で実績のあるTOP 5 ジャーナル',
     subHeading: 'ハイインパクトファクターの学術誌にも豊富な経験と実績がございます。',
     mobileSubHeading:
-      "We've helped 6,750 papers get published on top medical Journals such as The Lancet, Jama, Nature Medicine and BMJ",
-
-    journalLabel: 'Impact Factor:',
+      "ハイインパクトファクターの学術誌にも豊富な経験と実績がございます。",
+    journalLabel: 'インパクトファクター：',
   };
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
@@ -65,13 +64,13 @@ export function JournalRuby({ searchText }: { searchText: string }) {
             <span className="sm:hidden">{params.subHeading}</span>
             <span className="hidden sm:block">{params.mobileSubHeading}</span>
           </p>
-          <div className="w-full flex justify-center mt-5 flex-wrap">
+          <div className="w-full flex justify-center mt-5 flex-wrap sm:flex-nowrap sm:justify-start sm:overflow-x-auto">
             {journals
               .sort((first, second) => {
                 return first.impact_factor < second.impact_factor ? 1 : -1;
               })
               .map((journal) => (
-                <div key={journal.name} className="rounded-lg border border-pearl-beta pb-3 w-56 mx-2.5">
+                <div key={journal.name} className="rounded-lg border border-pearl-beta pb-3 w-56 mx-2.5 sm:shrink-0">
                   <div
                     className="h-75 bg-no-repeat bg-contain w-full rounded-t-lg"
                     style={{

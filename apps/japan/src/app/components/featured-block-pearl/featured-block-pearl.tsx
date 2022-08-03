@@ -1,3 +1,5 @@
+import { isMobile } from "react-device-detect";
+
 export function FeaturedBlockPearl() {
   interface IFeaturedBlockPearlParams {
     heading: string;
@@ -47,6 +49,12 @@ export function FeaturedBlockPearl() {
               <h2 className="text-4.5xl sm:text-xxl md:text-3.6xl text-ruby-alpha">{params.heading}</h2>
             )}
           </div>
+          {isMobile && (<div
+              style={{
+                backgroundImage: `url('/assets/images/featured-block-pearl-m.svg')`,
+              }}
+              className="w-93 h-56.75 bg-no-repeat bg-center float-left order-1"
+            ></div>)}
           <div className="pt-16 float-left w-full flex justify-center sm:pt-8">
             <div className="w-1/2 sm:w-full float-right order-2 pl-16 sm:pl-0">
                 <ul className="pl-4">
