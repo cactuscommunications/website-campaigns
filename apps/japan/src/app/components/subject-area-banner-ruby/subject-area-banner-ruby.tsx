@@ -81,7 +81,8 @@ const SubjectAreaBannerRuby: React.FC = () => {
   };
   const searchResults = () => {
     // setMachineName();
-    window.location.replace(location.origin + location.pathname + '?sa=' + (searchObj.machineName ? searchObj.machineName : searchTerm))
+    if (!showValidation)
+      window.location.replace(location.origin + location.pathname + '?sa=' + (searchObj.machineName ? searchObj.machineName : searchTerm))
 
   };
   return (
