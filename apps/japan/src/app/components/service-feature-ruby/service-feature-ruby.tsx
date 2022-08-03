@@ -51,7 +51,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
         <div className="container sm:px-0">
           <h2 className="text-center leading-44 mb-5 sm:mb-0 sm:leading-29">
             <div className="font-pb text-3xl sm:text-20 sm:leading-29 sm:block md:text-2xl">
-              {data.title ? data.title : params?.heading} <br/> 分野の英文校正サービスと実績
+              {data.title ? data.title : params?.heading} <br/> の英文校正サービスと実績
             </div>
           </h2>
           <div
@@ -72,7 +72,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
                   校正者数
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {commarize(data.editors)}人
+                  {commarize(data.editors)}以上
                 </span>
               </div>
             </div>
@@ -87,7 +87,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
                   校正実績
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {commarize(data.jobs)}稿
+                  {commarize(data.jobs)}以上
                 </span>
               </div>
             </div>
@@ -101,7 +101,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
                   お客様数
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {commarize(data.clients)}人
+                  {commarize(data.clients)}以上
                 </span>
               </div>
             </div>

@@ -92,7 +92,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                           setReadMoreSubject(trow.attributes.subject);
                         }}
                         className="text-pearl-beta font-ssb text-underline-hover">
-                        {trow.attributes.comment.length > params.textLength ? "...read more" : ''}
+                        {trow.attributes.comment.length > params.textLength ? "...続きを読む" : ''}
                       </span>}
                     </p>
                   </div>
@@ -115,7 +115,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                     </div>
                     <div className="mt-auto sm:mt-3">
                       <span className="block uppercase font-sb text-xs text-ruby-beta leading-4 mb-1 tracking-wider sm:text-11">
-                        SUBJECT AREA
+                      専門分野
                       </span>
                       <span className="block text-sm font-ssb text-ruby-beta leading-4 sm:text-13">
                         {trow.attributes.subject}

@@ -14,7 +14,7 @@ export function FeaturedBlockDiamond() {
 
   const params: IFeaturedBlockDiamondParams = {
     link: {
-      content: '無料お見積りはこちら',
+      content: '校正者の提案を依頼する',
       route: 'https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area',
       tracking: {
         event: 'click',
@@ -27,9 +27,9 @@ export function FeaturedBlockDiamond() {
       },
     },
     image: '/assets/images/featured-block-diamond-cta.svg',
-    heading: '無料でお見積りいたします！',
+    heading: '専門分野の校正者をお探しですか？',
     subHeading:
-      '料金と納期は、お客様のご依頼内容に合わせてカスタマイズさせていただきます。お気軽にお問い合わせください。',
+      'こちらのフォームから論文（執筆途中でも可能）をお送りいただければ、最適な校正者をご提案いたします。',
     backgroundColor: 'bg-pearl-zeta',
   };
 

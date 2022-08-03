@@ -18,27 +18,27 @@ export function ServiceBlockRuby() {
         heading: "その他の専門分野をお探しですか？",
         "menuItem": [
             {
-                "name": "all",
+                "name": "すべての分野",
                 "machineName": ""
             },
             {
-                "name": "MEDICINE",
+                "name": "医学・医療",
                 "machineName": "medicine"
             },
             {
-                "name": "LIFE SCIENCES",
+                "name": "生命科学",
                 "machineName": "life-sciences"
             },
             {
-                "name": "PHYSICAL SCIENCES AND ENGINEERINGine",
+                "name": "物理化学・工学",
                 "machineName": "physical-sciences-and-engineering"
             },
             {
-                "name": "HUMANITIES AND SOCIAL SCIENCES",
+                "name": "人文社会学",
                 "machineName": "humanities-and-social-sciences"
             },
             {
-                "name": "BUSINESS AND ECONOMICS",
+                "name": "ビジネス・経済学",
                 "machineName": "business-and-economics"
             },
 
