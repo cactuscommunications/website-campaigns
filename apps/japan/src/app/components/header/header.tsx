@@ -8,7 +8,7 @@ export function Header() {
 
   return (
     <>
-      <BrowserView>
+      <BrowserView className="mb-15">
         <div id="header" className="float-left w-full px-15 md:px-5 fixed bg-white shadow z-10 top-0">
           <section className="w-full float-left">
             <div className="float-left flex items-center py-2.5">
