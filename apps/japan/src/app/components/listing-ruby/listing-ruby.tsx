@@ -29,7 +29,7 @@ interface ISubjectList {
   pageCount: number;
 }
 const params: IListingRubyParams = {
-  heading: 'Nutrition and dietetics を含む Medicine and Clinical Researcher',
+  heading: 'エディテージ',
   pageIcon: ['assets/images/icons/circle-arrow-left.svg', 'assets/images/icons/circle-arrow-right.svg'],
   subjects: [],
   pageNumber: 1,
@@ -139,10 +139,19 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     chunkedArray = createChunks(items);
   }
   function getMachineName(input: string) {
-
+    if (!input) {
+      return {
+        machineName: '',
+        searchTitle: ''
+      }
+    }
+    const query = '[$eq]=' + input;
     return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
-      return response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '';
-    })
+      return {
+        machineName: response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '',
+        searchTitle: response.data.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.search_title : '',
+      }
+    });
 
   }
   function getSubjectData(input: string, page: number, pageSize: number) {

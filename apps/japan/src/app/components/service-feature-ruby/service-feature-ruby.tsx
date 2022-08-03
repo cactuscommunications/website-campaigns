@@ -34,8 +34,6 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
       searchText = saParam;
     }
     const getSubData = async () => {
-      let machineName = '';
-      machineName = await getMachineName(searchText);
       let resp = await getData(searchText);
       setData(resp);
     };
@@ -74,7 +72,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
                   校正者数
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {data.editors}人
+                  {commarize(data.editors)}人
                 </span>
               </div>
             </div>
@@ -89,7 +87,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
                   校正実績
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {data.jobs}稿
+                  {commarize(data.jobs)}稿
                 </span>
               </div>
             </div>
@@ -103,7 +101,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
                   お客様数
                 </span>
                 <span className="font-pb text-ruby-alpha text-2xl leading-7 sm:text-x-base sm:leading-18">
-                  {data.clients}人
+                  {commarize(data.clients)}人
                 </span>
               </div>
             </div>
@@ -113,6 +111,9 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
     </>
   );
 };
+function commarize(numStr : number ) {
+    return Number(numStr).toLocaleString()
+}
 function getMachineName(input: string) {
   const query = '[$eq]=' + input;
   return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
@@ -126,14 +127,16 @@ function getData(input: string) {
         editors: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors,
         jobs: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.jobs,
         clients: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.clients,
-        image: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image
+        image: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.image,
+        title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
       };
     } else {
       return {
         editors: 0,
         jobs: 0,
         clients: 0,
-        image: ''
+        image: '',
+        title : ''
       };
     }
 
