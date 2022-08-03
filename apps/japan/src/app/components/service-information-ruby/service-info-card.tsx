@@ -7,14 +7,16 @@ import MarkDown from '../markdown/markdown';
 
 export function ServiceInfoCard({ card }: { card: ICardInfo }) {
   let start = 0;
-  let end = card.list.length
-  let mid = Math.ceil((card.list.length)/2)
+  let end = card.list.length;
+  let mid = Math.ceil((card.list.length) / 2);
   return (
-    <div   className={`border rounded-lg mb-10 ${card.heading?.headingClassName ? card.heading?.headingClassName : ''}`}>
-    <div  className={`rounded-t-lg  relative flex justify-between flex-wrap items-center py-4 sm:pb-5 ${card.heading?.subHeadingClass ? card.heading?.subHeadingClass : ''}`}>
+    <div className={`border rounded-lg mb-10 ${card.heading?.headingClassName ? card.heading?.headingClassName : ''}`}>
+    <div className={`rounded-t-lg  relative flex justify-between flex-wrap items-center py-4 sm:pb-5 ${card.heading?.subHeadingClass ? card.heading?.subHeadingClass : ''}`}>
       <span className="absolute bg-diamond-delta -top-px -left-px text-base leading-9 text-white font-pr px-3 rounded-br-lg	rounded-tl-lg sm:text-13">{card?.heading.specialHeadingText}</span>
       <div className="flex justify-between w-full">
-        <h3 className="text-5xl text-white leading-9 font-pb mt-7 mx-6 sm:text-2xl sm:ml-3">{card?.heading.heading + ">"}</h3>  
+          <a href={card.pricing.link}>
+            <h3 className="text-5xl text-white leading-9 font-pb mt-7 mx-6 sm:text-2xl sm:ml-3">{card?.heading.heading + ">"}</h3>
+          </a>  
         <span className="bg-diamond-kappa py-2 pl-3 pr-10 rounded-l-3xl font-sb text-ruby-alpha text-base -mr-px flex self-center sm:absolute sm:top-full sm:right-px sm:mt-2">
           <span className="w-7 h-7 bg-no-repeat inline-block bg-contain mr-2" style={{backgroundImage: `url(${card.heading.path})`,}}></span>{card.heading.comment}
         </span>
@@ -44,7 +46,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
         </ul>
 
         <ul className="p-0 mt-6 w-1/2 sm:mt-0 sm:w-full">
-        {card.list.slice(mid+1,end).map((card, index) => (
+        {card.list.slice(mid,end).map((card, index) => (
           <ServiceInfoList
             key={index}
             list={card}
@@ -87,7 +89,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
                         単語数の入力で料金・納期をその場でご確認いただけます</p>
                 </div>
             </div>
-            <div className="flex justify-center items-center w-16 bg-pearl-delta1 flex-shrink-0 flex rounded-r-md sm:w-14 md:w-17.5">
+            <div className="flex justify-center items-center w-16 bg-pearl-delta1 flex-shrink-0 rounded-r-md sm:w-14 md:w-17.5">
               <div>
               <span className='inline-block w-3 h-3 border-t-3 border-r-3 border-white rotate-45'></span>
               <span className='inline-block w-3 h-3 border-t-3 border-r-3 border-white rotate-45 -ml-0.75'></span>

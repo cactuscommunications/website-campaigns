@@ -49,10 +49,6 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "業界最速！最短8.5時間納品"
-            },
-            {
-              path: "/assets/images/icons/check-round-small.svg",
               text: "リーズナブルに追加365日有効の再校正１回分"
             },
             {
@@ -111,10 +107,6 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "カバーレター作成無料"
-            },
-            {
-              path: "/assets/images/icons/check-round-small.svg",
               text: "担当校正者への質問何回でも無料"
             },
             {
@@ -156,32 +148,28 @@ export function ServiceInformationRuby(){
             },
             listHeading: "[充実の校正サポート]",
             list: [{
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "365日間何度でも無料フォーマット調整 !!break!!投稿先を何度変更しても追加料金無し！"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "365日間何度でも無料フォーマット調整 !!break!!投稿先を何度変更しても追加料金無し！"
             },
             {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "365日間何度でも無料再校正＊一回の修正量の上限も無し"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "365日間何度でも無料再校正＊一回の修正量の上限も無し"
             },
             {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "研究内容に踏み込んだ論文完成度評価レポート"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "研究内容に踏み込んだ論文完成度評価レポート"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
               text: "365日間何度でも無料査読返信文の校正"
             },
             {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "365日間何度でも無料査読返信文の校正"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "担当校正者への質問は何回でも無料"
             },
             {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "担当校正者への質問は何回でも無料"
-            },
-            {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "納得いくまで書き直します100%品質保証"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "納得いくまで書き直します100%品質保証"
             }
             
             ],
@@ -205,9 +193,9 @@ export function ServiceInformationRuby(){
         CTAtext: 'サービスを比較する'
     }
     return (
-<section className="py-10">
-  <div className="container">
-    <h2 className="font-pb text-center text-ruby-alpha text-5xl mb-8 sm:text-20 sm:leading-7 sm:mb-3">{params.heading}</h2> 
+  <section className="py-10">
+    <div className="container">
+      <h2 className="font-pb text-center text-ruby-alpha text-5xl mb-8 sm:text-20 sm:leading-7 sm:mb-3">{params.heading}</h2> 
       <p className="text-base text-center font-pr text-ruby-alpha mx-auto max-w-240 mb-10 leading-6 sm:text-13 sm:mb-6">{params.subHeading}</p>
       {params.card.map((card, index) => (
         <ServiceInfoCard
@@ -215,20 +203,12 @@ export function ServiceInformationRuby(){
           card={card}
           ></ServiceInfoCard>
       ))}
-
-    {params.card.map((card) => (
-                            <ServiceInfoCard
-                            card={card}
-                            ></ServiceInfoCard>
-                        ))}
-
-  <div className="text-center mt-10">
-    <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
-      <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
-    </a>
-  </div>
-  {openModal && <ModalOpal closeModal={setOpenModal}/>}
-
+      <div className="text-center mt-10">
+        <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
+          <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
+        </a>
+      </div>
+    {openModal && <ModalOpal closeModal={setOpenModal}/>}
   </div>
   </section>
 );
