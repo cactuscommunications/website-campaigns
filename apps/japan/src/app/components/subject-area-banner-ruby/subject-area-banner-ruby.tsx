@@ -17,7 +17,7 @@ interface ISubjectAreaBannerRubyParams {
   mobileBackgroundImg?: string;
   backgroundImg?: string;
   searchMessage: string;
-  validationMessage : string;
+  validationMessage: string;
 }
 interface IserachList {
   name: string;
@@ -34,7 +34,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
     mobileBackgroundImg: '/assets/images/subject-area-banner-m.jpg',
     backgroundImg: '/assets/images/subject-area-banner.jpg',
     searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!break!!!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。!!break!!カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。',
-    validationMessage : '英語で入力してくだ てください'
+    validationMessage: '英語で入力してくだ てください'
   };
   const [searchTerm, setSearchTerm] = useState('');
   const [machineName, setMachineName] = useState('');
@@ -43,10 +43,17 @@ const SubjectAreaBannerRuby: React.FC = () => {
   const [searchObj, setSearchObj] = useState({ name: '', machineName: '' });
   var url = new URL(location.href);
   var saParam = url.searchParams.get('sa');
+  const [loadCounter, setloadCounter] = useState(true);
   const [noDataMessage, setNoDataMessage] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   useEffect(() => {
+    if (saParam && loadCounter) {
+      setSearchTerm(saParam);
+      setloadCounter(false);
+      setSaSelected(true)
+    }
     const delayDebounceFn = setTimeout(async (event) => {
+      setSaSelected(false)
       setShowValidation(false);
       setNoDataMessage(false);
       if (searchTerm.length > 0 && !searchTerm.match(/^[\w\-\s]+$/)) {
@@ -74,7 +81,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
   };
   const searchResults = () => {
     // setMachineName();
-    window.location.replace(location.origin + location.pathname + '?sa=' + searchObj.machineName)
+    window.location.replace(location.origin + location.pathname + '?sa=' + (searchObj.machineName ? searchObj.machineName : searchTerm))
 
   };
   return (
