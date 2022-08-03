@@ -58,9 +58,14 @@ export function ServiceInformationDiamond() {
       <div className="clearfix"></div>
       <div className="h-0.25 w-full bg-grd-iota1"></div>
       <div className="clearfix"></div>
-      <section className="py-5 bg-pearl-alpha sm:pt-3 sm:pb-7 ">
-        <div className="container">
-          <div className="flex items-center justify-center">
+      <section className="py-5 bg-pearl-alpha sm:2">
+        <div className="container ">
+          <div className="hidden sm:block">
+            <div className="w-81 h-15 bg-contain bg-no-repeat mx-auto"
+              style={{backgroundImage: `url('/assets/images/service-information-emerald-mobile.png')`}}>
+            </div>
+          </div>
+          <div className="flex items-center justify-center sm:hidden">
             <div
               className="w-44 h-9.5 bg-contain bg-no-repeat mx-5 flex-shrink-0 sm:order-2 sm:w-40 sm:h-8 sm:ml-4 md:w-40 order-1" 
               style={{ backgroundImage: `url(${params.logo})` }}>
@@ -106,10 +111,12 @@ export function ServiceInformationDiamond() {
                   style={{ backgroundImage: `url('/assets/images/blue-ribbon-right-shape.svg)` }}>&nbsp;</span>
             </div>
           </div>
-      </div>
+          </div>
         </div>
       </section>
-      <div className="h-0.25 w-full bg-grd-iota1"></div>
+      <div className="h-0.25 w-full bg-grd-iota1 sm:hidden"></div>
+
+      
       <div className="clearfix"></div>
     </>
   );
