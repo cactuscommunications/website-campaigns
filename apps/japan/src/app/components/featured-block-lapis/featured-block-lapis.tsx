@@ -31,34 +31,34 @@ export function FeaturedBlockLapis() {
     linkText: string;
   }
   const params: IFeaturedBlockLapisParams = {
-    heading: 'Unable to make a decision yet?',
+    heading: 'お見積り・ご注文・お問い合せ',
     features: [
       {
-        title: 'Call',
-        content: 'Speak to a client manager. Call us on',
+        title: '電話',
+        content: '直接話をしたい時はこちら',
         imagePath: '/assets/images/icons/call-round-icon.svg',
         contactLink: {
-          route: 'tel:+18339790061',
-          content: '+1 (833) 979-0061',
+          route: 'tel:0120502987',
+          content: '0120-50-2987',
         },
       },
       {
-        title: 'Chat',
-        content: 'Chat with a client manager for instant answers',
+        title: 'チャット',
+        content: 'その場で返事が欲しい時はページ右下のチャットをご利用ください。',
         imagePath: '/assets/images/icons/chat-round-icon.svg',
       },
       {
-        title: 'Email',
-        content: 'Send in your queries to',
+        title: 'Eメール',
+        content: 'メールでのお問い合わせはこちら',
         imagePath: '/assets/images/icons/email-round-icon.svg',
         contactLink: {
-          route: 'mailto:request@editage.com',
-          content: 'request@editage.com',
+          route: 'mailto:submissions@editage.com',
+          content: 'submissions@editage.com',
         },
       },
     ],
     position: 'left',
-    subHeading: 'Let us help you…',
+    subHeading: '平日・祝日 9:30～24:00 土 12:30～21:30 (論文投稿支援のみ 月～金 11:00～22:00)',
     backgroundColor: 'bg-primary',
   };
 

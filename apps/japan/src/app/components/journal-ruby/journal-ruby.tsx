@@ -22,13 +22,13 @@ export function JournalRuby({ searchText }: { searchText: string }) {
 
   const params: IJournalRubyParams = {
     backgroundColor: 'bg-white',
-    heading: '校正サンプル：',
+    heading: '弊社で実績のあるTOP 5 ジャーナル：',
     mobileHeading: '弊社で実績のあるTOP 5 ジャーナル',
     subHeading: 'ハイインパクトファクターの学術誌にも豊富な経験と実績がございます。',
     mobileSubHeading:
       "We've helped 6,750 papers get published on top medical Journals such as The Lancet, Jama, Nature Medicine and BMJ",
    
-    journalLabel: 'Impact Factor:',
+    journalLabel: 'インパクトファクター：',
   };
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");

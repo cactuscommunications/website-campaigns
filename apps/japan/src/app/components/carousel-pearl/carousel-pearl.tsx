@@ -24,8 +24,8 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
     const params: IServiceFeaturePearlParams = {
-      heading: 'お客さまからの声：',
-      subjectLabel: 'Subject Area',
+      heading: '校正者の例：',
+      subjectLabel: '専門分野',
       qualificationLabel: 'Degree'
     };
     useEffect(() => {
@@ -97,13 +97,15 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                     </div>
                                     <div className="dyna-height-3 flex bg-white px-6 pt-4 w-full pb-4" style={{ height: "72.25px" }}>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} years</p>
-                                            Experience </div>
+                                            <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} 年以上</p>
+                                            校正者歴 </div>
                                         <div className="w-1/3  text-xs text-center font-ssb">
-                                            <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} </p> Satisfaction Rate</div>
+                                          <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} </p>
+                                          顧客満足度
+                                        </div>
 
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> Papers Edited </div>
+                                            <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> 校正稿数 </div>
                                     </div>
                                 <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.subjectLabel }</div>
                                     <ul className="bg-white dyna-height-4 mb-3 mt-1 px-6 overflow-hidden" style={{ height: "287px" }} >
