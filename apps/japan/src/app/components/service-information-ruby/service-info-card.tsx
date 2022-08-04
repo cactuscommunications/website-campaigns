@@ -28,12 +28,12 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
           <MarkDown data={card.desc}></MarkDown>
         </p>
 
-      <div  className={`mt-5 px-6 py-3 z-10 sm:px-4 content before:absolute before:border-t before:-z-10 before:border-ruby-beta/50 before:left-0 before:right-0`}>
+      <div  className={`pt-5.5 content before:absolute before:border-t before:-z-10 before:border-ruby-beta/50 before:left-0 before:right-0 sm:pt-3.5`}>
         {/* <span className="bg-no-repeat bg-contain inline-block w-7	h-7 mr-2 flex-shrink-0 sm:w-5 sm:h-5 sm:mr-1.5" style={{backgroundImage: `url(${card.benefit.path})`,}}></span>
         <span className="text-sm font-pb text-ruby-alpha sm:text-13 sm:leading-19">{card?.benefit.text}</span> */}
       </div>
 
-      <div className="mt-8 sm:mt-6">
+      <div className="mt-6 sm:mt-4">
         <h3 className="font-pr text-ruby-alpha text-xl	leading-5 sm:text-base">{card.listHeading}</h3>
        <div className="flex justify-between flex-wrap">
         <ul className="p-0 mt-6 w-1/2 sm:mt-3.5 sm:w-full">
@@ -61,7 +61,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
     <div className="flex justify-between flex-wrap py-8 px-7 sm:px-2.5 sm:pb-5">
       <div className="w-1/2 sm:w-full sm:mb-8">
         <div className="flex mb-6">
-          <span className="w-7.5 h-7.5 inline-block bg-contain bg-no-repeat mr-5 sm:mr-4" style={{backgroundImage: `url(${card.pricing.path1})`,}}></span> 
+          <span className="w-7.5 h-7.5 inline-block bg-contain bg-no-repeat mr-5 -mt-1 sm:mr-4 sm:mt-0" style={{backgroundImage: `url(${card.pricing.path1})`,}}></span> 
           <div>
             <h3 className="font-pb text-2xl leading-5 text-ruby-alpha sm:text-lg">{card.pricing.text}<span className="text-garnet-lambda">{card.pricing.wordCount}</span>{card.pricing.days} 
                 <span className="block font-pr leading-5 text-sm text-gray-400 mt-2 sm:text-13 sm:mt-1.5">{card?.pricing.disclaimer}</span></h3>
@@ -69,7 +69,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
         </div>
 
         <div className="flex">
-          <span className="w-10 h-7.5 inline-block mr-5" style={{backgroundImage: `url(${card.pricing.path2})`,}}></span> 
+          <span className="w-10 h-7.5 inline-block mr-5 -mt-1 sm:mt-0" style={{backgroundImage: `url(${card.pricing.path2})`,}}></span> 
           <div>
             <h3 className="font-pb text-2xl leading-5 text-ruby-alpha sm:text-lg">{card.pricing.word}<span className="text-garnet-lambda">{card?.pricing.price}</span>{card?.pricing.tax} </h3>
           </div>
@@ -82,8 +82,8 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
             className="w-auto mx-auto bg-pearl-beta flex rounded-md justify-between md:w-full sm:w-full ng-star-inserted">
             <div className="flex px-6 py-4 md:pl-7.5 md:pr-7.5 md:py-3.75 sm:px-5 sm:py-3">
                 <div className="w-9 h-9 bg-contain bg-no-repeat self-center sm:hidden  ng-lazyloaded"
-                  style={{backgroundImage: `url(${card.pricing.path2})`,}}></div>
-                <div className="ml-3 text-left sm:ml-0">
+                  style={{backgroundImage: `url(${card.pricing.path3})`,}}></div>
+                <div className="ml-2 text-left sm:ml-0">
                     <h3 className="text-white text-base font-sb sm:text-sm sm:leading-5">自動お見積り・ご注文はこちら</h3>
                     <p className="text-xs font-ssb text-white/80 sm:text-xs sm:leading-17">
                         単語数の入力で料金・納期をその場でご確認いただけます</p>

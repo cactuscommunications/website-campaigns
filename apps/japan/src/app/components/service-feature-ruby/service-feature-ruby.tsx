@@ -42,18 +42,22 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
 
   return (
     <>
-      <section
+      <section className='sm:bg-grd-iota2'>
+      <div
         className="w-full pt-20 pb-26 bg-no-repeat bg-cover md:pt-5 md:pb-10 sm:pt-7 sm:px-4 sm:pb-0 sm:mb-16"
         style={{
           backgroundImage: `url(${data.image})`,
+          // backgroundImage: isMobile ? "none" : `url(${data.image})`,
         }}
       >
         <div className="container sm:px-0">
-          <h2 className="text-center leading-44 mb-5 sm:mb-0 sm:leading-29">
-            <div className="font-pb text-3xl sm:text-20 sm:leading-29 sm:block md:text-2xl">
-              {data.title ? data.title : params?.heading} <br/> の英文校正サービスと実績
-            </div>
-          </h2>
+          <div className='max-w-[600px] mx-auto'>
+            <h2 className="text-center leading-44 mb-5 sm:mb-0 sm:leading-29">
+              <div className="font-pb text-3xl sm:text-20 sm:leading-29 sm:block md:text-2xl">
+                {data.title ? data.title : params?.heading} の英文校正サービスと実績
+              </div>
+            </h2>
+          </div>
           <div
             className="hidden sm:block bg-contain bg-no-repeat w-90 h-56.75 mx-auto max-w-full"
             style={{
@@ -61,7 +65,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
             }}
           ></div>
 
-          <div className="bg-white shadow rounded-lg w-full flex mx-auto max-w-2xl py-6 px-18 sm:px-3 sm:py-3 justify-between box-border sm:relative sm:-top-3">
+          <div className="bg-white shadow rounded-lg w-full flex mx-auto max-w-3xl py-6 px-18 sm:px-3 sm:py-3 justify-between box-border sm:relative sm:-top-3">
             <div className="inline-flex">
               <span className="font-sb text-lapis-delta opacity-40 text-5xl leading-45 -mt-4 sm:text-20 sm:leading-30 sm:-mt-1.5">
                 1
@@ -107,6 +111,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
             </div>
           </div>
         </div>
+      </div>
       </section>
     </>
   );

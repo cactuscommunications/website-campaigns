@@ -32,7 +32,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
     heading2: '専門分野が命です。',
     heading3: 'どちらの専門分野をご検討ですか？',
     mobileBackgroundImg: '/assets/images/subject-area-banner-m.jpg',
-    backgroundImg: '/assets/images/subject-area-banner.jpg',
+    backgroundImg: '/assets/images/subject-area-banner.png',
     searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!break!!!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。!!break!!カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。',
     validationMessage: '英語で入力してください。'
   };
@@ -161,7 +161,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
             )}
             {noDataMessage && (
               <div className="flex  mt-3  sm:flex-col sm:items-center">
-                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3">
+                <p className="text-ruby-alpha text-base font-ssb leading-6 sm:text-sm sm:leading-17 sm:mb-3">
                   <MarkDown data={params.searchMessage}></MarkDown>
                 </p>
               </div>

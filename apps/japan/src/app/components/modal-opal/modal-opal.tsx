@@ -129,7 +129,7 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
                      
                      <li className="block w-full float-left mb-1.5">
                         <span className="float-left inline-block mr-2.5">
-                           <span className="w-4 h-4 mt-2 bg-no-repeat bg-contain flex-shrink-0 inline-block " style={{ backgroundImage: `url(${'/assets/images/icons/user-blue1.svg'})`,}}></span>
+                           <span className="w-4 h-4 mt-2 bg-no-repeat bg-contain flex-shrink-0 inline-block " style={{ backgroundImage: `url(${'/assets/images/icons/provided-blue-icon.svg'})`,}}></span>
                         </span>
                         <div className="float-left w-4.25/5">
                               <p className="text-sm leading-21 font-ssb inline-block text-pearl-epsilon1">フォーマット調整</p>
@@ -141,7 +141,7 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
                      
                      <li className="block w-full float-left mb-1.5">
                         <span className="float-left inline-block mr-2.5">
-                           <span className="w-4 h-4 mt-2 bg-no-repeat bg-contain flex-shrink-0 inline-block " style={{ backgroundImage: `url(${'/assets/images/icons/user-blue1.svg'})`,}}></span>
+                           <span className="w-4 h-4 mt-2 bg-no-repeat bg-contain flex-shrink-0 inline-block " style={{ backgroundImage: `url(${'/assets/images/icons/provided-blue-icon.svg'})`,}}></span>
                         </span>
                         <div className="float-left w-4.25/5">
                               <p className="text-sm leading-21 font-ssb inline-block text-ruby-alpha">校正者とのQ&amp;A</p>
