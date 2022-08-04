@@ -14,10 +14,10 @@ export function ThankYouRuby() {
         <div className="text-center">
           <span className="w-17.5 h-17.5 bg-cover bg-no-repeat mb-4 block mx-auto  ng-lazyloaded" 
             style={{ backgroundImage: `url('/assets/images/icons/check-round-grey-bg.svg')` }}></span>
-          <h2 className="text-4xl font-sb text-ruby-alpha leading-48 mb-5">お申込みの完了</h2>
-          <p className="text-ruby-alpha leading-7 mb-8">送信が完了しました。<br/>お申し込みいただきありがとうございます。</p>
-          <p className="text-ruby-alpha leading-7 mb-8">エディテージのカスタマーサポートがご注文に
-            <br/>関してメールでご案内をお送り致します。
+          <h2 className="text-4xl font-sb text-ruby-alpha leading-48 mb-5">お問い合わせの完了</h2>
+          <p className="text-ruby-alpha leading-7 mb-8">送信が完了しました。</p>
+          <p className="text-ruby-alpha leading-7 mb-8">エディテージのカスタマーサポートから
+            <br/>ご回答させていただきます。
           </p>
         </div>
       </div>
