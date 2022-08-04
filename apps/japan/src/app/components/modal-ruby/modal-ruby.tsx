@@ -20,18 +20,19 @@ const ModalRuby = ({closeModal,data}: { closeModal: any,data :any}) => {
                 <div className="text-center font-ssb text-xsm">{data.attributes.degree}</div>
 
              <section className="mt-4">
+             <div className="w-2.92/4 float-left">
+                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> {data.attributes.nationality} </div>
+                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 校正実績 </div>
+                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 出版経験 </div>
+                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 満足度 </div>
+                </div>
                 <div className="w-1.08/4 float-left">
                    <div className="py-2 flag-us flag">  </div>
                    <div className="py-2 undefined text-black font-ssb h-8 w-8"> {data.attributes.jobs ? data.attributes.jobs : 0} </div>
                    <div className="py-2 undefined text-black font-ssb h-8 w-8"> {data.attributes.experience ? data.attributes.experience : 0} </div>
                    <div className="py-2 undefined text-black font-ssb h-8 w-8"> {data.attributes.satisfaction_rate ? data.attributes.satisfaction_rate : 0}   </div>
                 </div>
-                <div className="w-2.92/4 float-left">
-                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> {data.attributes.nationality} </div>
-                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 校正実績 </div>
-                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 出版経験 </div>
-                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 満足度 </div>
-                </div>
+               
              </section>
           </div>
           <div className="float-left flex flex-wrap w-2.92/4 pl-10 pr-14 border-lapis-epsilon border-l min-h-48 sm:px-4 sm:border-l-0 sm:p-4 sm:w-full">
