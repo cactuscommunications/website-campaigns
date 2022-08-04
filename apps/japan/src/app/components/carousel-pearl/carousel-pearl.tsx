@@ -21,6 +21,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     let [testimonialsChunk, setTestimonialsChunk] = useState([[]]);
     let [title, setTitle] = useState('');
     const [openModal, setOpenModal] = useState(false);
+    const [modalData, setModalData] = useState();
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
     const params: IServiceFeaturePearlParams = {
@@ -62,6 +63,10 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     function goToIndicator(index: number) {
         setPosition(index);
         setIndicator(testimonials);
+    }
+    function  setModal(index : number) {
+        setOpenModal(true);
+        setModalData(testimonialsChunk[position][index])
     }
 
     return (
@@ -124,12 +129,12 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                         })}
                                         {<span
                                             onClick={() => {
-                                                setOpenModal(true);
+                                               setModal(ti)
                                             }}
                                             className="text-xs text-pearl-beta font-ssb text-underline-hover">
-                                            {trow.attributes.expertise_area.length > 10 ? "read more" : ''}
+                                            {trow.attributes.expertise_area.length > 10 ? "全て見る" : ''}
                                         </span>}
-                                        {openModal && <ModalRuby closeModal={setOpenModal} data={trow} />}
+                                        {openModal && <ModalRuby  key={ti} closeModal={setOpenModal} data={modalData} />}
 
                                     </ul>
                                     <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.qualificationLabel }</div>
