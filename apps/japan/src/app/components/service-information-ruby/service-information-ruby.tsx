@@ -60,6 +60,7 @@ export function ServiceInformationRuby(){
             pricing: {
               path1: "/assets/images/icons/watch.svg",
               path2: "/assets/images/icons/wallet.png",
+              path3: "/assets/images/icons/accepted-document.svg",
               wordCount: "4,000単語",
               days: "まで4営業日～",
               text: "最短で",
@@ -118,6 +119,7 @@ export function ServiceInformationRuby(){
             pricing: {
                 path1: "/assets/images/icons/watch.svg",
                 path2: "/assets/images/icons/wallet.png",
+                path3: "/assets/images/icons/accepted-document.svg",
                 wordCount: "3,000単語",
                 days: "単語/1日～",
                 text: "最短で",
@@ -176,6 +178,7 @@ export function ServiceInformationRuby(){
             pricing: {
               path1: "/assets/images/icons/watch.svg",
               path2: "/assets/images/icons/wallet.png",
+              path3: "/assets/images/icons/accepted-document.svg",
               wordCount: "4,000単語",
               days: "単語まで4営業日～",
               text: "最短で ",
