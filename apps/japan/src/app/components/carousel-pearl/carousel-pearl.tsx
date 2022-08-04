@@ -115,7 +115,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                     </div>
                                 <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.subjectLabel }</div>
                                     <ul className="bg-white dyna-height-4 mb-3 mt-1 px-5 overflow-hidden" style={{ height: "287px" }} >
-                                        {trow.attributes.expertise_area.split(',').slice(0,10).map((area: string) => {
+                                        {trow.attributes.expertise_area.split(',').slice(0,8).map((area: string) => {
                                             return (
                                                 <li className="text-xs flex my-2"><span
                                                     className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
@@ -133,7 +133,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                                setModal(ti)
                                             }}
                                             className="text-xs text-pearl-beta font-ssb text-underline-hover">
-                                            {trow.attributes.expertise_area.length > 10 ? "全て見る" : ''}
+                                            {trow.attributes.expertise_area.length > 8 ? "全て見る" : ''}
                                         </span>
                                         {openModal && <ModalRuby  key={ti} closeModal={setOpenModal} data={modalData} />}
 
