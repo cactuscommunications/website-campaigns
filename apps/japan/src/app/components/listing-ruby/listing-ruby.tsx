@@ -76,6 +76,9 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     setCurrentPage(num);
   };
   const selectSubject = (subject: ISubjects) => {
+    if (subject.machineName === saParam)
+      return;
+    
     window.location.replace(location.origin + location.pathname + '?sa=' + subject.machineName)
 
   }
@@ -100,11 +103,14 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
                 <div key={i} className="w-1/4 sm:w-full float-left">
                   <ul className="mt-2">
                     {row.map((item: ISubjects, index) => (
-                      <> <a
-                        key={index}
-                        onClick={(e) => selectSubject(item)}>
-                        <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
-                      </a> <br />
+                      <>
+                        <a
+                          className={ item.machineName === saParam ? 'cursor-not-allowed' : 'cursor-pointer' }
+                          key={index}
+                          onClick={(e) => selectSubject(item)}>
+                          <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
+                        </a>
+                        <br />
                       </>
                     ))}
                   </ul>
