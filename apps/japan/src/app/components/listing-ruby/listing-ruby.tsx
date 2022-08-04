@@ -90,7 +90,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
             {!hideHeading &&
               <React.Fragment>
                 <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
-                  <MarkDown data={(searchTitle ? searchTitle : params?.heading) + ' では以下の専門分野に対応しています。'}></MarkDown>
+                  <MarkDown data={(searchTitle ? searchTitle : params?.heading) + 'では以下の専門分野に対応しています。'}></MarkDown>
                 </h2>
                 {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
               </React.Fragment>

@@ -41,7 +41,7 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "納得いくまで書き直します100%品質保証"
+              text: "納得いくまで書き直します。100%品質保証"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
@@ -49,7 +49,7 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "リーズナブルに追加365日有効の再校正１回分"
+              text: "リーズナブルに追加。365日有効の再校正１回分!!break!!＊修正量の上限無し！"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
@@ -96,7 +96,7 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "フォーマット調整1誌無料「オプション追加」で2誌まで無料にも。"
+              text: "フォーマット調整1誌無料!!break!! オプション追加」で2誌まで無料にも"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
@@ -171,7 +171,7 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "納得いくまで書き直します100%品質保証"
+              text: "納得いくまで書き直します。100%品質保証"
             }
             
             ],
