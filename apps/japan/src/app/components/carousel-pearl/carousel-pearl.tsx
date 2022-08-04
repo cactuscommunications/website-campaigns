@@ -128,13 +128,13 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                                 </li>
                                             )
                                         })}
-                                        {<span
+                                        <span
                                             onClick={() => {
                                                setModal(ti)
                                             }}
                                             className="text-xs text-pearl-beta font-ssb text-underline-hover">
                                             {trow.attributes.expertise_area.length > 10 ? "全て見る" : ''}
-                                        </span>}
+                                        </span>
                                         {openModal && <ModalRuby  key={ti} closeModal={setOpenModal} data={modalData} />}
 
                                     </ul>
