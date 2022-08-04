@@ -55,7 +55,7 @@ export function FeaturedBlockPearl() {
               }}
               className="w-93 h-56.75 bg-no-repeat bg-center float-left order-1 sm:w-80"
             ></div>)}
-          <div className="pt-16 float-left w-full flex justify-center sm:pt-8">
+          <div className="pt-8.5 float-left w-full flex justify-center sm:pt-8">
             <div className="w-1/2 sm:w-full float-right order-2 pl-16 sm:pl-0">
                 <ul className="pl-4">
                   {params.features!.map((feature, index) => (

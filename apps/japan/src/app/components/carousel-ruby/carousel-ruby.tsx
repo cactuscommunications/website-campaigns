@@ -72,7 +72,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
             <span className="sm:hidden">{params.heading}</span>
           </h2>
           {testimonialsChunk && testimonialsChunk[position] && (
-            <div className="flex justify-center mt-10 sm:flex-wrap">
+            <div className="flex justify-center mt-10 max-w-6xl mx-auto sm:flex-wrap">
               {testimonialsChunk[position].map((trow: any, ti) => (
                 <div key={ti} className="w-360px shadow rounded-lg bg-white h-full mx-5">
                   <div className="px-5 pb-5 pt-3 relative bg-pearl-epsilon/50 rounded-t-lg	min-h-57.5 max-h-57.5 md:min-h-[16rem] sm:min-h-fit">

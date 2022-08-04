@@ -71,14 +71,14 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
 
     return (
         <>
-            <section className="bg-white py-10">
+            <section className="bg-primary pb-10">
                 <div className="container sm:px-5">
                     <h2 className="text-center text-4.5xl font-pb text-ruby-alpha leading-45 sm:text-20 sm:leading-7">
                         {params.heading}<span className="sm:hidden">{title}</span>
                     </h2>
 
                     {testimonialsChunk && testimonialsChunk.length > 0 &&
-                        <div className="flex justify-center mt-10 sm:flex-wrap">
+                        <div className="flex justify-center mt-10 sm:flex-wrap max-w-[1000px] mx-auto">
                             {testimonialsChunk[position].map((trow: any, ti) => (
 
                                 <div

@@ -64,13 +64,13 @@ export function JournalRuby({ searchText }: { searchText: string }) {
             <span className="sm:hidden">{params.subHeading}</span>
             <span className="hidden sm:block">{params.mobileSubHeading}</span>
           </p>
-          <div className="w-full flex justify-center mt-5 flex-wrap sm:flex-nowrap sm:justify-start sm:overflow-x-auto">
+          <div className="w-full flex justify-center mt-5 flex-wrap max-w-[1200px] mx-auto sm:flex-nowrap sm:justify-start sm:overflow-x-auto">
             {journals
               .sort((first, second) => {
                 return first.impact_factor < second.impact_factor ? 1 : -1;
               })
               .map((journal) => (
-                <div key={journal.name} className="rounded-lg border border-pearl-beta pb-1 w-56 mx-2.5 sm:shrink-0">
+                <div key={journal.name} className="rounded-lg border border-pearl-beta pb-1 w-55 mx-2.5 sm:shrink-0">
                   <div
                     className="h-75 bg-no-repeat bg-contain w-full rounded-t-lg"
                     style={{
