@@ -47,11 +47,15 @@ const SubjectAreaBannerRuby: React.FC = () => {
   const [noDataMessage, setNoDataMessage] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   useEffect(() => {
-    if (saParam && loadCounter) {
-      setSearchTerm(saParam);
-      setloadCounter(false);
-      setSaSelected(true)
+    const getSaData = async () => {
+      if (saParam && loadCounter) {
+        let resp = await getSearchList(saParam, 'eq');
+        setSearchTerm(resp[0].name);
+        setloadCounter(false);
+        setSaSelected(true)
+      }
     }
+    getSaData();
     const delayDebounceFn = setTimeout(async (event) => {
       setSaSelected(false)
       setShowValidation(false);
@@ -63,7 +67,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
       if (searchTerm.length >= 3 && !saSelected && searchTerm.match(/^[\w\-\,\s]+$/)) {
         setSearchList([]);
         setNoDataMessage(false);
-        let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'));
+        let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'), 'contains');
         if (resp.length == 0) {
           setNoDataMessage(true);
         }
@@ -164,7 +168,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
             )}
             {showValidation && searchTerm.length > 0 && (
               <div className="flex  mt-3  sm:flex-col sm:items-center">
-                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3" style={{"color":"red"}}>
+                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3" style={{ "color": "red" }}>
                   <MarkDown data={params.validationMessage}></MarkDown>
                 </p>
               </div>
@@ -185,8 +189,8 @@ const SubjectAreaBannerRuby: React.FC = () => {
   );
 };
 
-function getSearchList(input: string) {
-  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five', 'contains').then(function (response: any) {
+function getSearchList(input: string, type:string) {
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five', type).then(function (response: any) {
     let returnData: { name: string, searchTitle: string, machineName: string }[] = [];
     response.data.data.map((key: any) => {
       let machineName = '';
