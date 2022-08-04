@@ -34,7 +34,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
     mobileBackgroundImg: '/assets/images/subject-area-banner-m.jpg',
     backgroundImg: '/assets/images/subject-area-banner.jpg',
     searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!break!!!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。!!break!!カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。',
-    validationMessage: '英語で入力してくだ てください'
+    validationMessage: '英語で入力してください。'
   };
   const [searchTerm, setSearchTerm] = useState('');
   const [machineName, setMachineName] = useState('');
@@ -56,11 +56,11 @@ const SubjectAreaBannerRuby: React.FC = () => {
       setSaSelected(false)
       setShowValidation(false);
       setNoDataMessage(false);
-      if (searchTerm.length > 0 && !searchTerm.match(/^[\w\-\s]+$/)) {
+      if (searchTerm.length > 0 && !searchTerm.match(/^[\w\-\,\s]+$/)) {
         setShowValidation(true);
         setSearchList([]);
       }
-      if (searchTerm.length >= 3 && !saSelected && searchTerm.match(/^[\w\-\s]+$/)) {
+      if (searchTerm.length >= 3 && !saSelected && searchTerm.match(/^[\w\-\,\s]+$/)) {
         setSearchList([]);
         setNoDataMessage(false);
         let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'));
@@ -138,7 +138,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
               </div>
             </div>
 
-            {searchList && searchList.length >= 1 && (
+            {searchList && searchList.length >= 1 && searchTerm.length >0 && (
               <div className="mt-0.5 relative">
                 <div className="absolute top-0 left-0 w-94 max-h-61.2 bg-white overflow-auto custom-scroll rounded-lg shadow z-1">
                   {searchList.map((item) => (
@@ -164,7 +164,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
             )}
             {showValidation && searchTerm.length > 0 && (
               <div className="flex  mt-3  sm:flex-col sm:items-center">
-                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3">
+                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3" style={{"color":"red"}}>
                   <MarkDown data={params.validationMessage}></MarkDown>
                 </p>
               </div>
@@ -190,7 +190,7 @@ function getSearchList(input: string) {
     let returnData: { name: string, searchTitle: string, machineName: string }[] = [];
     response.data.data.map((key: any) => {
       let machineName = '';
-      switch (response.data.data[0]?.attributes.type) {
+      switch (key.attributes.type) {
         case 'SA1': {
           machineName = key.attributes.sa_one.data[0].attributes.machine_name;
           break;
