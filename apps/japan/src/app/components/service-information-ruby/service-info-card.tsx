@@ -10,7 +10,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
   let end = card.list.length;
   let mid = Math.ceil((card.list.length) / 2);
   return (
-    <div className={`border rounded-lg mb-10 ${card.heading?.headingClassName ? card.heading?.headingClassName : ''}`}>
+    <div className={`border rounded-lg mb-10 max-w-[1138px] mx-auto ${card.heading?.headingClassName ? card.heading?.headingClassName : ''}`}>
     <div className={`rounded-t-lg  relative flex justify-between flex-wrap items-center py-4 sm:pb-5 ${card.heading?.subHeadingClass ? card.heading?.subHeadingClass : ''}`}>
       <span className="absolute bg-diamond-delta -top-px -left-px text-base leading-9 text-white font-pr px-3 rounded-br-lg	rounded-tl-lg sm:text-13">{card?.heading.specialHeadingText}</span>
       <div className="flex justify-between w-full">
@@ -59,7 +59,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
 
 
     <div className="flex justify-between flex-wrap py-8 px-7 sm:px-2.5 sm:pb-5">
-      <div className="w-1/2 sm:w-full sm:mb-8">
+      <div className="w-1/2 pr-5 sm:w-full sm:mb-8 sm:pr-0">
         <div className="flex mb-6">
           <span className="w-7.5 h-7.5 inline-block bg-contain bg-no-repeat mr-5 -mt-1 sm:mr-4 sm:mt-0" style={{backgroundImage: `url(${card.pricing.path1})`,}}></span> 
           <div>
@@ -77,7 +77,7 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
       </div>
       <div className="w-1/2 text-right sm:w-full sm:text-center">  
       <div className="text-right sm:text-center">
-        <a className= "block" href={card.pricing.ctaLink}>
+        <a href={card.pricing.ctaLink}>
           <div
             className="w-auto mx-auto bg-pearl-beta flex rounded-md justify-between md:w-full sm:w-full ng-star-inserted">
             <div className="flex px-6 py-4 md:pl-7.5 md:pr-7.5 md:py-3.75 sm:px-5 sm:py-3">

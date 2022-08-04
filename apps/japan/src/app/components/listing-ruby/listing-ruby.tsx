@@ -86,7 +86,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     <>
       <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
-          <div className='max-w-[950px] mx-auto'>
+          <div className='max-w-[900px] mx-auto'>
             {!hideHeading &&
               <React.Fragment>
                 <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
@@ -97,7 +97,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
             }
           </div>
           <div
-            className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-7.5 sm:text-center'}>
+            className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-7.5 max-w-[1100px] mx-auto sm:text-center'}>
             <div className="flex justify-center">
               {subjects.length > 0 && chunkedArray?.map((row: ISubjects[], i) => (
                 <div key={i} className="w-1/4 sm:w-full float-left">
