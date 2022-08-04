@@ -178,10 +178,10 @@ function getMachineName(input: string) {
 function getData(input: string) {
     let returnData = { data: [], title: '' }
 
-    return subjectAPIService.getWholeData(input, 'sa_one_five.editors').then(function (response: any) {
+    return subjectAPIService.getWholeData(input, 'sa_one_five.editors,sa_one_five.social_attributes').then(function (response: any) {
         returnData = {
             data: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.editors?.data ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.editors?.data : [],
-            title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title : ''
+            title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
         }
         return returnData
 

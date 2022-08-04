@@ -103,7 +103,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
     })
   }
   function getData(input: string) {
-    return subjectAPIService.getWholeData(input, 'sa_one_five.journals').then(function (response: any) {
+    return subjectAPIService.getWholeData(input, 'sa_one_five.journals,sa_one_five.social_attributes').then(function (response: any) {
 
       let journalData: IJournals[] = [];
       response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.journals?.data.map((journal: any) => {
@@ -111,7 +111,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
 
       })
 
-      let title = response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title : ''
+      let title = response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
 
       return { data: journalData, title: title };
     });
