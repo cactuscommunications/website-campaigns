@@ -155,8 +155,9 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
             
             <div className="w-full float-left pb-6 pt-4 px-5 bg-white rounded-b-lg">
                <div className="bg-pearl-epsilon1 btn btn-primary hover:shadow-blueBottom w-full">
-                  <a data-description="editing overview v2-plan selection-standard editing details-click" href="https://www.editage.jp/services/english-editing/standard-editing-plan">
-                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">サービスの詳細を確認する&gt;&gt;</span>
+                      <a data-description="editing overview v2-plan selection-standard editing details-click"
+                        href="https://app.editage.jp/order/ncf/english-editing/standard-editing/document">
+                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">{'無料お見積り・ご注文>>'}</span>
                   </a>
                   
                </div>
@@ -343,8 +344,9 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
             
             <div className="w-full float-left pb-6 pt-4 px-5 bg-white rounded-b-lg">
                <div className="bg-garnet-sigma btn btn-primary hover:shadow-brownBottom w-full">
-                  <a data-description="editing overview v2-plan selection-premium editing details-click" href="https://www.editage.jp/services/english-editing/premium-editing-plan">
-                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">サービスの詳細を確認する&gt;&gt;</span>
+                      <a data-description="editing overview v2-plan selection-premium editing details-click"
+                        href="https://app.editage.jp/order/ncf/english-editing/premium-editing/document">
+                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">{'無料お見積り・ご注文>>'}</span>
                   </a>
                   
                </div>
@@ -572,8 +574,9 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
             <div className="w-full float-left pb-6 pt-4 px-5 bg-white rounded-b-lg">
                <div className="bg-opal-alpha1 btn btn-primary hover:shadow-goldenBottom w-full">
                   
-                  <a data-description="editing overview v2-plan selection-sce details-click" href="https://www.editage.jp/services/english-editing/top-journal-editing-plan">
-                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">サービスの詳細を確認する&gt;&gt;</span>
+                      <a data-description="editing overview v2-plan selection-sce details-click"
+                        href="https://app.editage.jp/order/ncf/english-editing/scientific-editing/document">
+                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">{'無料お見積り・ご注文>>'}</span>
                   </a>
                   
                </div>
