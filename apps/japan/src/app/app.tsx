@@ -11,12 +11,14 @@ import {
   Route,
   useRoutes,
 } from "react-router-dom";
+import ThankYou from './pages/thank-you';
 
 
 const App = () => {
   let routes = useRoutes([
     { path: "/", element: <SubjectArea /> },
-    { path: "/subject-area-editing", element: <SubjectArea /> }
+    { path: "/subject-area-editing", element: <SubjectArea /> },
+    { path: "/subject-area-editing/ask-editor-thank-you", element: <ThankYou /> }
   ]);
   return routes;
 };

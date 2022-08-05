@@ -54,7 +54,7 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
             <span className="text-base text-ruby-alpha font-pr">{params.subHeading}</span>
           </div>
           {samples && samples.length > 0 &&
-            <div className="max-w-1060 flex-wrap flex justify-center mx-auto md:max-w-240">
+            <div className="max-w-[970px] flex-wrap flex justify-center mx-auto md:max-w-240">
               {samples.map((sample, index) => (
                 <div
                   key={index}
@@ -98,7 +98,7 @@ function getMachineName(input: string) {
 function getSampleData(input: string) {
   let returnData: Isamples = { data: [], title: '' }
 
-  return subjectAPIService.getWholeData(input, 'sa_one_five.samples').then(function (response: any) {
+  return subjectAPIService.getWholeData(input, 'sa_one_five.samples,sa_one_five.social_attributes').then(function (response: any) {
     if (response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes?.samples) {
       returnData = {
         data: [
@@ -106,7 +106,7 @@ function getSampleData(input: string) {
           response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.samples.pes_path,
           response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.samples.tje_path
         ],
-        title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title
+        title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
       }
     }
     return returnData

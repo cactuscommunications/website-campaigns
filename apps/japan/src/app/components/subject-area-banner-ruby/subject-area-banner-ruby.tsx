@@ -17,7 +17,7 @@ interface ISubjectAreaBannerRubyParams {
   mobileBackgroundImg?: string;
   backgroundImg?: string;
   searchMessage: string;
-  validationMessage : string;
+  validationMessage: string;
 }
 interface IserachList {
   name: string;
@@ -32,9 +32,9 @@ const SubjectAreaBannerRuby: React.FC = () => {
     heading2: '専門分野が命です。',
     heading3: 'どちらの専門分野をご検討ですか？',
     mobileBackgroundImg: '/assets/images/subject-area-banner-m.jpg',
-    backgroundImg: '/assets/images/subject-area-banner.jpg',
+    backgroundImg: '/assets/images/subject-area-banner.png',
     searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!break!!!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。!!break!!カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。',
-    validationMessage : '英語で入力してくだ てください'
+    validationMessage: '英語で入力してください。'
   };
   const [searchTerm, setSearchTerm] = useState('');
   const [machineName, setMachineName] = useState('');
@@ -43,20 +43,32 @@ const SubjectAreaBannerRuby: React.FC = () => {
   const [searchObj, setSearchObj] = useState({ name: '', machineName: '' });
   var url = new URL(location.href);
   var saParam = url.searchParams.get('sa');
+  const [loadCounter, setloadCounter] = useState(true);
   const [noDataMessage, setNoDataMessage] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
+  const validationReg =    /^[ A-Za-z\/\s\!@#$%^&*():,-_+;><?|.'\-]+$/
   useEffect(() => {
+    const getSaData = async () => {
+      if (saParam && loadCounter) {
+        let resp = await getSearchList(saParam, 'eq');
+        setSearchTerm(resp[0]?.name);
+        setloadCounter(false);
+        setSaSelected(true)
+      }
+    }
+    getSaData();
     const delayDebounceFn = setTimeout(async (event) => {
+      setSaSelected(false)
       setShowValidation(false);
       setNoDataMessage(false);
-      if (searchTerm.length > 0 && !searchTerm.match(/^[\w\-\s]+$/)) {
+      if (searchTerm.length > 0 && !searchTerm.match(validationReg)) {
         setShowValidation(true);
         setSearchList([]);
       }
-      if (searchTerm.length >= 3 && !saSelected && searchTerm.match(/^[\w\-\s]+$/)) {
+      if (searchTerm.length >= 3 && !saSelected && searchTerm.match(validationReg)) {
         setSearchList([]);
         setNoDataMessage(false);
-        let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'));
+        let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'), 'contains');
         if (resp.length == 0) {
           setNoDataMessage(true);
         }
@@ -74,13 +86,14 @@ const SubjectAreaBannerRuby: React.FC = () => {
   };
   const searchResults = () => {
     // setMachineName();
-    window.location.replace(location.origin + location.pathname + '?sa=' + searchObj.machineName)
+    if (!showValidation)
+      window.location.replace(location.origin + location.pathname + '?sa=' + (searchObj.machineName ? searchObj.machineName : searchTerm))
 
   };
   return (
     <>
       <section
-        className="pt-18 pb-21.25 bg-cover bg-center bg-no-repeat sm:bg-full sm:py-4"
+        className="pt-18 pb-21.25 bg-cover bg-center bg-no-repeat xxl:bg-full sm:bg-full sm:py-4"
         style={{
           backgroundImage: `url(${!isMobile ? params.backgroundImg : ''})`,
         }}
@@ -130,7 +143,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
               </div>
             </div>
 
-            {searchList && searchList.length >= 1 && (
+            {searchList && searchList.length >= 1 && searchTerm.length >0 && (
               <div className="mt-0.5 relative">
                 <div className="absolute top-0 left-0 w-94 max-h-61.2 bg-white overflow-auto custom-scroll rounded-lg shadow z-1">
                   {searchList.map((item) => (
@@ -149,14 +162,14 @@ const SubjectAreaBannerRuby: React.FC = () => {
             )}
             {noDataMessage && (
               <div className="flex  mt-3  sm:flex-col sm:items-center">
-                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3">
+                <p className="text-ruby-alpha text-base font-ssb leading-6 sm:text-sm sm:leading-17 sm:mb-3">
                   <MarkDown data={params.searchMessage}></MarkDown>
                 </p>
               </div>
             )}
             {showValidation && searchTerm.length > 0 && (
               <div className="flex  mt-3  sm:flex-col sm:items-center">
-                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3">
+                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3" style={{ "color": "red" }}>
                   <MarkDown data={params.validationMessage}></MarkDown>
                 </p>
               </div>
@@ -177,13 +190,14 @@ const SubjectAreaBannerRuby: React.FC = () => {
   );
 };
 
-function getSearchList(input: string) {
-  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five', 'contains').then(function (response: any) {
+function getSearchList(input: string, type:string) {
+  return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five', type).then(function (response: any) {
     let returnData: { name: string, searchTitle: string, machineName: string }[] = [];
     response.data.data.map((key: any) => {
       let machineName = '';
-      switch (response.data.data[0]?.attributes.type) {
-        case 'SA1': {
+      switch (key.attributes.type) {
+        case 'SA1': 
+        case 'SA1.0' : {
           machineName = key.attributes.sa_one.data[0].attributes.machine_name;
           break;
         }

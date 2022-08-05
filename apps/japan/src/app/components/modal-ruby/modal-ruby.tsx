@@ -19,24 +19,23 @@ const ModalRuby = ({closeModal,data}: { closeModal: any,data :any}) => {
              <div className="text-xl text-center m-auto pt-2 text-ruby-alpha font-sb">{data.attributes.name}</div>
                 <div className="text-center font-ssb text-xsm">{data.attributes.degree}</div>
 
-             <section className="mt-4">
-                <div className="w-1.08/4 float-left">
-                   <div className="py-2 flag-us flag">  </div>
-                   <div className="py-2 undefined text-black font-ssb h-8 w-8"> {data.attributes.jobs ? data.attributes.jobs : 0} </div>
-                   <div className="py-2 undefined text-black font-ssb h-8 w-8"> {data.attributes.experience ? data.attributes.experience : 0} </div>
-                   <div className="py-2 undefined text-black font-ssb h-8 w-8"> {data.attributes.satisfaction_rate ? data.attributes.satisfaction_rate : 0}   </div>
-                </div>
-                <div className="w-2.92/4 float-left">
+             <section className="flex mt-4">
+               <div className="mr-5">
                    <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> {data.attributes.nationality} </div>
                    <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 校正実績 </div>
                    <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 出版経験 </div>
                    <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 満足度 </div>
                 </div>
+                <div className="">
+                   <div className="py-2 flag-us flag">  </div>
+                   <div className="py-2 undefined text-black font-ssb h-8 w-8"> {data.attributes.jobs ? data.attributes.jobs : 0} </div>
+                   <div className="py-2 undefined text-black font-ssb h-8 w-8"> {data.attributes.experience ? data.attributes.experience : 0} </div>
+                   <div className="py-2 undefined text-black font-ssb h-8 w-8"> {data.attributes.satisfaction_rate ? data.attributes.satisfaction_rate : 0}   </div>
+                </div>
              </section>
           </div>
           <div className="float-left flex flex-wrap w-2.92/4 pl-10 pr-14 border-lapis-epsilon border-l min-h-48 sm:px-4 sm:border-l-0 sm:p-4 sm:w-full">
-             <div className="my-auto flex sm:text-center md:text-center">
-            
+             <div className="my-auto text-sm flex sm:text-center md:text-center">
                 {/* <app-markdown>
                    <p className="text-ruby-alpha font-ssb sm:text-xsm sm:normal sm:leading-6 text-base leading-30"> I have enjoyed working as a medical writer and editor for the past 5 years. During this time I have come to meet very interesting people from many countries and I have had the privilege of working with very respected people from different scientific fields. I am a member of the American Medical Writer's Association and I have been taking several of their workshops in order to improve my writing and editing skills. Throughout the years, I have developed my own editing techniques, which have helped me deliver documents with the highest quality and I continue to develop and adjust these techniques based on my experiences. </p>
                 </app-markdown> */}
@@ -45,7 +44,6 @@ const ModalRuby = ({closeModal,data}: { closeModal: any,data :any}) => {
              <div className="mt-4 w-full">
                 {/* <app-markdown>
                    <h2 className="text-base text-ruby-alpha pb-4 pt-8">専門領域</h2>
-                   
                 </app-markdown> */}
                 <ul className="ml-2.5">
                 {data.attributes.expertise_area.split(',').map((area: string) => {

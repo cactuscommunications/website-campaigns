@@ -45,7 +45,7 @@ export function OurPromise() {
         {params.heading && (
           <h2 className="text-center mb-10 sm:text-xxl sm:leading-8 sm:mb-4 sm:font-black">{params.heading} </h2>
         )}
-        <section className="container flex justify-center sm:block">
+        <section className="container flex justify-center max-w-6xl mx-auto sm:block">
         {params?.image && (
           <div className="flex items-center sm:block">
             <div

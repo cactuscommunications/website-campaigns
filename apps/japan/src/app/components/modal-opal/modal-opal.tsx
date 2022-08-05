@@ -129,7 +129,7 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
                      
                      <li className="block w-full float-left mb-1.5">
                         <span className="float-left inline-block mr-2.5">
-                           <span className="w-4 h-4 mt-2 bg-no-repeat bg-contain flex-shrink-0 inline-block " style={{ backgroundImage: `url(${'/assets/images/icons/user-blue1.svg'})`,}}></span>
+                           <span className="w-4 h-4 mt-2 bg-no-repeat bg-contain flex-shrink-0 inline-block " style={{ backgroundImage: `url(${'/assets/images/icons/provided-blue-icon.svg'})`,}}></span>
                         </span>
                         <div className="float-left w-4.25/5">
                               <p className="text-sm leading-21 font-ssb inline-block text-pearl-epsilon1">フォーマット調整</p>
@@ -141,7 +141,7 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
                      
                      <li className="block w-full float-left mb-1.5">
                         <span className="float-left inline-block mr-2.5">
-                           <span className="w-4 h-4 mt-2 bg-no-repeat bg-contain flex-shrink-0 inline-block " style={{ backgroundImage: `url(${'/assets/images/icons/user-blue1.svg'})`,}}></span>
+                           <span className="w-4 h-4 mt-2 bg-no-repeat bg-contain flex-shrink-0 inline-block " style={{ backgroundImage: `url(${'/assets/images/icons/check-black-icon.svg'})`,}}></span>
                         </span>
                         <div className="float-left w-4.25/5">
                               <p className="text-sm leading-21 font-ssb inline-block text-ruby-alpha">校正者とのQ&amp;A</p>
@@ -154,13 +154,12 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
                </div>
             
             <div className="w-full float-left pb-6 pt-4 px-5 bg-white rounded-b-lg">
-               {/* <app-lynk className="bg-pearl-epsilon1 btn btn-primary hover:shadow-blueBottom w-full">
-                  
-                  <a queryparamshandling="merge" data-description="editing overview v2-plan selection-standard editing details-click" href="/services/english-editing/standard-editing-plan">
-                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">サービスの詳細を確認する&gt;&gt;</span><!---->
+               <div className="bg-pearl-epsilon1 btn btn-primary hover:shadow-blueBottom w-full">
+                  <a data-description="editing overview v2-plan selection-standard editing details-click" href="https://www.editage.jp/services/english-editing/standard-editing-plan">
+                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">サービスの詳細を確認する&gt;&gt;</span>
                   </a>
                   
-               </app-lynk> */}
+               </div>
             </div>
             
             <div className="clearfix"></div>
@@ -343,13 +342,12 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
                </div>
             
             <div className="w-full float-left pb-6 pt-4 px-5 bg-white rounded-b-lg">
-               {/* <app-lynk className="bg-garnet-sigma btn btn-primary hover:shadow-brownBottom w-full">
-                  
-                  <a queryparamshandling="merge" data-description="editing overview v2-plan selection-premium editing details-click" href="/services/english-editing/premium-editing-plan">
-                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">サービスの詳細を確認する&gt;&gt;</span><!---->
+               <div className="bg-garnet-sigma btn btn-primary hover:shadow-brownBottom w-full">
+                  <a data-description="editing overview v2-plan selection-premium editing details-click" href="https://www.editage.jp/services/english-editing/premium-editing-plan">
+                     <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">サービスの詳細を確認する&gt;&gt;</span>
                   </a>
                   
-               </app-lynk> */}
+               </div>
             </div>
             
             <div className="clearfix"></div>
@@ -572,13 +570,13 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
                </div>
             
             <div className="w-full float-left pb-6 pt-4 px-5 bg-white rounded-b-lg">
-               {/* <app-lynk className="bg-opal-alpha1 btn btn-primary hover:shadow-goldenBottom w-full">
+               <div className="bg-opal-alpha1 btn btn-primary hover:shadow-goldenBottom w-full">
                   
-                  <a queryparamshandling="merge" data-description="editing overview v2-plan selection-sce details-click" href="/services/english-editing/top-journal-editing-plan">
+                  <a data-description="editing overview v2-plan selection-sce details-click" href="https://www.editage.jp/services/english-editing/top-journal-editing-plan">
                      <span className="px-3 inline-block font-ssb md:text-xs sm:text-xs">サービスの詳細を確認する&gt;&gt;</span>
                   </a>
                   
-               </app-lynk> */}
+               </div>
             </div>
             
             <div className="clearfix"></div>

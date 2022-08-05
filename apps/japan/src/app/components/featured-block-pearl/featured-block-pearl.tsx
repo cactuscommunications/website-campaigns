@@ -20,11 +20,11 @@ export function FeaturedBlockPearl() {
       },
       {
         content:
-          'オリエンテーション:校正者は、常に最高の状態で著者サービスを提供できるよう心がけています。また、厳しい採点基準で定期的に評価され、集中的なトレーニングを受けることで、常に高品質の英文校正を提供することができます。',
+          'オリエンテーション:校正者は、厳しい採点基準で定期的に評価され、集中的なトレーニングを受けることで、常に高品質の英文校正を提供することができます。',
       },
       {
         content:
-          '継続的な改善:継続的な学習と改善への取り組みとして、エディターは豊富なリソースにアクセスでき、ウェビナーなどによる情報共有も定期的に開催しています。',
+          '継続的な改善:エディターは豊富なリソースにアクセスでき、ウェビナーなどによる情報共有も定期的に開催しています。',
       },
       {
         content:
@@ -43,7 +43,7 @@ export function FeaturedBlockPearl() {
     <>
       <div className="clearfix"></div>
       <section className="w-full bg-primary">
-        <div className="wrapper py-20 sm:py-10 md:py-10 sm:px-5">
+        <div className="max-w-[950px] mx-auto py-10 sm:py-10 md:py-8 sm:px-5 sm:py-8">
           <div className="text-center">
             {params.heading && (
               <h2 className="text-4.5xl sm:text-xxl md:text-3.6xl text-ruby-alpha">{params.heading}</h2>
@@ -53,9 +53,9 @@ export function FeaturedBlockPearl() {
               style={{
                 backgroundImage: `url('/assets/images/featured-block-pearl-m.svg')`,
               }}
-              className="w-93 h-56.75 bg-no-repeat bg-center float-left order-1"
+              className="w-93 h-56.75 bg-no-repeat bg-center float-left order-1 sm:w-80"
             ></div>)}
-          <div className="pt-16 float-left w-full flex justify-center sm:pt-8">
+          <div className="pt-8.5 float-left w-full flex justify-center sm:pt-8">
             <div className="w-1/2 sm:w-full float-right order-2 pl-16 sm:pl-0">
                 <ul className="pl-4">
                   {params.features!.map((feature, index) => (

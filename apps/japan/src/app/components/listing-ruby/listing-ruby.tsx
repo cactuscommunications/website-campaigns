@@ -59,10 +59,11 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
       searchText = saParam;
     }
     const getSubData = async () => {
-      const { machineName, searchTitle} = await getMachineName(searchText);
+      const { machineNameTop, machineNameBottom, searchTitle,machineType } = await getMachineName(searchText);
       setSearchTitle(searchTitle);
-        
-      let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns);
+      const machineName = ignoreUrlParams ? machineNameBottom : machineNameTop;
+      
+      let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns, ignoreUrlParams ? 'sa_one' : machineType);
       setSubjects(subData.subjects);
       setPage(subData.pageObj.page);
       setPageCount(subData.pageObj.pageCount);
@@ -76,6 +77,9 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     setCurrentPage(num);
   };
   const selectSubject = (subject: ISubjects) => {
+    if (subject.machineName === saParam)
+      return;
+    
     window.location.replace(location.origin + location.pathname + '?sa=' + subject.machineName)
 
   }
@@ -83,26 +87,31 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     <>
       <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
-          {!hideHeading &&
-            <React.Fragment>
-              <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
-                <MarkDown data={(searchTitle ? searchTitle : params?.heading) + '!!break!! では以下の専門分野に対応しています。'}></MarkDown>
-              </h2>
-              {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
-            </React.Fragment>
-          }
+          <div className='max-w-[900px] mx-auto'>
+            {!hideHeading &&
+              <React.Fragment>
+                <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
+                  <MarkDown data={(searchTitle ? searchTitle : params?.heading) + 'では以下の専門分野に対応しています。'}></MarkDown>
+                </h2>
+                {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
+              </React.Fragment>
+            }
+          </div>
           <div
-            className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-7.5 sm:text-center'}>
+            className='bg-white px-16 rounded-lg  py-7.5 max-w-[1100px] mx-auto sm:text-center'>
             <div className="flex justify-center">
               {subjects.length > 0 && chunkedArray?.map((row: ISubjects[], i) => (
                 <div key={i} className="w-1/4 sm:w-full float-left">
                   <ul className="mt-2">
                     {row.map((item: ISubjects, index) => (
-                      <> <a
-                        key={index}
-                        onClick={(e) => selectSubject(item)}>
-                        <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
-                      </a> <br />
+                      <>
+                        <a
+                          className={ item.machineName === saParam ? 'cursor-not-allowed' : 'cursor-pointer' }
+                          key={index}
+                          onClick={(e) => selectSubject(item)}>
+                          <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
+                        </a>
+                        <br />
                       </>
                     ))}
                   </ul>
@@ -139,23 +148,48 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     chunkedArray = createChunks(items);
   }
   function getMachineName(input: string) {
+    let returnData = {
+      machineNameTop: '',
+      machineNameBottom: '',
+      machineType : '',
+      searchTitle: ''
+    }
     if (!input) {
-      return {
-        machineName: '',
-        searchTitle: ''
-      }
+      return returnData;
     }
     const query = '[$eq]=' + input;
     return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
-      return {
-        machineName: response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '',
-        searchTitle: response.data.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.search_title : '',
+      returnData.machineNameBottom = response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '';
+      returnData.searchTitle = response.data.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.search_title : '';
+      switch (response.data.data[0]?.attributes.type) {
+        case 'SA1':
+        case 'SA1.0': {
+          returnData.machineNameTop = response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name;
+         returnData.machineType = 'sa_one';
+          break;
+        }
+        case 'SA1.5': {
+          returnData.machineNameTop = response.data.data[0]?.attributes.sa_one_five.data[0].attributes.machine_name;
+          returnData.machineType = 'sa_one_five';
+          break;
+        }
+        case 'SA2.0': {
+          returnData.machineNameTop = response.data.data[0]?.attributes.sa_one_five.data[0].attributes.machine_name;
+          returnData.machineType = 'sa_one_five';         
+          break;
+        }
+        default: {
+          returnData.machineNameTop = response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name;
+          returnData.machineType = 'sa_one';         
+          break;
+        }
       }
+      return returnData;
     });
 
   }
-  function getSubjectData(input: string, page: number, pageSize: number) {
-    return subjectAPIService.getSubjectsList(input, page, pageSize).then(function (response: any) {
+  function getSubjectData(input: string, page: number, pageSize: number,machineType : string) {
+    return subjectAPIService.getSubjectsList(input, page, pageSize,machineType).then(function (response: any) {
       let returnData: ISubjects[] = [];
       let responseData = response.data.data;
       responseData.map((key: any) => {

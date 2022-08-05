@@ -7,34 +7,33 @@ export interface IServiceInformationRuby {
   }
 
   export interface IServiceInfo {
-      path:  string,
-      text: string
+    path:  string,
+    text: string
   }
 
   export interface ICardInfo {
-    path:  string,
+    baseService: string;
+    path: string,
     heading: IHeading;
     desc: string;
     benefit: IBenefit;
     listHeading: string;
-    list:IServiceInfoList[]
+    list: IServiceInfoList[]
     pricing: IPricing;
-    }  
+  }  
     
     export interface IServiceInfoList {
-        
-        path: string;
-        text: string;
+      path: string;
+      text: string;
     }
 
     export interface IHeading {
-        heading: string;
-        specialHeadingText: string;
-        headingClassName: string;
-        subHeadingClass: string;
-        comment: string;
-        path: string
-
+      heading: string;
+      specialHeadingText: string;
+      headingClassName: string;
+      subHeadingClass: string;
+      comment: string;
+      path: string
     }
     export interface IBenefit {
         text: string
@@ -44,6 +43,7 @@ export interface IServiceInformationRuby {
     export interface IPricing {
       path1: string;
       path2: string;
+      path3: string;
       wordCount: string;
       days: string;
       text: string;

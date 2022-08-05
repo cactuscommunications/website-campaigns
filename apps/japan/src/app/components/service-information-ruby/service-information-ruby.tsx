@@ -2,11 +2,25 @@ import ServiceInfoCard from './service-info-card'
 import {IServiceInformationRuby} from "./models"
 import MarkDown from '../markdown/markdown';
 import ModalOpal from '../modal-opal/modal-opal';
-import {  useState } from 'react';
+import {  useState, useEffect } from 'react';
+import subjectAPIService from '../../services/api/subject-api';
 
   
-export function ServiceInformationRuby(){
+export function ServiceInformationRuby({ searchText }: { searchText: string }){
   const [openModal, setOpenModal] = useState(false);
+  const [data, setData] = useState({ service_flag: ''});
+  const url = new URL(location.href);
+  var saParam = url.searchParams.get("sa");
+  useEffect(() => {
+    if(saParam) { 
+      searchText = saParam;
+  }
+    const getSubData = async () => {
+      let resp = await getData(searchText);
+      setData(resp);
+    };
+    getSubData();
+  }, [searchText]);
 
     const params : IServiceInformationRuby = {
 
@@ -15,6 +29,7 @@ export function ServiceInformationRuby(){
         path: '',
         card: [
           {
+            baseService: 'ses',
             path:  "/assets/images/icons/yellow-star.svg",
             heading: {
               heading: "スタンダード英文校正 >",
@@ -41,7 +56,7 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "納得いくまで書き直します100%品質保証"
+              text: "納得いくまで書き直します。100%品質保証"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
@@ -49,11 +64,7 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "業界最速！最短8.5時間納品"
-            },
-            {
-              path: "/assets/images/icons/check-round-small.svg",
-              text: "リーズナブルに追加365日有効の再校正１回分"
+              text: "リーズナブルに追加。365日有効の再校正１回分!!break!!＊修正量の上限無し！"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
@@ -64,6 +75,7 @@ export function ServiceInformationRuby(){
             pricing: {
               path1: "/assets/images/icons/watch.svg",
               path2: "/assets/images/icons/wallet.png",
+              path3: "/assets/images/icons/accepted-document.svg",
               wordCount: "4,000単語",
               days: "まで4営業日～",
               text: "最短で",
@@ -77,6 +89,7 @@ export function ServiceInformationRuby(){
             }
           },
           {
+            baseService: 'pes',
             path:  "/assets/images/icons/yellow-star.svg",
             heading: {
                       heading: "プレミアム英文校正 >",
@@ -88,18 +101,18 @@ export function ServiceInformationRuby(){
             },
             desc: "平均20年以上の経験を持つシニア校正者２名が、英文法・語彙などのチェックにとどまらず論理の流れも校閲し、論旨を際立たせ、 受理率を高めます。再校正も1年間、投稿の前後に関わらず回数も修正量も上限無しでご利用いただけます。更に有料オプションの「査読返答レター英文校正＆再フォーマット調整」 を追加すると、査読者への返信文校正、フォーマット調整（2誌まで）も1年間何度でも無料 に。もしもの際の再投稿時にも安心です。",
             benefit: {
-                      text: "【5月の特典】iThenticateを利用した剽窃チェックレポートが今だけ無料。",
-                      className: "bg-garnet-beta",
-                path:"/assets/images/icons/discount-icon.svg"
+              text: "【5月の特典】iThenticateを利用した剽窃チェックレポートが今だけ無料。",
+              className: "bg-garnet-beta",
+              path:"/assets/images/icons/discount-icon.svg"
             },
             listHeading: "[充実の校正サポート]",
             list: [{
               path: "/assets/images/icons/check-round-small.svg",
-              text: "365日間何度でも無料再校正【修正量の上限20%が撤廃になりました！】"
+              text: "365日間何度でも無料再校正!!break!!修正量の上限20%が撤廃になりました！】"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "フォーマット調整1誌無料「オプション追加」で2誌まで無料にも。"
+              text: "フォーマット調整1誌無料!!break!!「オプション追加」で2誌まで無料にも"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
@@ -107,15 +120,11 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "業界最速！最短8.5時間納品"
-            },
-            {
-              path: "/assets/images/icons/check-round-small.svg",
               text: "カバーレター作成無料"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "担当校正者への質問何回でも無料"
+              text: "担当校正者への質問は何回でも無料"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
@@ -126,6 +135,7 @@ export function ServiceInformationRuby(){
             pricing: {
                 path1: "/assets/images/icons/watch.svg",
                 path2: "/assets/images/icons/wallet.png",
+                path3: "/assets/images/icons/accepted-document.svg",
                 wordCount: "3,000単語",
                 days: "単語/1日～",
                 text: "最短で",
@@ -139,14 +149,15 @@ export function ServiceInformationRuby(){
             }
           },
           {
+            baseService: 'tje',
             path:  "/assets/images/icons/yellow-star.svg",
             heading: {
-                        heading: "トップジャーナル英文校正 >",
-                specialHeadingText: "【最高峰】研究内容まで踏み込む英語論文校正！",
-                headingClassName: "border-opal-delta1",
-                comment: "投稿前査読付き",
-                path: "/assets/images/icons/yellow-star.svg",
-                subHeadingClass: "bg-opal-delta1"
+              heading: "トップジャーナル英文校正 >",
+              specialHeadingText: "【最高峰】研究内容まで踏み込む英語論文校正！",
+              headingClassName: "border-opal-delta1",
+              comment: "投稿前査読付き",
+              path: "/assets/images/icons/yellow-star.svg",
+              subHeadingClass: "bg-opal-delta1"
             },
             desc: "一流ジャーナルでの査読者経験を持つ査読者が、編集で指摘を受けそうな点を洗い出す論文完成度評価レポート、平均20年以上の経験を持つシニア校正者が投稿ジャーナルに合わせ、文体を柔軟に最適化する英文校正。エディテージの「最高品質」サービスです。再校正は1年間、投稿の前後に関わらず回数も修正量も上限無し。査読者への返信文も校正。1年以内なら投稿先を何度変更してもフォーマット調整の追加料金もかかりません。ジャーナルのインパクトファクターの高低にかかわらずご利用いただけます。",
             benefit: {
@@ -156,38 +167,35 @@ export function ServiceInformationRuby(){
             },
             listHeading: "[充実の校正サポート]",
             list: [{
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "365日間何度でも無料フォーマット調整 !!break!!投稿先を何度変更しても追加料金無し！"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "365日間何度でも無料フォーマット調整 !!break!!＊投稿先を何度変更しても追加料金無し！"
             },
             {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "365日間何度でも無料再校正＊一回の修正量の上限も無し"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "365日間何度でも無料再校正＊一回の修正量の上限も無し"
             },
             {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "研究内容に踏み込んだ論文完成度評価レポート"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "研究内容に踏み込んだ論文完成度評価レポート"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
               text: "365日間何度でも無料査読返信文の校正"
             },
             {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "365日間何度でも無料査読返信文の校正"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "担当校正者への質問は何回でも無料"
             },
             {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "担当校正者への質問は何回でも無料"
-            },
-            {
-                path: "/assets/images/icons/check-round-small.svg",
-                text: "納得いくまで書き直します100%品質保証"
+              path: "/assets/images/icons/check-round-small.svg",
+              text: "納得いくまで書き直します。100%品質保証"
             }
             
             ],
             pricing: {
               path1: "/assets/images/icons/watch.svg",
               path2: "/assets/images/icons/wallet.png",
+              path3: "/assets/images/icons/accepted-document.svg",
               wordCount: "4,000単語",
               days: "単語まで4営業日～",
               text: "最短で ",
@@ -205,33 +213,40 @@ export function ServiceInformationRuby(){
         CTAtext: 'サービスを比較する'
     }
     return (
-<section className="py-10">
-  <div className="container">
-    <h2 className="font-pb text-center text-ruby-alpha text-5xl mb-8 sm:text-20 sm:leading-7 sm:mb-3">{params.heading}</h2> 
-      <p className="text-base text-center font-pr text-ruby-alpha mx-auto max-w-240 mb-10 leading-6 sm:text-13 sm:mb-6">{params.subHeading}</p>
-      {params.card.map((card, index) => (
-        <ServiceInfoCard
-          key={index}
-          card={card}
-          ></ServiceInfoCard>
-      ))}
-
-    {params.card.map((card) => (
-                            <ServiceInfoCard
-                            card={card}
-                            ></ServiceInfoCard>
-                        ))}
-
-  <div className="text-center mt-10">
-    <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
-      <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
-    </a>
-  </div>
-  {openModal && <ModalOpal closeModal={setOpenModal}/>}
-
-  </div>
-  </section>
-);
+      <section className="py-10">
+        <div className="container">
+          <h2 className="font-pb text-center text-ruby-alpha text-5xl mb-8 sm:text-20 sm:leading-7 sm:mb-3">{params.heading}</h2> 
+          <p className="text-base text-center font-pr text-ruby-alpha mx-auto max-w-240 mb-10 leading-6 sm:text-13 sm:mb-6">{params.subHeading}</p>
+          {params.card.map((card, index) => (
+            <ServiceInfoCard
+              key={index}
+              card={card}
+              data= {data}
+              ></ServiceInfoCard>
+          ))}
+          <div className="text-center mt-10">
+            <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
+              <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
+            </a>
+          </div>
+          {openModal && <ModalOpal closeModal={setOpenModal}/>}
+        </div>
+      </section>
+    );
+  function getData(input:string) {
+    return subjectAPIService.getWholeData(input, 'sa_one_five.social_attributes').then(function (response: any) {
+      if (response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors) {
+        return {
+          service_flag: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.service_flag,
+        };
+      } else {
+        return {
+          service_flag: ''
+        };
+      }
+  
+    });
+  }  
         
 }
     export default ServiceInformationRuby;

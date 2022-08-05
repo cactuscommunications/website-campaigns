@@ -57,20 +57,20 @@ export function JournalRuby({ searchText }: { searchText: string }) {
       <section className={'pb-10 pt-7.5 ' + params?.backgroundColor}>
         <div className="container px-5">
           <h2 className="text-center font-pb text-5xl text-ruby-alpha leading-30 sm:text-20">
-            {params.heading}<span className="sm:hidden">{title}</span>
+            <span className="sm:hidden">{params.heading}{title}</span>
             <span className="hidden sm:block">{params.mobileHeading}</span>
           </h2>
           <p className="text-center text-base leading-6 font-pr text-ruby-alpha mt-4 mb-7 sm:mt-5">
             <span className="sm:hidden">{params.subHeading}</span>
             <span className="hidden sm:block">{params.mobileSubHeading}</span>
           </p>
-          <div className="w-full flex justify-center mt-5 flex-wrap sm:flex-nowrap sm:justify-start sm:overflow-x-auto">
+          <div className="w-full flex justify-center mt-5 flex-wrap max-w-[1300px] mx-auto sm:flex-nowrap sm:justify-start sm:overflow-x-auto">
             {journals
               .sort((first, second) => {
                 return first.impact_factor < second.impact_factor ? 1 : -1;
               })
               .map((journal) => (
-                <div key={journal.name} className="rounded-lg border border-pearl-beta pb-3 w-56 mx-2.5 sm:shrink-0">
+                <div key={journal.name} className="rounded-lg border border-pearl-beta pb-1 w-55 mx-2.5 sm:shrink-0">
                   <div
                     className="h-75 bg-no-repeat bg-contain w-full rounded-t-lg"
                     style={{
@@ -81,7 +81,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
                   </div>
                   <div className="px-2.5 mt-3">
                     <h2 className="font-sb text-ruby-alpha text-base">{journal.name}</h2>
-                    <p className="font-sb leading-21 text-sm text-pearl-beta">
+                    <p className="font-sb text-13 leading-8 text-pearl-beta">
                       {params.journalLabel}
                       <span className="font-ssb">{journal.impact_factor}</span>
                     </p>
@@ -103,7 +103,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
     })
   }
   function getData(input: string) {
-    return subjectAPIService.getWholeData(input, 'sa_one_five.journals').then(function (response: any) {
+    return subjectAPIService.getWholeData(input, 'sa_one_five.journals,sa_one_five.social_attributes').then(function (response: any) {
 
       let journalData: IJournals[] = [];
       response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.journals?.data.map((journal: any) => {
@@ -111,7 +111,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
 
       })
 
-      let title = response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.search_title : ''
+      let title = response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
 
       return { data: journalData, title: title };
     });
