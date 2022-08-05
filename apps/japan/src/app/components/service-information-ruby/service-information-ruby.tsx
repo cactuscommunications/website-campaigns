@@ -96,7 +96,7 @@ export function ServiceInformationRuby(){
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "フォーマット調整1誌無料!!break!! オプション追加」で2誌まで無料にも"
+              text: "フォーマット調整1誌無料!!break!!「オプション追加」で2誌まで無料にも"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
