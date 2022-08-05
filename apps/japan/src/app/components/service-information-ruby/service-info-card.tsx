@@ -2,10 +2,7 @@ import ServiceInfoList from './service-info-list'
 import {ICardInfo} from "./models"
 import MarkDown from '../markdown/markdown';
 
-
-    
-
-export function ServiceInfoCard({ card }: { card: ICardInfo }) {
+export function ServiceInfoCard({ card,data }: { card: ICardInfo, data :any }) {
   let start = 0;
   let end = card.list.length;
   let mid = Math.ceil((card.list.length) / 2);
@@ -18,21 +15,20 @@ export function ServiceInfoCard({ card }: { card: ICardInfo }) {
             <h3 className="text-5xl text-white leading-9 font-pb mt-7 mx-6 sm:text-2xl sm:ml-3">{card?.heading.heading + ">"}</h3>
           </a>  
         <span className="bg-diamond-kappa py-2 pl-3 pr-10 rounded-l-3xl font-sb text-ruby-alpha text-base -mr-px flex self-center sm:absolute sm:top-full sm:right-px sm:mt-2">
-          <span className="w-7 h-7 bg-no-repeat inline-block bg-contain mr-2" style={{backgroundImage: `url(${card.heading.path})`,}}></span>{card.heading.comment}
+          <span className="w-7 h-7 bg-no-repeat inline-block bg-contain mr-2"
+              style={{ backgroundImage: `url(${card.heading.path})`, }}></span>
+            {card.baseService === 'pes' && data.service_flag ? data.service_flag : card.heading.comment}
         </span>
       </div>
     </div>
 
     <div className="border-b border-ruby-beta/50 px-5 py-4 relative sm:pt-15 sm:px-2.5"> 
-        <p className="text-sm leading-6 font-pb text-ruby-alpha sm:text-13">
-          <MarkDown data={card.desc}></MarkDown>
-        </p>
+      <p className="text-sm leading-6 font-pb text-ruby-alpha sm:text-13">
+        <MarkDown data={card.desc}></MarkDown>
+      </p>
 
       <div  className={`pt-5.5 content before:absolute before:border-t before:-z-10 before:border-ruby-beta/50 before:left-0 before:right-0 sm:pt-3.5`}>
-        {/* <span className="bg-no-repeat bg-contain inline-block w-7	h-7 mr-2 flex-shrink-0 sm:w-5 sm:h-5 sm:mr-1.5" style={{backgroundImage: `url(${card.benefit.path})`,}}></span>
-        <span className="text-sm font-pb text-ruby-alpha sm:text-13 sm:leading-19">{card?.benefit.text}</span> */}
       </div>
-
       <div className="mt-6 sm:mt-4">
         <h3 className="font-pr text-ruby-alpha text-xl	leading-5 sm:text-base">{card.listHeading}</h3>
        <div className="flex justify-between flex-wrap">
