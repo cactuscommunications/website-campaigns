@@ -91,9 +91,9 @@ const SubjectAreaBannerRuby: React.FC = () => {
   };
   const searchResults = () => {
     // setMachineName();
-    if(!searchTerm || searchTerm == ''){
+    if (!searchTerm || searchTerm == '') {
       setShowNoTextValidation(true);
-    } else if (!showValidation)
+    } else if (!showValidation && !noDataMessage)
       window.location.replace(location.origin + location.pathname + '?sa=' + (searchObj.machineName ? searchObj.machineName : machineName))
 
   };
