@@ -93,7 +93,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
   return (
     <>
       <section
-        className="pt-18 pb-21.25 bg-cover bg-center bg-no-repeat sm:bg-full sm:py-4"
+        className="pt-18 pb-21.25 bg-cover bg-center bg-no-repeat xxl:bg-full sm:bg-full sm:py-4"
         style={{
           backgroundImage: `url(${!isMobile ? params.backgroundImg : ''})`,
         }}
