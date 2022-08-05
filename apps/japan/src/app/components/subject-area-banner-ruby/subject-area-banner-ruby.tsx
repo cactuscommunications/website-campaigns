@@ -46,11 +46,12 @@ const SubjectAreaBannerRuby: React.FC = () => {
   const [loadCounter, setloadCounter] = useState(true);
   const [noDataMessage, setNoDataMessage] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
+  const validationReg = /^[ A-Za-z0-9!@#$%^&*():.,-_+;><?|]*$/;
   useEffect(() => {
     const getSaData = async () => {
       if (saParam && loadCounter) {
         let resp = await getSearchList(saParam, 'eq');
-        setSearchTerm(resp[0].name);
+        setSearchTerm(resp[0]?.name);
         setloadCounter(false);
         setSaSelected(true)
       }
@@ -60,11 +61,11 @@ const SubjectAreaBannerRuby: React.FC = () => {
       setSaSelected(false)
       setShowValidation(false);
       setNoDataMessage(false);
-      if (searchTerm.length > 0 && !searchTerm.match(/^[\w\-\,\s]+$/)) {
+      if (searchTerm.length > 0 && !searchTerm.match(validationReg)) {
         setShowValidation(true);
         setSearchList([]);
       }
-      if (searchTerm.length >= 3 && !saSelected && searchTerm.match(/^[\w\-\,\s]+$/)) {
+      if (searchTerm.length >= 3 && !saSelected && searchTerm.match(validationReg)) {
         setSearchList([]);
         setNoDataMessage(false);
         let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'), 'contains');
@@ -195,7 +196,8 @@ function getSearchList(input: string, type:string) {
     response.data.data.map((key: any) => {
       let machineName = '';
       switch (key.attributes.type) {
-        case 'SA1': {
+        case 'SA1': 
+        case 'SA1.0' : {
           machineName = key.attributes.sa_one.data[0].attributes.machine_name;
           break;
         }

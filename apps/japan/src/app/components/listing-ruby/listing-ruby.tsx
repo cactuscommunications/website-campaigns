@@ -59,10 +59,11 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
       searchText = saParam;
     }
     const getSubData = async () => {
-      const { machineName, searchTitle} = await getMachineName(searchText);
+      const { machineNameTop, machineNameBottom, searchTitle,machineType } = await getMachineName(searchText);
       setSearchTitle(searchTitle);
-        
-      let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns);
+      const machineName = ignoreUrlParams ? machineNameBottom : machineNameTop;
+      
+      let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns, ignoreUrlParams ? 'sa_one' : machineType);
       setSubjects(subData.subjects);
       setPage(subData.pageObj.page);
       setPageCount(subData.pageObj.pageCount);
@@ -147,23 +148,48 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     chunkedArray = createChunks(items);
   }
   function getMachineName(input: string) {
+    let returnData = {
+      machineNameTop: '',
+      machineNameBottom: '',
+      machineType : '',
+      searchTitle: ''
+    }
     if (!input) {
-      return {
-        machineName: '',
-        searchTitle: ''
-      }
+      return returnData;
     }
     const query = '[$eq]=' + input;
     return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
-      return {
-        machineName: response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '',
-        searchTitle: response.data.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.search_title : '',
+      returnData.machineNameBottom = response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name ? response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name : '';
+      returnData.searchTitle = response.data.data[0]?.attributes.search_title ? response.data.data[0]?.attributes.search_title : '';
+      switch (response.data.data[0]?.attributes.type) {
+        case 'SA1':
+        case 'SA1.0': {
+          returnData.machineNameTop = response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name;
+         returnData.machineType = 'sa_one';
+          break;
+        }
+        case 'SA1.5': {
+          returnData.machineNameTop = response.data.data[0]?.attributes.sa_one_five.data[0].attributes.machine_name;
+          returnData.machineType = 'sa_one_five';
+          break;
+        }
+        case 'SA2.0': {
+          returnData.machineNameTop = response.data.data[0]?.attributes.sa_one_five.data[0].attributes.machine_name;
+          returnData.machineType = 'sa_one_five';         
+          break;
+        }
+        default: {
+          returnData.machineNameTop = response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name;
+          returnData.machineType = 'sa_one';         
+          break;
+        }
       }
+      return returnData;
     });
 
   }
-  function getSubjectData(input: string, page: number, pageSize: number) {
-    return subjectAPIService.getSubjectsList(input, page, pageSize).then(function (response: any) {
+  function getSubjectData(input: string, page: number, pageSize: number,machineType : string) {
+    return subjectAPIService.getSubjectsList(input, page, pageSize,machineType).then(function (response: any) {
       let returnData: ISubjects[] = [];
       let responseData = response.data.data;
       responseData.map((key: any) => {

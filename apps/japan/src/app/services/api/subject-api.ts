@@ -2,10 +2,10 @@ import axios from 'axios';
 import { API } from '../../config/constants'
 
 const subjectAPIService = {
-    getSubjectsList: function (input: string, page: number, pageCount: number) {
+    getSubjectsList: function (input: string, page: number, pageCount: number,machineType:string) {
         const config = {
             method: 'get',
-            url: API.baseUrl + '/subject-areas?&filters[type][$eq]=SA2.0&&pagination[pageSize]=' + pageCount + '&pagination[page]=' + page + (input ? '&filters[sa_one][machine_name][$eq]=' + input : ''),
+            url: API.baseUrl + '/subject-areas?&filters[type][$eq]=SA2.0&pagination[pageSize]=' + pageCount + '&pagination[page]=' + page + (input ? '&filters['+machineType+'][machine_name][$eq]=' + input : ''),
             headers: { Authorization: API.token },
         };
         return axios(config)
