@@ -72,7 +72,7 @@ export function ServiceBlockRuby() {
     return (
         <>
             <div className={params?.desktopOnly ? 'md:hidden sm:hidden ' : ' '} >
-                <div className="w-full mx-auto mt-20 sm:w-full md:w-full md:px-7">
+                <div className="w-full max-w-[1200px] mx-auto mt-20 sm:w-full md:w-full md:px-7">
                     <div className="clearfix"></div>
                     {params?.heading &&
                         <h2 className="pt-8 pb-8 text-center sm:text-xxl sm:leading-8 sm:font-black">{params?.heading}</h2>}

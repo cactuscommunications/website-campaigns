@@ -67,9 +67,10 @@ export function FeaturedBlockLapis() {
       <div className="clearfix"></div>
       <div className={params?.backgroundColor}>
         <div className="container">
+          
           <div
             className={
-              params?.position === 'right' ? 'pt-14 pb-6 sm:py-10 sm:pt-3 md:pt-6 ' : 'py-16 sm:py-10 ' + ' wrapper'
+              params?.position === 'right' ? 'pt-14 pb-6 sm:py-10 sm:pt-3 md:pt-6 max-w-[1000px] mx-auto' : 'py-16 sm:py-10 ' + 'max-w-[1000px] mx-auto'
             }
           >
             <h2
