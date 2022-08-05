@@ -46,7 +46,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
   const [loadCounter, setloadCounter] = useState(true);
   const [noDataMessage, setNoDataMessage] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
-  const validationReg = /^[ A-Za-z0-9!@#$%^&*():.,-_+;><?|]*$/;
+  const validationReg =    /^[ A-Za-z\/\s\!@#$%^&*():,-_+;><?|.'\-]+$/
   useEffect(() => {
     const getSaData = async () => {
       if (saParam && loadCounter) {
