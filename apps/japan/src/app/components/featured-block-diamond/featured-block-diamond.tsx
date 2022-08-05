@@ -37,7 +37,7 @@ export function FeaturedBlockDiamond() {
     <>
       <div className="clearfix"></div>
       <section className={' w-full float-left ' + params?.backgroundColor}>
-        <div className="wrapper">
+        <div className="max-w-[1100px] mx-auto">
           <div className="w-full relative flex items-center py-7.5 sm:block md:px-5">
             <div className={'flex text-right pr-2 sm:pr-0 sm:block sm:w-full ' + params?.backgroundColor}>
               <span

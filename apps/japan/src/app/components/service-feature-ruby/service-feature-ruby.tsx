@@ -54,7 +54,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
           <div className='max-w-[600px] mx-auto'>
             <h2 className="text-center leading-44 mb-5 sm:mb-0 sm:leading-29">
               <div className="font-pb text-3xl sm:text-20 sm:leading-29 sm:block md:text-2xl">
-                {data.title ? data.title : params?.heading} の英文校正サービスと実績
+                {data.title ? data.title : params?.heading}の英文校正サービスと実績
               </div>
             </h2>
           </div>

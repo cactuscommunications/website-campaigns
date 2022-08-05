@@ -97,7 +97,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
             }
           </div>
           <div
-            className={(hideHeading ? '' : 'wrapper') + ' bg-white px-16 rounded-lg  py-7.5 max-w-[1100px] mx-auto sm:text-center'}>
+            className='bg-white px-16 rounded-lg  py-7.5 max-w-[1100px] mx-auto sm:text-center'>
             <div className="flex justify-center">
               {subjects.length > 0 && chunkedArray?.map((row: ISubjects[], i) => (
                 <div key={i} className="w-1/4 sm:w-full float-left">

@@ -144,7 +144,7 @@ export function FeaturedBlockTopaz() {
     <>
       <div id="{{ params?.id }}" className="bg-primary py-16 w-full float-left sm:py-10">
         <section className="container">
-          <div className="wrapper">
+          <div className="max-w-[1000px] mx-auto">
             <h2 className="mb-3 text-center leading-9 sm:text-xxl sm:leading-8 sm:font-black">
               <MarkDown data={params?.heading}></MarkDown>
             </h2>

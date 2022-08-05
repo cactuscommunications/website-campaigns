@@ -2,11 +2,25 @@ import ServiceInfoCard from './service-info-card'
 import {IServiceInformationRuby} from "./models"
 import MarkDown from '../markdown/markdown';
 import ModalOpal from '../modal-opal/modal-opal';
-import {  useState } from 'react';
+import {  useState, useEffect } from 'react';
+import subjectAPIService from '../../services/api/subject-api';
 
   
-export function ServiceInformationRuby(){
+export function ServiceInformationRuby({ searchText }: { searchText: string }){
   const [openModal, setOpenModal] = useState(false);
+  const [data, setData] = useState({ service_flag: ''});
+  const url = new URL(location.href);
+  var saParam = url.searchParams.get("sa");
+  useEffect(() => {
+    if(saParam) { 
+      searchText = saParam;
+  }
+    const getSubData = async () => {
+      let resp = await getData(searchText);
+      setData(resp);
+    };
+    getSubData();
+  }, [searchText]);
 
     const params : IServiceInformationRuby = {
 
@@ -15,6 +29,7 @@ export function ServiceInformationRuby(){
         path: '',
         card: [
           {
+            baseService: 'ses',
             path:  "/assets/images/icons/yellow-star.svg",
             heading: {
               heading: "スタンダード英文校正 >",
@@ -74,6 +89,7 @@ export function ServiceInformationRuby(){
             }
           },
           {
+            baseService: 'pes',
             path:  "/assets/images/icons/yellow-star.svg",
             heading: {
                       heading: "プレミアム英文校正 >",
@@ -92,11 +108,11 @@ export function ServiceInformationRuby(){
             listHeading: "[充実の校正サポート]",
             list: [{
               path: "/assets/images/icons/check-round-small.svg",
-              text: "365日間何度でも無料再校正【修正量の上限20%が撤廃になりました！】"
+              text: "365日間何度でも無料再校正!!break!!修正量の上限20%が撤廃になりました！】"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
-              text: "フォーマット調整1誌無料!!break!! オプション追加」で2誌まで無料にも"
+              text: "フォーマット調整1誌無料!!break!!「オプション追加」で2誌まで無料にも"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
@@ -133,14 +149,15 @@ export function ServiceInformationRuby(){
             }
           },
           {
+            baseService: 'tje',
             path:  "/assets/images/icons/yellow-star.svg",
             heading: {
-                        heading: "トップジャーナル英文校正 >",
-                specialHeadingText: "【最高峰】研究内容まで踏み込む英語論文校正！",
-                headingClassName: "border-opal-delta1",
-                comment: "投稿前査読付き",
-                path: "/assets/images/icons/yellow-star.svg",
-                subHeadingClass: "bg-opal-delta1"
+              heading: "トップジャーナル英文校正 >",
+              specialHeadingText: "【最高峰】研究内容まで踏み込む英語論文校正！",
+              headingClassName: "border-opal-delta1",
+              comment: "投稿前査読付き",
+              path: "/assets/images/icons/yellow-star.svg",
+              subHeadingClass: "bg-opal-delta1"
             },
             desc: "一流ジャーナルでの査読者経験を持つ査読者が、編集で指摘を受けそうな点を洗い出す論文完成度評価レポート、平均20年以上の経験を持つシニア校正者が投稿ジャーナルに合わせ、文体を柔軟に最適化する英文校正。エディテージの「最高品質」サービスです。再校正は1年間、投稿の前後に関わらず回数も修正量も上限無し。査読者への返信文も校正。1年以内なら投稿先を何度変更してもフォーマット調整の追加料金もかかりません。ジャーナルのインパクトファクターの高低にかかわらずご利用いただけます。",
             benefit: {
@@ -196,25 +213,40 @@ export function ServiceInformationRuby(){
         CTAtext: 'サービスを比較する'
     }
     return (
-  <section className="py-10">
-    <div className="container">
-      <h2 className="font-pb text-center text-ruby-alpha text-5xl mb-8 sm:text-20 sm:leading-7 sm:mb-3">{params.heading}</h2> 
-      <p className="text-base text-center font-pr text-ruby-alpha mx-auto max-w-240 mb-10 leading-6 sm:text-13 sm:mb-6">{params.subHeading}</p>
-      {params.card.map((card, index) => (
-        <ServiceInfoCard
-          key={index}
-          card={card}
-          ></ServiceInfoCard>
-      ))}
-      <div className="text-center mt-10">
-        <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
-          <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
-        </a>
-      </div>
-    {openModal && <ModalOpal closeModal={setOpenModal}/>}
-  </div>
-  </section>
-);
+      <section className="py-10">
+        <div className="container">
+          <h2 className="font-pb text-center text-ruby-alpha text-5xl mb-8 sm:text-20 sm:leading-7 sm:mb-3">{params.heading}</h2> 
+          <p className="text-base text-center font-pr text-ruby-alpha mx-auto max-w-240 mb-10 leading-6 sm:text-13 sm:mb-6">{params.subHeading}</p>
+          {params.card.map((card, index) => (
+            <ServiceInfoCard
+              key={index}
+              card={card}
+              data= {data}
+              ></ServiceInfoCard>
+          ))}
+          <div className="text-center mt-10">
+            <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
+              <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
+            </a>
+          </div>
+          {openModal && <ModalOpal closeModal={setOpenModal}/>}
+        </div>
+      </section>
+    );
+  function getData(input:string) {
+    return subjectAPIService.getWholeData(input, 'sa_one_five.social_attributes').then(function (response: any) {
+      if (response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.editors) {
+        return {
+          service_flag: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.service_flag,
+        };
+      } else {
+        return {
+          service_flag: ''
+        };
+      }
+  
+    });
+  }  
         
 }
     export default ServiceInformationRuby;

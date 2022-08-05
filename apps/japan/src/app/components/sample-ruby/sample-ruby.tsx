@@ -54,7 +54,7 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
             <span className="text-base text-ruby-alpha font-pr">{params.subHeading}</span>
           </div>
           {samples && samples.length > 0 &&
-            <div className="max-w-1060 flex-wrap flex justify-center mx-auto md:max-w-240">
+            <div className="max-w-[970px] flex-wrap flex justify-center mx-auto md:max-w-240">
               {samples.map((sample, index) => (
                 <div
                   key={index}

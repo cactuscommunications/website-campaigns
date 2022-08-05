@@ -43,7 +43,7 @@ export function FeaturedBlockPearl() {
     <>
       <div className="clearfix"></div>
       <section className="w-full bg-primary">
-        <div className="wrapper py-10 sm:py-10 md:py-8 sm:px-5 sm:py-8">
+        <div className="max-w-[950px] mx-auto py-10 sm:py-10 md:py-8 sm:px-5 sm:py-8">
           <div className="text-center">
             {params.heading && (
               <h2 className="text-4.5xl sm:text-xxl md:text-3.6xl text-ruby-alpha">{params.heading}</h2>

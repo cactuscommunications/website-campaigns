@@ -5,7 +5,7 @@ export function ThankYouRuby() {
     <section className="w-full">
       <div className="justify-center items-center flex flex-col px-4 pb-20 sm:pb-10 sm:border bg-pearl-alpha pt-10 sm:pt-6">
         <h1 className="font-sb text-4.5xl sm:text-23 leading-normal text-center text-white"> エディテージへのお問い合わせ </h1>
-        <p className="text-sm sm:text-10 leading-normal text-center text-white"> お問い合わせには営業時間1時間以内に回答いたします </p>
+        {/* <p className="text-sm sm:text-10 leading-normal text-center text-white"> お問い合わせには営業時間1時間以内に回答いたします </p> */}
       </div>
     </section>
     <div className="clearfix"></div>
