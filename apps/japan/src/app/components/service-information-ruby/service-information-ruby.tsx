@@ -108,7 +108,7 @@ export function ServiceInformationRuby({ searchText }: { searchText: string }){
             listHeading: "[充実の校正サポート]",
             list: [{
               path: "/assets/images/icons/check-round-small.svg",
-              text: "365日間何度でも無料再校正【修正量の上限20%が撤廃になりました！】"
+              text: "365日間何度でも無料再校正!!break!!修正量の上限20%が撤廃になりました！】"
             },
             {
               path: "/assets/images/icons/check-round-small.svg",
