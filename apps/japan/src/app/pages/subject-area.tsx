@@ -16,10 +16,19 @@ import ListingPearl from '../components/listing-pearl/listing-pearl';
 import CarouselPearl from '../components/carousel-pearl/carousel-pearl';
 import ServiceInformationDiamond from '../components/service-information-diamond/service-information-diamond';
 import ServiceInformationRuby from "../components/service-information-ruby/service-information-ruby"
-
+// @ts-ignore
+import { Helmet } from "react-helmet";
+const params = {
+  title: '分野別の英文校正サービス｜エディテージ',
+  description: '英文校正は専門分野が命です。1300分野で分野別のネイティブ2名以上がお客様の学術論文を校正し、受理率を最大限に高めます。英文校正業界で第1位のエディテージが提供する学術英文校正サービス。'
+}
 export function SubjectArea() {
   return (
     <>
+      <Helmet>
+        <title>{params.title}</title>
+        <meta name="description" content={params.description} />
+      </Helmet>
       <Header />
       <SubjectAreaBannerRuby />
       <ServiFeatureRuby searchText={'default'} />
@@ -28,15 +37,15 @@ export function SubjectArea() {
       <FeaturedBlockPearl />
       <CarouselPearl searchText={'default'} />
       <FeaturedBlockDiamond />
-      <ServiceInformationRuby searchText={'default'}/>
+      <ServiceInformationRuby searchText={'default'} />
       <SampleRuby searchText={'default'} />
-      <JournalRuby searchText={'default'} />     
+      <JournalRuby searchText={'default'} />
       <OurPromise />
       <FeaturedBlockLapis />
       <FeaturedBlockTopaz />
       <ServiceBlockRuby />
       {/* <ListingPearl /> */}
-      
+
       <Footer />
     </>
   );

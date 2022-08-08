@@ -54,7 +54,7 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
             <span className="text-base text-ruby-alpha font-pr">{params.subHeading}</span>
           </div>
           {samples && samples.length > 0 &&
-            <div className="max-w-[970px] flex-wrap flex justify-center mx-auto md:max-w-240">
+            <div className="max-w-[60.625rem] flex-wrap flex justify-center mx-auto md:max-w-240">
               {samples.map((sample, index) => (
                 <div
                   key={index}
@@ -92,7 +92,7 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
 function getMachineName(input: string) {
   const query = '[$eq]=' + input;
   return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
-    return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
+    return response.data.data[0]?.attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
   })
 }
 function getSampleData(input: string) {

@@ -69,8 +69,8 @@ export function FeatureLapis({ feature, position }: { feature: ILapisFeatures; p
         {feature?.content}
       </p>
       {feature?.contactLink && (
-        <a className="text-underline-hover" href={feature.contactLink.route}>
-          <span className="position === 'right' ? 'text-xsm mt-4 leading-6' : 'text-sm font-ssb text-pearl-beta'">
+        <a className="text-underline-hover " href={feature.contactLink.route}>
+          <span className="text-sm font-ssb text-pearl-beta">
             {feature?.contactLink?.content}
           </span>
         </a>

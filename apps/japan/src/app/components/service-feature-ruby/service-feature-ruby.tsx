@@ -44,7 +44,7 @@ const ServiFeatureRuby  = ({ searchText }: { searchText: string }) => {
     <>
       <section className='sm:bg-grd-iota2'>
       <div
-        className="w-full pt-20 pb-26 bg-no-repeat bg-cover md:pt-5 md:pb-10 sm:pt-7 sm:px-4 sm:pb-0 sm:mb-16"
+        className="w-full pt-20 pb-26 bg-no-repeat bg-contain bg-right md:pt-5 md:pb-10 sm:pt-7 sm:px-4 sm:pb-0 sm:mb-16"
         style={{
           backgroundImage: `url(${data.image})`,
           // backgroundImage: isMobile ? "none" : `url(${data.image})`,
@@ -122,7 +122,7 @@ function commarize(numStr : number ) {
 function getMachineName(input: string) {
   const query = '[$eq]=' + input;
   return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
-    return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
+    return response.data.data[0]?.attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
   })
 }
 function getData(input: string) {

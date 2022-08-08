@@ -18,6 +18,7 @@ interface ISubjectAreaBannerRubyParams {
   backgroundImg?: string;
   searchMessage: string;
   validationMessage: string;
+  enterAreaMessage : string;
 }
 interface IserachList {
   name: string;
@@ -34,7 +35,8 @@ const SubjectAreaBannerRuby: React.FC = () => {
     mobileBackgroundImg: '/assets/images/subject-area-banner-m.jpg',
     backgroundImg: '/assets/images/subject-area-banner.png',
     searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!break!!!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。!!break!!カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。',
-    validationMessage: '英語で入力してください。'
+    validationMessage: '英語で入力してください。',
+    enterAreaMessage : '専門分野を入力してください。'
   };
   const [searchTerm, setSearchTerm] = useState('');
   const [machineName, setMachineName] = useState('');
@@ -46,12 +48,14 @@ const SubjectAreaBannerRuby: React.FC = () => {
   const [loadCounter, setloadCounter] = useState(true);
   const [noDataMessage, setNoDataMessage] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
+  const [showNoTextValidation, setShowNoTextValidation] = useState(false);
   const validationReg =    /^[ A-Za-z\/\s\!@#$%^&*():,-_+;><?|.'\-]+$/
   useEffect(() => {
     const getSaData = async () => {
       if (saParam && loadCounter) {
         let resp = await getSearchList(saParam, 'eq');
         setSearchTerm(resp[0]?.name);
+        setMachineName(resp[0]?.machineName)
         setloadCounter(false);
         setSaSelected(true)
       }
@@ -60,12 +64,13 @@ const SubjectAreaBannerRuby: React.FC = () => {
     const delayDebounceFn = setTimeout(async (event) => {
       setSaSelected(false)
       setShowValidation(false);
+      setShowNoTextValidation(false);
       setNoDataMessage(false);
-      if (searchTerm.length > 0 && !searchTerm.match(validationReg)) {
+      if (searchTerm &&searchTerm.length > 0 && !searchTerm.match(validationReg)) {
         setShowValidation(true);
         setSearchList([]);
       }
-      if (searchTerm.length >= 3 && !saSelected && searchTerm.match(validationReg)) {
+      if (searchTerm && searchTerm.length >= 3 && !saSelected && searchTerm.match(validationReg)) {
         setSearchList([]);
         setNoDataMessage(false);
         let resp = await getSearchList(searchTerm.toLowerCase().replace(/ /g, '-'), 'contains');
@@ -86,14 +91,16 @@ const SubjectAreaBannerRuby: React.FC = () => {
   };
   const searchResults = () => {
     // setMachineName();
-    if (!showValidation)
-      window.location.replace(location.origin + location.pathname + '?sa=' + (searchObj.machineName ? searchObj.machineName : searchTerm))
+    if (!searchTerm || searchTerm == '') {
+      setShowNoTextValidation(true);
+    } else if (!showValidation && !noDataMessage)
+      window.location.replace(location.origin + location.pathname + '?sa=' + (searchObj.machineName ? searchObj.machineName : machineName))
 
   };
   return (
     <>
       <section
-        className="pt-18 pb-21.25 bg-cover bg-center bg-no-repeat xxl:bg-full sm:bg-full sm:py-4"
+        className="pt-18 pb-21.25 bg-contain bg-right bg-no-repeat sm:py-4"
         style={{
           backgroundImage: `url(${!isMobile ? params.backgroundImg : ''})`,
         }}
@@ -171,6 +178,13 @@ const SubjectAreaBannerRuby: React.FC = () => {
               <div className="flex  mt-3  sm:flex-col sm:items-center">
                 <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3" style={{ "color": "red" }}>
                   <MarkDown data={params.validationMessage}></MarkDown>
+                </p>
+              </div>
+            )}
+            {showNoTextValidation && searchTerm.length == 0 && (
+              <div className="flex  mt-3  sm:flex-col sm:items-center">
+                <p className="text-ruby-alpha text-base font-ssb leading-5 sm:text-sm sm:leading-17 sm:mb-3" style={{ "color": "red" }}>
+                  <MarkDown data={params.enterAreaMessage}></MarkDown>
                 </p>
               </div>
             )}

@@ -173,7 +173,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
 };
 function getMachineName(input: string) {
     return subjectAPIService.getWholeData(input, 'sa_one,sa_one_five').then(function (response: any) {
-        return response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
+        return response.data.data[0]?.attributes.sa_one_five.data[0].attributes.machine_name ? response.data.data[0].attributes.sa_one_five.data[0].attributes.machine_name : '';
     })
 }
 function getData(input: string) {
