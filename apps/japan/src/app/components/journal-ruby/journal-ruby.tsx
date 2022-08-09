@@ -72,11 +72,11 @@ export function JournalRuby({ searchText }: { searchText: string }) {
               .map((journal) => (
                 <div key={journal.name} className="rounded-lg border border-pearl-beta pb-1 w-55 mx-2.5 sm:shrink-0">
                   <div
-                    className="flex items-end min-h-[20.5rem] bg-no-repeat bg-contain w-full rounded-t-lg"
+                    className="flex items-end min-h-[18rem] bg-no-repeat bg-contain w-full rounded-t-lg"
                     style={{
                       backgroundImage: `url(${journal.image})`,
                     }}
-                  >
+                  ></div>
                     <div className="px-2.5 mt-3 bg-white w-full">
                       <h2 className="font-sb text-ruby-alpha text-base min-h-[3rem]">{journal.name}</h2>
                       <p className="font-sb text-13 leading-8 text-pearl-beta">
@@ -84,7 +84,6 @@ export function JournalRuby({ searchText }: { searchText: string }) {
                         <span className="font-ssb">{journal.impact_factor}</span>
                       </p>
                     </div>
-                  </div>
                 </div>
               ))}
           </div>

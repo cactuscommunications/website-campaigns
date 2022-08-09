@@ -100,7 +100,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
   return (
     <>
       <section
-        className="pt-18 pb-21.25 bg-contain bg-right bg-no-repeat sm:py-4"
+        className="pt-18 pb-4 bg-contain bg-right bg-no-repeat min-h-120 sm:py-4"
         style={{
           backgroundImage: `url(${!isMobile ? params.backgroundImg : ''})`,
         }}
@@ -128,7 +128,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
                 <input
                   type="text"
                   value={searchTerm}
-                  className="text-ruby-alpha text-base font-ssb leading-5 py-3 pl-12.5 pr-2.5 w-94 h-12.5 rounded-l border border-lapis-delta focus-visible:outline-0 sm:w-full sm:rounded"
+                  className="text-ruby-alpha text-base font-sb leading-5 py-3 pl-12.5 pr-2.5 w-94 h-12.5 rounded-l border border-lapis-delta focus-visible:outline-0 sm:w-full sm:rounded"
                   placeholder="専門分野名を英語でご入力ください"
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -156,7 +156,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
                   {searchList.map((item) => (
                     <div className="w-full text-left">
                       <a
-                        className="cursor-pointer hover:bg-ruby-delta transition ease-in duration-300 block px-7.5 py-2.5 text-black/70"
+                        className="cursor-pointer hover:bg-ruby-delta transition ease-in duration-300 block px-7.5 py-2.5 text-ruby-alpha"
                         onClick={(e) => handleChange(item)}
                         href="javascript:;"
                       >
