@@ -93,8 +93,8 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
                 {searchTitle &&
                   <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
                     <span className="text-pearl-beta"><MarkDown data={searchTitle.split('を含む')[0]}></MarkDown></span>
-                    <MarkDown data={searchTitle.split('を含む')[1] ? ' を含む ' : ''}></MarkDown>
-                    <MarkDown data={((searchTitle && searchTitle.split('を含む')[1]) ? (searchTitle.split('を含む')[1]).split('分野')[0] : '') + '!!break!!' + (searchTitle.split('を含む')[1] ? '分野' : '') +' では以下の専門分野に対応しています。'}></MarkDown>
+                    <MarkDown data={searchTitle.split('を含む')[1] ? 'を含む' : ''}></MarkDown>
+                    <MarkDown data={((searchTitle && searchTitle.split('を含む')[1]) ? (searchTitle.split('を含む')[1]).split('分野')[0] : '') + '!!break!!' + (searchTitle.split('を含む')[1] ? '分野' : '') +'では以下の専門分野に対応しています。'}></MarkDown>
                   </h2>}
                 {!searchTitle &&
                   <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
