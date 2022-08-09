@@ -7,6 +7,7 @@ import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
 import ModalRuby from '../modal-ruby/modal-ruby'
 import { isMobile } from 'react-device-detect';
+import { FLAG } from "../../config/flag-mapping";
 
 interface IServiceFeaturePearlParams {
     heading: string;
@@ -25,9 +26,9 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
     const params: IServiceFeaturePearlParams = {
-      heading: '校正者の例：',
-      subjectLabel: '専門分野',
-      qualificationLabel: '最終学歴'
+        heading: '校正者の例：',
+        subjectLabel: '専門分野',
+        qualificationLabel: '最終学歴'
     };
     useEffect(() => {
         if (saParam) {
@@ -64,9 +65,13 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
         setPosition(index);
         setIndicator(testimonials);
     }
-    function  setModal(index : number) {
+    function setModal(index: number) {
         setOpenModal(true);
         setModalData(testimonialsChunk[position][index])
+    }
+    function getFlag(country: string) {
+        // @ts-ignore
+        return FLAG[country];
     }
 
     return (
@@ -82,16 +87,18 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                             {testimonialsChunk[position].map((trow: any, ti) => (
 
                                 <div
-                                  key={ti}
-                                  className="float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-87">
+                                    key={ti}
+                                    className="float-left pb-1 mb-5 mx-5 sm:mx-1 bg-white shadow rounded flex flex-col md:mx-2 sm:w-70 w-75 xxl:w-87">
                                     <div className="dyna-height-1 flex px-5 pt-5 pb-5 bg-opal-gamma1" style={{ height: "110px" }}>
                                         <div className="w-15 h-15 bg-no-repeat bg-contain relative rounded-full flex-shrink-0"
                                             style={{
                                                 backgroundImage: `url(${trow.attributes.image})`
                                             }}>
-
-                                            <div className="-mr-2.5 absolute bottom-0 flag flag-us right-0 rounded-full"></div>
-
+                                            <div className={
+                                                ('flag flag-' + getFlag(trow.attributes.nationality)) +
+                                                ' -mr-2.5 absolute bottom-0 right-0 rounded-full '
+                                            }
+                                            ></div>
                                         </div>
                                         <div className="dyna-height-2 ml-6 my-auto pt-1" style={{ height: "71.0781px" }}>
                                             <h5 className="text-base text-ruby-alpha font-ssb leading-19">{trow.attributes.name}</h5><span
@@ -102,20 +109,20 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                     </div>
                                     <div className="dyna-height-3 flex bg-white px-5 pt-4 w-full pb-4" style={{ height: "72.25px" }}>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            校正者歴 
+                                            校正者歴
                                             <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} 年以上</p>
-                                            </div>
-                                        <div className="w-1/3 text-xs text-center font-ssb">
-                                          顧客満足度
-                                          <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} </p>
                                         </div>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                             校正稿数
-                                             <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> </div>
+                                            顧客満足度
+                                            <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} </p>
+                                        </div>
+                                        <div className="w-1/3 text-xs text-center font-ssb">
+                                            校正稿数
+                                            <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> </div>
                                     </div>
-                                <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.subjectLabel }</div>
+                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{params.subjectLabel}</div>
                                     <ul className="bg-white dyna-height-4 mb-3 mt-1 px-5 overflow-hidden" style={{ height: "287px" }} >
-                                        {trow.attributes.expertise_area.split(',').slice(0,10).map((area: string) => {
+                                        {trow.attributes.expertise_area.split(',').slice(0, 10).map((area: string) => {
                                             return (
                                                 <li className="text-xs flex my-2"><span
                                                     className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
@@ -130,15 +137,15 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                         })}
                                         <span
                                             onClick={() => {
-                                               setModal(ti)
+                                                setModal(ti)
                                             }}
                                             className="text-xs text-pearl-beta font-ssb text-underline-hover">
                                             {trow.attributes.expertise_area.length > 10 ? "全て見る" : ''}
                                         </span>
-                                        {openModal && <ModalRuby  key={ti} closeModal={setOpenModal} data={modalData} />}
+                                        {openModal && <ModalRuby key={ti} closeModal={setOpenModal} data={modalData} />}
 
                                     </ul>
-                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{ params.qualificationLabel }</div>
+                                    <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{params.qualificationLabel}</div>
                                     <ul className="bg-white dyna-height-5 mb-2 mt-1 px-5" style={{ height: "39.5px" }}>
                                         <li className="text-xs flex my-2"><span
                                             className="w-1.25 h-1.25 inline-block bg-amber-alpha rounded-full mt-1.5 mr-3.2 flex-shrink-0"></span>
