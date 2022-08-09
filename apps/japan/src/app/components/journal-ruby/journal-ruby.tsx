@@ -77,7 +77,7 @@ export function JournalRuby({ searchText }: { searchText: string }) {
                       backgroundImage: `url(${journal.image})`,
                     }}
                   >
-                    <div className="px-2.5 mt-3 bg-white w-full">
+                    <div className="px-2.5 mt-3 pt-1 bg-white w-full">
                       <h2 className="font-sb text-ruby-alpha text-base min-h-[3rem]">{journal.name}</h2>
                       <p className="font-sb text-13 leading-8 text-pearl-beta">
                         {params.journalLabel}
