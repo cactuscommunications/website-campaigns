@@ -2,7 +2,7 @@ import { MarkDown } from '../markdown/markdown';
 const ModalRuby = ({closeModal,data}: { closeModal: any,data :any}) => {
   const closeIcon = 'assets/images/icons/close.svg'
   return (
-
+      
     <div className="overlay flex flex-col fixed top-0 bottom-0 left-0 right-0 items-center justify-center z-10 bg-black/70">
     <div  className="relative sm:px-5">
       <button
@@ -13,7 +13,7 @@ const ModalRuby = ({closeModal,data}: { closeModal: any,data :any}) => {
       </button>
       <div className="clearfix"></div>
       <section className="bg-white rounded-lg border border-lapis-epsilon p-1">
-       <div className="w-232.5 max-h-90vh overflow-y-auto custom-scroll py-12 sm:w-full sm:py-6 md:py-6 md:w-184.5 flex sm:block md:block">
+       <div    onClick={(e) => closeModal(false)} className="w-232.5 max-h-90vh overflow-y-auto custom-scroll py-12 sm:w-full sm:py-6 md:py-6 md:w-184.5 flex sm:block md:block">
           <div className="w-1.08/4 float-left text-ruby-beta relative px-10 sm:w-full sm:px-4">
              <div className="w-26 h-26 rounded-full bg-center bg-no-repeat bg-cover mx-auto  ng-lazyloaded"  style={{backgroundImage: `url(${data.attributes.image})`}}></div>
              <div className="text-xl text-center m-auto pt-2 text-ruby-alpha font-sb">{data.attributes.name}</div>

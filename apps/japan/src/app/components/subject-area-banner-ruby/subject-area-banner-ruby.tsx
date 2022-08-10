@@ -50,6 +50,9 @@ const SubjectAreaBannerRuby: React.FC = () => {
   const [showValidation, setShowValidation] = useState(false);
   const [showNoTextValidation, setShowNoTextValidation] = useState(false);
   const validationReg =    /^[ A-Za-z\/\s\!@#$%^&*():,-_+;><?|.'\-]+$/
+  function goToComponent() {
+    window.scrollTo(250, 110);  
+  }
   useEffect(() => {
     const getSaData = async () => {
       if (saParam && loadCounter) {
@@ -152,8 +155,8 @@ const SubjectAreaBannerRuby: React.FC = () => {
 
             {searchList && searchList.length >= 1 && searchTerm.length >0 && (
               <div className="mt-0.5 relative">
-                <div className="absolute top-0 left-0 w-94 max-h-61.2 bg-white overflow-auto custom-scroll rounded-lg shadow z-1">
-                  {searchList.map((item) => (
+                <div className="absolute top-0 left-0 w-94 max-h-61.2 bg-white overflow-auto custom-scroll rounded-lg shadow z-1 pb-7.5 pt-2.5">
+                  {searchList.slice(0,10).map((item) => (
                     <div className="w-full text-left">
                       <a
                         className="cursor-pointer hover:bg-ruby-delta transition ease-in duration-300 block px-7.5 py-2.5 text-ruby-alpha"
@@ -164,6 +167,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
                       </a>
                     </div>
                   ))}
+                  <span    onClick={(e) => goToComponent()} className="text-xs text-pearl-beta font-ssb cursor-pointer block px-7.5 pb-2.5">{searchList.length >= 10 ? "全て見る" : ''} </span>
                 </div>
               </div>
             )}
