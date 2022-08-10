@@ -59,10 +59,10 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
       searchText = saParam;
     }
     const getSubData = async () => {
-      const { machineNameTop, machineNameBottom, searchTitle,machineType } = await getMachineName(searchText);
+      const { machineNameTop, machineNameBottom, searchTitle, machineType } = await getMachineName(searchText);
       setSearchTitle(searchTitle);
       const machineName = ignoreUrlParams ? machineNameBottom : machineNameTop;
-      
+
       let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns, ignoreUrlParams ? 'sa_one' : machineType);
       setSubjects(subData.subjects);
       setPage(subData.pageObj.page);
@@ -79,7 +79,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   const selectSubject = (subject: ISubjects) => {
     if (subject.machineName === saParam)
       return;
-    
+
     window.location.replace(location.origin + location.pathname + '?sa=' + subject.machineName)
 
   }
@@ -90,9 +90,17 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
           <div className='max-w-[900px] mx-auto'>
             {!hideHeading &&
               <React.Fragment>
-                <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
-                  <MarkDown data={(searchTitle ? searchTitle : params?.heading) + 'では以下の専門分野に対応しています。'}></MarkDown>
-                </h2>
+                {searchTitle &&
+                  <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
+                    <span className="text-pearl-beta"><MarkDown data={searchTitle.split('を含む')[0]}></MarkDown></span>
+                    <MarkDown data={searchTitle.split('を含む')[1] ? 'を含む' : ''}></MarkDown>
+                    <MarkDown data={((searchTitle && searchTitle.split('を含む')[1]) ? searchTitle.split('を含む')[1] : '') + 'では以下の専門分野に対応しています。'}></MarkDown>
+                  </h2>}
+                {!searchTitle &&
+                  <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
+                    <MarkDown data={(params?.heading) + 'では以下の専門分野に対応しています。'}></MarkDown>
+                  </h2>
+                }
                 {params?.subHeading && <p className="text-center mb-8">{params?.subHeading}</p>}
               </React.Fragment>
             }
@@ -106,7 +114,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
                     {row.map((item: ISubjects, index) => (
                       <>
                         <a
-                          className={ item.machineName === saParam ? 'cursor-not-allowed' : 'cursor-pointer' }
+                          className={item.machineName === saParam ? 'cursor-not-allowed' : 'cursor-pointer'}
                           key={index}
                           onClick={(e) => selectSubject(item)}>
                           <li className="text-base leading-6 font-ssb px-2 pb-3 pt-3 sm:pt-1 sm:pb-1">{item.content}</li>
@@ -151,7 +159,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     let returnData = {
       machineNameTop: '',
       machineNameBottom: '',
-      machineType : '',
+      machineType: '',
       searchTitle: ''
     }
     if (!input) {
@@ -165,7 +173,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
         case 'SA1':
         case 'SA1.0': {
           returnData.machineNameTop = response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name;
-         returnData.machineType = 'sa_one';
+          returnData.machineType = 'sa_one';
           break;
         }
         case 'SA1.5': {
@@ -175,12 +183,12 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
         }
         case 'SA2.0': {
           returnData.machineNameTop = response.data.data[0]?.attributes.sa_one_five.data[0].attributes.machine_name;
-          returnData.machineType = 'sa_one_five';         
+          returnData.machineType = 'sa_one_five';
           break;
         }
         default: {
           returnData.machineNameTop = response.data.data[0]?.attributes.sa_one.data[0].attributes.machine_name;
-          returnData.machineType = 'sa_one';         
+          returnData.machineType = 'sa_one';
           break;
         }
       }
@@ -188,8 +196,8 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     });
 
   }
-  function getSubjectData(input: string, page: number, pageSize: number,machineType : string) {
-    return subjectAPIService.getSubjectsList(input, page, pageSize,machineType).then(function (response: any) {
+  function getSubjectData(input: string, page: number, pageSize: number, machineType: string) {
+    return subjectAPIService.getSubjectsList(input, page, pageSize, machineType).then(function (response: any) {
       let returnData: ISubjects[] = [];
       let responseData = response.data.data;
       responseData.map((key: any) => {
