@@ -14,8 +14,7 @@ export function ThankYou() {
       <Helmet>
         <title>{params.title}</title>
         <meta name="description" content={params.description} />
-        <script src="assets/scripts/google-conversion.js" type="text/javascript" />  
-        <script src="assets/scripts/yahoo-conversion.js" type="text/javascript" />  
+        <script type="text/javascript" defer src="assets/scripts/thank-you-conversion/conversions.min.js" />   
       </Helmet>
       <Header />
       <ThankYouRuby />
