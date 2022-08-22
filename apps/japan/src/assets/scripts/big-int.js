@@ -5,7 +5,7 @@
             window._bigint._oB.push({"l": l, "de": de, "da": da});
         }, "_oB": []
     };
-    var _sD = ((/(test|local|dev|staging)[0-9]*\./gi).test(window.location.hostname)) ? "test1." : "";
+    var _sD = ((/(test|local|dev|staging|stage)[0-9]*\./gi).test(window.location.hostname)) ? "test1." : "";
     _sD = (nt === undefined || nt === "") ? _sD : (nt + ".");
     var _sE = (bi === undefined || bi === "") ? "cactusglobal.io" : bi;
     var _aE = (gi === undefined || gi === "") ? "cactusglobal.io" : gi;
