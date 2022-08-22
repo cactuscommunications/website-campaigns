@@ -80,7 +80,7 @@ export function ServiceInformationRuby({ searchText }: { searchText: string }){
               days: "まで4営業日～",
               text: "最短で",
               disclaimer: "*納期の短いハイスピードプラン登場！",
-              price: "5円",
+              price: "4.5円",
               word: "1単語",
               tax: "～(税抜) ",
               CTAdetails: "サービスの詳細はこちら>>",
