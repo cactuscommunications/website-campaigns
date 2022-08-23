@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
+    "start:staging": "env-cmd -f ./apps/japan/env/.env.staging nx serve",
+    "start:dev": "env-cmd -f ./apps/japan/env/.env.development nx serve",
+    "start:prod": "env-cmd -f ./apps/japan/env/.env.production nx serve",
     "build": "nx build",
     "test": "nx test"
   },
@@ -12,6 +14,7 @@
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
     "core-js": "^3.6.5",
+    "env-cmd": "^10.1.0",
     "gatsby-plugin-react-helmet": "^5.20.0",
     "html-react-parser": "^3.0.1",
     "node-sass": "^7.0.1",
