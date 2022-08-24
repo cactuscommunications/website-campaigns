@@ -93,12 +93,12 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                         <div className="flex relative justify-center mt-10 sm:flex-wrap max-w-[1000px] mx-auto">
                             {position != testimonialsChunk.length - 1 &&
                                 <div onClick={(e) => next()}
-                                    className="cursor-pointer w-16 h-16 absolute float-right opacity-100 transition duration-300 ease-in-out  -right-1 transform -translate-y-1/2 top-1/2 bg-cover bg-no-repeat opacity-100 sm:w-12 sm:h-12 md:w-12.5 md:h-12.5 md:-right-14 sm:-right-7 sm:hidden"
+                                    className="cursor-pointer w-16 h-16 absolute float-right opacity-100 transition duration-300 ease-in-out  -right-1 transform -translate-y-1/2 top-1/2 bg-cover bg-no-repeat opacity-100 sm:w-12 sm:h-12 md:w-12.5 md:h-12.5 md:-right-14 sm:-right-7"
                                     style={{ backgroundImage: `url(${'assets/images/icons/circle-arrow-right.svg'})`, right: "-4%" }}
                                 ></div>}
                             {position != 0 &&
                                 <div onClick={(e) => prev()}
-                                    className="cursor-pointer w-16 absolute h-16 float-left opacity-100 transition duration-300 ease-in-out  -left-1 transform -translate-y-1/2 top-1/2 bg-cover bg-no-repeat opacity-100 sm:w-12 sm:h-12 md:w-12.5 md:h-12.5 md:-left-14 sm:-left-7 sm:hidden"
+                                    className="cursor-pointer w-16 absolute h-16 float-left opacity-100 transition duration-300 ease-in-out  -left-1 transform -translate-y-1/2 top-1/2 bg-cover bg-no-repeat opacity-100 sm:w-12 sm:h-12 md:w-12.5 md:h-12.5 md:-left-14 sm:-left-7"
                                     style={{ backgroundImage: `url(${'assets/images/icons/circle-arrow-left.svg'})`, left: "-4%" }}
                                 ></div>}
                             {testimonialsChunk[position].map((trow: any, ti) => (
