@@ -6,7 +6,8 @@
     "start:staging": "env-cmd -f ./apps/japan/env/.env.staging nx serve",
     "start:dev": "env-cmd -f ./apps/japan/env/.env.development nx serve",
     "start:prod": "env-cmd -f ./apps/japan/env/.env.production nx serve",
-    "build": "nx build",
+    "build:staging": "env-cmd -f ./apps/japan/env/.env.staging nx build japan",
+    "build:prod": "env-cmd -f ./apps/japan/env/.env.production nx build japan",    
     "test": "nx test"
   },
   "private": true,
