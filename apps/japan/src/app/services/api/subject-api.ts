@@ -1,12 +1,14 @@
 import axios from 'axios';
-import { API } from '../../config/constants'
+
+const baseUrl = process.env["NX_HOST"]
+const token = process.env["NX_TOKEN"] ? process.env["NX_TOKEN"] : ''
 
 const subjectAPIService = {
     getSubjectsList: function (input: string, page: number, pageCount: number,machineType:string) {
         const config = {
             method: 'get',
-            url: API.baseUrl + '/subject-areas?&filters[type][$eq]=SA2.0&pagination[pageSize]=' + pageCount + '&pagination[page]=' + page + (input ? '&filters['+machineType+'][machine_name][$eq]=' + input : ''),
-            headers: { Authorization: API.token },
+            url: baseUrl + '/subject-areas?&filters[type][$eq]=SA2.0&pagination[pageSize]=' + pageCount + '&pagination[page]=' + page + (input ? '&filters['+machineType+'][machine_name][$eq]=' + input : ''),
+            headers: { Authorization: token },
         };
         return axios(config)
             .then(function (response: any) {
@@ -30,8 +32,8 @@ const subjectAPIService = {
         const populate = '?populate[2]=' + key;
         const config = {
             method: 'get',
-            url: API.baseUrl + '/subject-areas' + populate + filter,
-            headers: { Authorization: API.token },
+            url: baseUrl + '/subject-areas' + populate + filter,
+            headers: { Authorization:token },
         };
         return axios(config)
             .then(function (response: any) {
@@ -44,6 +46,3 @@ const subjectAPIService = {
 }
 
 export default subjectAPIService;
-
-
-

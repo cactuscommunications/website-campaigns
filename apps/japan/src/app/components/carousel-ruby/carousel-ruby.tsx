@@ -61,7 +61,12 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
   }
   function goToIndicator(index: number) {
     setPosition(index);
-    setIndicator(testimonials);
+  }
+  function prev() {
+    setPosition(position - 1);
+  }
+  function next() {
+    setPosition(position + 1);
   }
 
   return (
@@ -72,59 +77,71 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
             <span className="sm:hidden">{params.heading}</span>
           </h2>
           {testimonialsChunk && testimonialsChunk[position] && (
-            <div className="flex justify-center mt-10 max-w-6xl mx-auto sm:flex-wrap">
-              {testimonialsChunk[position].map((trow: any, ti) => (
-                <div key={ti} className="w-360px shadow rounded-lg bg-white h-full mx-5">
-                  <div className="px-5 pb-5 pt-3 relative bg-pearl-epsilon/50 rounded-t-lg	min-h-57.5 max-h-57.5 md:min-h-[16rem] sm:min-h-fit">
-                    <span
-                      className="w-17 h-17 bg-no-repeat bg-contain absolute top-2.5 left-3"
-                      style={{
-                        backgroundImage: `url(${'/assets/images/Shapequote.svg'})`,
-                      }}
-                    ></span>
-                    <p className="text-lg font-ssb text-ruby-alpha relative md:text-base sm:text-base sm:leading-6">
-                      {/* {trow.attributes.comment} */}
-                      {trow.attributes.comment.length > params.textLength ? trow.attributes.comment.slice(0, params.textLength) : trow.attributes.comment}
-                      {<span
-                        onClick={() => {
-                          setOpenModal(true);
-                          setReadMoreComment(trow.attributes.comment);
-                          setReadMoreSubject(trow.attributes.subject);
-                        }}
-                        className="text-pearl-beta font-ssb text-underline-hover">
-                        {trow.attributes.comment.length > params.textLength ? "...続きを読む" : ''}
-                      </span>}
-                    </p>
-                  </div>
-                  <div className="border-t border-dashed border-ruby-beta px-5 py-4 min-h-[160px] sm:min-h-max flex flex-col" style={{ height: "200px" }}>
-                    <div className="flex justify-between">
-                      <div className="w-[calc(100%-70px)] mb-4 md:w-[calc(100%-80px)]">
-                        <h3 className="text-20 font-sb text-ruby-alpha leading-6 md:text-base sm:text-lg	sm:leading-21">
-                          <span className="inline-block mr-1 w-1 h-3.5 bg-amber-alpha"></span> {trow.attributes.user}
-                        </h3>
-                        <p className="text-sm leading-4 text-ruby-beta font-ssb mt-1 sm:text-13 sm:leading-15">
-                          {trow.attributes.designation}
-                        </p>
-                      </div>
-                      <div
-                        className="h-12.5 w-12.5 bg-no-repeat bg-contain inline-flex"
+            <>
+              <div className="relative flex justify-center mt-10 max-w-6xl mx-auto sm:flex-wrap">
+                {position != testimonialsChunk.length - 1 &&
+                  <div onClick={(e) => next()}
+                    className="cursor-pointer w-16 h-16 absolute float-right opacity-100 transition duration-300 ease-in-out  -right-1 transform -translate-y-1/2 top-1/2 bg-cover bg-no-repeat opacity-100 sm:w-12 sm:h-12 md:w-12.5 md:h-12.5 md:-right-14 sm:-right-7"
+                    style={{ backgroundImage: `url(${'assets/images/icons/circle-arrow-right.svg'})`, right: "-4%" }}
+                  ></div>}
+                {position != 0 &&
+                  <div onClick={(e) => prev()}
+                    className="cursor-pointer w-16 absolute h-16 float-left opacity-100 transition duration-300 ease-in-out  -left-1 transform -translate-y-1/2 top-1/2 bg-cover bg-no-repeat opacity-100 sm:w-12 sm:h-12 md:w-12.5 md:h-12.5 md:-left-14 sm:-left-7"
+                    style={{ backgroundImage: `url(${'assets/images/icons/circle-arrow-left.svg'})`, left: "-4%" }}
+                  ></div>}
+                {testimonialsChunk[position].map((trow: any, ti) => (
+                  <div key={ti} className="w-360px shadow rounded-lg bg-white h-full mx-5">
+                    <div className="px-5 pb-5 pt-3 relative bg-pearl-epsilon/50 rounded-t-lg	min-h-57.5 max-h-57.5 md:min-h-[16rem] sm:min-h-fit">
+                      <span
+                        className="w-17 h-17 bg-no-repeat bg-contain absolute top-2.5 left-3"
                         style={{
-                          backgroundImage: `url(${trow.attributes.image})`,
+                          backgroundImage: `url(${'/assets/images/Shapequote.svg'})`,
                         }}
-                      ></div>
+                      ></span>
+                      <p className="text-lg font-ssb text-ruby-alpha relative md:text-base sm:text-base sm:leading-6">
+                        {/* {trow.attributes.comment} */}
+                        {trow.attributes.comment.length > params.textLength ? trow.attributes.comment.slice(0, params.textLength) : trow.attributes.comment}
+                        {<span
+                          onClick={() => {
+                            setOpenModal(true);
+                            setReadMoreComment(trow.attributes.comment);
+                            setReadMoreSubject(trow.attributes.subject);
+                          }}
+                          className="text-pearl-beta font-ssb text-underline-hover">
+                          {trow.attributes.comment.length > params.textLength ? "...続きを読む" : ''}
+                        </span>}
+                      </p>
                     </div>
-                    <div className="mt-auto sm:mt-3">
-                      <span className="block uppercase font-sb text-xs text-ruby-beta leading-4 mb-1 tracking-wider sm:text-11">
-                      専門分野
-                      </span>
-                      <span className="block text-sm font-ssb text-ruby-beta leading-4 sm:text-13">
-                        {trow.attributes.subject}
-                      </span>
+                    <div className="border-t border-dashed border-ruby-beta px-5 py-4 min-h-[160px] sm:min-h-max flex flex-col" style={{ height: "200px" }}>
+                      <div className="flex justify-between">
+                        <div className="w-[calc(100%-70px)] mb-4 md:w-[calc(100%-80px)]">
+                          <h3 className="text-20 font-sb text-ruby-alpha leading-6 md:text-base sm:text-lg	sm:leading-21">
+                            <span className="inline-block mr-1 w-1 h-3.5 bg-amber-alpha"></span> {trow.attributes.user}
+                          </h3>
+                          <p className="text-sm leading-4 text-ruby-beta font-ssb mt-1 sm:text-13 sm:leading-15">
+                            {trow.attributes.designation}
+                          </p>
+                        </div>
+                        <div
+                          className="h-12.5 w-12.5 bg-no-repeat bg-contain inline-flex"
+                          style={{
+                            backgroundImage: `url(${trow.attributes.image})`,
+                          }}
+                        ></div>
+                      </div>
+                      <div className="mt-auto sm:mt-3">
+                        <span className="block uppercase font-sb text-xs text-ruby-beta leading-4 mb-1 tracking-wider sm:text-11">
+                          専門分野
+                        </span>
+                        <span className="block text-sm font-ssb text-ruby-beta leading-4 sm:text-13">
+                          {trow.attributes.subject}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </>
           )}
 
           <div className="text-center w-full float-left mt-7">
