@@ -53,6 +53,8 @@
       },
       "configurations": {
         "development": {
+          "disableHostCheck" : true,
+          "allowedHosts" : "all",
           "buildTarget": "japan:build:development"
         },
         "production": {

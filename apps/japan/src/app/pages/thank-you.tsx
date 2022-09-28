@@ -9,6 +9,7 @@ const params = {
 }
 
 export function ThankYou() {
+  alert("in")
   return (
     <>
       <Helmet>
@@ -17,7 +18,7 @@ export function ThankYou() {
         <script type="text/javascript" defer src="assets/scripts/thank-you-conversion/conversions.min.js" />   
       </Helmet>
       <Header />
-      <ThankYouRuby />
+      {/* <ThankYouRuby /> */}
       <Footer />
     </>
   );

@@ -1,34 +1,26 @@
 import { useEffect, useState } from 'react';
 import subjectAPIService from '../../services/api/subject-api';
-export function JournalRuby({ searchText }: { searchText: string }) {
-  interface IJournalRubyParams {
-    backgroundColor: string;
-    heading: string;
-    mobileHeading: string;
-    subHeading: string;
-    mobileSubHeading: string;
-    journalLabel: string;
-  }
+interface IJournalRubyParams {
+  backgroundColor: string;
+  heading: string;
+  mobileHeading: string;
+  subHeading: string;
+  mobileSubHeading: string;
+  journalLabel: string;
+  searchText : string
+}
 
-  interface IJournals {
-    createdAt: string
-    image: string
-    impact_factor: number
-    name: string
-    publishedAt: string
-    updatedAt: string
+interface IJournals {
+  createdAt: string
+  image: string
+  impact_factor: number
+  name: string
+  publishedAt: string
+  updatedAt: string
 
-  }
-
-  const params: IJournalRubyParams = {
-    backgroundColor: 'bg-white',
-    heading: '弊社で実績のあるTOP 5 ジャーナル：',
-    mobileHeading: '弊社で実績のあるTOP 5 ジャーナル',
-    subHeading: 'ハイインパクトファクターの学術誌にも豊富な経験と実績がございます。',
-    mobileSubHeading:
-      "ハイインパクトファクターの学術誌にも豊富な経験と実績がございます。",
-    journalLabel: 'インパクトファクター：',
-  };
+}
+export function JournalRuby({ params }: { params: IJournalRubyParams }) {
+ 
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   let [title, setTitle] = useState('');
@@ -40,17 +32,17 @@ export function JournalRuby({ searchText }: { searchText: string }) {
 
   useEffect(() => {
     if (saParam) {
-      searchText = saParam;
+      params.searchText = saParam;
     }
     const getJournalsData = async () => {
       let machineName = '';
-      machineName = await getMachineName(searchText);
-      let resp = await getData(searchText);
+      machineName = await getMachineName(params.searchText);
+      let resp = await getData(params.searchText);
       setJournals(resp.data);
       setTitle(resp.title)
     };
     getJournalsData();
-  }, [searchText]);
+  }, [params.searchText]);
   return (
     <>
       <div className="clearfix"></div>

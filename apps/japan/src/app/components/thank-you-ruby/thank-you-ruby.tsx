@@ -1,4 +1,10 @@
-export function ThankYouRuby() {
+interface IThankyouRubyParams {
+  title: string;
+  heading?: string;
+  subHeading?: string;
+  content: string;
+}
+export function ThankYouRuby({ params }: { params: IThankyouRubyParams }) {
 
   return (
   <>

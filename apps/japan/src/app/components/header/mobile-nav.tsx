@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import pageService from '../../services/renderer/page-service';
 
 export function MobileNav() {
 
@@ -7,10 +8,10 @@ export function MobileNav() {
   const [showPrices, setShowPrices] = useState(false);
   const rightArrow = '/assets/images/icons/angle-right.svg';
   const downArrow = '/assets/images/icons/angle-down.svg';
-  
+  const partner = pageService.getPartner();
   return (
   <div className="w-full float-left my-auto px-4">
-    <div className="w-full float-left">
+      {partner == "JPN" && <div className="w-full float-left">
       <div className="pl-1 pr-5 py-2.5 relative border-b border-gray-400">
         <a onClick={() => setShowServices(!showServices)} className="block text-sm" href="javascript:void(0);" data-description="hp-top nav-<services>-null-click-<top-navigation>-null"> サービス
         <span className="inline-block float-right w-4 h-2.5 bg-no-repeat bg-contain bg-right mt-4 absolute right-0 top-0 mr-3"
@@ -90,6 +91,19 @@ export function MobileNav() {
         <a className="block text-sm" href="https://app.editage.jp" target="_self" data-description="hp-top nav-myaccount-null-click-<top-navigation>-null"> My dashboard </a>
       </div>
     </div>
+      }
+      {partner == "KOR" && <div className="w-full float-left">
+        <div className="pl-1 pr-5 py-2.5 relative border-b border-gray-400">
+          <a className="block text-sm" href="https://www.editage.co.kr/editing/" target="_blank" data-description="hp-top nav-payments-null-click-<top-navigation>-null">영문교정</a>
+        </div>
+        <div className="pl-1 pr-5 py-2.5 relative border-b border-gray-400">
+          <a className="block text-sm" href="https://www.editage.co.kr/translation/" target="_blank" data-description="hp-top nav-payments-null-click-<top-navigation>-null">학술번역</a>
+        </div>
+        <div className="pl-1 pr-5 py-2.5 relative border-b border-gray-400">
+          <a className="block text-sm" href="https://www.editage.co.kr/publication/" target="_blank" data-description="hp-top nav-payments-null-click-<top-navigation>-null">저널투고</a>
+        </div>
+      </div>
+      }
   </div>
 
  );

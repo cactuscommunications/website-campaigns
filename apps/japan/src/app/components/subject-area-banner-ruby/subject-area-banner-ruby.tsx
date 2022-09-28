@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import ListingRuby from '../listing-ruby/listing-ruby';
 import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
-import ServiFeatureRuby from '../service-feature-ruby/service-feature-ruby';
+import ServiceFeatureRuby from '../service-feature-ruby/service-feature-ruby';
 import CarouselRuby from '../carousel-ruby/carousel-ruby';
 import { isMobile } from 'react-device-detect';
 
@@ -19,6 +19,9 @@ interface ISubjectAreaBannerRubyParams {
   searchMessage: string;
   validationMessage: string;
   enterAreaMessage : string;
+  search : string;
+  placeHolder : string;
+  showListing: boolean;
 }
 interface IserachList {
   name: string;
@@ -26,18 +29,8 @@ interface IserachList {
   machineName: string
 }
 
-const SubjectAreaBannerRuby: React.FC = () => {
+const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams }) => {
   let [active, setActive] = useState(1);
-  const params: ISubjectAreaBannerRubyParams = {
-    heading: '英文校正は',
-    heading2: '専門分野が命です。',
-    heading3: 'どちらの専門分野をご検討ですか？',
-    mobileBackgroundImg: '/assets/images/subject-area-banner-m.jpg',
-    backgroundImg: '/assets/images/subject-area-banner.png',
-    searchMessage: '該当分野が見当たりません。他のキーワード（英語）でもう一度お試しいただくか、!!break!!!!link!!こちらのフォーム:https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area!!/link!!から執筆中の論文をご共有ください。!!break!!カスタマサポートがお客様の専門分野に最適な校正者をご案内いたします。',
-    validationMessage: '英語で入力してください。',
-    enterAreaMessage : '専門分野を入力してください。'
-  };
   const [searchTerm, setSearchTerm] = useState('');
   const [machineName, setMachineName] = useState('');
   const [saSelected, setSaSelected] = useState(false);
@@ -112,7 +105,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
               {params?.heading2 && (
                 <>
                   <br />
-                  <span className="text-white bg-pearl-beta inline-block mt-1.5 py-2.5 sm:pl-2.5 sm:py-0 sm:mt-1">
+                  <span className="text-white bg-pearl-beta inline-block mt-1.5 py-2.5 sm:pl-2.5 sm:py-0 sm:mt-1 text-4xl">
                     <MarkDown data={params?.heading2}></MarkDown>
                   </span>
                 </>
@@ -129,7 +122,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
                   type="text"
                   value={searchTerm}
                   className="text-ruby-alpha text-base font-sb leading-5 py-3 pl-12.5 pr-2.5 w-94 h-12.5 rounded-l border border-lapis-delta focus-visible:outline-0 sm:w-full sm:rounded"
-                  placeholder="専門分野名を英語でご入力ください"
+                  placeholder={params.placeHolder}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <span
@@ -145,7 +138,7 @@ const SubjectAreaBannerRuby: React.FC = () => {
                   className="btn btn-primary min-w-fit rounded-l-none rounded-r w-full outline-none text-white text-base font-sb leading-5 sm:rounded"
                   onClick={searchResults}
                 >
-                  検索する
+                  {params.search}
                 </button>
               </div>
             </div>
@@ -197,8 +190,8 @@ const SubjectAreaBannerRuby: React.FC = () => {
           </div>
         </div>
       </section>
-      {<ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} pageRows={4} pageColumns={4} />}
-      {/* {<ServiFeatureRuby searchText={machineName} />}
+      {params.showListing && <ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} pageRows={4} pageColumns={4} />}
+      {/* {<ServiceFeatureRuby searchText={machineName} />}
       <CarouselRuby  searchText={machineName}/> */}
     </>
   );

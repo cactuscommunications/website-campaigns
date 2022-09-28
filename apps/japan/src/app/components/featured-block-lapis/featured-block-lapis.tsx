@@ -1,36 +1,36 @@
 import FeatureLapis from './feature-lapis';
+interface IFeaturedBlockLapisParams {
+  machineName?: string;
+  position: string;
+  heading: string;
+  subHeading?: string;
+  features: ILapisFeatures[];
+  backgroundColor: string;
+  link?: string;
+}
 
-export function FeaturedBlockLapis() {
-  interface IFeaturedBlockLapisParams {
-    machineName?: string;
-    position: string;
-    heading: string;
-    subHeading?: string;
-    features: ILapisFeatures[];
-    backgroundColor: string;
-    link?: string;
-  }
+interface ILapisFeatures {
+  title: string;
+  content: string;
+  contactLink?: {
+    content?: string;
+    route?: string;
+  };
+  imagePath: string;
+  smallImage?: string;
+  services?: IServicesContent;
+  link?: string;
+}
 
-  interface ILapisFeatures {
-    title: string;
-    content: string;
-    contactLink?: {
-      content?: string;
-      route?: string;
-    };
-    imagePath: string;
-    smallImage?: string;
-    services?: IServicesContent;
-    link?: string;
-  }
-
-  interface IServicesContent {
-    title: string;
-    list: { content: string }[];
-    link: string;
-    linkText: string;
-  }
-  const params: IFeaturedBlockLapisParams = {
+interface IServicesContent {
+  title: string;
+  list: { content: string }[];
+  link: string;
+  linkText: string;
+}
+export function FeaturedBlockLapis({ params }: { params: IFeaturedBlockLapisParams }) {
+ 
+  const params1: IFeaturedBlockLapisParams = {
     heading: 'お見積り・ご注文・お問い合せ',
     features: [
       {

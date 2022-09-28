@@ -1,44 +1,15 @@
 import { isMobile } from "react-device-detect";
+interface IFeaturedBlockPearlParams {
+  heading: string;
+  srNo?: string;
+  features?: IFeatures[];
+  image: string;
+}
 
-export function FeaturedBlockPearl() {
-  interface IFeaturedBlockPearlParams {
-    heading: string;
-    srNo?: string;
-    features?: IFeatures[];
-    image: string;
-  }
-
-  interface IFeatures {
-    content: string;
-  }
-
-  const params: IFeaturedBlockPearlParams = {
-    features: [
-      {
-        content:
-          '採用 : 学術的な専門知識と英語力を評価する多段階の厳しい選考過程を経て、慎重に選ばれます。採用プロセスをクリアできるのは、応募者のわずか2％です。',
-      },
-      {
-        content:
-          'オリエンテーション:校正者は、厳しい採点基準で定期的に評価され、集中的なトレーニングを受けることで、常に高品質の英文校正を提供することができます。',
-      },
-      {
-        content:
-          '継続的な改善:エディターは豊富なリソースにアクセスでき、ウェビナーなどによる情報共有も定期的に開催しています。',
-      },
-      {
-        content:
-          'エディターマッチング：AIによる10ポイントマッチングシステムで、あなたの論文に最も適したエディターを選びます。',
-      },
-      {
-        content:
-          'ご希望のエディターをリクエスト：2回目のご注文後、ご希望のエディターをリクエストすることができます。*受付はエディターの都合によります。',
-      },
-    ],
-    image: '/assets/images/featured-block-pearl.svg',
-    heading: '選び抜かれた専門分野の校正者',
-  };
-
+interface IFeatures {
+  content: string;
+}
+const FeaturedBlockPearl = ({ params }: { params: IFeaturedBlockPearlParams }) => {
   return (
     <>
       <div className="clearfix"></div>
