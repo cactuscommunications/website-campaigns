@@ -1,54 +1,22 @@
 import { useEffect, useState } from "react";
 import subjectAPIService from "../../services/api/subject-api";
 import ListingRuby from "../listing-ruby/listing-ruby";
-
-export function ServiceBlockRuby() {
-    interface IserviceBlockRubyParams {
-        desktopOnly: boolean,
-        heading?: string,
-        menuItem: ImenuItem[]
-    }
-    interface ImenuItem {
-        name: string,
-        machineName: string
-    }
+interface IserviceBlockRubyParams {
+    desktopOnly: boolean,
+    heading?: string,
+    menuItem: ImenuItem[]
+}
+interface ImenuItem {
+    name: string,
+    machineName: string
+}
+export function ServiceBlockRuby( {params }: { params: IserviceBlockRubyParams }) {
+   
     let [activeTab, setActiveTab] = useState(0);
     let [searchText, setSearchText] = useState('');
     const url = new URL(location.href);
     const saParam = url.searchParams.get("sa");
     const [loadCounter, setloadCounter] = useState(true);
-
-    const params: IserviceBlockRubyParams = {
-        desktopOnly: true,
-        heading: "その他の専門分野をお探しですか？",
-        "menuItem": [
-            {
-                "name": "すべての分野",
-                "machineName": ""
-            },
-            {
-                "name": "医学・医療",
-                "machineName": "medicine"
-            },
-            {
-                "name": "生命科学",
-                "machineName": "life-sciences"
-            },
-            {
-                "name": "物理化学・工学",
-                "machineName": "physical-sciences-and-engineering"
-            },
-            {
-                "name": "人文社会学",
-                "machineName": "humanities-and-social-sciences"
-            },
-            {
-                "name": "ビジネス・経済学",
-                "machineName": "business-and-economics"
-            },
-
-        ]
-    };
     useEffect(() => {
         if (saParam && loadCounter) {
             setSearchText(saParam);

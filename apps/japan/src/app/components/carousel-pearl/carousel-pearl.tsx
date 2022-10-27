@@ -13,9 +13,13 @@ interface IServiceFeaturePearlParams {
     heading: string;
     subjectLabel: string;
     qualificationLabel: string;
+    experienceLabel : string;
+    satisfactionLabel : string;
+    jobLabel : string;
+    searchText  : string;
 }
 
-const CarouselPearl = ({ searchText }: { searchText: string }) => {
+const CarouselPearl = ({ params }: { params: IServiceFeaturePearlParams }) => {
     const chunkSize = isMobile ? 1 : 3;
     let [position, setPosition] = useState(0);
     let [testimonials, setTestimonials] = useState([{}]);
@@ -25,25 +29,21 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     const [modalData, setModalData] = useState();
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
-    const params: IServiceFeaturePearlParams = {
-        heading: '校正者の例：',
-        subjectLabel: '専門分野',
-        qualificationLabel: '最終学歴'
-    };
+
     useEffect(() => {
         if (saParam) {
-            searchText = saParam;
+            params.searchText = saParam;
         }
         const getEditorsData = async () => {
             let machineName = '';
-            machineName = await getMachineName(searchText);
-            let resp = await getData(searchText);
+            machineName = await getMachineName(params.searchText);
+            let resp = await getData(params.searchText);
             setTestimonials(resp.data);
             setIndicator(resp.data);
             setTitle(resp.title)
         };
         getEditorsData();
-    }, [searchText]);
+    }, [params.searchText]);
     /**
      * carousal indicators (dots) modifier
      * @author Goutham Reddy
@@ -126,15 +126,15 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                     </div>
                                     <div className="dyna-height-3 flex bg-white px-5 pt-4 w-full pb-4" style={{ height: "72.25px" }}>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            校正者歴
+                                            {params?.experienceLabel}
                                             <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} 年以上</p>
                                         </div>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            顧客満足度
+                                            {params.satisfactionLabel}
                                             <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} </p>
                                         </div>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            校正稿数
+                                             {params?.jobLabel}
                                             <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> </div>
                                     </div>
                                     <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{params.subjectLabel}</div>

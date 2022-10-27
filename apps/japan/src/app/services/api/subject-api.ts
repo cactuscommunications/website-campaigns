@@ -1,5 +1,7 @@
 import axios from 'axios';
+import pageService from '../../services/renderer/page-service';
 
+const partner = pageService.getPartner();
 const baseUrl = process.env["NX_HOST"]
 const token = process.env["NX_TOKEN"] ? process.env["NX_TOKEN"] : ''
 

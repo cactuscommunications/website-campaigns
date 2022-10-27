@@ -1,9 +1,10 @@
 export interface IServiceInformationRuby {
     heading?: string;
     subHeading?: string;
-    card: ICardInfo[]
+    infoCard: ICardInfo[]
     path: string
-    CTAtext: string 
+    CTAtext: string ,
+    searchText : string
   }
 
   export interface IServiceInfo {

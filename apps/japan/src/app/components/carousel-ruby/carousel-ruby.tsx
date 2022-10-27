@@ -6,6 +6,8 @@ import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
 import ModalPearl from '../modal-pearl/modal-pearl';
 import { isMobile } from 'react-device-detect';
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 
 /**
  * interface for listing ruby parameters
@@ -13,9 +15,11 @@ import { isMobile } from 'react-device-detect';
 interface IServiceFeatureRubyParams {
   heading: string;
   textLength: number;
+  searchText : string;
+  subjectHeading? : string;
 }
 
-const CarouselRuby = ({ searchText }: { searchText: string }) => {
+const CarouselRuby = ({ params }: { params: IServiceFeatureRubyParams }) => {
   const chunkSize = isMobile ? 1 : 3;
   let [position, setPosition] = useState(0);
   let [testimonials, setTestimonials] = useState([{}]);
@@ -24,27 +28,22 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
   const [openModal, setOpenModal] = useState(false);
   const [readMoreComment, setReadMoreComment] = useState('');
   const [readMoreSubject, setReadMoreSubject] = useState('');
-
-  const params: IServiceFeatureRubyParams = {
-    heading: 'お客さまからの声',
-    textLength: 100
-  };
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   useEffect(() => {
     if (saParam) {
-      searchText = saParam;
+      params.searchText = saParam;
     }
 
     const getTestimonialsData = async () => {
       let machineName = '';
-      machineName = await getMachineName(searchText);
+      machineName = await getMachineName(params.searchText);
       let resp = await getData(machineName);
       setTestimonials(resp);
       setIndicator(resp);
     };
     getTestimonialsData();
-  }, [searchText]);
+  }, [params.searchText]);
   /**
    * carousal indicators (dots) modifier
    * @author Goutham Reddy
@@ -131,7 +130,7 @@ const CarouselRuby = ({ searchText }: { searchText: string }) => {
                       </div>
                       <div className="mt-auto sm:mt-3">
                         <span className="block uppercase font-sb text-xs text-ruby-beta leading-4 mb-1 tracking-wider sm:text-11">
-                          専門分野
+                          {params?.subjectHeading}
                         </span>
                         <span className="block text-sm font-ssb text-ruby-beta leading-4 sm:text-13">
                           {trow.attributes.subject}
@@ -171,8 +170,16 @@ function getMachineName(input: string) {
   })
 }
 function getData(input: string) {
-  return subjectAPIService.getWholeData(input, 'sa_one.sa_testimonials').then(function (response: any) {
-    return response.data.data[0]?.attributes.sa_one?.data[0]?.attributes.sa_testimonials.data ? response.data.data[0]?.attributes.sa_one?.data[0]?.attributes.sa_testimonials.data : [];
+  return subjectAPIService.getWholeData(input, 'sa_one.sa_testimonials,sa_one.sa_testimonials.partners').then(function (response: any) {
+    let returnData = [];
+    let filteredData:any = [];
+    returnData = response.data.data[0]?.attributes.sa_one?.data[0]?.attributes.sa_testimonials.data ? response.data.data[0]?.attributes.sa_one?.data[0]?.attributes.sa_testimonials.data : []; 
+    returnData.forEach((data: any, index:number) => {
+      if (data.attributes.partners[0].code == partner) {
+        filteredData.push(data)
+      }
+    })
+    return filteredData;
   });
 }
 
