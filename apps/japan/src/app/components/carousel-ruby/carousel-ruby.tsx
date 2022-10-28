@@ -7,6 +7,7 @@ import subjectAPIService from '../../services/api/subject-api';
 import ModalPearl from '../modal-pearl/modal-pearl';
 import { isMobile } from 'react-device-detect';
 import pageService from '../../services/renderer/page-service';
+
 const partner = pageService.getPartner();
 
 /**
@@ -30,6 +31,8 @@ const CarouselRuby = ({ params }: { params: IServiceFeatureRubyParams }) => {
   const [readMoreSubject, setReadMoreSubject] = useState('');
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
+  const partner = pageService.getPartner();
+  var readMore = (partner == 'JPN' ? '...続きを読む' : '...더 읽어보기');
   useEffect(() => {
     if (saParam) {
       params.searchText = saParam;
@@ -107,7 +110,7 @@ const CarouselRuby = ({ params }: { params: IServiceFeatureRubyParams }) => {
                             setReadMoreSubject(trow.attributes.subject);
                           }}
                           className="text-pearl-beta font-ssb text-underline-hover">
-                          {trow.attributes.comment.length > params.textLength ? "...続きを読む" : ''}
+                          {trow.attributes.comment.length > params.textLength ? readMore : ''}
                         </span>}
                       </p>
                     </div>

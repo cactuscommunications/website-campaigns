@@ -8,6 +8,8 @@ import subjectAPIService from '../../services/api/subject-api';
 import ModalRuby from '../modal-ruby/modal-ruby'
 import { isMobile } from 'react-device-detect';
 import { FLAG } from "../../config/flag-mapping";
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 
 interface IServiceFeaturePearlParams {
     heading: string;
@@ -29,6 +31,7 @@ const CarouselPearl = ({ params }: { params: IServiceFeaturePearlParams }) => {
     const [modalData, setModalData] = useState();
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
+    let viewAll =  (partner == 'JPN' ? '全て見る' : '전체 보기')
 
     useEffect(() => {
         if (saParam) {
@@ -127,7 +130,7 @@ const CarouselPearl = ({ params }: { params: IServiceFeaturePearlParams }) => {
                                     <div className="dyna-height-3 flex bg-white px-5 pt-4 w-full pb-4" style={{ height: "72.25px" }}>
                                         <div className="w-1/3 text-xs text-center font-ssb">
                                             {params?.experienceLabel}
-                                            <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} 年以上</p>
+                                            <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} {partner == 'JPN' ?  '年以上' : '년 이상'}</p>
                                         </div>
                                         <div className="w-1/3 text-xs text-center font-ssb">
                                             {params.satisfactionLabel}
@@ -157,7 +160,7 @@ const CarouselPearl = ({ params }: { params: IServiceFeaturePearlParams }) => {
                                                 setModal(ti)
                                             }}
                                             className="text-xs text-pearl-beta font-ssb text-underline-hover">
-                                            {trow.attributes.expertise_area.length > 10 ? "全て見る" : ''}
+                                            {trow.attributes.expertise_area.length > 10 ? viewAll : ''}
                                         </span>
                                         {openModal && <ModalRuby key={ti} closeModal={setOpenModal} data={modalData} />}
 

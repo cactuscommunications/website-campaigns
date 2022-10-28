@@ -1,6 +1,8 @@
 import ServiceInfoList from './service-info-list'
 import {ICardInfo} from "./models"
 import MarkDown from '../markdown/markdown';
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 
 export function ServiceInfoCard({ card,data }: { card: ICardInfo, data :any }) {
   let start = 0;
@@ -80,9 +82,9 @@ export function ServiceInfoCard({ card,data }: { card: ICardInfo, data :any }) {
                 <div className="w-9 h-9 bg-contain bg-no-repeat self-center sm:hidden  ng-lazyloaded"
                   style={{backgroundImage: `url(${card.pricing.path3})`,}}></div>
                 <div className="ml-2 text-left sm:ml-0">
-                    <h3 className="text-white text-base font-sb sm:text-sm sm:leading-5">自動お見積り・ご注文はこちら</h3>
+                    <h3 className="text-white text-base font-sb sm:text-sm sm:leading-5">{partner == 'JPN' ? '自動お見積り・ご注文はこちら' : '빠른 견적 및 서비스 요청'}</h3>
                     <p className="text-xs font-ssb text-white/80 sm:text-xs sm:leading-17">
-                        単語数の入力で料金・納期をその場でご確認いただけます</p>
+                    {partner == 'JPN' ? '単語数の入力で料金・納期をその場でご確認いただけます' : '지금 바로 단어 수 입력만으로 요금・납기일을 확인하실 수 있습니다'}</p>
                 </div>
             </div>
             <div className="flex justify-center items-center w-16 bg-pearl-delta1 flex-shrink-0 rounded-r-md sm:w-14 md:w-17.5">
