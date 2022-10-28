@@ -6,7 +6,8 @@ import subjectAPIService from '../../services/api/subject-api';
 import ServiceFeatureRuby from '../service-feature-ruby/service-feature-ruby';
 import CarouselRuby from '../carousel-ruby/carousel-ruby';
 import { isMobile } from 'react-device-detect';
-
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 /**
  * interface for listing ruby parameters
  */
@@ -153,7 +154,7 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
                         onClick={(e) => handleChange(item)}
                         href="javascript:;"
                       >
-                        {item.searchTitle}
+                        {partner == "JPN" ? item.searchTitle : item.searchTitle.replace(/を含む/g, "포함").replace(/分野/g, "분야")}
                       </a>
                     </div>
                   ))}
