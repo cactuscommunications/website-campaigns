@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - yarn install
+  build:
+    commands:
+      - echo Build started on `date`
+      - yarn build:staging
+  post_build:
+    commands:
+        # copy the contents of /build to S3
+      - aws s3 rm --recursive s3://editage-dev.campaigns-kr.stage/  
+      - aws s3 cp --recursive ./dist s3://editage-dev.campaigns-kr.stage/
+      - aws cloudfront create-invalidation --distribution-id E193GIXOGRVIW9 --paths "/*"
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist
