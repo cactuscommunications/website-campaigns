@@ -4,7 +4,7 @@ const url = new URL(location.href);
 
 const pageService = {
     getPartner: function () {
-        let tld: string = url.hostname.replace(/^(local|(development)(\d?)|staging|www)\./, '')
+        let tld: string = url.hostname.replace(/^(local|(development)(\d?)|stage|www)\./, '')
         // @ts-ignore  
         return PARTNER[tld]?.code ? PARTNER[tld].code : 'JPN';
     },
