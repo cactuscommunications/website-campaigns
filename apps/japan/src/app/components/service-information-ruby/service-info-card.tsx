@@ -19,7 +19,7 @@ export function ServiceInfoCard({ card,data }: { card: ICardInfo, data :any }) {
         <span className="bg-diamond-kappa py-2 pl-3 pr-10 rounded-l-3xl font-sb text-ruby-alpha text-base -mr-px flex self-center sm:absolute sm:top-full sm:right-px sm:mt-2">
           <span className="w-7 h-7 bg-no-repeat inline-block bg-contain mr-2"
               style={{ backgroundImage: `url(${card.heading.path})`, }}></span>
-            {card.baseService === 'pes' && data.service_flag ? data.service_flag : card.heading.comment}
+            {card.baseService === 'pes' && data.service_flag && partner == 'JPN' ? data.service_flag : card.heading.comment}
         </span>
       </div>
     </div>
