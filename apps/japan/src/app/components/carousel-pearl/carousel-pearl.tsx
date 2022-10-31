@@ -211,6 +211,9 @@ function getData(input: string) {
             data: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.editors?.data ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.editors?.data : [],
             title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
         }
+        if(partner == 'KOR') {
+            returnData.title = returnData.title.replace(/エディテージ/g, "에디티지").replace(/分野/g, "분야")
+          }
         return returnData
 
     });

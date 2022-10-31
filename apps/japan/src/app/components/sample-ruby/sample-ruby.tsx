@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import subjectAPIService from "../../services/api/subject-api";
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 interface ISampleRubyParams {
   backgroundColor: string;
   heading: string;
@@ -104,6 +106,9 @@ function getSampleData(input: string) {
         ],
         title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
       }
+    }
+    if(partner == 'KOR') {
+      returnData.title = returnData.title.replace(/エディテージ/g, "에디티지").replace(/分野/g, "분야")
     }
     return returnData
 

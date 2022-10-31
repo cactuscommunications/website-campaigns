@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
 import { isMobile } from 'react-device-detect';
-
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 /**
  * interface for listing ruby parameters
  */
@@ -38,6 +39,9 @@ const ServiceFeatureRuby = ({ params }: { params: IServiceFeatureRubyParams }) =
     }
     const getSubData = async () => {
       let resp = await getData(params.searchText);
+      if(partner == 'KOR') {
+        resp.title = resp.title.replace(/エディテージ/g, "에디티지").replace(/分野/g, "분야")
+      }
       setData(resp);
     };
     getSubData();
