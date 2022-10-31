@@ -31,6 +31,7 @@ export function ServiceInformationRuby({ params }: { params: IServiceInformation
           {params.infoCard.map((card, index) => (
             <ServiceInfoCard
               key={index}
+              index = {index}
               card={card}
               data= {data}
               ></ServiceInfoCard>
