@@ -9,7 +9,7 @@ export interface IServiceInformationRuby {
 
   export interface IServiceInfo {
     path:  string,
-    text: string
+    text: string,
   }
 
   export interface ICardInfo {
@@ -26,6 +26,7 @@ export interface IServiceInformationRuby {
     export interface IServiceInfoList {
       path: string;
       text: string;
+      color?: boolean;
     }
 
     export interface IHeading {
