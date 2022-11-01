@@ -338,25 +338,28 @@ return (
   }
 
   {partner == "KOR" && <section className="w-full">
+  <div className="clearfix"></div>
     <div className="bg-slate-800 py-10">
       <div className="container">
-        <div className="flex justify-between sm:flex-col">
-          <div>
-            <div className="w-33 h-12.5 mb-2 bg-contain bg-center bg-no-repeat" style={{backgroundImage: "url(/assets/images/logo/white-editage-logo.svg)"}}></div>
-            <p className="text-white text-xs font-ssb leading-6">(주)캑터스 커뮤니케이션즈코리아</p>
-            <p className="text-white text-xs font-ssb leading-6 mt-2.5">서울특별시 마포구 월드컵북로 22 영준빌딩 4층 <br /> 대표자: 박기서 | 개인정보관리책임자: Abhishek Goel <br /> 사업자등록번호:220-88-09073 | 통신판매업신고번호: 제2011-서울마포-1692</p>
-            <div className="flex mt-2.5">
-              <div className="w-14 h-8.75 bg-contain bg-center bg-no-repeat" style={{backgroundImage: "url(/assets/images/korea/partners/csba-logo.png)"}}></div>
-              <div className="w-48 h-8.75 bg-contain bg-center bg-no-repeat ml-2.5" style={{backgroundImage: "url(/assets/images/korea/partners/ksi-emblem.png)"}}></div>
-              <div className="w-30 h-8.75 bg-contain bg-center bg-no-repeat ml-2.5" style={{backgroundImage: "url(/assets/images/korea/partners/quality-assurance.png)"}}></div>
+        <div className="wrapper">
+          <div className="flex justify-between sm:flex-col">
+            <div>
+              <div className="w-33 h-12.5 mb-2 bg-contain bg-center bg-no-repeat" style={{backgroundImage: "url(/assets/images/logo/white-editage-logo.svg)"}}></div>
+              <p className="text-white text-xs font-ssb leading-6">(주)캑터스 커뮤니케이션즈코리아</p>
+              <p className="text-white text-xs font-ssb leading-6 mt-2.5">서울특별시 마포구 월드컵북로 22 영준빌딩 4층 <br /> 대표자: 박기서 | 개인정보관리책임자: Abhishek Goel <br /> 사업자등록번호:220-88-09073 | 통신판매업신고번호: 제2011-서울마포-1692</p>
+              <div className="flex mt-2.5">
+                <div className="w-14 h-8.75 bg-contain bg-center bg-no-repeat" style={{backgroundImage: "url(/assets/images/korea/partners/csba-logo.png)"}}></div>
+                <div className="w-48 h-8.75 bg-contain bg-center bg-no-repeat ml-2.5" style={{backgroundImage: "url(/assets/images/korea/partners/ksi-emblem.png)"}}></div>
+                <div className="w-30 h-8.75 bg-contain bg-center bg-no-repeat ml-2.5" style={{backgroundImage: "url(/assets/images/korea/partners/quality-assurance.png)"}}></div>
+              </div>
             </div>
-          </div>
-          <div className="sm:mt-5">
-            <p className="text-white text-xs font-ssb leading-6"><span className="font-sb">고객센터</span> <br /> (TEL) 02-3478-4396 <span className="ml-2.5"> (Fax) 02-703-3177 </span> <br /> (Email) submit-korea@editage.com</p>
-            <p className="text-white text-xs font-ssb leading-6 mt-2.5">월-금 9:00 ~ 18:00 토/일 12:30 ~ 21:30</p>
-            <p className="text-white text-xs font-ssb leading-6 mt-2.5">*작업 접수는 24시간 가능합니다.</p>
-            <div className="flex mt-2.5">
-              <div className="w-80 h-8.75 bg-contain bg-center bg-no-repeat" style={{backgroundImage: "url(/assets/images/korea/partners/payment.png)"}}></div>
+            <div className="sm:mt-5">
+              <p className="text-white text-xs font-ssb leading-6"><span className="font-sb">고객센터</span> <br /> (TEL) 02-3478-4396 <span className="ml-2.5"> (Fax) 02-703-3177 </span> <br /> (Email) submit-korea@editage.com</p>
+              <p className="text-white text-xs font-ssb leading-6 mt-2.5">월-금 9:00 ~ 18:00 토/일 12:30 ~ 21:30</p>
+              <p className="text-white text-xs font-ssb leading-6 mt-2.5">*작업 접수는 24시간 가능합니다.</p>
+              <div className="flex mt-2.5">
+                <div className="w-80 h-8.75 bg-contain bg-center bg-no-repeat" style={{backgroundImage: "url(/assets/images/korea/partners/payment.png)"}}></div>
+              </div>
             </div>
           </div>
         </div>
@@ -365,6 +368,7 @@ return (
     <div className="bg-ruby-beta">
       <p className="text-white text-xs font-ssb leading-6 py-1.5 text-center">© 2002 - 2022 CACTUS COMMUNICATIONS, ALL RIGHT RESERVED.</p>
     </div>
+    <div className="clearfix"></div>
   </section>}
 </>
  );
