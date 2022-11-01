@@ -8,9 +8,11 @@ export function ServiceInfoCard({ card,data,index }: { card: ICardInfo, data :an
   let start = 0;
   let end = card.list.length;
   let mid = Math.ceil((card.list.length) / 2);
+  let cardBorder = ['border-pearl-beta', 'border-garnet-lambda', 'border-opal-delta1']
+  let cardBackground = ['bg-pearl-beta', 'bg-garnet-lambda', 'bg-opal-delta1']
   return (
-    <div key={index} className={'border rounded-lg mb-10 max-w-[1138px] mx-auto '+  card.heading?.headingClassName }>
-      <div className={'rounded-t-lg  relative flex justify-between flex-wrap items-center py-4 sm:pb-5 ' + card.heading?.subHeadingClass } >
+    <div key={index} className={'border rounded-lg mb-10 max-w-[1138px] mx-auto '+  cardBorder[index] }>
+      <div className={'rounded-t-lg  relative flex justify-between flex-wrap items-center py-4 sm:pb-5 ' + cardBackground[index] } >
       <span className="absolute bg-diamond-delta -top-px -left-px text-base leading-9 text-white font-pr px-3 rounded-br-lg	rounded-tl-lg sm:text-13">{card?.heading.specialHeadingText}</span>
       <div className="flex justify-between w-full">
           <a href={card.pricing.link}>

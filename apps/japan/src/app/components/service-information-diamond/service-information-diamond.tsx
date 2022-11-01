@@ -64,7 +64,7 @@ const ServiceInformationDiamond = ({ params }: { params: IServiceInformationDiam
             <div
               className="inline-flex flex-col flex-shrink-0 w-77.5 h-26.75 bg-cover bg-no-repeat mx-5 md:w-52 md:h-19 sm:order-1 sm:w-33 sm:h-15 sm:hidden md:-mt-4 order-3"
               style={{ backgroundImage: `url(${params?.pitch.image})` }}>
-              <div className="text-amber-200 text-xxxs font-pr text-center mt-24 font-light w-full md:mt-19 md:text-xsm">
+              <div className="text-amber-200 text-10 font-pr text-center mt-24 font-light w-full md:mt-19 md:text-xsm">
                 {params?.pitch.bottomLabel}
               </div>
             </div>
