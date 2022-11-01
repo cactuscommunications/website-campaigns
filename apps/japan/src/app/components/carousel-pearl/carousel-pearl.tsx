@@ -89,7 +89,7 @@ const CarouselPearl = ({ params }: { params: IServiceFeaturePearlParams }) => {
             <section className="bg-primary pb-10">
                 <div className="container sm:px-5">
                     <h2 className="text-center text-4.5xl font-pb text-ruby-alpha leading-45 sm:text-20 sm:leading-7">
-                        {params.heading}<span className="sm:hidden">{title}</span>
+                        {params.heading}<span className="sm:hidden">{partner == "JPN" ? title : ''}</span>
                     </h2>
 
                     {testimonialsChunk && testimonialsChunk.length > 0 &&
@@ -212,7 +212,7 @@ function getData(input: string) {
             title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
         }
         if(partner == 'KOR') {
-            returnData.title = returnData.title.replace(/エディテージ/g, "에디티지").replace(/分野/g, "분야")
+            returnData.title = returnData.title.replace(/エディテージ/g, "").replace(/分野/g, "분야")
           }
         return returnData
 

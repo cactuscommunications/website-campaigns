@@ -545,18 +545,18 @@ export function Header() {
                   </ul>
                   }
                   {(partner == "KOR") && <ul>
-                    <li className="inline-block text-sm relative uppercase">
+                    {/* <li className="inline-block text-sm relative uppercase">
                       <a className="transition-all duration-100 ease-in inline-block hover:bg-pearl-beta/10"
                         href="https://www.editage.co.kr/aboutus" target="_self" data-description="hp-top nav-login-null-click-<top-navigation>-null">
                         <span className="py-4.6 px-2 inline-block md:px-1.2"><span className="font-ssb tracking-wider text-sm md:text-13">회사소개</span>
                         </span>
                       </a>
-                    </li>
+                    </li> */}
                     <li className="inline-block text-sm relative uppercase">
-                      <a className="btn-nav hover:shadow-sm transition-all duration-100 ease-in inline-block ml-2"
+                      <a className="mt-2 btn-nav hover:shadow-sm transition-all duration-100 ease-in inline-block ml-2"
                         href="https://app.editage.co.kr/order/ncf?LP=brand#_ga=2.106673930.829374730.1666239380-1219427464.1665047315" target="_self" data-description="hp-top nav-get quote-null-click-null-null">
                         <span>
-                          <span className="font-ssb tracking-wider text-sm md:text-13">견적 문의</span>
+                          <span className="font-ssb tracking-wider text-sm md:text-13">빠른 문의 및 이용료 확인</span>
                         </span>
                       </a>
                     </li>

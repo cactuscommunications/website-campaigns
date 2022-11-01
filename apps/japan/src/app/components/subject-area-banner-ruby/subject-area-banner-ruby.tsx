@@ -44,6 +44,8 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
   const [showValidation, setShowValidation] = useState(false);
   const [showNoTextValidation, setShowNoTextValidation] = useState(false);
   const validationReg =    /^[ A-Za-z\/\s\!@#$%^&*():,-_+;><?|.'\-]+$/
+  let backgroundColour = (partner == 'JPN') ? 'bg-pearl-beta' : '';
+  let textColor = (partner == 'JPN') ? 'text-white' : 'text-pearl-beta'
   useEffect(() => {
     const getSaData = async () => {
       if (saParam && loadCounter) {
@@ -106,7 +108,7 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
               {params?.heading2 && (
                 <>
                   <br />
-                  <span className="text-white bg-pearl-beta inline-block mt-1.5 py-2.5 sm:pl-2.5 sm:py-0 sm:mt-1 text-4xl">
+                  <span className={textColor + " inline-block mt-1.5 py-2.5 sm:pl-2.5 sm:py-0 sm:mt-1 text-4xl " + backgroundColour}>
                     <MarkDown data={params?.heading2}></MarkDown>
                   </span>
                 </>

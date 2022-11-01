@@ -40,7 +40,7 @@ const ServiceFeatureRuby = ({ params }: { params: IServiceFeatureRubyParams }) =
     const getSubData = async () => {
       let resp = await getData(params.searchText);
       if(partner == 'KOR') {
-        resp.title = resp.title.replace(/エディテージ/g, "에디티지").replace(/分野/g, "분야")
+        resp.title = resp.title.replace(/エディテージ/g, "").replace(/分野/g, "분야")
       }
       setData(resp);
     };
@@ -61,7 +61,7 @@ const ServiceFeatureRuby = ({ params }: { params: IServiceFeatureRubyParams }) =
             <div className='max-w-[600px] mx-auto'>
               <h2 className="text-center leading-44 mb-5 sm:mb-0 sm:leading-29">
                 <div className="font-pb text-3xl sm:text-20 sm:leading-29 sm:block md:text-2xl">
-                  {data.title ? data.title : ''}{params.heading}
+                  {partner=="JPN" && data.title ? data.title : ''}{params.heading}
                 </div>
               </h2>
             </div>

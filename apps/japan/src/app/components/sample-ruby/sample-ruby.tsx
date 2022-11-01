@@ -46,7 +46,7 @@ const SampleRuby = ({ params }: { params: ISampleRubyParams }) => {
           <div className="text-center mb-6 sm:px-5">
             {params.heading && (
               <h2 className="font-pb text-3xl leading-44 text-ruby-alpha mb-5 sm:leading-30 sm:text-20">
-                {params.heading}<span className="sm:hidden"> : {title}</span>
+                {params.heading}<span className="sm:hidden">{partner == 'JPN'? ':' + title : ''}</span>
               </h2>
             )}
             <span className="text-base text-ruby-alpha font-pr">{params.subHeading}</span>

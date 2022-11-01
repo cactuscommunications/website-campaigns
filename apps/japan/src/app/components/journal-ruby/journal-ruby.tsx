@@ -51,7 +51,7 @@ export function JournalRuby({ params }: { params: IJournalRubyParams }) {
       <section className={'pb-10 pt-7.5 ' + params?.backgroundColor}>
         <div className="container px-5">
           <h2 className="text-center font-pb text-5xl text-ruby-alpha leading-30 sm:text-20">
-            <span className="sm:hidden">{params.heading}{title}</span>
+            <span className="sm:hidden">{params.heading}{partner == "JPN" ? title : ''}</span>
             <span className="hidden sm:block">{params.mobileHeading}</span>
           </h2>
           <p className="text-center text-base leading-6 font-pr text-ruby-alpha mt-4 mb-7 sm:mt-5">
@@ -105,7 +105,7 @@ export function JournalRuby({ params }: { params: IJournalRubyParams }) {
 
       let title = response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
       if(partner == "KOR")
-        title = title.replace(/エディテージ/g, "에디티지").replace(/分野/g, "분야");
+        title = title.replace(/エディテージ/g, "").replace(/分野/g, "분야");
       return { data: journalData, title: title };
     });
   }
