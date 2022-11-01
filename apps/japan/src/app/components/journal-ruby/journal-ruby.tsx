@@ -58,7 +58,7 @@ export function JournalRuby({ params }: { params: IJournalRubyParams }) {
             <span className="sm:hidden">{params.subHeading}</span>
             <span className="hidden sm:block">{params.mobileSubHeading}</span>
           </p>
-          <div className="w-full flex justify-center mt-5 flex-wrap max-w-[1300px] mx-auto sm:flex-nowrap sm:justify-start sm:overflow-x-auto sm:pb-4">
+          <div className="w-full flex justify-center mt-5 flex-wrap max-w-[1300px] mx-auto gap-y-5 sm:flex-nowrap sm:justify-start sm:overflow-x-auto sm:pb-4">
             {journals
               .sort((first, second) => {
                 return first.impact_factor < second.impact_factor ? 1 : -1;

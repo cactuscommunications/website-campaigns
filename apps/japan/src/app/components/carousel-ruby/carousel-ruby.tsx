@@ -80,7 +80,7 @@ const CarouselRuby = ({ params }: { params: IServiceFeatureRubyParams }) => {
           </h2>
           {testimonialsChunk && testimonialsChunk[position] && (
             <>
-              <div className="relative flex justify-center mt-10 max-w-6xl mx-auto sm:flex-wrap">
+              <div className="relative flex justify-center mt-10 max-w-6xl mx-auto md:max-w-[850px] sm:flex-wrap">
                 {position != testimonialsChunk.length - 1 &&
                   <div onClick={(e) => next()}
                     className="cursor-pointer w-16 h-16 absolute float-right opacity-100 transition duration-300 ease-in-out  -right-1 transform -translate-y-1/2 top-1/2 bg-cover bg-no-repeat opacity-100 sm:w-12 sm:h-12 md:w-12.5 md:h-12.5 md:-right-14 sm:-right-7"
