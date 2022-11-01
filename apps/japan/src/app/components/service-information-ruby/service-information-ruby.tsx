@@ -4,7 +4,8 @@ import MarkDown from '../markdown/markdown';
 import ModalOpal from '../modal-opal/modal-opal';
 import {  useState, useEffect } from 'react';
 import subjectAPIService from '../../services/api/subject-api';
-
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
   
 export function ServiceInformationRuby({ params }: { params: IServiceInformationRuby }){
   const [openModal, setOpenModal] = useState(false);
@@ -37,9 +38,12 @@ export function ServiceInformationRuby({ params }: { params: IServiceInformation
               ></ServiceInfoCard>
           ))}
           <div className="text-center mt-10">
-            <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
+            {partner == "JPN" && <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
               <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
-            </a>
+            </a> }
+            {partner == "KOR" && <a  href = "https://app.editage.co.kr/order/ncf/english-editing" className="btn btn-primary">
+              <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
+            </a> }
           </div>
           {openModal && <ModalOpal closeModal={setOpenModal}/>}
         </div>
