@@ -96,7 +96,6 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
   let backgroundImage = isDesktop ?  params.backgroundImg : isTablet ? '/assets/images/subject-area-banner-tab.jpg' : '';
   return (
     <>
-    {/* {alert(isMobile +"=="+isTablet+"=="+ isDesktop)} */}
       <section
         className="pt-18 pb-4 bg-contain bg-right bg-no-repeat min-h-120 sm:py-4 md:bg-full"
         style={{
