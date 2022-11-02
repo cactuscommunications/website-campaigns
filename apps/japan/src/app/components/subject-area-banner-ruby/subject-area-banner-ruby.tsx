@@ -93,7 +93,7 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
       window.location.replace(location.origin + location.pathname + '?sa=' + (searchObj.machineName ? searchObj.machineName : machineName))
 
   };
-  let backgroundImage = isDesktop ?  params.backgroundImg : (isTablet || isMobile) ? '/assets/images/subject-area-banner-tab.jpg' : '';
+  let backgroundImage = isDesktop ?  params.backgroundImg : isTablet ? '/assets/images/subject-area-banner-tab.jpg' : '';
   return (
     <>
       <section
