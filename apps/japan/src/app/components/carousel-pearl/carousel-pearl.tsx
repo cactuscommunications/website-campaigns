@@ -86,7 +86,7 @@ const CarouselPearl = ({ params }: { params: IServiceFeaturePearlParams }) => {
 
     return (
         <>
-            <section className="bg-primary pb-10">
+            <section className={"bg-primary " + (partner == "JPN" ? 'pb-10' : 'py-10')}>
                 <div className="container sm:px-5">
                     <h2 className="text-center text-4.5xl font-pb text-ruby-alpha leading-45 sm:text-20 sm:leading-7">
                         {params.heading}<span className="sm:hidden">{partner == "JPN" ? title : ''}</span>

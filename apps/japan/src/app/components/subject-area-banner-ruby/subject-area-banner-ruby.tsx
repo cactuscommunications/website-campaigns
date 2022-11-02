@@ -96,7 +96,7 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
   return (
     <>
       <section
-        className="pt-18 pb-4 bg-contain bg-right bg-no-repeat min-h-120 sm:py-4"
+        className="pt-18 pb-4 bg-contain bg-right bg-no-repeat min-h-120 sm:py-4 md:bg-full"
         style={{
           backgroundImage: `url(${!isMobile ? params.backgroundImg : ''})`,
         }}
