@@ -5,7 +5,7 @@ import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
 import ServiceFeatureRuby from '../service-feature-ruby/service-feature-ruby';
 import CarouselRuby from '../carousel-ruby/carousel-ruby';
-import { isMobile } from 'react-device-detect';
+import { isMobile , isDesktop, isTablet } from 'react-device-detect';
 import pageService from '../../services/renderer/page-service';
 const partner = pageService.getPartner();
 /**
@@ -93,12 +93,14 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
       window.location.replace(location.origin + location.pathname + '?sa=' + (searchObj.machineName ? searchObj.machineName : machineName))
 
   };
+  let backgroundImage = isDesktop ?  params.backgroundImg : isTablet ? '/assets/images/subject-area-banner-tab.jpg' : '';
   return (
     <>
+    {/* {alert(isMobile +"=="+isTablet+"=="+ isDesktop)} */}
       <section
         className="pt-18 pb-4 bg-contain bg-right bg-no-repeat min-h-120 sm:py-4 md:bg-full"
         style={{
-          backgroundImage: `url(${!isMobile ? params.backgroundImg : ''})`,
+          backgroundImage: `url(${backgroundImage})`,
         }}
       >
         <div className="container">
@@ -184,12 +186,12 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
                 </p>
               </div>
             )}
-            <span
+            {isMobile && !isTablet && <span
               className="hidden w-full h-60 bg-center bg-contain bg-no-repeat sm:block"
               style={{
                 backgroundImage: `url(${params.mobileBackgroundImg})`,
               }}
-            ></span>
+            ></span>}
           </div>
         </div>
       </section>
