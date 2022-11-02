@@ -29,6 +29,9 @@ interface ICoins {
     text3: string
   };
 }
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
+let mobilePitchImage = partner == "JPN" ? '/assets/images/service-information-emerald-mobile.png' : '/assets/images/korea/service-info-mobile.jpeg';
 const ServiceInformationDiamond = ({ params }: { params: IServiceInformationDiamondParams }) => {
   return (
     <>
@@ -39,7 +42,7 @@ const ServiceInformationDiamond = ({ params }: { params: IServiceInformationDiam
         <div className="container ">
           <div className="hidden sm:block">
             <div className="w-81 h-15 bg-contain bg-no-repeat mx-auto"
-              style={{ backgroundImage: `url('/assets/images/service-information-emerald-mobile.png')` }}>
+              style={{ backgroundImage: `url(${mobilePitchImage})` }}>
             </div>
           </div>
           <div className="flex items-center justify-center sm:hidden">
@@ -62,7 +65,7 @@ const ServiceInformationDiamond = ({ params }: { params: IServiceInformationDiam
               </div>
             </div>
             <div
-              className="inline-flex flex-col flex-shrink-0 w-77.5 h-26.75 bg-cover bg-no-repeat mx-5 md:w-52 md:h-19 sm:order-1 sm:w-33 sm:h-15 sm:hidden md:-mt-4 order-3"
+              className={'inline-flex flex-col flex-shrink-0 w-77.5 h-26.75 bg-cover bg-no-repeat mx-5 md:w-52 md:h-19 sm:order-1 sm:w-33 sm:h-15 sm:hidden  order-3 ' + (partner == 'JPN' ? 'md:-mt-4' : 'md:mt:0')}
               style={{ backgroundImage: `url(${params?.pitch.image})` }}>
               <div className="text-amber-200 text-10 font-pr text-center mt-24 font-light w-full md:mt-19 md:text-xsm">
                 {params?.pitch.bottomLabel}
