@@ -43,7 +43,7 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
   const [noDataMessage, setNoDataMessage] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
   const [showNoTextValidation, setShowNoTextValidation] = useState(false);
-  const validationReg =    /^[ A-Za-z\/\s\!@#$%^&*():,-_+;><?|.'\-]+$/
+  const validationReg =   /^[ A-Za-z\/\s\!@#$%^&*():,-_+;><?|.'\-]+$/
   let backgroundColour = (partner == 'JPN') ? 'bg-pearl-beta' : '';
   let textColor = (partner == 'JPN') ? 'text-white' : 'text-pearl-beta'
   useEffect(() => {
@@ -197,6 +197,74 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
       {params.showListing && <ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} pageRows={4} pageColumns={4} />}
       {/* {<ServiceFeatureRuby searchText={machineName} />}
       <CarouselRuby  searchText={machineName}/> */}
+
+      <div className="container">
+        <div className="pt-11 pb-15">
+          <h2 className="text-center text-2xl font-pb sm:text-xl">
+            研究のプロがエディテージを選ぶ
+            <span className="text-diamond-delta whitespace-nowrap text-4xl pl-2.5">3つの理由</span>
+          </h2>
+          <div className="mt-9 sm:mt-7.5 flex justify-center sm:items-center sm:flex-col">
+            <a href="" className="w-80 border-2 border-pearl-alpha p-5 sm:mb-6 relative before:absolute before:w-2.5 before:h-full before:content-[''] after:content-[''] before:bg-pearl-alpha before:-right-2.5 before:top-2.5 after:h-2.5 after:absolute after:w-full after:left-2.5 after:-bottom-2.5 after:bg-pearl-alpha">
+              <div className="font-pb text-2xl text-pearl-alpha text-center leading-8">
+                <span>
+                  圧倒的な
+                  <br />
+                  専門分野対応数
+                </span>
+              </div>
+              <p className="mt-2.5 mb-6 text-base text-ruby-alpha leading-22 font-pr">
+                1300の専門分野を大きく20カテゴリーに分割。
+                <span className="text-diamond-delta">
+                  最適なネイティブ校正者がしっかり割り当てられているかをそれぞれの分野の責任者が監視しています。 
+                </span>
+              </p>
+              <br />
+              <div className="absolute bottom-6 -translate-x-1/2 left-1/2">
+                <span className="w-7 h-5 inline-block bg-no-repeat bg-contain" style={{ backgroundImage: "url(/assets/images/icons/angle-down.svg)" }}></span>
+              </div>
+            </a>
+            <a href="" className="w-80 border-2 border-pearl-alpha p-5 ml-8 sm:ml-0 sm:mb-6 relative before:absolute before:content-[''] after:content-[''] before:w-2.5 before:h-full before:bg-pearl-alpha before:-right-2.5 before:top-2.5 after:h-2.5 after:absolute after:w-full after:left-2.5 after:-bottom-2.5 after:bg-pearl-alpha">
+              <div className="font-pb text-2xl text-pearl-alpha text-center leading-8">
+                <span>
+                  充実の
+                  <br />
+                  アフターサービス
+                </span>
+              </div>
+              <p className="mt-2.5 mb-6 text-base text-diamond-delta leading-22 font-pr">
+                英文校正証明書やフォーマット調整はもちろん無料
+                <span className="text-ruby-alpha">
+                  。校正納品後も、あなたの論文の受理を目指し全力でサポートします。
+                </span>
+              </p>
+              <br />
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-6">
+                <span className="w-7 h-5 inline-block bg-no-repeat bg-contain" style={{ backgroundImage: "url(/assets/images/icons/angle-down.svg)" }}></span>
+              </div>
+            </a>
+            <a href="" className="w-80 border-2 border-pearl-alpha p-5 ml-8 sm:ml-0 relative before:absolute before:content-[''] after:content-[''] before:w-2.5 before:h-full before:bg-pearl-alpha before:-right-2.5 before:top-2.5 after:h-2.5 after:absolute after:w-full after:left-2.5 after:-bottom-2.5 after:bg-pearl-alpha">
+              <div className="font-pb text-2xl text-pearl-alpha text-center leading-8">
+                <span>
+                  高品質・スピード
+                  <br />
+                  最短8.5時間で当日納品
+                </span>
+              </div>
+              <p className="mt-2.5 mb-6 text-base text-ruby-alpha sm:pb-6 leading-22 font-pr">
+                品質も納期も満足保証付きで安心。
+                <span className="text-diamond-delta">
+                  スピードだけでなく、品質も保証します。
+                </span>
+              </p>
+              <br />
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-6">
+                <span className="w-7 h-5 inline-block bg-no-repeat bg-contain" style={{ backgroundImage: "url(/assets/images/icons/angle-down.svg)" }}></span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
