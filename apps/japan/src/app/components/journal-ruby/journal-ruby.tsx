@@ -1,34 +1,28 @@
 import { useEffect, useState } from 'react';
 import subjectAPIService from '../../services/api/subject-api';
-export function JournalRuby({ searchText }: { searchText: string }) {
-  interface IJournalRubyParams {
-    backgroundColor: string;
-    heading: string;
-    mobileHeading: string;
-    subHeading: string;
-    mobileSubHeading: string;
-    journalLabel: string;
-  }
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
+interface IJournalRubyParams {
+  backgroundColor: string;
+  heading: string;
+  mobileHeading: string;
+  subHeading: string;
+  mobileSubHeading: string;
+  journalLabel: string;
+  searchText : string
+}
 
-  interface IJournals {
-    createdAt: string
-    image: string
-    impact_factor: number
-    name: string
-    publishedAt: string
-    updatedAt: string
+interface IJournals {
+  createdAt: string
+  image: string
+  impact_factor: number
+  name: string
+  publishedAt: string
+  updatedAt: string
 
-  }
-
-  const params: IJournalRubyParams = {
-    backgroundColor: 'bg-white',
-    heading: '弊社で実績のあるTOP 5 ジャーナル：',
-    mobileHeading: '弊社で実績のあるTOP 5 ジャーナル',
-    subHeading: 'ハイインパクトファクターの学術誌にも豊富な経験と実績がございます。',
-    mobileSubHeading:
-      "ハイインパクトファクターの学術誌にも豊富な経験と実績がございます。",
-    journalLabel: 'インパクトファクター：',
-  };
+}
+export function JournalRuby({ params }: { params: IJournalRubyParams }) {
+ 
   const url = new URL(location.href);
   var saParam = url.searchParams.get("sa");
   let [title, setTitle] = useState('');
@@ -40,31 +34,31 @@ export function JournalRuby({ searchText }: { searchText: string }) {
 
   useEffect(() => {
     if (saParam) {
-      searchText = saParam;
+      params.searchText = saParam;
     }
     const getJournalsData = async () => {
       let machineName = '';
-      machineName = await getMachineName(searchText);
-      let resp = await getData(searchText);
+      machineName = await getMachineName(params.searchText);
+      let resp = await getData(params.searchText);
       setJournals(resp.data);
       setTitle(resp.title)
     };
     getJournalsData();
-  }, [searchText]);
+  }, [params.searchText]);
   return (
     <>
       <div className="clearfix"></div>
       <section className={'pb-10 pt-7.5 ' + params?.backgroundColor}>
         <div className="container px-5">
           <h2 className="text-center font-pb text-5xl text-ruby-alpha leading-30 sm:text-20">
-            <span className="sm:hidden">{params.heading}{title}</span>
+            <span className="sm:hidden">{params.heading}{partner == "JPN" ? title : ''}</span>
             <span className="hidden sm:block">{params.mobileHeading}</span>
           </h2>
           <p className="text-center text-base leading-6 font-pr text-ruby-alpha mt-4 mb-7 sm:mt-5">
             <span className="sm:hidden">{params.subHeading}</span>
             <span className="hidden sm:block">{params.mobileSubHeading}</span>
           </p>
-          <div className="w-full flex justify-center mt-5 flex-wrap max-w-[1300px] mx-auto sm:flex-nowrap sm:justify-start sm:overflow-x-auto">
+          <div className="w-full flex justify-center mt-5 flex-wrap max-w-[1300px] mx-auto gap-y-5 sm:flex-nowrap sm:justify-start sm:overflow-x-auto sm:pb-4">
             {journals
               .sort((first, second) => {
                 return first.impact_factor < second.impact_factor ? 1 : -1;
@@ -110,7 +104,8 @@ export function JournalRuby({ searchText }: { searchText: string }) {
       })
 
       let title = response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
-
+      if(partner == "KOR")
+        title = title.replace(/エディテージ/g, "").replace(/分野/g, "분야");
       return { data: journalData, title: title };
     });
   }

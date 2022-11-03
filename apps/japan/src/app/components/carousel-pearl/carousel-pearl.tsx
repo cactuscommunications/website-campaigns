@@ -8,14 +8,20 @@ import subjectAPIService from '../../services/api/subject-api';
 import ModalRuby from '../modal-ruby/modal-ruby'
 import { isMobile } from 'react-device-detect';
 import { FLAG } from "../../config/flag-mapping";
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 
 interface IServiceFeaturePearlParams {
     heading: string;
     subjectLabel: string;
     qualificationLabel: string;
+    experienceLabel : string;
+    satisfactionLabel : string;
+    jobLabel : string;
+    searchText  : string;
 }
 
-const CarouselPearl = ({ searchText }: { searchText: string }) => {
+const CarouselPearl = ({ params }: { params: IServiceFeaturePearlParams }) => {
     const chunkSize = isMobile ? 1 : 3;
     let [position, setPosition] = useState(0);
     let [testimonials, setTestimonials] = useState([{}]);
@@ -25,25 +31,22 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
     const [modalData, setModalData] = useState();
     const url = new URL(location.href);
     var saParam = url.searchParams.get("sa");
-    const params: IServiceFeaturePearlParams = {
-        heading: '校正者の例：',
-        subjectLabel: '専門分野',
-        qualificationLabel: '最終学歴'
-    };
+    let viewAll =  (partner == 'JPN' ? '全て見る' : '전체 보기')
+
     useEffect(() => {
         if (saParam) {
-            searchText = saParam;
+            params.searchText = saParam;
         }
         const getEditorsData = async () => {
             let machineName = '';
-            machineName = await getMachineName(searchText);
-            let resp = await getData(searchText);
+            machineName = await getMachineName(params.searchText);
+            let resp = await getData(params.searchText);
             setTestimonials(resp.data);
             setIndicator(resp.data);
             setTitle(resp.title)
         };
         getEditorsData();
-    }, [searchText]);
+    }, [params.searchText]);
     /**
      * carousal indicators (dots) modifier
      * @author Goutham Reddy
@@ -83,14 +86,14 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
 
     return (
         <>
-            <section className="bg-primary pb-10">
+            <section className={"bg-primary " + (partner == "JPN" ? 'pb-10' : 'py-10')}>
                 <div className="container sm:px-5">
                     <h2 className="text-center text-4.5xl font-pb text-ruby-alpha leading-45 sm:text-20 sm:leading-7">
-                        {params.heading}<span className="sm:hidden">{title}</span>
+                        {params.heading}<span className="sm:hidden">{partner == "JPN" ? title : ''}</span>
                     </h2>
 
                     {testimonialsChunk && testimonialsChunk.length > 0 &&
-                        <div className="flex relative justify-center mt-10 sm:flex-wrap max-w-[1000px] mx-auto">
+                        <div className="flex relative justify-center mt-10 sm:flex-wrap max-w-[1000px] mx-auto md:max-w-[850px]">
                             {position != testimonialsChunk.length - 1 &&
                                 <div onClick={(e) => next()}
                                     className="cursor-pointer w-16 h-16 absolute float-right opacity-100 transition duration-300 ease-in-out  -right-1 transform -translate-y-1/2 top-1/2 bg-cover bg-no-repeat opacity-100 sm:w-12 sm:h-12 md:w-12.5 md:h-12.5 md:-right-14 sm:-right-7"
@@ -126,15 +129,15 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                     </div>
                                     <div className="dyna-height-3 flex bg-white px-5 pt-4 w-full pb-4" style={{ height: "72.25px" }}>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            校正者歴
-                                            <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} 年以上</p>
+                                            {params?.experienceLabel}
+                                            <p className="text-sm font-ssb">{trow.attributes.experience ? trow.attributes.experience : 0} {partner == 'JPN' ?  '年以上' : '년 이상'}</p>
                                         </div>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            顧客満足度
+                                            {params.satisfactionLabel}
                                             <p className="text-sm font-ssb">{trow.attributes.satisfaction_rate ? trow.attributes.satisfaction_rate : 0} </p>
                                         </div>
                                         <div className="w-1/3 text-xs text-center font-ssb">
-                                            校正稿数
+                                             {params?.jobLabel}
                                             <p className="text-sm font-ssb">{trow.attributes.jobs ? trow.attributes.jobs : 0}</p> </div>
                                     </div>
                                     <div className="text-center text-sm font-ssb py-1 px-2 bg-opal-gamma1">{params.subjectLabel}</div>
@@ -157,7 +160,7 @@ const CarouselPearl = ({ searchText }: { searchText: string }) => {
                                                 setModal(ti)
                                             }}
                                             className="text-xs text-pearl-beta font-ssb text-underline-hover">
-                                            {trow.attributes.expertise_area.length > 10 ? "全て見る" : ''}
+                                            {trow.attributes.expertise_area.length > 10 ? viewAll : ''}
                                         </span>
                                         {openModal && <ModalRuby key={ti} closeModal={setOpenModal} data={modalData} />}
 
@@ -208,6 +211,9 @@ function getData(input: string) {
             data: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.editors?.data ? response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.editors?.data : [],
             title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
         }
+        if(partner == 'KOR') {
+            returnData.title = returnData.title.replace(/エディテージ/g, "").replace(/分野/g, "분야")
+          }
         return returnData
 
     });

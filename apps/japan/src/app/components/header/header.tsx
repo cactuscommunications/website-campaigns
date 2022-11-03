@@ -1,11 +1,12 @@
 import { BrowserView, MobileView } from 'react-device-detect';
 import MobileNav from './mobile-nav';
 import { useState } from 'react';
+import pageService from '../../services/renderer/page-service';
 
 export function Header() {
 
   const [show, setShow] = useState(false);
-
+  const partner = pageService.getPartner();
   return (
     <>
       <BrowserView className="mb-15">
@@ -26,7 +27,7 @@ export function Header() {
             <div className="flex justify-between sm:block">
               <div className="float-left left-nav">
                 <div className="ml-3.5">
-                  <ul>
+                  {(partner == "JPN") && <ul>
                     <li className="inline-block text-sm relative uppercase">
                         <a href="javascript:void(0);" className="transition-all duration-100 ease-in inline-block hover:bg-pearl-beta/10" data-description="hp-top nav-engish proofreading-main-click">
                           <span className="py-4.6 px-2 inline-block md:px-1.2">
@@ -377,11 +378,37 @@ export function Header() {
                       </div>
                     </li>
                   </ul>
+                  }
+                  {(partner == "KOR") && <ul>
+                    <li className="inline-block text-sm relative uppercase">
+                      <a className="transition-all duration-100 ease-in inline-block hover:bg-pearl-beta/10" data-description="hp-top nav-subject area expertise-main-click" href="https://www.editage.co.kr/editing/">
+                        <span className="py-4.6 px-2 inline-block md:px-1.2">
+                          <span className="font-ssb tracking-wider text-sm md:text-13">영문교정</span>
+                        </span>
+                      </a>
+                    </li>
+                    <li className="inline-block text-sm relative uppercase">
+                      <a className="transition-all duration-100 ease-in inline-block hover:bg-pearl-beta/10" data-description="hp-top nav-subject area expertise-main-click" href="https://www.editage.co.kr/translation/">
+                        <span className="py-4.6 px-2 inline-block md:px-1.2">
+                          <span className="font-ssb tracking-wider text-sm md:text-13">학술번역</span>
+                        </span>
+                      </a>
+                    </li>
+                    <li className="inline-block text-sm relative uppercase">
+                      <a className="transition-all duration-100 ease-in inline-block hover:bg-pearl-beta/10" data-description="hp-top nav-subject area expertise-main-click" href="https://www.editage.co.kr/publication/">
+                        <span className="py-4.6 px-2 inline-block md:px-1.2">
+                          <span className="font-ssb tracking-wider text-sm md:text-13">저널투고</span>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+
+                  }
                 </div>
               </div>
               <div className="float-right right-nav">
                 <div className="ml-3.5">
-                  <ul>
+                  {(partner == "JPN") && <ul>
                     <li className="inline-block text-sm relative uppercase">
                         <a className="transition-all duration-100 ease-in inline-block hover:bg-pearl-beta/10" href="javascript:void(0);" data-description="hp-top nav-<contact cs>-null-click-<top-navigation>-null">
                           <span className="py-4.6 px-2 inline-block md:px-1.2">
@@ -516,6 +543,25 @@ export function Header() {
                         </a>
                     </li>
                   </ul>
+                  }
+                  {(partner == "KOR") && <ul>
+                    {/* <li className="inline-block text-sm relative uppercase">
+                      <a className="transition-all duration-100 ease-in inline-block hover:bg-pearl-beta/10"
+                        href="https://www.editage.co.kr/aboutus" target="_self" data-description="hp-top nav-login-null-click-<top-navigation>-null">
+                        <span className="py-4.6 px-2 inline-block md:px-1.2"><span className="font-ssb tracking-wider text-sm md:text-13">회사소개</span>
+                        </span>
+                      </a>
+                    </li> */}
+                    <li className="inline-block text-sm relative uppercase">
+                      <a className="mt-2 btn-nav hover:shadow-sm transition-all duration-100 ease-in inline-block ml-2"
+                        href="https://app.editage.co.kr/order/ncf?LP=brand#_ga=2.106673930.829374730.1666239380-1219427464.1665047315" target="_self" data-description="hp-top nav-get quote-null-click-null-null">
+                        <span>
+                          <span className="font-ssb tracking-wider text-sm md:text-13">빠른 문의 및 이용료 확인</span>
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                  }
                 </div>
               </div>
             </div>
@@ -542,7 +588,7 @@ export function Header() {
           </div>
           <div className="flex justify-between">
             <div className="float-right my-auto">
-              <div className="w-full float-left">
+              {(partner == "JPN") && <div className="w-full float-left">
                 <a
                   className="text-center sm:align-middle ml-1 uppercase leading-8 sm:flex sm:my-auto sm:float-left"
                   href="javascript:void(0);" data-description="hp-top nav-<contact cs>-null-click-<top-navigation>-null">
@@ -565,6 +611,17 @@ export function Header() {
                   <span className="text-11 btn-nav">お見積り</span>
                 </a>
               </div>
+              }
+              {(partner == "KOR") && <div className="w-full float-left">
+                <a
+                  className="text-center sm:align-middle ml-1 uppercase leading-8 sm:flex sm:my-auto sm:float-left"
+                  href="https://app.editage.co.kr/order/ncf?LP=brand#_ga=2.106673930.829374730.1666239380-1219427464.1665047315" target="_self" data-description="hp-top nav-get quote-null-click-null-null">
+                  <span className="text-11 btn-nav">견적 문의</span>
+                </a>
+
+              </div>
+
+              }
             </div>
           </div>
         </div>

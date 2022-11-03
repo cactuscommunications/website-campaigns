@@ -1,14 +1,18 @@
 import ServiceInfoList from './service-info-list'
 import {ICardInfo} from "./models"
 import MarkDown from '../markdown/markdown';
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 
-export function ServiceInfoCard({ card,data }: { card: ICardInfo, data :any }) {
+export function ServiceInfoCard({ card,data,index }: { card: ICardInfo, data :any ,index : number}) {
   let start = 0;
   let end = card.list.length;
   let mid = Math.ceil((card.list.length) / 2);
+  let cardBorder = ['border-pearl-beta', 'border-garnet-lambda', 'border-opal-delta1']
+  let cardBackground = ['bg-pearl-beta', 'bg-garnet-lambda', 'bg-opal-delta1']
   return (
-    <div className={`border rounded-lg mb-10 max-w-[1138px] mx-auto ${card.heading?.headingClassName ? card.heading?.headingClassName : ''}`}>
-    <div className={`rounded-t-lg  relative flex justify-between flex-wrap items-center py-4 sm:pb-5 ${card.heading?.subHeadingClass ? card.heading?.subHeadingClass : ''}`}>
+    <div key={index} className={'border rounded-lg mb-10 max-w-[1138px] mx-auto '+  cardBorder[index] }>
+      <div className={'rounded-t-lg  relative flex justify-between flex-wrap items-center py-4 sm:pb-5 ' + cardBackground[index] } >
       <span className="absolute bg-diamond-delta -top-px -left-px text-base leading-9 text-white font-pr px-3 rounded-br-lg	rounded-tl-lg sm:text-13">{card?.heading.specialHeadingText}</span>
       <div className="flex justify-between w-full">
           <a href={card.pricing.link}>
@@ -17,7 +21,7 @@ export function ServiceInfoCard({ card,data }: { card: ICardInfo, data :any }) {
         <span className="bg-diamond-kappa py-2 pl-3 pr-10 rounded-l-3xl font-sb text-ruby-alpha text-base -mr-px flex self-center sm:absolute sm:top-full sm:right-px sm:mt-2">
           <span className="w-7 h-7 bg-no-repeat inline-block bg-contain mr-2"
               style={{ backgroundImage: `url(${card.heading.path})`, }}></span>
-            {card.baseService === 'pes' && data.service_flag ? data.service_flag : card.heading.comment}
+            {card.baseService === 'pes' && data.service_flag && partner == 'JPN' ? data.service_flag : card.heading.comment}
         </span>
       </div>
     </div>
@@ -80,9 +84,9 @@ export function ServiceInfoCard({ card,data }: { card: ICardInfo, data :any }) {
                 <div className="w-9 h-9 bg-contain bg-no-repeat self-center sm:hidden  ng-lazyloaded"
                   style={{backgroundImage: `url(${card.pricing.path3})`,}}></div>
                 <div className="ml-2 text-left sm:ml-0">
-                    <h3 className="text-white text-base font-sb sm:text-sm sm:leading-5">自動お見積り・ご注文はこちら</h3>
+                    <h3 className="text-white text-base font-sb sm:text-sm sm:leading-5">{partner == 'JPN' ? '自動お見積り・ご注文はこちら' : '빠른 견적 및 서비스 요청'}</h3>
                     <p className="text-xs font-ssb text-white/80 sm:text-xs sm:leading-17">
-                        単語数の入力で料金・納期をその場でご確認いただけます</p>
+                    {partner == 'JPN' ? '単語数の入力で料金・納期をその場でご確認いただけます' : '지금 바로 단어 수 입력만으로 요금・납기일을 확인하실 수 있습니다'}</p>
                 </div>
             </div>
             <div className="flex justify-center items-center w-16 bg-pearl-delta1 flex-shrink-0 rounded-r-md sm:w-14 md:w-17.5">

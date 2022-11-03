@@ -1,66 +1,37 @@
 import FeatureLapis from './feature-lapis';
+import { MarkDown } from '../markdown/markdown';
 
-export function FeaturedBlockLapis() {
-  interface IFeaturedBlockLapisParams {
-    machineName?: string;
-    position: string;
-    heading: string;
-    subHeading?: string;
-    features: ILapisFeatures[];
-    backgroundColor: string;
-    link?: string;
-  }
+interface IFeaturedBlockLapisParams {
+  machineName?: string;
+  position: string;
+  heading: string;
+  subHeading?: string;
+  features: ILapisFeatures[];
+  backgroundColor: string;
+  link?: string;
+}
 
-  interface ILapisFeatures {
-    title: string;
-    content: string;
-    contactLink?: {
-      content?: string;
-      route?: string;
-    };
-    imagePath: string;
-    smallImage?: string;
-    services?: IServicesContent;
-    link?: string;
-  }
-
-  interface IServicesContent {
-    title: string;
-    list: { content: string }[];
-    link: string;
-    linkText: string;
-  }
-  const params: IFeaturedBlockLapisParams = {
-    heading: 'お見積り・ご注文・お問い合せ',
-    features: [
-      {
-        title: '電話',
-        content: '直接話をしたい時はこちら',
-        imagePath: '/assets/images/icons/call-round-icon.svg',
-        contactLink: {
-          route: 'tel:0120502987',
-          content: '0120-50-2987',
-        },
-      },
-      {
-        title: 'チャット',
-        content: 'その場で返事が欲しい時はページ右下のチャットをご利用ください。',
-        imagePath: '/assets/images/icons/chat-round-icon.svg',
-      },
-      {
-        title: 'Eメール',
-        content: 'メールでのお問い合わせはこちら',
-        imagePath: '/assets/images/icons/email-round-icon.svg',
-        contactLink: {
-          route: 'mailto:submissions@editage.com',
-          content: 'submissions@editage.com',
-        },
-      },
-    ],
-    position: 'left',
-    subHeading: '平日・祝日 9:30～24:00 土 12:30～21:30 (論文投稿支援のみ 月～金 11:00～22:00)',
-    backgroundColor: 'bg-primary',
+interface ILapisFeatures {
+  title: string;
+  content: string;
+  contactLink?: {
+    content?: string;
+    route?: string;
   };
+  imagePath: string;
+  smallImage?: string;
+  services?: IServicesContent;
+  link?: string;
+}
+
+interface IServicesContent {
+  title: string;
+  list: { content: string }[];
+  link: string;
+  linkText: string;
+}
+export function FeaturedBlockLapis({ params }: { params: IFeaturedBlockLapisParams }) {
+
 
   return (
     <>
@@ -89,7 +60,7 @@ export function FeaturedBlockLapis() {
                   : 'font-sb mb-10 text-2xl' + ' text-center'
               }
             >
-              {params?.subHeading}
+              <MarkDown data={params?.subHeading ? params?.subHeading : ''}></MarkDown>
             </p>
             <div className="w-full">
               <div className="flex justify-center sm:block">

@@ -4,7 +4,7 @@ import OurPromise from '../components/our-promise/our-promise';
 import FeaturedBlockLapis from '../components/featured-block-lapis/featured-block-lapis';
 import FeaturedBlockTopaz from '../components/featured-block-topaz/featured-block-topaz';
 import ListingRuby from '../components/listing-ruby/listing-ruby';
-import ServiFeatureRuby from '../components/service-feature-ruby/service-feature-ruby';
+import ServiceFeatureRuby from '../components/service-feature-ruby/service-feature-ruby';
 import CarouselRuby from '../components/carousel-ruby/carousel-ruby';
 import SubjectAreaBannerRuby from '../components/subject-area-banner-ruby/subject-area-banner-ruby';
 import FeaturedBlockDiamond from '../components/featured-block-diamond/featured-block-diamond';
@@ -25,25 +25,25 @@ const params = {
 export function SubjectArea() {
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>{params.title}</title>
         <meta name="description" content={params.description} />
-      </Helmet>
+      </Helmet> */}
       <Header />
-      <SubjectAreaBannerRuby />
-      <ServiFeatureRuby searchText={'default'} />
-      <ServiceInformationDiamond />
-      <CarouselRuby searchText={'default'} />
-      <FeaturedBlockPearl />
-      <CarouselPearl searchText={'default'} />
-      <FeaturedBlockDiamond />
-      <ServiceInformationRuby searchText={'default'} />
-      <SampleRuby searchText={'default'} />
-      <JournalRuby searchText={'default'} />
-      <OurPromise />
-      <FeaturedBlockLapis />
-      <FeaturedBlockTopaz />
-      <ServiceBlockRuby />
+      {/* <SubjectAreaBannerRuby /> */}
+      {/* <ServiceFeatureRuby params = {{searchText : 'default'}} /> */}
+      {/* <ServiceInformationDiamond /> */}
+      {/* <CarouselRuby searchText={'default'} /> */}
+      {/* <FeaturedBlockPearl /> */}
+      {/* <CarouselPearl searchText={'default'} /> */}
+      {/* <FeaturedBlockDiamond /> */}
+      {/* <ServiceInformationRuby searchText={'default'} /> */}
+      {/* <SampleRuby searchText={'default'} /> */}
+      {/* <JournalRuby searchText={'default'} /> */}
+      {/* <OurPromise /> */}
+      {/* <FeaturedBlockLapis /> */}
+      {/* <FeaturedBlockTopaz /> */}
+      {/* <ServiceBlockRuby /> */}
       {/* <ListingPearl /> */}
 
       <Footer />

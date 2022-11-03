@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import subjectAPIService from "../../services/api/subject-api";
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 interface ISampleRubyParams {
   backgroundColor: string;
   heading: string;
   image: string;
   subHeading: string;
-  title: string;
+  title1: string;
+  title2: string;
+  title3: string;
+  searchText : string;
+  buttonText : string;
 }
 interface Isamples {
   title: string,
   data: string[]
 }
-const SampleRuby = ({ searchText }: { searchText: string }) => {
+const SampleRuby = ({ params }: { params: ISampleRubyParams }) => {
 
   let [title, setTitle] = useState('');
   let [samples, setSamples] = useState(['']);
@@ -20,25 +26,17 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
 
   useEffect(() => {
     if (saParam) {
-      searchText = saParam;
+      params.searchText = saParam;
     }
     const editorsData = async () => {
       let machineName = '';
-      machineName = await getMachineName(searchText);
-      let resp = await getSampleData(searchText);
+      machineName = await getMachineName(params.searchText);
+      let resp = await getSampleData(params.searchText);
       setSamples(resp.data);
       setTitle(resp.title);
     };
     editorsData();
-  }, [searchText]);
-  const params: ISampleRubyParams = {
-    image: '/assets/images/samples-ruby.svg',
-    backgroundColor: 'bg-primary',
-    heading: '校正サンプル',
-    subHeading: 'クリックすると各サービスの校正サンプルがダウンロードされます。',
-    title: 'スタンダード英文校正',
-    
-  };
+  }, [params.searchText]);
 
   return (
     <>
@@ -48,7 +46,7 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
           <div className="text-center mb-6 sm:px-5">
             {params.heading && (
               <h2 className="font-pb text-3xl leading-44 text-ruby-alpha mb-5 sm:leading-30 sm:text-20">
-                {params.heading}<span className="sm:hidden"> : {title}</span>
+                {params.heading}<span className="sm:hidden">{partner == 'JPN'? ':' + title : ''}</span>
               </h2>
             )}
             <span className="text-base text-ruby-alpha font-pr">{params.subHeading}</span>
@@ -60,9 +58,9 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
                   key={index}
                   className="w-80 px-5 box-border sm:mb-7.5 sm:px-2 md:w-1/3 xxl:px-3">
                   <div className="border border-ruby-upsilon rounded pt-6 px-3 pb-4 bg-white w-full xxl:px-2.5">
-                    {params.title && (
+                    {params.title1 && (
                       <h3 className="font-sb text-lg leading-21 text-ruby-alpha text-center mb-4">
-                        {index === 0 ? params.title : index === 1 ? 'プレミアム英文校正' : 'トップジャーナル英文校正'}
+                        {index === 0 ? params.title1 : index === 1 ? params.title2 : params.title3}
                       </h3>
                     )}
                     <div
@@ -73,7 +71,7 @@ const SampleRuby = ({ searchText }: { searchText: string }) => {
                     ></div>
                     <div className="px-2 text-center mt-5">
                       <a className="btn btn-primary" href={sample}>
-                        <span className="w-full py-3 text-center font-pb">サンプルをダウンロード</span>
+                        <span className="w-full py-3 text-center font-pb">{params.buttonText}</span>
                       </a>
                     </div>
                   </div>
@@ -108,6 +106,9 @@ function getSampleData(input: string) {
         ],
         title: response.data.data[0]?.attributes.sa_one_five.data[0]?.attributes.social_attributes.title ?? ''
       }
+    }
+    if(partner == 'KOR') {
+      returnData.title = returnData.title.replace(/エディテージ/g, "에디티지").replace(/分野/g, "분야")
     }
     return returnData
 

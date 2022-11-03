@@ -1,39 +1,17 @@
 import { MarkDown } from '../markdown/markdown';
-export function FeaturedBlockDiamond() {
-  interface IFeaturedBlockDiamondParams {
-    backgroundColor: string;
-    image?: string;
-    heading: string;
-    subHeading: string;
-    link: {
-      route?: string;
-      content?: string;
-      tracking: {};
-    };
-  }
-
-  const params: IFeaturedBlockDiamondParams = {
-    link: {
-      content: '校正者の提案を依頼する',
-      route: 'https://cactuscommunications.formstack.com/forms/editor_in_your_subject_area',
-      tracking: {
-        event: 'click',
-        custom: {
-          ga_label: '',
-          ga_action: '',
-          ga_category: '',
-        },
-        description: '',
-      },
-    },
-    image: '/assets/images/featured-block-diamond-cta.svg',
-    heading: '専門分野の校正者をお探しですか？',
-    subHeading:
-      'こちらのフォームから論文（執筆途中でも可能）をお送りいただければ、最適な校正者をご提案いたします。',
-    backgroundColor: 'bg-pearl-zeta',
+interface IFeaturedBlockDiamondParams {
+  backgroundColor: string;
+  image?: string;
+  heading: string;
+  subHeading: string;
+  link: {
+    route?: string;
+    content?: string;
+    tracking: {};
   };
-
-  return (
+}
+const FeaturedBlockDiamond = ({ params }: { params:  IFeaturedBlockDiamondParams}) => {
+    return (
     <>
       <div className="clearfix"></div>
       <section className={' w-full float-left ' + params?.backgroundColor}>

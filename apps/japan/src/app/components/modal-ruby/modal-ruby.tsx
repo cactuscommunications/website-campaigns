@@ -1,4 +1,6 @@
 import { MarkDown } from '../markdown/markdown';
+import pageService from '../../services/renderer/page-service';
+const partner = pageService.getPartner();
 const ModalRuby = ({closeModal,data}: { closeModal: any,data :any}) => {
   const closeIcon = 'assets/images/icons/close.svg'
   return (
@@ -22,9 +24,9 @@ const ModalRuby = ({closeModal,data}: { closeModal: any,data :any}) => {
              <section className="flex mt-4">
                <div className="mr-5">
                    <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> {data.attributes.nationality} </div>
-                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 校正実績 </div>
-                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 出版経験 </div>
-                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> 満足度 </div>
+                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> {partner == 'JPN' ? '校正実績' : '교정 횟수'} </div>
+                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> {partner == 'JPN' ? '出版経験' : '출판 경험'}</div>
+                   <div className="h-8 py-1 text-xsm text-ruby-alpha font-ssb"> {partner == 'JPN' ? '満足度' : '만족도'}</div>
                 </div>
                 <div className="">
                    <div className="py-2 flag-us flag">  </div>
