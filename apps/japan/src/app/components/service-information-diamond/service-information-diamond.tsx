@@ -42,7 +42,7 @@ const ServiceInformationDiamond = ({ params }: { params: IServiceInformationDiam
       <section className="py-5 bg-pearl-alpha sm:2">
         <div className="container ">
           <div className="hidden sm:block">
-            <div className="w-81 h-15 bg-contain bg-no-repeat mx-auto"
+            <div className="w-81 h-15 bg-contain bg-center bg-no-repeat mx-auto"
               style={{ backgroundImage: `url(${mobilePitchImage})` }}>
             </div>
           </div>
