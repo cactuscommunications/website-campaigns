@@ -16,12 +16,12 @@ export function Header() {
               <div className="sm:hidden md:hidden xxl:w-50 w-50 h-10 bg-center bg-no-repeat bg-contain"
                   style={{ backgroundImage: `url('/assets/images/logo/editage-eng-20.svg')` }}>
                   <a className="block" data-description="hp-top nav-editage logo-null-click-null-null"
-                    href="https://www.editage.jp/"><span className="block h-10 invisible xxl:w-50 w-50"></span></a>
+                    href={partner == "KOR" ? "https://www.editage.co.kr/" : "https://www.editage.jp/"}><span className="block h-10 invisible xxl:w-50 w-50"></span></a>
               </div>
               <div className="hidden md:inline-block sm:inline-block bg-center bg-no-repeat bg-contain md:w-30 md:h-9 sm:w-24 sm:h-7.5 sm:mt-1"
                 style={{ backgroundImage: `url('/assets/images/logo/logo.svg')` }}>
                   <a className="block" data-description="hp-top nav-editage logo-null-click-null-null"
-                    href="https://www.editage.jp/"><span className="block h-9.5 invisible w-25">&nbsp;</span></a>
+                    href={partner == "KOR" ? "https://www.editage.co.kr/" : "https://www.editage.jp/"}><span className="block h-9.5 invisible w-25">&nbsp;</span></a>
               </div>
             </div>
             <div className="flex justify-between sm:block">
@@ -575,13 +575,13 @@ export function Header() {
           <div className="float-left flex items-center py-2.5">
               <div className="sm:hidden md:hidden xxl:w-50 w-50 h-10 bg-center bg-no-repeat bg-contain"
                 style={{ backgroundImage: `url('/assets/images/logo/editage-eng.svg')` }}>
-                <a className="block" data-description="hp-top nav-editage logo-null-click-null-null" href="https://www.editage.jp/">
+                <a className="block" data-description="hp-top nav-editage logo-null-click-null-null" href={partner == "KOR" ? "https://www.editage.co.kr/" :"https://www.editage.jp/" }>
                   <span className="block h-10 invisible xxl:w-50 w-50">&nbsp;</span>
                 </a>
               </div>
               <div className="hidden md:inline-block sm:inline-block bg-center bg-no-repeat bg-contain md:w-30 md:h-9 sm:w-24 sm:h-7.5 sm:mt-1"
                 style={{ backgroundImage: `url('/assets/images/logo/logo.svg')` }}>
-                <a className="block" data-description="hp-top nav-editage logo-null-click-null-null" href="https://www.editage.jp/">
+                <a className="block" data-description="hp-top nav-editage logo-null-click-null-null" href={partner == "KOR" ? "https://www.editage.co.kr/" :"https://www.editage.jp/"}>
                   <span className="block h-9.5 invisible w-25">&nbsp;</span>
                 </a>
             </div>
