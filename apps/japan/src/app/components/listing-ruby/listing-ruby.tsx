@@ -85,6 +85,25 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   }
   return (
     <>
+    <section className='py-9 bg-pearl-alpha sm:py-6'>
+        <div className='container'>
+            <div className='flex justify-center items-center sm:flex-col'>
+                <span className='mx-6 inline-block w-58.75 h-10 bg-white text-pearl-alpha font-semibold mb-6 flex items-center justify-center sm:mb-3.5 sm:mx-0'>専門分野1300 以上に対応</span>
+                <span className='mx-6 inline-block w-58.75 h-10 bg-white text-pearl-alpha font-semibold mb-6 flex items-center justify-center sm:mb-3.5 sm:mx-0'>国内大学600 校で使用</span>
+                <span className='mx-6 inline-block w-58.75 h-10 bg-white text-pearl-alpha font-semibold mb-6 flex items-center justify-center sm:mb-3.5 sm:mx-0'>日本国内12 万人がご利用</span>
+            </div>
+            <div className='flex justify-center items-center sm:flex-col sm:px-4 sm:mt-4'>
+                <div className='text-white text-center font-bold mr-8 sm:text-left sm:mr-0'>
+                    <p className='mb-1 text-lg'>売上 | 取り扱い原稿量 | リピート率</p>
+                    <p className='text-3xl sm:leading-9'>Editageは<span className='sm:block'>国内英文校正業界</span></p>
+                </div>
+                <div className='relative sm:mt-5 sm:w-full sm:mt-3.5'>
+                    <span className='inline-block bg-cover w-45 h-16 sm:block sm:m-auto' style={{backgroundImage: `url(${'/assets/images/number-one-logo-1.png'})`}}></span>
+                    <a href="#" className='inline-block text-xs font-bold underline decoration-1 absolute text-white right-[-60%] bottom-0 sm:relative sm:right-auto sm:bottom-auto sm:mt-3.5 sm:float-right'>詳しくはこちら</a>
+                </div>
+            </div>
+        </div>
+    </section>
       <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
           <div className='max-w-[900px] mx-auto'>
