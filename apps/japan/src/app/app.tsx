@@ -62,9 +62,9 @@ const AppWrapper = () => {
       <meta name="description" content={metaData.description} />
       {partner == "JPN" && <script type="text/javascript" async src="/assets/scripts/japan/google-analytics.js"></script>}
       {partner == "KOR" && <script type="text/javascript" async src="/assets/scripts/korea/google-analytics.js"></script>}
+      {partner == "JPN" && <script type="text/javascript" defer src="/assets/scripts/japan/scripts.min.js"></script>}
+      {partner == "KOR" && <script type="text/javascript" defer src="/assets/scripts/korea/scripts.min.js"></script>}
     </Helmet>
-    {partner == "JPN" && <script type="text/javascript" defer src="/assets/scripts/japan/scripts.min.js"></script>}
-    {partner == "KOR" && <script type="text/javascript" defer src="/assets/scripts/korea/scripts.min.js"></script>}
     {data && data.map(config => RenderComponents(config))}
   </>
 }
