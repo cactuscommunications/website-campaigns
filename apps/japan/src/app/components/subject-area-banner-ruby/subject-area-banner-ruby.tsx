@@ -197,6 +197,111 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
       {params.showListing && <ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} pageRows={4} pageColumns={4} />}
       {/* {<ServiceFeatureRuby searchText={machineName} />}
       <CarouselRuby  searchText={machineName}/> */}
+      <section className="bg-ruby-delta">
+        <div className="container">
+            <div className="wrapper pt-10 pb-14 sm:py-4">
+              <div className="sm:hidden">
+               <h2 className="text-center text-4xl font-sb text-ruby-alpha leading-56">
+                <span className="text-diamond-delta">「エディテージ」</span>
+                が研究のプロに選ばれる
+                <span className="text-diamond-delta">３</span>
+                つの理由
+              </h2>
+              </div>
+              <div className="mt-14 flex sm:block sm:align-middle ml-24 sm:ml-0 sm:mt-0">
+                <span className="w-56 h-56 sm:block bg-no-repeat sm:ml-25 md:bg-contain" style={{ backgroundImage: "url(/assets/images/puzzels.png)" }}></span>
+                <div className="ml-9 sm:ml-0 sm:-mt-8">
+                    <h3 className="text-3xl text-ruby-alpha font-sb leading-45 sm:text-2xl px-3">01
+                    <span className="inline-block ml-1 text-3xl text-ruby-alpha font-sb leading-45 sm:text-2xl sm:mt-4">圧倒的な専門分野対応数・的確なマッチング</span>
+                    </h3>
+                  <div className="px-7">
+                   <ul className="mt-10 ml-6 sm:mt-4 sm:ml-0 leading-34 list-['・'] sm:leading-22">
+                    <li className="text-xl font-pb sm:text-base text-ruby-alpha">
+                      校正者の
+                      <span className="text-diamond-delta">過去の実績</span>
+                       と 
+                      <span className="text-diamond-delta">専門分野 </span>
+                       を確認して論文を割り当て
+                    </li>
+                    <li className="text-xl font-pb sm:text-base text-ruby-alpha">
+                      校正者全員が 
+                      <span className="text-diamond-delta">欧米を中心とする英語圏ネイティブ</span>
+                    </li>
+                    <li className="text-xl font-pb sm:text-base text-ruby-alpha">
+                      <span className="text-diamond-delta">博士号取得者、医師、BELS </span>
+                      認定校正者多数
+                    </li>
+                  </ul>
+                  <ul className="hidden sm:list-['・'] sm:block">
+                      <li className="text-xl font-pb sm:text-base text-ruby-alpha">
+                      必ず 
+                      <span className="text-diamond-delta">2段階以上のチェック</span>
+                      、 どんなにベテランでも一人では終わらせません。
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-12 flex justify-center sm:flex-col sm:items-center text-neutral-700 leading-30 font-pr">
+                <div className="w-45 px-3 pt-2.5 pb-5.5 bg-white sm:mb-5 sm:w-60">
+                  <p className="text-base font-sb">医学・医療分野</p>
+                  <p className="text-base font-pr">
+                  専門分野：220+
+                  <br />
+                  専門家：800名+
+                  <br />
+                  470,000稿以上の実績
+                  </p>
+                </div>
+                <div className="w-45 px-3 pt-2.5 pb-5.5 bg-white ml-5 sm:ml-0 sm:mb-5 sm:w-60">
+                  <p className="text-base font-sb">生命科学分野 </p>
+                  <p className="text-base font-pr">
+                   専門分野：100+
+                  <br />
+                   専門家：800名+
+                   <br />
+                  280,000稿以上の実績
+                  </p>
+                </div>
+                <div className="w-45 px-3 pt-2.5 pb-5.5 bg-white ml-5 sm:ml-0 sm:mb-5 sm:w-60">
+                  <p className="text-base font-sb">物理化学・工学分野</p>
+                  <p className="text-base font-pr">
+                    専門分野：400+
+                  <br />
+                   専門家：1000名+
+                   <br />
+                  420,000稿以上の実績
+                  </p>
+                </div>
+                <div className="w-45 px-3 pt-2.5 pb-5.5 bg-white ml-5 sm:ml-0 sm:mb-5 sm:w-60">
+                  <p className="text-base font-sb">人文社会学分野</p>
+                  <p className="text-base font-pr">
+                    専門分野：600+
+                    <br />
+                    専門家：800名+
+                    <br />
+                   300,000稿以上の実績
+                  </p>
+                </div>
+                <div className="w-45 px-3 pt-2.5 pb-5.5 bg-white ml-5 sm:ml-0 sm:w-60">
+                  <p className="text-base font-sb font-pr">ビジネス・経済分野</p>
+                  <p className="text-base">
+                    専門分野：150+
+                    <br />
+                    専門家：300名+
+                    <br />
+                    75000稿以上の実績
+                  </p>
+                </div>
+              </div>
+                <p className="mt-6 leading-7 sm:mt-5 inline-block bg-pearl-alpha px-6.5 py-5 mr-28 float-right md:mr-0 sm:mr-11 text-center text-base font-pb text-white ml-5">
+                  専門分野を確認する
+                 <span className="ml-10 top-1 border-ruby-delta border-r border-b inline-block p-0.5 -rotate-45 sm:border-b-2 sm:border-r-2"></span>
+                 <span className="border-ruby-delta border-r border-b inline-block p-0.5 -rotate-45 sm:border-b-2 sm:border-r-2"></span>
+               </p>
+            </div>
+        </div>
+      </section>
     </>
   );
 };
