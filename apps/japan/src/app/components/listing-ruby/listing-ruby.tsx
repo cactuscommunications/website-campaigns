@@ -85,6 +85,74 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   }
   return (
     <>
+    <section className='py-9'>
+        <div className='container'>
+            <div className='w-260 m-auto sm:w-full'>
+                <div className='flex items-center justify-between py-3.5 bg-pearl-beta sm:px-3.5 sm:py-2.5'>
+                    <p className='text-white font-bold text-4.5xl leading-48 md:text-2xl sm:text-base'>スタンダード英文校正</p>
+                    <p className='text-white font-bold text-2.5xl leading-42 pr-4 md:text-xxl sm:hidden'>不動の定番</p>
+                </div>
+                <div className='hidden sm:block sm:mb-7'>
+                    <div className='w-full max-w-md h-56 bg-no-repeat bg-cover m-auto mb-3.5' style={{backgroundImage: `url(${'/assets/images/standard-editing-service-banner.jpg'})`}}></div>
+                    <p className='text-slate-900 font-bold text-xl'>不動の定番</p>
+                    <div className='text-base font-bold text-neutral-700'>
+                        最短で<span className='text-diamond-delta'>4,000単語</span>/1日～
+                        <br />
+                        1単語 <span className='text-diamond-delta'>5円</span>～(税抜)
+                    </div>
+                </div>
+                <p className='text-base text-neutral-700 my-6 leading-29 font-light sm:py-0 sm:mb-10 sm:leading-6'>
+                    <span className='text-diamond-delta'>圧倒的な発注数を誇る</span>定番の英文校正。<span className='text-diamond-delta'>徹底的な言語チェック</span>で文法、語彙、専門用語エラーなどを校正するスタンダード英文校正は、品質に妥協せずにリーズナブルな価格で英文校正を受けたい方に最適です。<span className='text-diamond-delta'>専門分野のネイティブ校正者２名によるダブルチェックで、365日有効の再校正（１回分）</span> も初回注文時+2円/単語、もしくは60%割引でご利用可能。その他の論文投稿に必要な様々なサポートも無料もしくはオプションで追加可能です。<span className='text-diamond-delta'>急ぎのアブストラクト校正や、論文以外の用途</span>でも頼れるサービスとして支持を得ています。
+                </p>
+                <div className='flex'>
+                    <div className='min-w-80 w-80 h-52 mr-2.5 bg-no-repeat bg-cover sm:hidden' style={{backgroundImage: `url(${'/assets/images/standard-editing-service-banner.jpg'})`}}></div>
+                    <div className='flex flex-wrap sm:justify-center sm:m-auto sm:text-center'>
+                        <div className='w-52 h-32 mx-3.5 mb-6 sm:w-1/2 sm:mb-1.5 sm:mx-0 sm:px-1'>
+                            <div className='flex items-center justify-center flex-col w-full h-full text-base font-bold text-neutral-700 bg-garnet-gamma text-center sm:text-sm'>フォーマット <span className='text-diamond-delta block'>無料調整</span></div>
+                        </div>
+                        <div className='w-52 h-32 mx-3.5 mb-6 sm:w-1/2 sm:mb-1.5 sm:mx-0 sm:px-1'>
+                            <div className='flex items-center justify-center flex-col w-full h-full text-base font-bold text-neutral-700 bg-garnet-gamma text-center sm:text-sm'> 担当校正者への質問は <span className='text-diamond-delta block'>何回でも無料</span></div>
+                        </div>
+                        <div className='w-52 h-32 mx-3.5 mb-6 sm:w-1/2 sm:mb-1.5 sm:mx-0 sm:px-1'>
+                            <div className='flex items-center justify-center flex-col w-full h-full text-base font-bold text-neutral-700 bg-garnet-gamma text-center sm:text-sm'>納得いくまで書き直します <span className='text-diamond-delta block'>100%品質保証</span></div>
+                        </div>
+                        <div className='w-52 h-32 mx-3.5 mb-6 sm:w-1/2 sm:mb-1.5 sm:mx-0 sm:px-1'>
+                            <div className='flex items-center justify-center flex-col w-full h-full text-base font-bold text-neutral-700 bg-garnet-gamma text-center sm:text-sm'>業界最速！<span className='text-diamond-delta block'>最短8.5時間納品</span></div>
+                        </div>
+                        <div className='w-52 h-32 mx-3.5 mb-6 sm:w-1/2 sm:mb-1.5 sm:mx-0 sm:px-1'>
+                            <div className='flex items-center justify-center flex-col w-full h-full text-base font-bold text-neutral-700 bg-garnet-gamma text-center sm:text-sm'>
+                                リーズナブルに追加
+                                <span className='text-diamond-delta block'>365日有効の再校正</span>
+                                <span>※365日有効1回</span>
+                                <span>【修正量の上限なし】</span>
+                            </div>
+                        </div>
+                        <div className='w-52 h-32 mx-3.5 mb-6 sm:w-1/2 sm:mb-1.5 sm:mx-0 sm:px-1'>
+                            <div className='flex items-center justify-center flex-col w-full h-full text-base font-bold text-neutral-700 bg-garnet-gamma text-center sm:text-sm'>単語数削減 <span className='text-diamond-delta block'>10％まで無料</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div className='flex mt-3.5 mb-10 sm:mt-7'>
+                    <div className='w-1/3 text-3xl font-bold text-neutral-700 md:text-2xl sm:hidden'>
+                        最短で<span className='text-diamond-delta'>4,000単語</span>/1日～
+                        <br />
+                        1単語 <span className='text-diamond-delta'>5円</span>～(税抜)
+                    </div>
+                    <div className='w-2/3 text-center sm:m-auto sm:w-full sm:max-w-96'>
+                        <a target='_blank' className='mb-6 relative text-white bg-gradient-to-b from-emerald-600 to-emerald-800 text-2xl font-bold rounded-lg py-4 pl-6 pr-10 hover:text-white hover:shadow-xl hover:shadow-emerald-200/40 md:text-lg sm:max-w-full sm:py-3 sm:px-10 sm:text-base sm:mb-16' href='https://app.editage.jp/order/ncf/english-editing/standard-editing/'>
+                            自動簡単お見積もり・ご注文
+                            <span className='block font-light text-base md:text-sm sm:absolute sm:text-neutral-500 sm:top-full sm:left-0 sm:text-left sm:text-sm sm:pt-2'>単語数を入力するだけで、その場でお見積りが確認できます</span>
+                            <span className='absolute right-3 inset-y-0 m-auto w-3.5 h-3.5 inline-block bg-no-repeat' style={{backgroundImage: `url(${'/assets/images/icons/double-rightarrow-white.svg'})`}}></span>
+                        </a>
+                        <a target='_blank' className='relative bg-neutral-400 w-80 py-3 text-white text-xl font-semibold hover:text-white md:text-lg sm:block sm:m-auto sm:text-base sm:w-72' href='https://www.editage.jp/services/english-editing/standard-editing-plan'>
+                            サービス詳細はこちら
+                            <span className='absolute right-4 inset-y-0 m-auto w-3.5 h-3.5 inline-block bg-no-repeat' style={{backgroundImage: `url(${'/assets/images/icons/double-rightarrow-white.svg'})`}}></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
       <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
           <div className='max-w-[900px] mx-auto'>
