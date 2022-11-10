@@ -1,5 +1,6 @@
 import React from "react";
 import Header from '../../components/header/header';
+import HeaderNavigation from '../../components/header-navigation/header-navigation';
 import SubjectAreaBannerRuby from '../../components/subject-area-banner-ruby/subject-area-banner-ruby';
 import ServiceFeatureRuby from '../../components/service-feature-ruby/service-feature-ruby';
 import { IComponent, IMap } from "./render.model";
@@ -34,7 +35,8 @@ const KeysToComponentMap: IMap = {
   'featured-block-topaz': FeaturedBlockTopaz,
   'service-block-ruby': ServiceBlockRuby,
   'footer': Footer,
-  'thankyou-ruby': ThankYouRuby
+  'thankyou-ruby': ThankYouRuby,
+  'header-navigation': HeaderNavigation
 };
 
 function renderer(config: any) {
