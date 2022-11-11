@@ -20,7 +20,7 @@ import { IComponent } from './services/renderer/render.model';
 import pageService from './services/renderer/page-service';
 // @ts-ignore
 import { Helmet } from "react-helmet";
-
+const partner = pageService.getPartner();
 
 const AppWrapper = () => {
   const [data, updateData] = useState([{}]);
@@ -60,13 +60,17 @@ const AppWrapper = () => {
     <Helmet>
       <title>{metaData.title}</title>
       <meta name="description" content={metaData.description} />
+      {partner == "JPN" && <script type="text/javascript" async src="/assets/scripts/japan/google-analytics.js"></script>}
+      {partner == "KOR" && <script type="text/javascript" async src="/assets/scripts/korea/google-analytics.js"></script>}
+      {partner == "JPN" && <script type="text/javascript" defer src="/assets/scripts/japan/scripts.min.js"></script>}
+      {partner == "KOR" && <script type="text/javascript" defer src="/assets/scripts/korea/scripts.min.js"></script>}
     </Helmet>
     {data && data.map(config => RenderComponents(config))}
   </>
 }
 
 function getPageData() {
-  let partner = pageService.getPartner();
+  
   let pageRoute = pageService.getRoute();
   let country = pageService.getCountry();
   return strapiAPIService.getPage({ route: pageRoute, country: country, partner: partner }).then(function (response: any) {
