@@ -17,6 +17,7 @@ import FeaturedBlockLapis from "../../components/featured-block-lapis/featured-b
 import FeaturedBlockTopaz from "../../components/featured-block-topaz/featured-block-topaz";
 import ServiceBlockRuby from "../../components/service-block-ruby/service-block-ruby";
 import ThankYouRuby from "../../components/thank-you-ruby/thank-you-ruby";
+import InformationBlockRuby from "../../components/information-block-ruby/information-block-ruby";
 const KeysToComponentMap: IMap = {
   'header': Header,
   'subject-area-banner-ruby': SubjectAreaBannerRuby,
@@ -34,7 +35,8 @@ const KeysToComponentMap: IMap = {
   'featured-block-topaz': FeaturedBlockTopaz,
   'service-block-ruby': ServiceBlockRuby,
   'footer': Footer,
-  'thankyou-ruby': ThankYouRuby
+  'thankyou-ruby': ThankYouRuby,
+  'information-block-ruby': InformationBlockRuby
 };
 
 function renderer(config: any) {
