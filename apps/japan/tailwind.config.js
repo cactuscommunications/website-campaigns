@@ -1048,7 +1048,8 @@ module.exports = {
       'grd-delta2': ['175.46deg', 'rgba(197, 240, 220, 0.12) -468.03%', 'rgba(207, 245, 204, 0.6) 567.85%'],
       'grd-zeta2': ['175.46deg', '#60A1D0 13.06%', '#ADCADC 99.59%'],
       'grd-theta2': ['226.92deg', '#006184 17.97%', '#42A79D 100.37%'],
-      'grd-iota2' : ['270deg', '#E4E4E4 0%', '#F6F6F8 100%']
+      'grd-iota2' : ['270deg', '#E4E4E4 0%', '#F6F6F8 100%'],
+      'grd-phi2': ['180deg', '#1F9071 0%', '#205D48 100%'] /* Dark Green Gredient background */,
     }),
     container: {
       center: true,

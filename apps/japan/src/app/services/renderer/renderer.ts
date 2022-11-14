@@ -7,6 +7,7 @@ import ServiceInformationDiamond from "../../components/service-information-diam
 import Footer from "../../components/footer/footer";
 import CarouselRuby from "../../components/carousel-ruby/carousel-ruby";
 import FeaturedBlockPearl from "../../components/featured-block-pearl/featured-block-pearl";
+import FeaturedBlockRuby from "../../components/featured-block-ruby/featured-block-ruby";
 import CarouselPearl from "../../components/carousel-pearl/carousel-pearl";
 import FeaturedBlockDiamond from "../../components/featured-block-diamond/featured-block-diamond";
 import ServiceInformationRuby from "../../components/service-information-ruby/service-information-ruby";
@@ -24,6 +25,7 @@ const KeysToComponentMap: IMap = {
   'service-information-diamond': ServiceInformationDiamond,
   'carousel-ruby': CarouselRuby,
   'featured-block-pearl': FeaturedBlockPearl,
+  'featured-block-ruby': FeaturedBlockRuby,
   'carousel-pearl': CarouselPearl,
   'featured-block-diamond': FeaturedBlockDiamond,
   'service-information-ruby': ServiceInformationRuby,
