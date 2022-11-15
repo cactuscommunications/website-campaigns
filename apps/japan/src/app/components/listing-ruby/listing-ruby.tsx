@@ -85,6 +85,29 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   }
   return (
     <>
+      <section className='py-10'>
+        <div className='container max-w-5xl'>
+          <div className='bg-pearl-beta text-white text-lg font-bold p-7 text-center mb-11 sm:p-3 sm:text-left sm:font-normal sm:mb-8'>
+            学位論文（卒業論文・修士論文・博士論文）に特化した英文校正が、今なら4001単語以上で最大20％引き。
+          </div>
+          <p className='relative text-lg sm:text-base'>
+            エディテージの学位論文英文校正なら、各専門分野のエキスパートが学術論文に相応しい表現や語彙、一貫性のある参考文献リスト、的確なフォーマット調整で、最高水準の学術英語論文に仕上げます。 <span className='block'>当サービスをご利用のお客様に満足度95％の評価をいただいております。</span>
+            <div className='text-right'>
+              <a href='https://www.editage.jp/services/english-editing/thesis-editing' target='_blank' className='absolute right-0 top-3/4 inline-block btn btn-primary font-bold w-52 min-w-0 h-16 leading-64 rounded-none sm:top-full sm:mt-4 sm:h-12 sm:w-44 sm:leading-48 sm:text-base'>
+                詳細はこちら
+                <span className='ml-4 w-3.5 h-3.5 inline-block bg-no-repeat' style={{backgroundImage: `url(${'/assets/images/icons/double-rightarrow-white.svg'})`}}></span>
+              </a>
+            </div>
+          </p>
+          <div className='text-center mt-24 sm:mt-28'>
+            <a target='_blank' className='mb-6 relative text-white bg-gradient-to-b from-emerald-600 to-emerald-800 text-2xl font-bold rounded-lg py-4 pl-6 pr-10 hover:text-white hover:shadow-xl hover:shadow-emerald-200/40 md:text-lg sm:max-w-full sm:py-3 sm:pl-5 sm:pr-10 sm:text-base sm:mb-16' href='https://app.editage.jp/order/ncf'>
+              自動簡単お見積もり・ご注文
+              <span className='block font-light text-base md:text-sm sm:absolute sm:text-neutral-500 sm:top-full sm:left-0 sm:text-left sm:text-sm sm:pt-2'>単語数を入力するだけで、その場でお見積りが確認できます</span>
+              <span className='absolute right-3 inset-y-0 m-auto w-3.5 h-3.5 inline-block bg-no-repeat' style={{backgroundImage: `url(${'/assets/images/icons/double-rightarrow-white.svg'})`}}></span>
+            </a>
+          </div>
+        </div>
+      </section>
       <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
           <div className='max-w-[900px] mx-auto'>
