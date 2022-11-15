@@ -370,6 +370,62 @@ return (
     </div>
     <div className="clearfix"></div>
   </section>}
+
+  {/* DRG-81357 Create footer component UI */}
+  <div className="clearfix"></div>
+  <div className="w-full bg-pearl-beta">
+    <div className="container">
+      <div className="wrapper pt-14 pb-28 sm:pt-9 sm:pb-10">
+        <div className="flex justify-end pr-12 md:pr-6 sm:pr-0 sm:block">
+          <div>
+            <p className="text-11 leading-17 text-white font-ssb max-w-[428px] sm:text-sm sm:leading-21">英文校正エディテージはカクタス・コミュニケーションズのサービスブランドです。 • New Jersey, USA • Mumbai, India • Tokyo, Japan • Seoul, Korea • Shanghai, China • Singapore</p>
+            <div className="my-2.5 flex items-center">
+              <p className="text-xs leading-18 font-ssb text-white">エディテージ各国サイト:</p>
+              <span className="inline-block w-6 h-6 bg-no-repeat bg-contain mx-1.5 rounded sm:hidden" style={{backgroundImage: `url(/assets/images/icons/flags/japan.png)`}}></span>
+              <span className="inline-block w-6 h-6 bg-no-repeat bg-contain mx-1.5 rounded sm:hidden" style={{backgroundImage: `url(/assets/images/icons/flags/taiwan.png)`}}></span>
+              <span className="inline-block w-6 h-6 bg-no-repeat bg-contain mx-1.5 rounded sm:hidden" style={{backgroundImage: `url(/assets/images/icons/flags/south-korea.png)`}}></span>
+              <span className="inline-block w-6 h-6 bg-no-repeat bg-contain mx-1.5 rounded sm:hidden" style={{backgroundImage: `url(/assets/images/icons/flags/china.png)`}}></span>
+              <span className="inline-block w-6 h-6 bg-no-repeat bg-contain mx-1.5 rounded sm:hidden" style={{backgroundImage: `url(/assets/images/icons/flags/united-states.png)`}}></span>
+              <span className="inline-block w-6 h-6 bg-no-repeat bg-contain mx-1.5 rounded sm:hidden" style={{backgroundImage: `url(/assets/images/icons/flags/brazil.png)`}}></span>
+              <span className="flex w-6 h-6 bg-white mx-1.5 sm:hidden">
+                <span className="inline-block bg-no-repeat bg-contain w-4.25 h-4.25 m-auto" style={{backgroundImage: `url(/assets/images/icons/facebook.png)`}}></span>
+              </span>
+              <span className="flex w-6 h-6 bg-white mx-1.5 sm:hidden">
+                <span className="block bg-no-repeat bg-contain w-4.25 h-4.25 m-auto" style={{backgroundImage: `url(/assets/images/icons/twitter.png)`}}></span>
+              </span>
+              <select name="" id="" className="px-3 py-1.5 text-sm leading-18 text-ruby-alpha rounded w-32 ml-2 hidden sm:block">
+                <option value="" selected>日本</option>
+              </select>
+            </div>
+            <div className="hidden sm:flex justify-center my-3.5">
+              <span className="inline-block sm:flex w-6 h-6 bg-white mx-1.5 sm:w-11 sm:h-11 sm:mx-5">
+                <span className="bg-no-repeat bg-contain w-8.75 h-8.75 m-auto" style={{backgroundImage: `url(/assets/images/icons/facebook.png)`}}></span>
+              </span>
+              <span className="inline-block sm:flex w-6 h-6 bg-white mx-1.5 sm:w-11 sm:h-11 sm:mx-5">
+                <span className="bg-no-repeat bg-contain w-8.75 h-8.75 m-auto" style={{backgroundImage: `url(/assets/images/icons/twitter.png)`}}></span>
+              </span>
+            </div>
+            <p className="text-10 leading-4 text-white font-ssb max-w-[428px] sm:text-sm sm:leading-21">カクタス・コミュニケーションズ株式会社 東京都千代田区神田三崎町2-4-1 TUG-I ビル 4F</p>
+          </div>
+          <div className="max-w-[162px] mx-auto border-b border-white my-7 hidden sm:block"></div>
+          <div className="mx-7 sm:mx-0">
+            <p className="text-10 leading-18 text-white font-ssb max-w-[210px] sm:max-w-full sm:text-sm sm:leading-18">
+            ＜メールでのお問い合わせ＞<br></br> 月～金 9:30～24:00 土・日 12:30～21:30 <br></br>＜電話窓口＞<br></br> 月～金 9:30～21:00 土 12:30～21:30 <br></br>＜論文投稿支援特別窓口＞ <br></br>月～金 11:00～21:00 土・日 12:30～21:30 <br></br>（日曜はメール対応のみ） <br></br>電話：0120-50-2987 <br></br>submissions@editage.com
+            </p>
+          </div>
+          <div className="max-w-[162px] mx-auto border-b border-white my-7 hidden sm:block"></div>
+          <div className="sm:flex sm:justify-center">
+            <div>
+              <span className="w-48 h-7 inline-block bg-no-repeat bg-contain" style={{backgroundImage: `url(/assets/images/logo/cactus.png)`}}></span>
+              <p className="text-10 leading-15 text-white font-ssb max-w-[198px]">© 2002-2022 Cactus Communications. All Rights Reserved – Editage - 英文校正</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="clearfix"></div>
+  {/* DRG-81357 Create footer component UI end here*/}
 </>
  );
 }
