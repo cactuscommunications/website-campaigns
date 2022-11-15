@@ -85,6 +85,72 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   }
   return (
     <>
+      <section>
+        <div className='text-white font-bold py-5 bg-pearl-alpha text-center text-3xl leading-45 mb-12 md:text-2xl sm:text-xl sm:py-5 sm:leading-6 sm:mb-6'>
+          よくある質問：不安を事前に解消しましょう
+        </div>
+        <div className='container max-w-5xl'>
+          <div className='mb-12 sm:mb-10'>
+            <div className='flex sm:items-center'>
+              <div className='mr-10 mb-3 font-black text-white text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center bg-diamond-delta sm:mr-3'>Q</div>
+              <p className='text-lg font-bold mb-2.5 text-neutral-700 sm:text-base'>英文校正サービスの依頼方法。</p>
+            </div>
+            <div className='flex'>
+              <div className='mr-10 mb-3 font-black text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center border border-pearl-beta text-pearl-beta sm:mr-3'>A</div>
+              <p className='text-lg font-light text-neutral-700 sm:text-base'>初めてのお客様はお見積り依頼・ご注文フォームから英語原稿をお送りください。エディテージをご利用いただいたことのあるお客様は、弊社オンラインシステムをご利用ください。</p>
+            </div>
+          </div>
+          <div className='mb-12 sm:mb-10'>
+            <div className='flex sm:items-center'>
+              <div className='mr-10 mb-3 font-black text-white text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center bg-diamond-delta sm:mr-3'>Q</div>
+              <p className='text-lg font-bold mb-2.5 text-neutral-700 sm:text-base'>どのようなファイルで依頼をできますか？</p>
+            </div>
+            <div className='flex'>
+              <div className='mr-10 mb-3 font-black text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center border border-pearl-beta text-pearl-beta sm:mr-3'>A</div>
+              <p className='text-lg font-light text-neutral-700 sm:text-base'>
+                エディテージでは Word、PowerPoint、HTML、Adobe(pdf)、Frame Maker、TeX、など様々なファイルを取り扱っております。英文校正取り扱いファイルの 詳細は
+                <a href='https://www.editage.jp/services/english-editing/fileformats' target='_blank' className='text-pearl-eta font-bold'>こちらよりご覧いただけます</a>。
+              </p>
+            </div>
+          </div>
+          <div className='mb-12 sm:mb-10'>
+            <div className='flex sm:items-center'>
+              <div className='mr-10 mb-3 font-black text-white text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center bg-diamond-delta sm:mr-3'>Q</div>
+              <p className='text-lg font-bold mb-2.5 text-neutral-700 sm:text-base'>英文校正証明書は発行できますか？</p>
+            </div>
+            <div className='flex'>
+              <div className='mr-10 mb-3 font-black text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center border border-pearl-beta text-pearl-beta sm:mr-3'>A</div>
+              <p className='text-lg font-light text-neutral-700 sm:text-base'>
+                英文校閲証明書・英文校正証明書の発行は無料（追加料金不要）で行っております。
+              </p>
+            </div>
+          </div>
+          <div className='mb-12 sm:mb-10'>
+            <div className='flex sm:items-center'>
+              <div className='mr-10 mb-3 font-black text-white text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center bg-diamond-delta sm:mr-3'>Q</div>
+              <p className='text-lg font-bold mb-2.5 text-neutral-700 sm:text-base'>どの納期・料金コースが良いかわからない</p>
+            </div>
+            <div className='flex'>
+              <div className='mr-10 mb-3 font-black text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center border border-pearl-beta text-pearl-beta sm:mr-3'>A</div>
+              <p className='text-lg font-light text-neutral-700 sm:text-base'>
+                どの料金コースが最適かよくわからない場合には、選択しないでも大丈夫です。ご希望の納品日をお見積り依頼用のフォーム上で選択していただくだけで、弊社から最適なコースに基づいたお見積りを送信いたします。
+              </p>
+            </div>
+          </div>
+          <div className='mb-12 sm:mb-10'>
+            <div className='flex sm:items-center'>
+              <div className='mr-10 mb-3 font-black text-white text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center bg-diamond-delta sm:mr-3'>Q</div>
+              <p className='text-lg font-bold mb-2.5 text-neutral-700 sm:text-base'>英文校閲をした内容に関してご質問があるのですが？</p>
+            </div>
+            <div className='flex'>
+              <div className='mr-10 mb-3 font-black text-2xl w-11 min-w-[46px] h-11 rounded-full flex items-center justify-center border border-pearl-beta text-pearl-beta sm:mr-3'>A</div>
+              <p className='text-lg font-light text-neutral-700 sm:text-base'>
+                ご質問を英語で書いて、オンラインシステム内の専用フォームから送信していただくか、Eメールで送信ください。校正内容に対するご質問へは、通常1～3営業日以内に回答いたしますが、正確な回答日はご質問を受け取った時点で弊社クライアントサービスよりご連絡いたします。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
           <div className='max-w-[900px] mx-auto'>
