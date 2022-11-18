@@ -6,10 +6,14 @@ const baseUrl = process.env["NX_HOST"]
 const token = process.env["NX_TOKEN"] ? process.env["NX_TOKEN"] : ''
 
 const subjectAPIService = {
-    getSubjectsList: function (input: string, page: number, pageCount: number,machineType:string) {
+    getSubjectsList: function (input: string, page: number, pageCount: number,machineType:string, searchFiletr:string) {
+       let url = baseUrl + '/subject-areas?&filters[type][$eq]=SA2.0&pagination[pageSize]=' + pageCount + '&pagination[page]=' + page + (input ? '&filters['+machineType+'][machine_name][$eq]=' + input : '');
+       if(searchFiletr){
+        url = url + '&filters[name][$containsi]='+searchFiletr;
+       }
         const config = {
             method: 'get',
-            url: baseUrl + '/subject-areas?&filters[type][$eq]=SA2.0&pagination[pageSize]=' + pageCount + '&pagination[page]=' + page + (input ? '&filters['+machineType+'][machine_name][$eq]=' + input : ''),
+            url: url,
             headers: { Authorization: token },
         };
         return axios(config)

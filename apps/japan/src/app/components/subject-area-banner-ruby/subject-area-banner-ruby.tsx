@@ -194,7 +194,7 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
           </div>
         </div>
       </section>
-      {params.showListing && <ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} pageRows={4} pageColumns={4} />}
+      {params.showListing && <ListingRuby key="sa-list" hideHeading={false} showSearch={true} searchText={machineName} ignoreUrlParams={false} pageRows={4} pageColumns={4} />}
       {/* {<ServiceFeatureRuby searchText={machineName} />}
       <CarouselRuby  searchText={machineName}/> */}
     </>

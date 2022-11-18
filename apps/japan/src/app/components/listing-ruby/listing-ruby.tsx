@@ -41,9 +41,11 @@ let endIndex: number;
 let chunkedArray: ISubjects[][];
 let mobileRows = 1;
 let pages = 1;
-const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageColumns }:
-  { searchText: string, hideHeading: boolean, ignoreUrlParams: boolean, pageRows: number, pageColumns: number }) => {
+const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageColumns, showSearch }:
+  { searchText: string, hideHeading: boolean, ignoreUrlParams: boolean, pageRows: number, pageColumns: number, showSearch: boolean }) => {
   // const navigator = useNavigate();
+  let [searchInput, setSearchInput] = useState('');
+  let [searchFilter, setSearchFilter] = useState('');
   const [subjects, setSubjects] = useState([{}]);
   let [active, setActive] = useState(1);
   let [page, setPage] = useState(1);
@@ -63,7 +65,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
       setSearchTitle(searchTitle);
       const machineName = ignoreUrlParams ? machineNameBottom : machineNameTop;
 
-      let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns, ignoreUrlParams ? 'sa_one' : machineType);
+      let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns, ignoreUrlParams ? 'sa_one' : machineType, searchInput);
       setSubjects(subData.subjects);
       setPage(subData.pageObj.page);
       setPageCount(subData.pageObj.pageCount);
@@ -72,7 +74,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
       getPageDetails(subData.subjects, params.pageNumber, isMobile ? pageColumns : pageRows * pageColumns);
     };
     getSubData();
-  }, [searchText, currentPage]);
+  }, [searchText, currentPage, searchInput]);
   const pageChanged = (num: number) => {
     setCurrentPage(num);
   };
@@ -85,8 +87,10 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   }
   return (
     <>
+
       <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
+
           <div className='max-w-[900px] mx-auto'>
             {!hideHeading &&
               <React.Fragment>
@@ -105,9 +109,38 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
               </React.Fragment>
             }
           </div>
+
           <div
             className='bg-white px-16 rounded-lg  py-7.5 max-w-[1100px] mx-auto sm:text-center'>
+            {showSearch && <div key="searchlist" className="flex justify-center sm:flex-col">
+
+              <div className="relative">
+                <input
+                  type="text"
+                  onKeyDown={(e) => {enterPressed(e.key)}}
+                  value={searchFilter}
+                  className="text-ruby-alpha text-base font-sb leading-5 py-3 pl-12.5 pr-2.5 w-94 h-12.5 rounded-l border border-lapis-delta focus-visible:outline-0 sm:w-full sm:rounded"
+                  placeholder="search"
+                  onChange={(e) => setSearchFilter(e.target.value)}
+                />
+                <span
+                  className="absolute left-4.5 top-1/2 -translate-y-1/2 inline-block w-4.5 h-4.5 bg-contain bg-no-repeat"
+                  style={{
+                    backgroundImage: `url(/assets/images/icons/search-gray-icon.svg)`,
+                  }}
+                ></span>
+              </div>
+              <div className="w-40 h-12.5 sm:w-full sm:mt-3">
+                <button
+                  className="btn btn-primary min-w-fit rounded-l-none rounded-r w-full outline-none text-white text-base font-sb leading-5 sm:rounded"
+                  onClick={(e) => setSearchInput(searchFilter)}
+                >
+                  Search
+                </button>
+              </div>
+            </div>}
             <div className="flex justify-center">
+
               {subjects.length > 0 && chunkedArray?.map((row: ISubjects[], i) => (
                 <div key={i} className="w-1/4 sm:w-full float-left">
                   <ul className="mt-2">
@@ -196,8 +229,8 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     });
 
   }
-  function getSubjectData(input: string, page: number, pageSize: number, machineType: string) {
-    return subjectAPIService.getSubjectsList(input, page, pageSize, machineType).then(function (response: any) {
+  function getSubjectData(input: string, page: number, pageSize: number, machineType: string, searchFiletr: string) {
+    return subjectAPIService.getSubjectsList(input, page, pageSize, machineType, searchFiletr).then(function (response: any) {
       let returnData: ISubjects[] = [];
       let responseData = response.data.data;
       responseData.map((key: any) => {
@@ -224,6 +257,10 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
       tempArray.push(chunk);
     }
     return tempArray;
+  }
+
+  function enterPressed(key:string){
+    if (key === 'Enter') {setSearchInput(searchFilter)}
   }
 }
 export default ListingRuby;
