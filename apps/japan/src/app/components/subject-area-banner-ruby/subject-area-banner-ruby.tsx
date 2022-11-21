@@ -192,6 +192,14 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
               }}
             ></span>}
           </div>
+          <div className='max-w-lg text-pearl-beta mt-4 text-base'>
+            <span className='inline-block mr-2'>良く検索される分野：</span>
+            <a href='#' className='text-base underline mr-2'>Medicine,</a>
+            <a href='#' className='text-base underline mr-2'>Life Sciences,</a>
+            <a href='#' className='text-base underline mr-2'>Physical Sciences and Engineering, </a>
+            <a href='#' className='text-base underline mr-2'>Humanities and Social Sciences,</a>
+            <a href='#' className='text-base underline mr-2'> Business and Economics</a>
+          </div>
         </div>
       </section>
       {params.showListing && <ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} pageRows={4} pageColumns={4} />}

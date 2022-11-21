@@ -535,7 +535,7 @@ export function Header() {
                         </a>
                     </li>
                     <li className="inline-block text-sm relative uppercase">
-                      <a className="btn-nav hover:shadow-sm transition-all duration-100 ease-in inline-block ml-2"
+                      <a className="btn-nav btn-green hover:shadow-sm transition-all duration-100 ease-in inline-block ml-2 min-w-0"
                         href="https://app.editage.jp/order/ncf?source=website" target="_self" data-description="hp-top nav-get quote-null-click-null-null">
                         <span>
                           <span className="font-ssb tracking-wider text-sm md:text-13">お見積り・ご注文</span>
