@@ -31,17 +31,17 @@ return (
                   <li className="mb-1 mt-2.5 sm:mb-0">
                     <span className="text-white opacity-75 hover:opacity-100 transition duration-300 ease-in-out">
                       <a href="https://www.editage.jp/services/translation/top-journal-translation-plan">
-                        <span className="block text-sm font-ssb sm:text-xxxs md:text-xsm text-white hover:text-white">トップジャーナル学術翻訳</span></a></span>
-                  </li>
-                  <li className="mb-1 mt-2.5 sm:mb-0">
-                    <span className="text-white opacity-75 hover:opacity-100 transition duration-300 ease-in-out">
-                      <a href="https://www.editage.jp/services/translation/premium-translation-plan">
-                        <span className="block text-sm font-ssb sm:text-xxxs md:text-xsm text-white hover:text-white">プレミアム学術翻訳</span></a></span>
+                        <span className="block text-sm font-ssb sm:text-xxxs md:text-xsm text-white hover:text-white">ジャーナル投稿論文翻訳</span></a></span>
                   </li>
                   <li className="mb-1 mt-2.5 sm:mb-0">
                     <span className="text-white opacity-75 hover:opacity-100 transition duration-300 ease-in-out">
                       <a href="https://www.editage.jp/services/translation/standard-translation-plan">
-                        <span className="block text-sm font-ssb sm:text-xxxs md:text-xsm text-white hover:text-white">スタンダード学術翻訳</span>
+                        <span className="block text-sm font-ssb sm:text-xxxs md:text-xsm text-white hover:text-white">スタンダード学術翻訳</span></a></span>
+                  </li>
+                  <li className="mb-1 mt-2.5 sm:mb-0">
+                    <span className="text-white opacity-75 hover:opacity-100 transition duration-300 ease-in-out">
+                      <a href="https://www.editage.jp/services/translation/basic-translation-plan">
+                        <span className="block text-sm font-ssb sm:text-xxxs md:text-xsm text-white hover:text-white">ベーシック翻訳</span>
                       </a>
                     </span>
                   </li>

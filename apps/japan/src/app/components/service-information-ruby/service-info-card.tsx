@@ -79,7 +79,7 @@ export function ServiceInfoCard({ card,data,index }: { card: ICardInfo, data :an
       <div className="text-right sm:text-center">
         <a href={card.pricing.ctaLink}>
           <div
-            className="w-auto mx-auto bg-pearl-beta flex rounded-md justify-between md:w-full sm:w-full ng-star-inserted">
+            className={"w-auto mx-auto  flex rounded-md justify-between md:w-full sm:w-full ng-star-inserted  " + card.btnBgColor}>
             <div className="flex px-6 py-4 md:pl-7.5 md:pr-7.5 md:py-3.75 sm:px-5 sm:py-3">
                 <div className="w-9 h-9 bg-contain bg-no-repeat self-center sm:hidden  ng-lazyloaded"
                   style={{backgroundImage: `url(${card.pricing.path3})`,}}></div>
@@ -89,7 +89,7 @@ export function ServiceInfoCard({ card,data,index }: { card: ICardInfo, data :an
                     {partner == 'JPN' ? '単語数の入力で料金・納期をその場でご確認いただけます' : '지금 바로 단어 수 입력만으로 요금・납기일을 확인하실 수 있습니다'}</p>
                 </div>
             </div>
-            <div className="flex justify-center items-center w-16 bg-pearl-delta1 flex-shrink-0 rounded-r-md sm:w-14 md:w-17.5">
+            <div className={"flex justify-center items-center w-16 flex-shrink-0 rounded-r-md sm:w-14 md:w-17.5  " + card.arrowBgColor}>
               <div>
               <span className='inline-block w-3 h-3 border-t-3 border-r-3 border-white rotate-45'></span>
               <span className='inline-block w-3 h-3 border-t-3 border-r-3 border-white rotate-45 -ml-0.75'></span>

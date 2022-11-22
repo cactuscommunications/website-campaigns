@@ -7,6 +7,7 @@ export function Header() {
 
   const [show, setShow] = useState(false);
   const partner = pageService.getPartner();
+  let btnColor = location.pathname.includes('subject-area-editing-new') ? 'btn-green min-w-0' : ''
   return (
     <>
       <BrowserView className="mb-15">
@@ -151,28 +152,35 @@ export function Header() {
                               <div>
                                 <div>
                                     <a className="block hover:bg-lapis-gamma/20 link-hover" data-description="hp-top nav-academic translation j2e-overview-click" href="https://www.editage.jp/services/translation">
-                                      <span className="text-x-base block tracking-0.32 py-2.5 px-10"> 翻訳サービス概要 </span>
+                                      <span className="text-x-base block tracking-0.32 py-2.5 px-10"> 翻訳サービス概要 
+                                      <span className="inline-flex my-auto ml-2 px-2 relative top-0.5 bg-amber-theta text-amber-alpha">
+                                        <span className="w-3.75 h-3.75 flex my-auto flex-shrink-0 " style={{backgroundImage: `url('assets/images/icons/speaker.svg')`}}>
+                                        </span>
+                                        <span className="text-10 font-sb rounded-sm px-1">リニューアル</span>
+                                        </span>
+                                        </span>
                                     </a>
                                 </div>
                               </div>
                               <div>
                                 <div className="ml-10 border-l border-l-lapis-gamma">
                                     <a className="block hover:bg-lapis-gamma/20 link-hover" data-description="hp-top nav-academic translation j2e-top journal-click" href="https://www.editage.jp/services/translation/top-journal-translation-plan">
-                                      <span className="text-x-base block tracking-0.32 py-2.5 px-2.5"> トップジャーナル学術翻訳 </span>
+                                      <span className="text-x-base block tracking-0.32 py-2.5 px-2.5"> ジャーナル投稿論文翻訳  </span>
                                     </a>
                                 </div>
                               </div>
-                              <div>
-                                <div className="ml-10 border-l border-l-lapis-gamma">
-                                    <a className="block hover:bg-lapis-gamma/20 link-hover" data-description="hp-top nav-academic translation j2e-premium tl-click" href="https://www.editage.jp/services/translation/premium-translation-plan">
-                                      <span className="text-x-base block tracking-0.32 py-2.5 px-2.5"> プレミアム学術翻訳 </span>
-                                    </a>
-                                </div>
-                              </div>
+                           
                               <div>
                                 <div className="ml-10 border-l border-l-lapis-gamma">
                                     <a className="block hover:bg-lapis-gamma/20 link-hover" data-description="hp-top nav-academic translation j2e-standard tl-click" href="https://www.editage.jp/services/translation/standard-translation-plan">
                                       <span className="text-x-base block tracking-0.32 py-2.5 px-2.5"> スタンダード学術翻訳 </span>
+                                    </a>
+                                </div>
+                              </div>
+                              <div>
+                                <div className="ml-10 border-l border-l-lapis-gamma">
+                                    <a className="block hover:bg-lapis-gamma/20 link-hover" data-description="hp-top nav-academic translation j2e-premium tl-click" href="https://www.editage.jp/services/translation/basic-translation-plan">
+                                      <span className="text-x-base block tracking-0.32 py-2.5 px-2.5">  ベーシック翻訳  </span>
                                     </a>
                                 </div>
                               </div>
@@ -210,8 +218,8 @@ export function Header() {
                               <div><span className="text-x-base inline-block tracking-0.32 text-ruby-alpha/60 py-2.5">その他の翻訳サービス</span></div>
                               <div>
                                 <div className="border-l border-l-lapis-gamma">
-                                    <a className="block hover:bg-lapis-gamma/20 link-hover" data-description="hp-top nav-academic translation other-basic-click" href="https://www.editage.jp/services/translation/basic-translation-plan">
-                                      <span className="text-x-base block tracking-0.32 py-2.5 px-2.5"> ベーシック翻訳 </span>
+                                    <a className="block hover:bg-lapis-gamma/20 link-hover" data-description="hp-top nav-academic translation other-basic-click" href="https://www.editage.jp/services/translation/large-value">
+                                      <span className="text-x-base block tracking-0.32 py-2.5 px-2.5">  大型翻訳（和英）</span>
                                     </a>
                                 </div>
                               </div>
@@ -222,20 +230,7 @@ export function Header() {
                                     </a>
                                 </div>
                               </div>
-                              <div>
-                                <div className="border-l border-l-lapis-gamma">
-                                    <a className="block hover:bg-lapis-gamma/20 link-hover" data-description="hp-top nav-academic translation other-book tl-click" href="https://www.editage.jp/services/translation/book-translation">
-                                      <span className="text-x-base block tracking-0.32 py-2.5 px-2.5"> 書籍翻訳 </span>
-                                    </a>
-                                </div>
-                              </div>
-                              <div>
-                                <div className="border-l border-l-lapis-gamma">
-                                    <a className="block hover:bg-lapis-gamma/20 link-hover" href="https://www.editage.jp/services/translation/thesis-translation" target="_blank" data-description="hp-top nav-academic translation other-thesis tl-click">
-                                      <span className="text-x-base block tracking-0.32 py-2.5 px-2.5"> 学位論文翻訳 </span>
-                                    </a>
-                                </div>
-                              </div>
+                
                             </div>
                           </div>
                       </div>
@@ -535,7 +530,7 @@ export function Header() {
                         </a>
                     </li>
                     <li className="inline-block text-sm relative uppercase">
-                      <a className="btn-nav hover:shadow-sm transition-all duration-100 ease-in inline-block ml-2"
+                      <a className={"btn-nav hover:shadow-sm transition-all duration-100 ease-in inline-block ml-2 " + btnColor}
                         href="https://app.editage.jp/order/ncf?source=website" target="_self" data-description="hp-top nav-get quote-null-click-null-null">
                         <span>
                           <span className="font-ssb tracking-wider text-sm md:text-13">お見積り・ご注文</span>
