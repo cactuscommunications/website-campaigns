@@ -8,7 +8,6 @@ const params = {
 }
 
 export function ThankYou() {
-  alert("in")
   return (
     <>
      

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import subjectAPIService from "../../services/api/subject-api";
-import ListingRuby from "../listing-ruby/listing-ruby";
+import ListingRuby, { IListingRubyParams } from "../listing-ruby/listing-ruby";
 interface IserviceBlockRubyParams {
     desktopOnly: boolean,
     heading?: string,
-    menuItem: ImenuItem[]
+    menuItem: ImenuItem[],
+    listParams : IListingRubyParams
 }
 interface ImenuItem {
     name: string,
@@ -67,7 +68,7 @@ export function ServiceBlockRuby( {params }: { params: IserviceBlockRubyParams }
                     <div className="sm:px-6 md:px-6">
                         <div className="clearfix"></div>
                         <div className="mx-auto  sm:w-300px md:w-200">
-                            <ListingRuby  hideHeading={true} showSearch={false} key={activeTab} searchText={searchText} ignoreUrlParams={true} pageRows={5} pageColumns={5} />
+                            <ListingRuby key={activeTab}  searchText = {searchText} params={params.listParams} />
                         </div>
                     </div>
 

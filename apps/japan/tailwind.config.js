@@ -1201,6 +1201,13 @@ module.exports = {
               '&:hover': { 'box-shadow': '0px 30px 22px -20px rgb(203, 155, 39)' },
             },
           },
+          '.btn-green': {
+            'min-width': theme('minWidth.60'),
+            'background-color': theme('backgroundColor.green.600'),
+            color: theme('colors.white'),
+            border: 'none',
+            '&:hover': { color: theme('colors.white'), 'box-shadow': '0px 30px 22px -20px #76b361' },
+          },
           '.button-arrow': {
             '&:hover': {
               '&::after': {

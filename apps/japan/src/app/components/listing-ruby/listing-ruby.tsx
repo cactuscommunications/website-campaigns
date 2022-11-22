@@ -10,8 +10,8 @@ import { isMobile } from 'react-device-detect';
 /**
  * interface for listing ruby parameters
  */
-interface IListingRubyParams {
-  heading: string;
+export interface IListingRubyParams {
+  heading: string
   pagination: boolean;
   mobilePageSize: number;
   pageNumber: number;
@@ -19,6 +19,11 @@ interface IListingRubyParams {
   subjects: ISubjects[];
   link?: string;
   subHeading?: string;
+  showSearch ? : boolean,
+  hideHeading: boolean, 
+  ignoreUrlParams: boolean,
+  pageRows: number, 
+  pageColumns: number
 }
 interface ISubjects {
   content: String;
@@ -28,23 +33,13 @@ interface ISubjectList {
   subjects: ISubjects[];
   pageCount: number;
 }
-const params: IListingRubyParams = {
-  heading: 'エディテージ',
-  pageIcon: ['assets/images/icons/circle-arrow-left.svg', 'assets/images/icons/circle-arrow-right.svg'],
-  subjects: [],
-  pageNumber: 1,
-  pagination: true,
-  mobilePageSize: 8,
-};
 let startIndex = 0;
 let endIndex: number;
 let chunkedArray: ISubjects[][];
 let mobileRows = 1;
 let pages = 1;
-const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageColumns, showSearch }:
-  { searchText: string, hideHeading: boolean, ignoreUrlParams: boolean, pageRows: number, pageColumns: number, showSearch: boolean }) => {
+const ListingRuby = ({ params , searchText}: { params: IListingRubyParams, searchText : string }) => {
   // const navigator = useNavigate();
-  let [searchInput, setSearchInput] = useState('');
   let [searchFilter, setSearchFilter] = useState('');
   const [subjects, setSubjects] = useState([{}]);
   let [active, setActive] = useState(1);
@@ -55,26 +50,28 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   let [currentPage, setCurrentPage] = useState(1);
   let [searchTitle, setSearchTitle] = useState('');
   const url = new URL(location.href);
+  let searchInput;
   var saParam = url.searchParams.get("sa");
   useEffect(() => {
-    if (saParam && !ignoreUrlParams) {
+    if (saParam && !params.ignoreUrlParams) {
       searchText = saParam;
     }
     const getSubData = async () => {
       const { machineNameTop, machineNameBottom, searchTitle, machineType } = await getMachineName(searchText);
+      setSubjects([{}]);
       setSearchTitle(searchTitle);
-      const machineName = ignoreUrlParams ? machineNameBottom : machineNameTop;
+      const machineName = params.ignoreUrlParams ? machineNameBottom : machineNameTop;
 
-      let subData = await getSubjectData(machineName, currentPage, isMobile ? pageColumns : pageRows * pageColumns, ignoreUrlParams ? 'sa_one' : machineType, searchInput);
+      let subData = await getSubjectData(machineName, currentPage, isMobile ? params.pageColumns : params.pageRows * params.pageColumns, params.ignoreUrlParams ? 'sa_one' : machineType, searchFilter);
       setSubjects(subData.subjects);
       setPage(subData.pageObj.page);
       setPageCount(subData.pageObj.pageCount);
       setpageSize(subData.pageObj.pageSize);
       setPageTotal(subData.pageObj.total);
-      getPageDetails(subData.subjects, params.pageNumber, isMobile ? pageColumns : pageRows * pageColumns);
+      getPageDetails(subData.subjects, params.pageNumber, isMobile ? params.pageColumns : params.pageRows * params.pageColumns);
     };
     getSubData();
-  }, [searchText, currentPage, searchInput]);
+  }, [searchText, currentPage, searchFilter]);
   const pageChanged = (num: number) => {
     setCurrentPage(num);
   };
@@ -88,11 +85,11 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
   return (
     <>
 
-      <section className={(hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
+      <section className={(params.hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
 
           <div className='max-w-[900px] mx-auto'>
-            {!hideHeading &&
+            {!params.hideHeading &&
               <React.Fragment>
                 {searchTitle &&
                   <h2 className="mb-8 sm:text-xxl sm:leading-8 sm:mb-4 text-center">
@@ -112,16 +109,15 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
 
           <div
             className='bg-white px-16 rounded-lg  py-7.5 max-w-[1100px] mx-auto sm:text-center'>
-            {showSearch && <div key="searchlist" className="flex justify-center sm:flex-col">
+            {params.showSearch && <div key="searchlist" className="flex justify-center sm:flex-col">
 
-              <div className="relative">
+              {params.showSearch && <div className="relative">
                 <input
                   type="text"
-                  onKeyDown={(e) => {enterPressed(e.key)}}
-                  value={searchFilter}
+                  value={searchInput}
                   className="text-ruby-alpha text-base font-sb leading-5 py-3 pl-12.5 pr-2.5 w-94 h-12.5 rounded-l border border-lapis-delta focus-visible:outline-0 sm:w-full sm:rounded"
-                  placeholder="search"
-                  onChange={(e) => setSearchFilter(e.target.value)}
+                  placeholder="キーワードを英語で入力してください"
+                  onChange={(e) => setSearchInput(e.target.value)}
                 />
                 <span
                   className="absolute left-4.5 top-1/2 -translate-y-1/2 inline-block w-4.5 h-4.5 bg-contain bg-no-repeat"
@@ -129,15 +125,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
                     backgroundImage: `url(/assets/images/icons/search-gray-icon.svg)`,
                   }}
                 ></span>
-              </div>
-              <div className="w-40 h-12.5 sm:w-full sm:mt-3">
-                <button
-                  className="btn btn-primary min-w-fit rounded-l-none rounded-r w-full outline-none text-white text-base font-sb leading-5 sm:rounded"
-                  onClick={(e) => setSearchInput(searchFilter)}
-                >
-                  Search
-                </button>
-              </div>
+              </div> }
             </div>}
             <div className="flex justify-center">
 
@@ -250,7 +238,7 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
    */
   function createChunks(listItems: any) {
     let index = 0;
-    const chunkSize = pageRows;
+    const chunkSize = params.pageRows;
     const tempArray = [];
     for (index = 0; index < listItems.length; index += chunkSize) {
       const chunk = listItems.slice(index, index + chunkSize);
@@ -259,8 +247,9 @@ const ListingRuby = ({ searchText, hideHeading, ignoreUrlParams, pageRows, pageC
     return tempArray;
   }
 
-  function enterPressed(key:string){
-    if (key === 'Enter') {setSearchInput(searchFilter)}
+  function setSearchInput(value:string) {
+    if(value.length >= 3 || value == '')
+    setSearchFilter(value)
   }
 }
 export default ListingRuby;

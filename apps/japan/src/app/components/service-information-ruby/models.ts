@@ -21,6 +21,8 @@ export interface IServiceInformationRuby {
     listHeading: string;
     list: IServiceInfoList[]
     pricing: IPricing;
+    arrowBgColor : string;
+    btnBgColor :string;
   }  
     
     export interface IServiceInfoList {
