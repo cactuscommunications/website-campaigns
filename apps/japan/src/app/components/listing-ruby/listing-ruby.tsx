@@ -61,7 +61,6 @@ const ListingRuby = ({ params , searchText}: { params: IListingRubyParams, searc
       setSubjects([{}]);
       setSearchTitle(searchTitle);
       const machineName = params.ignoreUrlParams ? machineNameBottom : machineNameTop;
-
       let subData = await getSubjectData(machineName, currentPage, isMobile ? params.pageColumns : params.pageRows * params.pageColumns, params.ignoreUrlParams ? 'sa_one' : machineType, searchFilter);
       setSubjects(subData.subjects);
       setPage(subData.pageObj.page);
