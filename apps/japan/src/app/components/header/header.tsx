@@ -607,7 +607,7 @@ export function Header() {
                 <a
                   className="text-center sm:align-middle ml-1 uppercase leading-8 sm:flex sm:my-auto sm:float-left"
                   href="https://app.editage.jp/order/ncf?source=website" target="_self" data-description="hp-top nav-get quote-null-click-null-null">
-                  <span className="text-11 btn-nav">お見積り</span>
+                  <span className={"text-11 btn-nav "+ btnColor}>お見積り</span>
                 </a>
               </div>
               }
