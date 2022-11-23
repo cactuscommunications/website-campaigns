@@ -39,7 +39,7 @@ const CarouselPearl = ({ params }: { params: IServiceFeaturePearlParams }) => {
         }
         const getEditorsData = async () => {
             let machineName = '';
-            machineName = await getMachineName(params.searchText == '' ?params.searchText:'default');
+            machineName = await getMachineName(!params.searchText ? 'default' : params.searchText);
             let resp = await getData(machineName);
             setTestimonials(resp.data);
             setIndicator(resp.data);
