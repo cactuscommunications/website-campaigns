@@ -7,7 +7,8 @@ export function Header() {
 
   const [show, setShow] = useState(false);
   const partner = pageService.getPartner();
-  let btnColor = location.pathname.includes('subject-area-editing-new') ? 'btn-green min-w-0' : ''
+  let isNew = location.pathname.includes('subject-area-editing-new');
+  let btnColor = isNew ? 'btn-green min-w-0' : ''
   return (
     <>
       <BrowserView className="mb-15">
@@ -515,13 +516,14 @@ export function Header() {
                             </div>
                       </div>
                     </li>
+                    {!isNew && 
                     <li className="inline-block text-sm relative uppercase">
                       <a className="transition-all duration-100 ease-in inline-block hover:bg-pearl-beta/10"
                         href="https://app.editage.jp" target="_self" data-description="hp-top nav-login-null-click-<top-navigation>-null">
                           <span className="py-4.6 px-2 inline-block md:px-1.2"><span className="font-ssb tracking-wider text-sm md:text-13">ログイン</span>
                           </span>
                         </a>
-                    </li>
+                    </li>}
                     <li className="inline-block text-sm relative uppercase">
                       <a className="hidden transition-all duration-100 ease-in inline-block hover:bg-pearl-beta/10"
                         href="javascript:void(0);" data-description="hp-top nav-logout-null-click-<top-navigation>-null">
@@ -590,11 +592,13 @@ export function Header() {
                   <span className="text-11 sm:mr-2 sm:mt-2.5 bg-center bg-contain bg-no-repeat float-left h-5 mr-4 mt-2 w-6"
                     style={{ backgroundImage: `url('/assets/images/icons/user-headset.svg')` }}></span>
                 </a>
+                {!isNew && 
                 <a
                   className="text-center sm:align-middle ml-1 uppercase leading-8 sm:flex sm:my-auto sm:float-left"
                   href="https://app.editage.jp" target="_self" data-description="hp-top nav-mobile-login-null-click-<top-navigation>-null">
                   <span className="text-11 btn-nav border border-pearl-beta sm:bg-white text-pearl-beta">ログイン</span>
                 </a>
+                }
                 <a
                   className="text-center sm:align-middle ml-1 uppercase leading-8 sm:flex sm:my-auto sm:float-left"
                   href="javascript:void(0);" data-description="hp-top nav-mobile-logout-null-click-<top-navigation>-null">
