@@ -10,3 +10,13 @@
   --fontFamily: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Osaka', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック',
     'MS PGothic', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
+.bg-green-600 {
+  background-color: theme('backgroundColor.green.600');
+  color: theme('colors.white');
+  border: 'none';
+}
+.bg-green-700 {
+  background-color: theme('backgroundColor.green.700');
+  color: theme('colors.white');
+  border: 'none';
+}
