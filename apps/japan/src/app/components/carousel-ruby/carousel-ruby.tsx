@@ -93,7 +93,7 @@ const CarouselRuby = ({ params }: { params: IServiceFeatureRubyParams }) => {
                   ></div>}
                 {testimonialsChunk[position].map((trow: any, ti) => (
                   <div key={ti} className="w-360px shadow rounded-lg bg-white h-full mx-5">
-                    <div className="px-5 pb-5 pt-3 relative bg-pearl-epsilon/50 rounded-t-lg	min-h-57.5 max-h-57.5 md:min-h-[16rem] sm:min-h-fit">
+                    <div className="px-5 pb-5 pt-3 relative bg-pearl-epsilon/50 rounded-t-lg	min-h-57.5 max-h-57.5 md:min-h-[16rem] md:min-h-fit">
                       <span
                         className="w-17 h-17 bg-no-repeat bg-contain absolute top-2.5 left-3"
                         style={{
