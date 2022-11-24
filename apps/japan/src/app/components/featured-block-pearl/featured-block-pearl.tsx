@@ -24,7 +24,7 @@ const FeaturedBlockPearl = ({ params }: { params: IFeaturedBlockPearlParams }) =
               style={{
                 backgroundImage: `url('/assets/images/featured-block-pearl-m.svg')`,
               }}
-              className="w-93 h-56.75 bg-no-repeat bg-center float-left order-1 sm:w-80"
+              className="w-93 h-56.75 bg-no-repeat bg-center float-left order-1 sm:w-80 hidden"
             ></div>)}
           <div className="pt-8.5 float-left w-full flex justify-center sm:pt-8">
             <div className="w-1/2 sm:w-full float-right order-2 pl-16 sm:pl-0">

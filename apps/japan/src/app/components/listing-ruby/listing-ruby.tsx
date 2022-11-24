@@ -107,14 +107,14 @@ const ListingRuby = ({ params , searchText}: { params: IListingRubyParams, searc
           </div>
 
           <div
-            className='bg-white px-16 rounded-lg  py-7.5 max-w-[1100px] mx-auto sm:text-center'>
+            className='bg-white px-16 rounded-lg  py-7.5 max-w-[1100px] mx-auto sm:text-center sm:px-6'>
             {params.showSearch && <div key="searchlist" className="flex justify-center sm:flex-col">
 
               {params.showSearch && <div className="relative">
                 <input
                   type="text"
                   value={searchInput}
-                  className="text-ruby-alpha text-base font-sb leading-5 py-3 pl-12.5 pr-2.5 w-94 h-12.5 rounded-l border border-lapis-delta focus-visible:outline-0 sm:w-full sm:rounded"
+                  className="text-ruby-alpha text-base font-sb leading-5 py-3 pl-12.5 pr-2.5 w-94 h-12.5 rounded-l border border-lapis-delta focus-visible:outline-0 sm:w-full sm:rounded sm:text-xs sm:pl-10"
                   placeholder="キーワードを英語で入力してください"
                   onChange={(e) => setSearchInput(e.target.value)}
                 />

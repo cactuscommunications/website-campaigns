@@ -566,17 +566,17 @@ export function Header() {
         </div>
       </BrowserView>
       <MobileView>
-        <div className="w-full bg-white shadow flex justify-between my-auto py-2 px-4 relative z-10">
+        <div className="w-full bg-white shadow flex justify-start my-auto py-2 px-4 relative z-10">
           <span onClick={() => setShow(!show)} className="w-6 h-5 flex my-auto"
             style={{ backgroundImage: `url('/assets/images/icons/menubar-icon.svg')` }}></span>
-          <div className="float-left flex items-center py-2.5">
+          <div className="float-left flex items-center py-2.5 grow">
               <div className="sm:hidden md:hidden xxl:w-50 w-50 h-10 bg-center bg-no-repeat bg-contain"
                 style={{ backgroundImage: `url('/assets/images/logo/editage-eng.svg')` }}>
                 <a className="block" data-description="hp-top nav-editage logo-null-click-null-null" href={partner == "KOR" ? "https://www.editage.co.kr/" :"https://www.editage.jp/" }>
                   <span className="block h-10 invisible xxl:w-50 w-50">&nbsp;</span>
                 </a>
               </div>
-              <div className="hidden md:inline-block sm:inline-block bg-center bg-no-repeat bg-contain md:w-30 md:h-9 sm:w-24 sm:h-7.5 sm:mt-1"
+              <div className="hidden ml-2 md:inline-block sm:inline-block bg-center bg-no-repeat bg-contain md:w-30 md:h-9 sm:w-24 sm:h-7.5 sm:mt-1"
                 style={{ backgroundImage: `url('/assets/images/logo/logo.svg')` }}>
                 <a className="block" data-description="hp-top nav-editage logo-null-click-null-null" href={partner == "KOR" ? "https://www.editage.co.kr/" :"https://www.editage.jp/"}>
                   <span className="block h-9.5 invisible w-25">&nbsp;</span>
@@ -587,7 +587,7 @@ export function Header() {
             <div className="float-right my-auto">
               {(partner == "JPN") && <div className="w-full float-left">
                 <a
-                  className="text-center sm:align-middle ml-1 uppercase leading-8 sm:flex sm:my-auto sm:float-left"
+                  className="text-center align-middle ml-1 uppercase leading-8 sm:flex sm:my-auto sm:float-left"
                   href="javascript:void(0);" data-description="hp-top nav-<contact cs>-null-click-<top-navigation>-null">
                   <span className="text-11 sm:mr-2 sm:mt-2.5 bg-center bg-contain bg-no-repeat float-left h-5 mr-4 mt-2 w-6"
                     style={{ backgroundImage: `url('/assets/images/icons/user-headset.svg')` }}></span>

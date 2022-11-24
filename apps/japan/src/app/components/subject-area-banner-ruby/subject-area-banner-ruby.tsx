@@ -194,6 +194,15 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
                 </p>
               </div>
             )}
+            {params.showSuggestion && <div className='max-w-lg text-pearl-beta mt-4 text-base sm:text-sm'>
+            <span className='inline-block mr-2'>{params.suggestionLabel}</span>
+            {params.suggestions && params.suggestions?.map((suggestion , i) => (
+              <>
+                <a href={location.pathname+"?sa="+suggestion.machineName} className='text-base underline mr-2 sm:text-sm'>{suggestion.name}
+                {params.suggestions && params.suggestions.length-1 != i && <span>,</span>}</a>
+              </>
+            ))}
+          </div>}
             {isMobile && !isTablet && <span
               className="hidden w-full h-60 bg-center bg-contain bg-no-repeat sm:block"
               style={{
@@ -201,15 +210,6 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
               }}
             ></span>}
           </div>
-          {params.showSuggestion && <div className='max-w-lg text-pearl-beta mt-4 text-base'>
-            <span className='inline-block mr-2'>{params.suggestionLabel}</span>
-            {params.suggestions && params.suggestions?.map((suggestion , i) => (
-              <>
-                <a href={location.pathname+"?sa="+suggestion.machineName} className='text-base underline mr-2'>{suggestion.name}
-                {params.suggestions && params.suggestions.length-1 != i && <span>,</span>}</a>
-              </>
-            ))}
-          </div>}
         </div>
       </section>
       {params.showListing && <ListingRuby key="sa-list" searchText = {machineName} params={params.listParams} />}
