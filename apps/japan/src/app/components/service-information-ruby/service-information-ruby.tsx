@@ -37,29 +37,6 @@ export function ServiceInformationRuby({ params }: { params: IServiceInformation
               data= {data}
               ></ServiceInfoCard>
           ))}
-          {partner == 'JPN' && <div className='p-8 shadow-lg shadow-gray-500/20 max-w-[1138px] m-auto rounded'>
-            <div className='flex sm:flex-col'>
-              <div className='min-w-[360px] w-90 h-60 mr-5 border sm:w-full sm:max-w-100 sm:min-w-0 sm:m-auto sm:mb-5'>
-                <span className='bg-no-repeat bg-cover w-full h-full block' style={{backgroundImage: `url(${'/assets/images/proofreading.jpg'})`}}></span>
-              </div>
-              <div>
-                <p className='font-bold mb-3 text-lg'>
-                  [期間限定 お試しサービス 11月31日まで]<br />
-                  論文プルーフリーディング＆投稿規定チェックサービス
-                </p>
-                <p className='mb-10 text-base'>
-                  ネイティブのコピーエディターが低料金で英語論文を最終仕上げ。自ら執筆した英語論文、AI翻訳・校正した英語論文などの総仕上げにおすすめのサービス。文法・句読点・タイプミス等のチェックを英語ネイティブが行います。投稿規定に合わせたフォーマット調整も付属。安心して投稿いただけます。
-                </p>
-                <div className='flex justify-end sm:justify-center'>
-                  <a target='_blank' className='relative bg-neutral-400 w-56 py-3 px-5 pl-13 rounded text-white text-xl font-semibold hover:text-white md:text-lg sm:block sm:m-auto sm:text-base' href="https://www.editage.jp/services/proofreading-formatting">
-                  <span className='absolute left-4 inset-y-0 m-auto w-8 h-8 inline-block bg-no-repeat' style={{backgroundImage: `url(${'/assets/images/icons/service-icon.svg'})`}}></span>
-                    サービス詳細
-                    <span className='absolute right-4 inset-y-0 m-auto w-3.5 h-3.5 inline-block bg-no-repeat' style={{backgroundImage: `url(${'/assets/images/icons/arrow-right-white.svg'})`}}></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>}
           <div className="text-center mt-10">
             {partner == "JPN" && <a onClick={() => {setOpenModal(true);}}className="btn btn-primary">
               <span className="w-full font-pb mt-2 px-6">{params.CTAtext}</span>
