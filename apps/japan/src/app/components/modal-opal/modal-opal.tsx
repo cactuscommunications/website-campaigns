@@ -34,7 +34,7 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
             <div className="w-full float-left py-2.5 px-1.5 text-center bg-pearl-beta/30 dyna-height-3 min-h-23.75 sm:min-h-auto">
                <p className="text-center flex justify-center mb-2">
                   <p className="text-2xl leading-34 font-sb text-ruby-alpha self-center">
-                     5円～
+                     5.5円～
                   </p>
                   <span className="text-ruby-alpha font-ssb text-center text-sm leading-5 self-center">/単語</span><span  className="w-4 h-4 inline-block cursor-pointer bg-no-repeat bg-contain self-center ml-2.5 " style={{ backgroundImage: `url(${'/assets/images/icons/information.svg'})`,}}></span>
                </p>
@@ -181,7 +181,7 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
                <p className="text-center flex justify-center mb-2">
                   
                   <p className="text-2xl leading-34 font-sb text-ruby-alpha self-center">
-                     11円～
+                     12円～
                   </p>
                   <span className="text-ruby-alpha font-ssb text-center text-sm leading-5 self-center">/単語</span><span className="w-4 h-4 inline-block cursor-pointer bg-no-repeat bg-contain self-center ml-2.5 " style={{ backgroundImage: `url(${'/assets/images/icons/information.svg'})`,}}></span>
                </p>
@@ -374,7 +374,7 @@ const ModalOpal = ({ closeModal}: { closeModal: any }) => {
                   </p>
                   <span className="text-ruby-alpha font-ssb text-center text-sm leading-5 self-center">/単語</span><span  className="w-4 h-4 inline-block cursor-pointer bg-no-repeat bg-contain self-center ml-2.5 " style={{ backgroundImage: `url(${'/assets/images/icons/information.svg'})`,}}></span>
                </p>
-               <p className="bg-diamond-zeta px-2.5 py-0.5 text-diamond-delta text-sm leading-20 inline-block rounded leading-17">最短4営業日納品から対応</p>
+               <p className="bg-diamond-zeta px-2.5 py-0.5 text-diamond-delta text-sm leading-20 inline-block rounded leading-17">最短3営業日納品から対応</p>
             </div>
                <div className="bg-opal-alpha1 float-left px-1 py-3 text-center w-full">
                   <p className="text-base text-white font-sb tracking-wider leading-5">品質を保証する作業体制</p>
