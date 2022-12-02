@@ -9,6 +9,7 @@ interface IFeaturedBlockDiamondParams {
     content?: string;
     tracking: {};
   };
+  buttonBackground : string;
 }
 const FeaturedBlockDiamond = ({ params }: { params:  IFeaturedBlockDiamondParams}) => {
     return (
@@ -40,7 +41,7 @@ const FeaturedBlockDiamond = ({ params }: { params:  IFeaturedBlockDiamondParams
               </div>
               {params?.link && (
                 <div className="text-center sm:w-full sm:mr-auto sm:ml-auto">
-                  <a className="btn btn-primary" href={params?.link.route}>
+                  <a className={' btn '+params.buttonBackground} href={params?.link.route}>
                     <span className="block px-3 font-ssb">{params?.link?.content}</span>
                   </a>
                 </div>

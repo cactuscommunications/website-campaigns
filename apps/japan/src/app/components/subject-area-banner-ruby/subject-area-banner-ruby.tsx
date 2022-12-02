@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import ListingRuby from '../listing-ruby/listing-ruby';
+import ListingRuby, { IListingRubyParams } from '../listing-ruby/listing-ruby';
 import MarkDown from '../markdown/markdown';
 import subjectAPIService from '../../services/api/subject-api';
 import ServiceFeatureRuby from '../service-feature-ruby/service-feature-ruby';
@@ -23,11 +23,19 @@ interface ISubjectAreaBannerRubyParams {
   search : string;
   placeHolder : string;
   showListing: boolean;
+  suggestionLabel? : string;
+  showSuggestion? : boolean;
+  suggestions? : ISuggestions[];
+  listParams : IListingRubyParams
 }
 interface IserachList {
   name: string;
   searchTitle: string;
   machineName: string
+}
+interface ISuggestions {
+  name : string;
+  machineName : string;
 }
 
 const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams }) => {
@@ -51,13 +59,15 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
       if (saParam && loadCounter) {
         let resp = await getSearchList(saParam, 'eq');
         setSearchTerm(resp[0]?.name);
-        setMachineName(resp[0]?.machineName)
+        setMachineName(resp[0]?.machineName);
         setloadCounter(false);
         setSaSelected(true)
       }
     }
     getSaData();
     const delayDebounceFn = setTimeout(async (event) => {
+      setSearchList([]);
+
       setSaSelected(false)
       setShowValidation(false);
       setShowNoTextValidation(false);
@@ -86,7 +96,6 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
     setSearchTerm(text.name);
   };
   const searchResults = () => {
-    // setMachineName();
     if (!searchTerm || searchTerm == '') {
       setShowNoTextValidation(true);
     } else if (!showValidation && !noDataMessage)
@@ -185,6 +194,15 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
                 </p>
               </div>
             )}
+            {params.showSuggestion && <div className='max-w-lg text-pearl-beta mt-4 text-base sm:text-sm'>
+            <span className='text-black inline-block mr-2'>{params.suggestionLabel}</span>
+            {params.suggestions && params.suggestions?.map((suggestion , i) => (
+              <>
+                <a href={location.pathname+"?sa="+suggestion.machineName} className='text-base underline mr-2 sm:text-sm'>{suggestion.name}
+                {params.suggestions && params.suggestions.length-1 != i && <span>,</span>}</a>
+              </>
+            ))}
+          </div>}
             {isMobile && !isTablet && <span
               className="hidden w-full h-60 bg-center bg-contain bg-no-repeat sm:block"
               style={{
@@ -194,7 +212,7 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
           </div>
         </div>
       </section>
-      {params.showListing && <ListingRuby hideHeading={false} searchText={machineName} ignoreUrlParams={false} pageRows={4} pageColumns={4} />}
+      {params.showListing && <ListingRuby key="sa-list" searchText = {machineName} params={params.listParams} />}
       {/* {<ServiceFeatureRuby searchText={machineName} />}
       <CarouselRuby  searchText={machineName}/> */}
     </>
