@@ -83,7 +83,37 @@ const ListingRuby = ({ params , searchText}: { params: IListingRubyParams, searc
   }
   return (
     <>
-
+      <section>
+        <div className='container'>
+          <div className='pt-32 pb-16 px-0 sm:pb-0 sm:pt-42.5 bg-cover bg-center bg-[size:150%] sm:bg-[size:360%]' style={{backgroundImage: `url(${'/assets/images/bannerbooks.png'})`}}>
+              <div className='p-5 bg-white relative'>
+                  <div className='text-center'>
+                      <p className='text-xl md:text-sm sm:text-sm'>創業20年で、世界80万人のお客様、200万稿の校正実績</p>
+                      <div className='text-42 font-black leading-60 md:text-3xl sm:text-2xl sm:mb-4.8'>研究者が薦める英文校正 <br />エディテージ</div>
+                      <div className='text-lg font-bold mb-6 md:text-base sm:text-sm'>初めてご利用いただく方の
+                          <span className='text-garnet-omega sm:block'>約60％が、お客様、所属研究機関からの推薦です。
+                              <sup className='text-black'>*1</sup>
+                          </span>
+                          <div className='hidden mt-2.5 text-xs font-normal text-right sm:block'>*1 弊社調べ（2022年1月）</div>
+                      </div>
+                      <span className='block text-lg font-bold text-pearl-alpha md:text-sm sm:text-base'>Editageのプロフェッショナルサービス</span>
+                  </div>
+                  <div className='flex justify-center items-center'>
+                      <a href='#' className='bg-gradient-to-b from-indigo-500 to-indigo-900 mx-1.5 mt-3 font-bold btn btn-primary h-14 md:h-11 md:text-xs md:min-w-45 md:leading-44 sm:min-w-max sm:h-fit sm:py-2.5 sm:px-6 sm:text-xs sm:mx-1'>英文校正</a>
+                      <a href='#' className='bg-gradient-to-b from-indigo-500 to-indigo-900 mx-1.5 mt-3 font-bold btn btn-primary h-14 md:h-11 md:text-xs md:min-w-45 md:leading-44 sm:min-w-max sm:h-fit sm:py-2.5 sm:px-6 sm:text-xs sm:mx-1 relative'>論文翻訳 <span className='absolute w-5 h-5 right-8 inset-y-0 m-auto inline-block bg-no-repeat md:w-4 md:h-4 md:bg-cover sm:w-3 sm:h-3 sm:bg-cover sm:right-2' style={{backgroundImage: `url(${'/assets/images/icons/button-icon.svg'})`}}></span></a>
+                      <a href='#' className='bg-gradient-to-b from-indigo-500 to-indigo-900 mx-1.5 mt-3 font-bold btn btn-primary h-14 md:h-11 md:text-xs md:min-w-45 md:leading-44 sm:min-w-max sm:h-fit sm:py-2.5 sm:px-6 sm:text-xs sm:mx-1 relative'>投稿支援 <span className='absolute w-5 h-5 right-8 inset-y-0 m-auto inline-block bg-no-repeat md:w-4 md:h-4 md:bg-cover sm:w-3 sm:h-3 sm:bg-cover sm:right-2' style={{backgroundImage: `url(${'/assets/images/icons/button-icon.svg'})`}}></span></a>
+                  </div>
+                  <div className='text-center mt-12 md:mt-6 sm:mt-5'>
+                      <a href="https://app.editage.jp/order/ncf" target='_blank' className='relative text-white bg-gradient-to-b from-emerald-600 to-emerald-800 text-lg font-bold rounded-lg py-4 px-16 hover:text-white hover:shadow-xl hover:shadow-emerald-200/40 md:h-11 md:text-xs md:leading-44 md:py-0 sm:max-w-full sm:py-2 sm:px-10 sm:text-sm'>
+                          自動簡易見積もり・ご注文 
+                          <span className='absolute right-4 inset-y-0 m-auto w-3.5 h-3.5 inline-block bg-no-repeat' style={{backgroundImage: `url(${'/assets/images/icons/double-rightarrow-white.svg'})`}}></span>
+                      </a>
+                  </div>
+                  <div className='mt-5 text-xs text-right sm:hidden'>*1 弊社調べ（2022年1月）</div>
+              </div>
+            </div>
+        </div>
+      </section>
       <section className={(params.hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
 
