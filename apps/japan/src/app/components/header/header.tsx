@@ -7,7 +7,7 @@ export function Header() {
 
   const [show, setShow] = useState(false);
   const partner = pageService.getPartner();
-  let isNew = location.pathname.includes('subject-area-editing-new');
+  let isNew = location.pathname.includes('subject-area-editing-b');
   let btnColor = isNew ? 'btn-green min-w-0' : ''
   return (
     <>
