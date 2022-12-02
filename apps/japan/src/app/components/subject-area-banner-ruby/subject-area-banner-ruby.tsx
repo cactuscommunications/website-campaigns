@@ -195,7 +195,7 @@ const SubjectAreaBannerRuby= ({ params }: { params: ISubjectAreaBannerRubyParams
               </div>
             )}
             {params.showSuggestion && <div className='max-w-lg text-pearl-beta mt-4 text-base sm:text-sm'>
-            <span className='inline-block mr-2'>{params.suggestionLabel}</span>
+            <span className='text-black inline-block mr-2'>{params.suggestionLabel}</span>
             {params.suggestions && params.suggestions?.map((suggestion , i) => (
               <>
                 <a href={location.pathname+"?sa="+suggestion.machineName} className='text-base underline mr-2 sm:text-sm'>{suggestion.name}

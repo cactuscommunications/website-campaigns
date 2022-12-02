@@ -58,7 +58,7 @@ const ListingRuby = ({ params , searchText}: { params: IListingRubyParams, searc
     }
     const getSubData = async () => {
       const { machineNameTop, machineNameBottom, searchTitle, machineType } = await getMachineName(searchText);
-      setSubjects([{}]);
+      // setSubjects([{}]);
       setSearchTitle(searchTitle);
       const machineName = params.ignoreUrlParams ? machineNameBottom : machineNameTop;
       let subData = await getSubjectData(machineName, currentPage, isMobile ? params.pageColumns : params.pageRows * params.pageColumns, params.ignoreUrlParams ? 'sa_one' : machineType, searchFilter);
