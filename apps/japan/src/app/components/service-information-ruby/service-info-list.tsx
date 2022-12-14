@@ -2,7 +2,8 @@ import MarkDown from '../markdown/markdown';
 interface IServiceInfo {
     path:  string,
     text: string,
-    color?: boolean
+    color?: boolean,
+    labelText? : string
 }
 
 export function ServiceInfoList({ list }: { list: IServiceInfo }) {
@@ -14,6 +15,7 @@ export function ServiceInfoList({ list }: { list: IServiceInfo }) {
       ></span>
       {list.color ? (
         <span className="inline-block text-base sm:text-sm sm:leading-4 text-ruby-alpha font-sb">
+          {list.labelText && <span className="text-red-700">{list.labelText}</span>}
           <MarkDown data={list.text.split("!!break!!")[0]}></MarkDown>
           <br />
           <span className="text-red-700">
