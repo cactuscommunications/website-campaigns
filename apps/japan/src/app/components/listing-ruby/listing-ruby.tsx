@@ -83,7 +83,116 @@ const ListingRuby = ({ params , searchText}: { params: IListingRubyParams, searc
   }
   return (
     <>
-
+      <section className='py-12 sm:py-11'>
+        <div className='container'>
+          <div className='text-4xl leading-56 font-sb text-center mb-6 text-gray-700 sm:text-2xl sm:text-left sm:mb-2'>
+            研究のプロに選ばれる
+            <span className='text-diamond-delta'>「エディテージ」</span>
+            は <span className='block sm:inline-block'>こんな方にご利用いただいています！</span>
+          </div>
+          <div className='flex justify-center flex-wrap'>
+            <div className='text-white bg-pearl-alpha mt-3 p-7 w-125 mx-1.5 md:w-110 sm:w-full sm:p-3.5 sm:mx-0 sm:mt-6'>
+              <div className='flex pb-4 sm:flex-col sm:pb-8'>
+                <div className='border border-gray-500 min-w-40 w-40 h-40 bg-no-repeat bg-cover mr-4 sm:max-w-sm sm:w-full sm:m-auto sm:mb-4' style={{backgroundImage: `url(${'/assets/images/researchprofessional-1.jpg'})`}}></div>
+                <div>
+                  <p className='text-base leading-7 font-sb sm:leading-6'>
+                    エディテージのプレミアム英文校正は再校正をすればする度、原稿がシンプルになって良くなって行きます。 
+                    <span className='text-base leading-7 opacity-70 block font-normal'>エディテージさんはもう20 回以上は使わせていただいておりますが、特にプレミアム英文校正プラスが出てからは、ずっとプラスを使っています。</span>
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p className='text-base leading-7 font-sb sm:leading-6'>鈴木 翔先生 </p>
+                <p className='opacity-80 leading-7 sm:leading-6'>日本大学医学部　内科学系消化器肝臓内科学分野</p>
+                <div className='flex sm:flex-col'>
+                  <p className='text-base leading-7 font-sb sm:leading-6'>ご利用サービス：</p>
+                  <p className='text-base leading-7 sm:pl-7 sm:leading-6'>
+                    <span className='block font-bold'>プレミアム英文校正プラス</span>
+                    <span className='block font-bold'>ベーシック翻訳</span>
+                    <span className='block font-bold'>論文剽窃チェックサービス</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className='text-white bg-pearl-alpha mt-3 p-7 w-125 mx-1.5 md:w-110 sm:w-full sm:p-3.5 sm:mx-0 sm:mt-6'>
+              <div className='flex pb-4 sm:flex-col sm:pb-8'>
+                <div className='border border-gray-500 min-w-40 w-40 h-40 bg-no-repeat bg-cover mr-4 sm:max-w-sm sm:w-full sm:m-auto sm:mb-4' style={{backgroundImage: `url(${'/assets/images/researchprofessional-2.jpg'})`}}></div>
+                <div>
+                  <p className='text-base leading-7 font-sb sm:leading-6'>
+                    <span className='text-base leading-7 opacity-70 font-normal'>これは私だけではないと思いますが、臨床医で研究や論文執筆に時間をしっかりと確保できる方はほとんどいないと思います。</span>
+                    ですからエディテージのようなプロの業者に英文校正や論文投稿のサポートをお任せできるのは、時間の節約といった意味でも本当にありがたい ですね。
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p className='text-base leading-7 font-sb sm:leading-6'>柏浦 正広先生</p>
+                <p className='opacity-80 leading-7 sm:leading-6'>自治医科大学付属さいたま医療センター</p>
+                <div className='flex sm:flex-col'>
+                  <p className='text-base leading-7 font-sb sm:leading-6'>ご利用サービス：</p>
+                  <p className='text-base leading-7 sm:pl-7 sm:leading-6'>
+                    <span className='block font-bold'>プレミアム英文校正プラス</span>
+                    <span className='block font-bold'>プレミアム英文校正</span>
+                    <span className='block font-bold'>スタンダード英文校正</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className='text-white bg-pearl-alpha mt-3 p-7 w-125 mx-1.5 md:w-110 sm:w-full sm:p-3.5 sm:mx-0 sm:mt-6'>
+              <div className='flex pb-4 sm:flex-col sm:pb-8'>
+                <div className='border border-gray-500 min-w-40 w-40 h-40 bg-no-repeat bg-cover mr-4 sm:max-w-sm sm:w-full sm:m-auto sm:mb-4' style={{backgroundImage: `url(${'/assets/images/researchprofessional-3.jpg'})`}}></div>
+                <div>
+                  <p className='text-base leading-7 font-sb sm:leading-6'>
+                    かなり突っ込んだやり取りを何回もすることが想定されましたので、プレミアム英文校正プラスを使おうかなと思いました。
+                    <span className='text-base leading-7 opacity-70 font-normal'>査読コメントへの返答時に、言葉の問題で相手に自分たちの意図が伝わらず審査がうまくいかないと嫌だなと思ったので。</span>
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p className='text-base leading-7 font-sb sm:leading-6'>出野 智史先生</p>
+                <p className='opacity-80 leading-7 sm:leading-6'>慶應義塾大学医学部麻酔学教室　助教（研究奨励）</p>
+                <div className='flex sm:flex-col'>
+                  <p className='text-base leading-7 font-sb sm:leading-6'>ご利用サービス：</p>
+                  <p className='text-base leading-7 sm:pl-7 sm:leading-6'>
+                    <span className='block font-bold'>プレミアム英文校正プラス</span>
+                    <span className='block font-bold'>プレミアム英文校正</span>
+                    <span className='block font-bold'>スタンダード英文校正</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className='text-white bg-pearl-alpha mt-3 p-7 w-125 mx-1.5 md:w-110 sm:w-full sm:p-3.5 sm:mx-0 sm:mt-6'>
+              <div className='flex pb-4 sm:flex-col sm:pb-8'>
+                <div className='border border-gray-500 min-w-40 w-40 h-40 bg-no-repeat bg-cover mr-4 sm:max-w-sm sm:w-full sm:m-auto sm:mb-4' style={{backgroundImage: `url(${'/assets/images/researchprofessional-4.jpg'})`}}></div>
+                <div>
+                  <p className='text-base leading-7 font-sb sm:leading-6'>
+                    <span className='text-base leading-7 opacity-70 font-normal'>「やっぱり、どうしても英文法として絶対おかしなところがあると思いますので、そこは絶対チェックしてもらいますね。 </span>
+                    それだけじゃなく、このプレミアム英文校正プラスみたいに論文の本文とコメントを突き合わせてもらって、査読者からのコメントの内容とも突き合わせてチェックしてもらえるんだったら、助かりますよね。
+                  </p>
+                </div>
+              </div>
+              <div>
+                <p className='text-base leading-7 font-sb sm:leading-6'>早川 峰司先生</p>
+                <p className='opacity-80 leading-7 sm:leading-6'>北海道大学病院先進急性期医療センター　助教</p>
+                <div className='flex sm:flex-col'>
+                  <p className='text-base leading-7 font-sb sm:leading-6'>ご利用サービス：</p>
+                  <p className='text-base leading-7 sm:pl-7 sm:leading-6'>
+                    <span className='block font-bold'>プレミアム英文校正プラス</span>
+                    <span className='block font-bold'>プレミアム英文校正</span>
+                    <span className='block font-bold'>スタンダード英文校正</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='text-center mt-16 sm:mt-12'>
+            <a target='_blank' className='mb-6 relative text-white bg-gradient-to-b from-emerald-600 to-emerald-800 text-2xl font-sb rounded-lg py-4 pl-6 pr-10 hover:text-white hover:shadow-xl hover:shadow-emerald-200/40 md:text-lg sm:max-w-full sm:py-3 sm:pl-5 sm:pr-10 sm:text-base sm:mb-16' href='https://app.editage.jp/order/ncf/english-editing/standard-editing/'>
+              自動簡単お見積もり・ご注文
+              <span className='block font-light text-base md:text-sm sm:absolute sm:text-neutral-500 sm:top-full sm:left-0 sm:text-left sm:text-sm sm:pt-2'>単語数を入力するだけで、その場でお見積りが確認できます</span>
+              <span className='absolute right-3 inset-y-0 m-auto w-3.5 h-3.5 inline-block bg-no-repeat' style={{backgroundImage: `url(${'/assets/images/icons/double-rightarrow-white.svg'})`}}></span>
+            </a>
+          </div>
+        </div>
+      </section>
       <section className={(params.hideHeading ? 'bg-pearl-zeta' : 'bg-primary') + ' pt-8 pb-10 '}  >
         <div className="container">
 
