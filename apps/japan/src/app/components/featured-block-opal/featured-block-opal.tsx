@@ -11,7 +11,7 @@ interface IFeaturedBlockOpalParams {
   subHeading3: string;
   subTitle: string;
   bottomNote: string;
-  bgImage:string;
+  bgImage: string;
   services: IServices[];
   link: {
     route?: string;
@@ -57,11 +57,13 @@ const FeaturedBlockOpal = ({ params }: { params: IFeaturedBlockOpalParams }) => 
               <div className='flex justify-center items-center'>
                 {
                   params?.services.map((service, index) => (
-                    <a key={index} href={service?.link?.route} className='bg-gradient-to-b from-indigo-500 to-indigo-900 mx-1.5 mt-3 font-bold btn btn-primary h-14 md:h-11 md:text-xs md:min-w-45 md:leading-44 sm:min-w-max sm:h-fit sm:py-2.5 sm:px-6 sm:text-xs sm:mx-1 relative'>
-                      {service?.link?.content}
-                      {
-                        service?.icon && <span className='absolute w-5 h-5 right-8 inset-y-0 m-auto inline-block bg-no-repeat md:w-4 md:h-4 md:bg-cover sm:w-3 sm:h-3 sm:bg-cover sm:right-2' style={{ backgroundImage: `url(${service?.icon})` }}></span>
-                      }
+                    <a key={index} href={service?.link?.route} className='bg-gradient-to-b from-indigo-500 to-indigo-900 mx-1.5 mt-3 btn btn-primary h-auto p-[0.188rem] md:min-w-45 sm:min-w-max sm:p-0.5 sm:mx-1 relative'>
+                      <div className='border-2 border-white rounded sm:py-2 sm:px-6'>
+                        <p className='text-white font-bold md:text-xs md:leading-44 sm:text-xs'>{service?.link?.content}</p>
+                        {
+                          service?.icon && <span className='absolute w-5 h-5 right-8 inset-y-0 m-auto inline-block bg-no-repeat bg-center bg-contain md:w-4 md:h-4 sm:w-3 sm:h-3 sm:right-2' style={{ backgroundImage: `url(${service?.icon})` }}></span>
+                        }
+                      </div>
                     </a>
                   ))
                 }
